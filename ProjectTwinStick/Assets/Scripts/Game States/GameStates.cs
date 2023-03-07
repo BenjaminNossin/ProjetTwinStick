@@ -1,19 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
 // Main Menu, Lobby, Game, End Game, Credits
 // besoin d'un state Tutorial ? 
 
 public class GameStates : MonoBehaviour
 {
-    // stack of states
-    // event on state transition
-        // store previous state
+    [SerializeField] private PlayerInputManager playerInputManager;
+
+    public static GameStates Instance;
+    public StateContext currentContext; 
+
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(Instance);
+        }
+        Instance= this;
+    }
 
     void Start()
     {
-        StateContext context = new(new LobbyState()); 
+        currentContext = new(new LobbyState(), playerInputManager);
         
     }
 }

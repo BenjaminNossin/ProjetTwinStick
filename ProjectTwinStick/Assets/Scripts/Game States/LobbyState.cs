@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LobbyState : State
 {
@@ -15,13 +16,11 @@ public class LobbyState : State
         throw new System.NotImplementedException();
     }
 
-    public override void Request()
+    public override void Initialize()
     {
-        context.TransitionTo(new GameState());
-    }
-
-    private void BindOnPlayerJoined()
-    {
-
+        // context.TransitionTo(new GameState());
+        Debug.Log("Initializing Lobby"); 
+        context.PlayerInputManager.onPlayerJoined += BindOnPlayerJoined;
+        context.PlayerInputManager.onPlayerLeft += BindOnPlayerLeave; 
     }
 }
