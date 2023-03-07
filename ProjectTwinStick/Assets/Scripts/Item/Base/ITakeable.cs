@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ITakeable
 {
-    public void Take();
+    public void Take(GameObject holder);
 }
