@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour, IController
 
     private State currentState; 
     private void SetUpController()
-    void Start()
     {
         currentState = GameStates.Instance.currentContext.GetCurrentState();
 
