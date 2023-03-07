@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour, IController
     [SerializeField] private PlayerDrop _playerDrop;
     [SerializeField] private PlayerThrow _playerThrow;
     private bool isActive = false;
-
     [SerializeField] GameObject playerObject;
 
     private PlayerInput _playerInput;
@@ -27,29 +26,47 @@ public class PlayerController : MonoBehaviour, IController
         movement.canceled += UpdateMovementInput;
         InputAction take = _playerInput.currentActionMap["Take"];
         take.performed += TryTakeInput;
+        InputAction shoot = _playerInput.currentActionMap["Shoot"];
+        shoot.performed += UpdateShootInput;
+        shoot.canceled += UpdateShootInput;
     }
 
     // NULLREFERENCEEXCEPTION
     private void OnDisable()
     {
-        
         InputAction movement = _playerInput.currentActionMap["Movement"];
         if (movement != null)
         {
             movement.performed -= UpdateMovementInput;
             movement.canceled -= UpdateMovementInput;
         }
+
         InputAction take = _playerInput.currentActionMap["Take"];
         if (take != null)
         {
             take.performed -= TryTakeInput;
         }
-        
+
+        InputAction shoot = _playerInput.currentActionMap["Shoot"];
+        if (shoot != null)
+        {
+            shoot.performed += UpdateShootInput;
+            shoot.canceled += UpdateShootInput;
+        }
     }
 
     private void Start()
     {
-        SetUpController(); 
+        SetUpController();
+    }
+
+    private void UpdateShootInput(InputAction.CallbackContext context)
+    {
+        if (playerObject != null && isActive)
+        {
+            Vector2 inputs = context.ReadValue<Vector2>();
+            _playerShoot.MakeAction(inputs);
+        }
     }
 
     private void UpdateMovementInput(InputAction.CallbackContext context)
@@ -67,10 +84,7 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.MakeAction();
     }
 
-    [FormerlySerializedAs("_playerMovement")] [SerializeField]
-    private SamplePlayerMovement samplePlayerMovement;
-    
-    private State currentState; 
+    private State currentState;
 
     private void SetUpController()
     {

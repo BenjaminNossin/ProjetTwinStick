@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - ShipCore
   layers:
   - Default
   - TransparentFX
@@ -20,12 +22,8 @@ TagManager:
   - Takeable
   - Ship Core
   - Enemy
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Walls
+  - Bullet
   - 
   - 
   - 

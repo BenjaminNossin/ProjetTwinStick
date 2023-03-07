@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IShootable
+[Serializable]
+public class ItemUpgrade 
 {
-  void Shoot(Vector3 startPosition, Vector2 direction);
+
 }

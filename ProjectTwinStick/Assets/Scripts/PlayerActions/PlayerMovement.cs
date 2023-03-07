@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IPlayerAction
 {
-    public bool IsInAction { get => _isInAction; }
-    private bool _isInAction = true;
+    public bool IsInAction { get => _isInMoving; }
+    private bool _canMoving = true;
 
     public CharacterMovement characterMovement;
     public event Action MakeActionEvent;
@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
     private float CurrentAcceleration;
     
     public Vector2 CurrentMovementInputs;
+    private bool _isInMoving;
+
     public void MakeAction(params object[] arguments)
     {
         CurrentMovementInputs =(Vector2) arguments[0];
@@ -41,7 +43,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
     
     private void Update()
     {
-        if(!IsInAction) return;
+        if(!_canMoving) return;
         UpdateVelocity();
     }
 
@@ -50,10 +52,12 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
         if (CurrentMovementInputs.magnitude > InputThreshold)
         {
             CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, (Time.deltaTime / accelerationTime));
+            _isInMoving = true; 
         }
         else
         {
             CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, (Time.deltaTime / decelerationTime));
+            _isInMoving = false;
         }
         characterMovement.SetVelocity( new Vector3(CurrentMovementInputs.x,0, CurrentMovementInputs.y) * (speed * CurrentAcceleration));
     }

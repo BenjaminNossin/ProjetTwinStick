@@ -34,10 +34,12 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("ShipCore"))
+        {
         var lifeable = other.GetComponent<ILifeable>();
         lifeable?.DecreaseCurrentHp(damage);
-
-        Die();       
+        Die();
+        }
     }
 
     private void CheckCurrentHPAmount()

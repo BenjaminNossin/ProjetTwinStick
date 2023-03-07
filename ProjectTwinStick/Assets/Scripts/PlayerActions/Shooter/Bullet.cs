@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     private Pool<Bullet> _pool;
     [SerializeField]
     private Rigidbody _rb;
-    public void Init(Vector3 startPos, float damage, float speed, Vector2 direction, Pool<Bullet> pool)
+    public void Init(Vector3 startPos, float damage, float speed, Vector3 direction, Pool<Bullet> pool)
     {
         transform.position = startPos;
         _damage = damage;

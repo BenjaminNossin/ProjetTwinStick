@@ -3,12 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IThrowable
+public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IThrowable, IUpgradable
 {
-    private ItemSO _so;
+    private int upgradeCount;
+    private const int upgradeMaxCount = 3;
 
     public abstract ItemSO GetSO();
-    public abstract void Shoot();
+    public abstract void Shoot(Vector3 startPosition, Vector2 direction);
+
+    public abstract void SetUpgrade(ItemUpgrade newUpgrade);
+    protected virtual void Start()
+    {
+       ResetUpgrade();
+    }
 
     public virtual bool CanDrop()
     {
@@ -36,5 +43,31 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     public void Take(GameObject holder)
     {
         transform.parent = holder.transform;
+    }
+
+    public void Upgrade()
+    {
+        if (upgradeCount != upgradeMaxCount)
+        {
+            upgradeCount++;
+            UpdateUpgrade();
+        }
+    }
+
+    public void Degrade()
+    {
+        if (upgradeCount != 0)
+        {
+            upgradeCount--;
+            UpdateUpgrade();
+        }
+    }
+
+    void UpdateUpgrade() => SetUpgrade(GetSO().GetUpgrades()[upgradeCount]);
+
+    public void ResetUpgrade()
+    {
+        upgradeCount = 0;
+        UpdateUpgrade();
     }
 }

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28ee015513d6914e93e89edb170afd5, type: 3}
+  m_Name: GigaShooterItem
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 496780730554963546, guid: f2d3f6dad88571c40bc58625ccb99bcc, type: 3}
+  _shooterUpgrades:
+  - FrequencyBetweenBullet: 1
+    DamageBullet: 1
+    MinDispersionDegres: 0
+    MinDispersionRadian: 0
+    MaxDispersionRadian: 0
+    MaxDispersionDegres: 0
+    Speed: 5
+  - FrequencyBetweenBullet: 0.5
+    DamageBullet: 2
+    MinDispersionDegres: -10
+    MinDispersionRadian: -0.17453292
+    MaxDispersionRadian: 0.17453292
+    MaxDispersionDegres: 10
+    Speed: 10
+  - FrequencyBetweenBullet: 0.2
+    DamageBullet: 3
+    MinDispersionDegres: -20
+    MinDispersionRadian: -0.34906584
+    MaxDispersionRadian: 0.34906584
+    MaxDispersionDegres: 20
+    Speed: 15
+  bulletPrefab: {fileID: 8399040886260937820, guid: 86fb32fd4bbe47843b3208ae72fc95c1, type: 3}
+  StartCount: 10

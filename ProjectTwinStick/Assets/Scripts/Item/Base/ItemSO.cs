@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class ItemSO : ScriptableObject
 {
+    public abstract ItemUpgrade[] GetUpgrades();
     public Item itemPrefab;
+    
 }
