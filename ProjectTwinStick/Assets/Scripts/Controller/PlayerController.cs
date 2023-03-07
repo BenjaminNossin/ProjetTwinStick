@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour, IController
     }
 
     // NULLREFERENCEEXCEPTION
-    /* private void OnDisable()
+    private void OnDisable()
     {
         
         InputAction movement = _playerInput.currentActionMap["Movement"];
@@ -74,9 +74,9 @@ public class PlayerController : MonoBehaviour, IController
 
     private void SetUpController()
     {
-        if (GameStates.Instance != null)
+        if (GameManager.Instance != null)
         {
-            currentState = GameStates.Instance.currentContext.GetCurrentState();
+            currentState = GameManager.Instance.currentContext.GetCurrentState();
         }
 
         ActivateController();
