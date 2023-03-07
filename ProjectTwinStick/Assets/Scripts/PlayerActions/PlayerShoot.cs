@@ -6,24 +6,26 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour, IPlayerAction
 {
     public bool IsInAction { get; }
-    public void MakeAction()
+
+
+    public void MakeAction(params object[] arguments)
     {
-        throw new NotImplementedException();
+     
     }
 
     public void SetupAction(params object[] arguments)
     {
-        throw new NotImplementedException();
+     
     }
 
     public void DeactivateAction()
     {
-        throw new NotImplementedException();
+      
     }
 
     public void ActivateAction()
     {
-        throw new NotImplementedException();
+     
     }
 
 

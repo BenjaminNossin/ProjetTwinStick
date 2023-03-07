@@ -47,8 +47,7 @@ public class PlayerController : MonoBehaviour, IController
         if (playerObject != null && isActive)
         {
             Vector2 inputs = context.ReadValue<Vector2>();
-            Debug.Log("Updated movement inputs : " + inputs);
-            _characterMovement.UpdateMovementInputs(inputs);
+            _playerMovement.MakeAction(inputs);
         }
     }
 
@@ -58,6 +57,7 @@ public class PlayerController : MonoBehaviour, IController
 
     private State currentState; 
     private void SetUpController()
+    void Start()
     {
         currentState = GameStates.Instance.currentContext.GetCurrentState();
 
@@ -85,10 +85,6 @@ public class PlayerController : MonoBehaviour, IController
     public void DeactivateController()
     {
         isActive = false;
-        if (playerObject != null)
-        {
-            _characterMovement.UpdateMovementInputs(Vector2.zero);
-        }
         _playerDrop.DeactivateAction();
         _playerThrow.DeactivateAction();
         _playerShoot.DeactivateAction();
