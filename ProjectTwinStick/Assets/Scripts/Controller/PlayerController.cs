@@ -17,26 +17,35 @@ public class PlayerController : MonoBehaviour, IController
 
     [SerializeField] GameObject playerObject;
 
-    private CharacterMovement _characterMovement;
     private PlayerInput _playerInput;
 
     private void OnEnable()
     {
-        _characterMovement = playerObject.GetComponent<CharacterMovement>();
         _playerInput = GetComponent<PlayerInput>();
         InputAction movement = _playerInput.currentActionMap["Movement"];
-        //Debug.Log(movement);
         movement.performed += UpdateMovementInput;
         movement.canceled += UpdateMovementInput;
+        InputAction take = _playerInput.currentActionMap["Take"];
+        take.performed += TryTakeInput;
     }
 
     // NULLREFERENCEEXCEPTION
     /* private void OnDisable()
     {
+        
         InputAction movement = _playerInput.currentActionMap["Movement"];
-        movement.performed -= UpdateMovementInput;
-        movement.canceled -= UpdateMovementInput;
-    } */
+        if (movement != null)
+        {
+            movement.performed -= UpdateMovementInput;
+            movement.canceled -= UpdateMovementInput;
+        }
+        InputAction take = _playerInput.currentActionMap["Take"];
+        if (take != null)
+        {
+            take.performed -= TryTakeInput;
+        }
+        
+    }
 
     private void Start()
     {
@@ -52,15 +61,23 @@ public class PlayerController : MonoBehaviour, IController
         }
     }
 
+    private void TryTakeInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Take input");
+        _playerTake.MakeAction();
+    }
+
     [FormerlySerializedAs("_playerMovement")] [SerializeField]
     private SamplePlayerMovement samplePlayerMovement;
-
-
+    
     private State currentState; 
 
     private void SetUpController()
     {
-        currentState = GameManager.Instance.currentContext.GetCurrentState();
+        if (GameStates.Instance != null)
+        {
+            currentState = GameStates.Instance.currentContext.GetCurrentState();
+        }
 
         ActivateController();
 

@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IDropable
 {
+ public bool CanDrop();
  public void Drop();
 }
