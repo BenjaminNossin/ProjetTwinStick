@@ -37,6 +37,11 @@ public class PlayerController : MonoBehaviour, IController
         movement.canceled -= UpdateMovementInput;
     }
 
+    private void Start()
+    {
+        SetUpController(); 
+    }
+
     private void UpdateMovementInput(InputAction.CallbackContext context)
     {
         if (playerObject != null && isActive)
@@ -50,9 +55,14 @@ public class PlayerController : MonoBehaviour, IController
     [FormerlySerializedAs("_playerMovement")] [SerializeField]
     private SamplePlayerMovement samplePlayerMovement;
 
-    void Start()
+
+    private State currentState; 
+    private void SetUpController()
     {
+        currentState = GameStates.Instance.currentContext.GetCurrentState();
+
         ActivateController();
+
         _playerMovement.SetupAction();
         _playerShoot.SetupAction();
         _playerTake.SetupAction();
@@ -68,6 +78,8 @@ public class PlayerController : MonoBehaviour, IController
         _playerShoot.ActivateAction();
         _playerTake.ActivateAction();
         _playerMovement.ActivateAction();
+
+        currentState.AddPlayerController(this);
     }
 
     public void DeactivateController()
@@ -82,5 +94,7 @@ public class PlayerController : MonoBehaviour, IController
         _playerShoot.DeactivateAction();
         _playerTake.DeactivateAction();
         _playerMovement.DeactivateAction();
+
+        currentState.RemovePlayerController(this);
     }
 }

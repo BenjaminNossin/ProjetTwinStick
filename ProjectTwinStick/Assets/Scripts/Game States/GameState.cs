@@ -1,22 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class StateContext 
-{
-    private State currentState = null;
-
-    public StateContext(State initialState)
-    {
-        TransitionTo(initialState); 
-    }
-
-    public void TransitionTo(State newState)
-    {
-        currentState = newState;
-        currentState.SetContext(this); 
-    }
-}
+using UnityEngine.InputSystem;
 
 public class GameState : State
 {
@@ -31,9 +16,9 @@ public class GameState : State
         throw new System.NotImplementedException();
     }
 
-    public override void Request()
+    public override void Initialize()
     {
-        context.TransitionTo(new LobbyState()); 
+        // context.TransitionTo(new LobbyState()); 
 
     }
 
