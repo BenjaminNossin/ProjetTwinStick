@@ -38,9 +38,12 @@ public class PlayerController : MonoBehaviour, IController
 
     private void UpdateMovementInput(InputAction.CallbackContext context)
     {
-	    Vector2 inputs = context.ReadValue<Vector2>();
-	    Debug.Log("Updated movement inputs : " + inputs);
-	    _playerMovement.UpdateMovementInputs(inputs);
+	    if (playerObject != null && isActive)
+	    {
+		    Vector2 inputs = context.ReadValue<Vector2>();
+		    Debug.Log("Updated movement inputs : " + inputs);
+		    _playerMovement.UpdateMovementInputs(inputs);
+	    }
     }
     
     public void ActivateController()
@@ -50,6 +53,10 @@ public class PlayerController : MonoBehaviour, IController
 
 	public void DeactivateController(){
 		isActive = false;
+		if (playerObject != null)
+		{
+			_playerMovement.UpdateMovementInputs(Vector2.zero);
+		}
 	}
 
 }
