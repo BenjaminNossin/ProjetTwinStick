@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 { 
     //TODO : move movement stats to dedicated stat system
     [SerializeField] float speed;
-    [SerializeField] float acceleration;
+    [FormerlySerializedAs("acceleration")] [SerializeField] float accelerationTime;
+    [FormerlySerializedAs("deceleration")] [SerializeField] private float decelerationTime = .1f;
     [SerializeField, Range(0.0001f,1f)] float InputThreshold = 0.1f;
 
     private CharacterController _characterController;
@@ -25,18 +27,18 @@ public class CharacterMovement : MonoBehaviour
     private void Update()
     {
         UpdateVelocity();
-        _characterController.Move(CurrentVelocity);
+        _characterController.Move(CurrentVelocity * Time.deltaTime);
     }
 
     private void UpdateVelocity()
     {
-        if (CurrentMovementInputs.magnitude < InputThreshold)
+        if (CurrentMovementInputs.magnitude > InputThreshold)
         {
-            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, acceleration * Time.deltaTime);
+            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, (Time.deltaTime / accelerationTime));
         }
         else
         {
-            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, acceleration * Time.deltaTime);
+            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, (Time.deltaTime / decelerationTime));
         }
 
         CurrentVelocity = new Vector3(CurrentMovementInputs.x,0, CurrentMovementInputs.y) * (speed * CurrentAcceleration);
@@ -46,6 +48,4 @@ public class CharacterMovement : MonoBehaviour
     {
         CurrentMovementInputs = NewInputs;
     }
-    
-    
 }
