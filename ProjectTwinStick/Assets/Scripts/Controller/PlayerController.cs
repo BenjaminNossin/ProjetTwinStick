@@ -25,17 +25,18 @@ public class PlayerController : MonoBehaviour, IController
         _characterMovement = playerObject.GetComponent<CharacterMovement>();
         _playerInput = GetComponent<PlayerInput>();
         InputAction movement = _playerInput.currentActionMap["Movement"];
-        Debug.Log(movement);
+        //Debug.Log(movement);
         movement.performed += UpdateMovementInput;
         movement.canceled += UpdateMovementInput;
     }
 
-    private void OnDisable()
+    // NULLREFERENCEEXCEPTION
+    /* private void OnDisable()
     {
         InputAction movement = _playerInput.currentActionMap["Movement"];
         movement.performed -= UpdateMovementInput;
         movement.canceled -= UpdateMovementInput;
-    }
+    } */
 
     private void Start()
     {
@@ -56,9 +57,10 @@ public class PlayerController : MonoBehaviour, IController
 
 
     private State currentState; 
+
     private void SetUpController()
     {
-        currentState = GameStates.Instance.currentContext.GetCurrentState();
+        currentState = GameManager.Instance.currentContext.GetCurrentState();
 
         ActivateController();
 

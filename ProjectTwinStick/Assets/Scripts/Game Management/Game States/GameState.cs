@@ -7,28 +7,17 @@ public class GameState : State
 {
     public override void OnStateEnter()
     {
-        throw new System.NotImplementedException();
-        // bind inputs
+        //throw new System.NotImplementedException();
     }
 
     public override void OnStateExit()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 
     public override void Initialize()
     {
-        // context.TransitionTo(new LobbyState()); 
-
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
+        Debug.Log("Initializing Game State");
+        // init enemy spawner
     }
 }
