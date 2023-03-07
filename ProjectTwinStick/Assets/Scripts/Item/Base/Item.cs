@@ -10,6 +10,11 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     public abstract ItemSO GetSO();
     public abstract void Shoot();
 
+    public virtual bool CanDrop()
+    {
+        return true;
+    }
+
     public virtual void Drop()
     {
         transform.parent = null;
@@ -21,6 +26,11 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     public virtual void Throw()
     {
+    }
+
+    public virtual bool CanTake()
+    {
+        return true;
     }
 
     public void Take(GameObject holder)

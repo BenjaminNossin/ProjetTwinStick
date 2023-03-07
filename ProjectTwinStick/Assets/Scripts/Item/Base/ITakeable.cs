@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface ITakeable
 {
+    public bool CanTake();
     public void Take(GameObject holder);
 }
