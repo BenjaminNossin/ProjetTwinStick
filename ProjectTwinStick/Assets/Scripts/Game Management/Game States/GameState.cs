@@ -18,6 +18,7 @@ public class GameState : State
     public override void Initialize()
     {
         Debug.Log("Initializing Game State");
+        GameManager.Instance.OnGameStart(); 
         // init enemy spawner
     }
 }

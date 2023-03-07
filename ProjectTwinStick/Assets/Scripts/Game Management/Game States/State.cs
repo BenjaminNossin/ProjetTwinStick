@@ -29,6 +29,8 @@ public class StateContext
     public State GetCurrentState() => currentState;
 }
 
+// Main Menu, Lobby, Game, End Game, Credits
+// besoin d'un state Tutorial ? 
 public abstract class State 
 {
     // NOTE: Set Context not very useful for now, remove if that amount of flexibility is not needed

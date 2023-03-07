@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class WaitRoom : MonoBehaviour
 {
+    private void Start()
+    {
+        GameManager.Instance.AddWaitRoomObj(gameObject); 
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameManager.Instance.UpdatePlayerReadyCount(1);       
