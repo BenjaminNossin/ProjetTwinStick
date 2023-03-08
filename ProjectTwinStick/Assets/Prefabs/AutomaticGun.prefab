@@ -134,11 +134,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3507579751486138759, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138760, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_Name
       value: GigaGunItem
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3507579751486138759, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
 --- !u!1 &8334306575194659269 stripped
 GameObject:
@@ -158,6 +163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   so: {fileID: 11400000, guid: 77f6fd882d8247746aaa545ca687ef83, type: 2}
+--- !u!135 &2879959794040912911
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334306575194659269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.475
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8334306575405724870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3507579751260980363, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
