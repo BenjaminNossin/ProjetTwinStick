@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour, IController
     }
 
     // NULLREFERENCEEXCEPTION
-    private void OnDisable()
+    /* private void OnDisable()
     {
         InputAction movement = _playerInput.currentActionMap["Movement"];
         if (movement != null)
@@ -53,11 +53,22 @@ public class PlayerController : MonoBehaviour, IController
             shoot.performed += UpdateShootInput;
             shoot.canceled += UpdateShootInput;
         }
-    }
+    } */
 
     private void Start()
     {
-        SetUpController();
+        Debug.Log("Spawning new player");
+        AddSelfToCurrentState();
+    }
+
+    private void AddSelfToCurrentState()
+    {
+        if (GameManager.Instance != null)
+        {
+            currentState = GameManager.Instance.GetCurrentState();
+        }
+
+        currentState.AddPlayerController(this);
     }
 
     private void UpdateShootInput(InputAction.CallbackContext context)
@@ -86,15 +97,8 @@ public class PlayerController : MonoBehaviour, IController
 
     private State currentState;
 
-    private void SetUpController()
+    public void SetUpController()
     {
-        if (GameManager.Instance != null)
-        {
-            currentState = GameManager.Instance.currentContext.GetCurrentState();
-        }
-
-        ActivateController();
-
         _playerMovement.SetupAction();
         _playerShoot.SetupAction();
         _playerTake.SetupAction();
@@ -111,7 +115,6 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.EnableAction();
         _playerMovement.EnableAction();
 
-        currentState.AddPlayerController(this);
     }
 
     public void DeactivateController()
@@ -123,6 +126,6 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.DisableAction();
         _playerMovement.DisableAction();
 
-        currentState.RemovePlayerController(this);
+        // currentState.RemovePlayerController(this);
     }
 }

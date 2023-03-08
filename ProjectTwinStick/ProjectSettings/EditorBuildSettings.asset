@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene/SampleScene.unity
     guid: 3db1837cc97a95e4c98610966fac2b0b
+  - enabled: 1
+    path: Assets/Scenes/DRAFT/Benji_Test_MainMenu.unity
+    guid: 5050999738029d747bf54632c245e2fe
+  - enabled: 1
+    path: Assets/Scenes/Benji_CoreScene.unity
+    guid: ea088796aa10f074c91b49d8a7c2aaa0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8e74eb9a2d60c834aa03fab54bcf4384, type: 2}

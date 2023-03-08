@@ -2,24 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Game.Systems.AI; 
+using Game.Systems.AI;
+using UnityEngine.SceneManagement;
+using DG.Tweening.Core.Easing;
 
+/// <summary>
+/// This Class is in charge of state transitions and activation/deactivation of global entities
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerInputManager playerInputManager;
 
     public static GameManager Instance;
-    public StateContext currentContext;
+    private StateContext currentContext; 
 
     [SerializeField, Range(1, 4)] private int playersRequiredAmount = 4;
     private int currentPlayerReadyCount; 
-    private List<GameObject> waitRooms = new();
+    private readonly List<GameObject> waitRooms = new();
 
-    [SerializeField] private GameObject shipCore;
+    [SerializeField] private GameObject shipCoreObj;
+    private ShipCore shipCore;
     private WaveManager waveManager;
 
-    [Header("DEBUG")]
-    public bool startGameImmediately = false; 
+    [SerializeField] private GameObject gameOverObj; 
+    private UIGameOver gameOverUI;
+
+    // TODO: state stack to avoid new memory allocation when TransitionTo()
 
     private void Awake()
     {
@@ -32,12 +40,21 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        shipCore.SetActive(false); 
+        gameOverUI = gameOverObj.GetComponent<UIGameOver>();
+        shipCore = shipCoreObj.GetComponent<ShipCore>();
 
-        currentContext = new(
-            startGameImmediately ? new GameState() : new LobbyState(), 
-            playerInputManager);
-        
+        Initialize();
+
+    }
+
+    public void Initialize()
+    {
+        currentPlayerReadyCount = 0;
+
+        shipCoreObj.SetActive(false);
+        gameOverObj.SetActive(false);
+
+        currentContext = new(new LobbyState(), playerInputManager);
     }
 
     public void UpdatePlayerReadyCount(int value)
@@ -62,14 +79,41 @@ public class GameManager : MonoBehaviour
         waveManager = manager;
     }
 
+    public void OnLobbyStart()
+    {
+        foreach (var item in waitRooms)
+        {
+            item.SetActive(true);
+        }
+    }
+
     public void OnGameStart()
     {
         foreach (var item in waitRooms)
         {
-            item.SetActive(false); 
+            item.SetActive(false);
         }
 
-        shipCore.SetActive(true);
-        waveManager.Initialize(); 
+        shipCoreObj.SetActive(true);
+        shipCore.OnGameStart(); 
+        waveManager.OnGameStart(); 
     }
+
+    public void OnGameEnd()
+    {
+        waveManager.OnGameOver();
+
+        shipCoreObj.SetActive(false);
+        gameOverObj.SetActive(true);
+
+        currentContext.TransitionTo(new GameOverState());
+    }
+
+    public void OnGameQuit()
+    {
+        SceneManager.LoadSceneAsync("Benji_Test_MainMenu", LoadSceneMode.Single); 
+
+    }
+
+    public State GetCurrentState() => currentContext.GetCurrentState(); 
 }
