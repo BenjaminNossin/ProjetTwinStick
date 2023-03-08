@@ -82,7 +82,6 @@ MonoBehaviour:
   _playerDrop: {fileID: 3332490101803463013}
   _playerThrow: {fileID: 2673780183964481545}
   playerObject: {fileID: 1070296544542325317}
-  samplePlayerMovement: {fileID: 0}
 --- !u!1001 &22590538320156849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,6 +148,18 @@ PrefabInstance:
     - target: {fileID: 1047708072351340207, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482633936358554419, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764902317981696625, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049771295264138771, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
+      propertyPath: castRadius
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7049771295264138771, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: takeableLayer.m_Bits
