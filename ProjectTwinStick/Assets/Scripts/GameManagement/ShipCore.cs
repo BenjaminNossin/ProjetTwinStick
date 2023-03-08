@@ -16,6 +16,12 @@ public class ShipCore : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
+    private void Start()
+    {
+        GameManager.Instance.SetShipCoreData(gameObject, this); 
+        GameManager.Instance.SetObjectActive(gameObject, false);
+    }
+
     public void OnGameStart()
     {
         SetMaxHp(maxHP);

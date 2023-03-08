@@ -22,7 +22,7 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     private void Start()
     {
-        direction = (GameObject.Find("Ship Core").transform.position - transform.position).normalized;
+        direction = (GameObject.Find("ShipCoreObj").transform.position - transform.position).normalized;
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP); 
     }

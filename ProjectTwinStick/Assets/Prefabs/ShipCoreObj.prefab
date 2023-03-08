@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5945636433409282555}
   - component: {fileID: 48473448}
   m_Layer: 13
-  m_Name: Ship Core
+  m_Name: ShipCoreObj
   m_TagString: ShipCore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

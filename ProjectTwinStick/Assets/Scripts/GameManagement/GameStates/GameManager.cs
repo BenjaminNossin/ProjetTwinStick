@@ -19,12 +19,11 @@ public class GameManager : MonoBehaviour
     private int currentPlayerReadyCount; 
     private readonly List<GameObject> waitRooms = new();
 
-    [SerializeField] private GameObject shipCoreObj;
-    private ShipCore shipCore;
+    private GameObject shipCoreObj; 
+    private ShipCore shipCore; 
     private WaveManager waveManager;
 
-    [SerializeField] private GameObject gameOverObj; 
-    private UIGameOver gameOverUI;
+    [SerializeField] private GameObject gameOverObj;  
 
     public static List<Vector3> spawnPoints = new();
     private int spawnPointIndex; 
@@ -43,9 +42,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        gameOverUI = gameOverObj.GetComponent<UIGameOver>();
-        shipCore = shipCoreObj.GetComponent<ShipCore>();
-
         for (int i = 0; i < playerInputManager.transform.childCount; i++)
         {
             spawnPoints.Add(playerInputManager.transform.GetChild(i).position); 
@@ -58,24 +54,29 @@ public class GameManager : MonoBehaviour
     {
         currentPlayerReadyCount = 0;
         spawnPointIndex = 0;
-
-        shipCoreObj.SetActive(false);
-        gameOverObj.SetActive(false);
+        SetObjectActive(gameOverObj, false);
 
         currentContext = new(new LobbyState(), playerInputManager);
     }
 
-    public void UpdatePlayerReadyCount(int value)
+    #region deffered Initializers
+    public void SetShipCoreData(GameObject obj, ShipCore sC)
     {
-        currentPlayerReadyCount += value;
-        Debug.Log("Updating Player ready count to: " + currentPlayerReadyCount);
-
-        if (currentPlayerReadyCount == playersRequiredAmount)
-        {
-            currentContext.TransitionTo(new GameState()); 
-
-        }
+        shipCoreObj = obj;
+        shipCore = sC;
     }
+
+    public void SetObjectActive(GameObject obj, bool active)
+    {
+        obj.SetActive(active);
+    }
+
+    public void SetPlayerSpawnPosition(PlayerController controller)
+    {
+        controller.SetControllerSpawnPosition(spawnPoints[spawnPointIndex % playersRequiredAmount]);
+        spawnPointIndex++; 
+    }
+    #endregion
 
     public void AddWaitRoomObj(GameObject obj)
     {
@@ -87,10 +88,16 @@ public class GameManager : MonoBehaviour
         waveManager = manager;
     }
 
-    public void SetPlayerSpawnPosition(PlayerController controller)
+    public void UpdatePlayerReadyCount(int value)
     {
-        controller.SetControllerSpawnPosition(spawnPoints[spawnPointIndex % playersRequiredAmount]);
-        spawnPointIndex++; 
+        currentPlayerReadyCount += value;
+        Debug.Log("Updating Player ready count to: " + currentPlayerReadyCount);
+
+        if (currentPlayerReadyCount == playersRequiredAmount)
+        {
+            currentContext.TransitionTo(new GameState());
+
+        }
     }
 
     public void SetAllPlayerSpawnPosition(List<PlayerController> controllers)
@@ -106,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var item in waitRooms)
         {
-            item.SetActive(true);
+            SetObjectActive(item, true);
         }
     }
 
@@ -114,20 +121,21 @@ public class GameManager : MonoBehaviour
     {
         foreach (var item in waitRooms)
         {
-            item.SetActive(false);
+            SetObjectActive(item, false); 
         }
 
-        shipCoreObj.SetActive(true);
+        SetObjectActive(shipCoreObj, true); 
+
         shipCore.OnGameStart(); 
         waveManager.OnGameStart(); 
     }
 
     public void OnGameEnd()
     {
-        waveManager.OnGameOver();
+        SetObjectActive(shipCoreObj, false);
+        SetObjectActive(gameOverObj, true);
 
-        shipCoreObj.SetActive(false);
-        gameOverObj.SetActive(true);
+        waveManager.OnGameOver();
 
         currentContext.TransitionTo(new GameOverState());
     }
