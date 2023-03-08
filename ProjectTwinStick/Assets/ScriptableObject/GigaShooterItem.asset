@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 496780730554963546, guid: f2d3f6dad88571c40bc58625ccb99bcc, type: 3}
   _shooterUpgrades:
-  - FrequencyBetweenBullet: 0.5
+  - FrequencyBetweenBullet: 0.125
     DamageBullet: 1
-    MinDispersionDegres: 0
-    MinDispersionRadian: 0
-    MaxDispersionRadian: 0
-    MaxDispersionDegres: 0
-    Speed: 5
+    MinDispersionDegres: -4
+    MinDispersionRadian: -0.06981317
+    MaxDispersionRadian: 0.06981317
+    MaxDispersionDegres: 4
+    Speed: 10
   - FrequencyBetweenBullet: 0.25
     DamageBullet: 2
     MinDispersionDegres: -10
