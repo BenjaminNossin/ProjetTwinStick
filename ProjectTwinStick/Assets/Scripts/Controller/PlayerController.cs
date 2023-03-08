@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour, IController
     }
 
     // NULLREFERENCEEXCEPTION
-    private void OnDisable()
+    /* private void OnDisable()
     {
         InputAction movement = _playerInput.currentActionMap["Movement"];
         if (movement != null)
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour, IController
             shoot.performed += UpdateShootInput;
             shoot.canceled += UpdateShootInput;
         }
-    }
+    } */
 
     private void Start()
     {
