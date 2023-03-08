@@ -51,7 +51,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             Debug.Log("trying to throw");
             IsPreparingThrow = false;
-            _inventory.CurrentItem.Throw(currentChargeTime);
+            _inventory.CurrentItem.Throw(currentChargeTime, transform.forward);
             _inventory.ClearItem(false);
         }
     }

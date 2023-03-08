@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IThrowable
 {
- public void Throw(float ThrowForce);
+ public void Throw(float ThrowForce, Vector3 Direction);
 }

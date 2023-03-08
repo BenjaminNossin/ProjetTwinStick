@@ -18,8 +18,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     private const int upgradeMaxCount = 3;
 
     [Header("throw")] 
-    [SerializeField] private float ThrowLength = 3f;
-
+    [SerializeField] private float ThrowSpeed = 2f;
     [SerializeField] private float ThrowHeight = 2f;
     [SerializeField] private AnimationCurve ThrowCurve;
     [SerializeField] private AnimationCurve BounceCurve;
@@ -30,6 +29,8 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private float ThrowTimer = 0;
     private float BounceTimer = 0;
+
+    private Vector3 MovementDirection;
 
     protected ItemState CurrentItemState { get; private set; } = ItemState.Dropped;
 
@@ -103,7 +104,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private void ThrowUpdate()
     {
-        
+        ThrowTimer = Mathf.MoveTowards(ThrowTimer,1, Time.deltaTime * LastThrowForce);
     }
 
     private void BounceUpdate()
@@ -121,10 +122,14 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         ChangeState(ItemState.Dropped);
     }
 
-    public virtual void Throw(float throwForce)
+    public virtual void Throw(float throwForce, Vector3 direction)
     {
-        LastThrowForce = throwForce;
-        ChangeState(ItemState.Thrown);
+        if (CurrentItemState == ItemState.Held)
+        {
+            LastThrowForce = throwForce;
+            MovementDirection = direction;
+            ChangeState(ItemState.Thrown);
+        }
         //Drop();
     }
 

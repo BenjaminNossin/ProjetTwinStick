@@ -26,6 +26,6 @@ public class CharacterMovement : MonoBehaviour
 
    public void SetVelocity(Vector3 velocity)
    {
-        CurrentVelocity = velocity ;
+        CurrentVelocity = velocity;
     }
 }
