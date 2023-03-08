@@ -16,10 +16,12 @@ public class ShipCore : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
-    private void Start()
+    public void OnGameStart()
     {
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
+
+        Debug.Log($"Starting Ship Core with {CurrentHP} hp");
     }
 
     private void CheckCurrentHPAmount()
@@ -29,8 +31,9 @@ public class ShipCore : MonoBehaviour, ILifeable
 
     private void Die()
     {
-        gameObject.SetActive(false); 
-        Debug.Log("Lost the game"); 
+        Debug.Log("Lost the game");
+
+        GameManager.Instance.OnGameEnd(); 
 
         // set new state
     }

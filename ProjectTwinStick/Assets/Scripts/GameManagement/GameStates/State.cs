@@ -13,14 +13,14 @@ public class StateContext
         TransitionTo(initialState);
     }
 
-    public void TransitionTo(State newState)
+    internal void TransitionTo(State newState)
     {
         currentState = newState;
         currentState.SetContext(this);
         Initialize(); 
     }
 
-    public void Initialize()
+    protected void Initialize()
     {
         currentState.OnStateEnter();
     }

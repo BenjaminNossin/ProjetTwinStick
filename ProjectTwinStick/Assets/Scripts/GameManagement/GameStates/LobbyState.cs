@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class LobbyState : State
 {
@@ -10,7 +7,9 @@ public class LobbyState : State
         // context.TransitionTo(new GameState());
         Debug.Log("Initializing Lobby"); 
         context.PlayerInputManager.onPlayerJoined += BindOnPlayerJoined;
-        context.PlayerInputManager.onPlayerLeft += BindOnPlayerLeave; 
+        context.PlayerInputManager.onPlayerLeft += BindOnPlayerLeave;
+
+        GameManager.Instance.OnLobbyStart(); 
     }
 
     public override void OnStateExit()

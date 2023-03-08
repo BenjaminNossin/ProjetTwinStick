@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour, IController
     {
         if (GameManager.Instance != null)
         {
-            currentState = GameManager.Instance.currentContext.GetCurrentState();
+            currentState = GameManager.Instance.GetCurrentState();
         }
 
         ActivateController();

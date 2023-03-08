@@ -13,8 +13,10 @@ namespace Game.Systems.AI
             GameManager.Instance.AddWaveManager(this); 
         }
 
-        public void Initialize()
+        public void OnGameStart()
         {
+            Debug.Log($"Starting Waves");
+
             for (int i = 0; i < transform.childCount; i++)
             {
                 spawners.Add(transform.GetChild(i).GetComponent<Spawner>());
@@ -23,6 +25,16 @@ namespace Game.Systems.AI
             foreach (var item in spawners)
             {
                 item.Initialize();
+            }
+        }
+
+        public void OnGameOver()
+        {
+            Debug.Log($"Stopping Waves");
+
+            foreach (var item in spawners)
+            {
+                item.StopSpawnings(); 
             }
         }
     }

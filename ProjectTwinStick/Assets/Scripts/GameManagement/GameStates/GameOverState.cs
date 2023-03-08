@@ -5,8 +5,7 @@ public class GameOverState : State
     public override void OnStateEnter()
     {
         Debug.Log("Initializing Game Over State");
-        DeactivateAllActivePlayerInputs(); 
-        // init enemy spawner
+        DeactivateAllActivePlayerInputs();
     }
 
     public override void OnStateExit()

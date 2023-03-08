@@ -16,6 +16,11 @@ namespace Game.Systems.AI
             InvokeRepeating(nameof(Spawn), firstSpawnDelay, secondsBetweenSpawns); 
         }
 
+        public void StopSpawnings()
+        {
+            CancelInvoke(nameof(Spawn)); 
+        }
+
         private void Spawn()
         {
             Instantiate(objToSpawn, transform.position, Quaternion.identity); 
