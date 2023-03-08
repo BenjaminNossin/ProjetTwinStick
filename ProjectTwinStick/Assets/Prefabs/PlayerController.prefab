@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8158646365945315890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2024548, y: 0, z: -0.31154907}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82,7 +82,6 @@ MonoBehaviour:
   _playerDrop: {fileID: 3332490101803463013}
   _playerThrow: {fileID: 2673780183964481545}
   playerObject: {fileID: 1070296544542325317}
-  samplePlayerMovement: {fileID: 0}
 --- !u!1001 &22590538320156849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,10 +92,6 @@ PrefabInstance:
     - target: {fileID: 1047708072171954932, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047708072171954932, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1047708072171954953, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_RootOrder
@@ -141,18 +136,6 @@ PrefabInstance:
     - target: {fileID: 1047708072171954953, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047708072351340205, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047708072351340207, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7049771295264138771, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: takeableLayer.m_Bits
-      value: 4096
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}

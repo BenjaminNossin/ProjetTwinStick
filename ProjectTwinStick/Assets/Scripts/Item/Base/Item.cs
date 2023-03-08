@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public enum ItemState
@@ -17,15 +18,20 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     private const int upgradeMaxCount = 3;
 
     [Header("throw")] 
-    private float ThrowLength;
+    [SerializeField] private float ThrowLength = 3f;
 
-    private AnimationCurve ThrowCurve;
-    private AnimationCurve BounceCurve;
+    [SerializeField] private float ThrowHeight = 2f;
+    [SerializeField] private AnimationCurve ThrowCurve;
+    [SerializeField] private AnimationCurve BounceCurve;
 
 
     private GameObject itemHolder;
+    private float LastThrowForce;
 
-    protected ItemState CurrentItemState { get; private set; }
+    private float ThrowTimer = 0;
+    private float BounceTimer = 0;
+
+    protected ItemState CurrentItemState { get; private set; } = ItemState.Dropped;
 
     private void ChangeState(ItemState newState)
     {
@@ -36,10 +42,10 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
                 OnHeld();
                 break;
             case ItemState.Thrown:
-                OnThrown();
+                OnThrowStart();
                 break;
             case ItemState.Bouncing:
-                OnBouncing();
+                OnBounceStart();
                 break;
             case ItemState.Dropped:
                 OnDropped();
@@ -47,14 +53,14 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         }
     }
 
-    private void OnThrown()
+    private void OnThrowStart()
     {
-        
+        ThrowTimer = 0;
     }
 
-    private void OnBouncing()
+    private void OnBounceStart()
     {
-        
+        BounceTimer = 0;
     }
 
     private void OnHeld()
@@ -65,9 +71,12 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     
     private void OnDropped()
     {
-        Vector3 position = itemHolder.transform.parent.position;
-        transform.position = new Vector3(position.x, 1, position.z);
+        Vector3 position = itemHolder.transform.position;
         transform.parent = null;
+        itemHolder = null;
+        Debug.Log(position);
+        transform.position = new Vector3(position.x, 1, position.z);
+        transform.rotation = quaternion.identity;
     }
 
     public abstract ItemSO GetSO();
@@ -77,6 +86,29 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     protected virtual void Start()
     {
        ResetUpgrade();
+    }
+
+    private void Update()
+    {
+        switch (CurrentItemState)
+        {
+            case ItemState.Thrown:
+                ThrowUpdate();
+                break;
+            case ItemState.Bouncing:
+                BounceUpdate ();
+                break;
+        }
+    }
+
+    private void ThrowUpdate()
+    {
+        
+    }
+
+    private void BounceUpdate()
+    {
+        
     }
 
     public virtual bool CanDrop()
@@ -89,13 +121,21 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         ChangeState(ItemState.Dropped);
     }
 
-    public virtual void Throw()
+    public virtual void Throw(float throwForce)
     {
+        LastThrowForce = throwForce;
+        ChangeState(ItemState.Thrown);
+        //Drop();
     }
 
     public virtual bool CanTake()
     {
-        return CurrentItemState != ItemState.Held;
+        if (CurrentItemState != ItemState.Held)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void Take(GameObject holder)
@@ -129,4 +169,5 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         upgradeCount = 0;
         UpdateUpgrade();
     }
+
 }

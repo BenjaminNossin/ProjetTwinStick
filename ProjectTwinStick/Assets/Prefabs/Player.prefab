@@ -83,6 +83,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad930ffec7cdf8a4280c300b595d2483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThrowChargeTime: 1
+  OnAimStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnThrow:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCancelThrow:
+    m_PersistentCalls:
+      m_Calls: []
+  _inventory: {fileID: 6055432575011109203}
 --- !u!114 &3345932556697315796
 MonoBehaviour:
   m_ObjectHideFlags: 0

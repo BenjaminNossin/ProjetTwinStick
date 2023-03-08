@@ -24,11 +24,20 @@ public class PlayerController : MonoBehaviour, IController
         InputAction movement = _playerInput.currentActionMap["Movement"];
         movement.performed += UpdateMovementInput;
         movement.canceled += UpdateMovementInput;
+        
         InputAction take = _playerInput.currentActionMap["Take"];
         take.performed += TryTakeInput;
+        
         InputAction shoot = _playerInput.currentActionMap["Shoot"];
         shoot.performed += UpdateShootInput;
         shoot.canceled += UpdateShootInput;
+        
+        InputAction throwAction = _playerInput.currentActionMap["Throw"];
+        throwAction.performed += StartAiming;
+        throwAction.canceled += TryThrow;
+        
+        InputAction cancelThrow = _playerInput.currentActionMap["CancelThrow"];
+        cancelThrow.performed += CancelThrow;
     }
 
     // NULLREFERENCEEXCEPTION
@@ -53,11 +62,39 @@ public class PlayerController : MonoBehaviour, IController
             shoot.performed += UpdateShootInput;
             shoot.canceled += UpdateShootInput;
         }
+        InputAction throwAction = _playerInput.currentActionMap["Throw"];
+        if (throwAction != null)
+        {
+            throwAction.performed -= StartAiming;
+            throwAction.canceled -= TryThrow;
+        }
+        InputAction cancelThrow = _playerInput.currentActionMap["CancelThrow"];
+        if (cancelThrow != null)
+        {
+            cancelThrow.performed -= CancelThrow;
+        }
     }
+
+    #region InputCallbacks
 
     private void Start()
     {
         SetUpController();
+    }
+
+    private void StartAiming(InputAction.CallbackContext context)
+    {
+        _playerThrow.PerformAction(false);
+    }
+
+    private void TryThrow(InputAction.CallbackContext context)
+    {
+        _playerThrow.PerformAction(true);
+    }
+
+    private void CancelThrow(InputAction.CallbackContext obj)
+    {
+        _playerThrow.CancelAction();
     }
 
     private void UpdateShootInput(InputAction.CallbackContext context)
@@ -83,6 +120,8 @@ public class PlayerController : MonoBehaviour, IController
         Debug.Log("Take input");
         _playerTake.PerformAction();
     }
+
+    #endregion
 
     private State currentState;
 
