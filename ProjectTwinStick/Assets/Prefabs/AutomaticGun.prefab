@@ -140,7 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138760, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_Name
-      value: GigaGunItem
+      value: AutomaticGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347691849595396050, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3507579751486138759, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
@@ -150,20 +154,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3507579751486138760, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
   m_PrefabInstance: {fileID: 4828996380527767629}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5053641030532772815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8334306575194659269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd026b96b5d02b4d906e420fd05b07f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwData: {fileID: 11400000, guid: d8a0d03a487f9f04da277a1111dcf712, type: 2}
-  so: {fileID: 11400000, guid: 77f6fd882d8247746aaa545ca687ef83, type: 2}
 --- !u!135 &2879959794040912911
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -177,6 +167,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.475
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5053641030532772815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334306575194659269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd026b96b5d02b4d906e420fd05b07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundedHeight: 1
+  throwData: {fileID: 11400000, guid: d8a0d03a487f9f04da277a1111dcf712, type: 2}
+  so: {fileID: 11400000, guid: 77f6fd882d8247746aaa545ca687ef83, type: 2}
 --- !u!4 &8334306575405724870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3507579751260980363, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
