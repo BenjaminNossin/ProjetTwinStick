@@ -36,9 +36,9 @@ public class BasicAI : MonoBehaviour, ILifeable
     {
         if (other.CompareTag("ShipCore"))
         {
-        var lifeable = other.GetComponent<ILifeable>();
-        lifeable?.DecreaseCurrentHp(damage);
-        Die();
+            var lifeable = other.GetComponent<ILifeable>();
+            lifeable?.DecreaseCurrentHp(damage);
+            Die();
         }
     }
 
