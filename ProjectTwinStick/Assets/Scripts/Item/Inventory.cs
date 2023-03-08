@@ -25,9 +25,9 @@ public class Inventory : MonoBehaviour
         OnItemChanged?.Invoke(CurrentItem);
     }
     
-    public void ClearItem()
+    public void ClearItem(bool DropItem)
     {
-        if (CurrentItem != null && CurrentItem != DefaultItem)
+        if (CurrentItem != null && CurrentItem != DefaultItem && DropItem)
         {
             CurrentItem.Drop();
         }

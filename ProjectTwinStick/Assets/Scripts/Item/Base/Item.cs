@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum ItemState
 {
@@ -13,33 +15,42 @@ public enum ItemState
 
 public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IThrowable, IUpgradable
 {
-    private int upgradeCount;
     private const int upgradeMaxCount = 3;
 
-    [Header("throw")] 
-    private float ThrowLength;
+    [SerializeField] private float GroundedHeight = 1f;
 
-    private AnimationCurve ThrowCurve;
-    private AnimationCurve BounceCurve;
+    [SerializeField] ItemThrowData throwData;
 
 
-    private GameObject itemHolder;
+    private int _upgradeCount;
 
-    protected ItemState CurrentItemState { get; private set; }
+    private GameObject _itemHolder;
+    private float _throwLength = 1f;
+
+    private float _throwTimer = 0f;
+    private float _bounceTimer = 0f;
+
+    private Vector3 MovementStartPosition;
+    private Vector3 MovementDirection;
+
+    private SphereCollider _collider;
+
+    protected ItemState CurrentItemState { get; private set; } = ItemState.Dropped;
 
     private void ChangeState(ItemState newState)
     {
         CurrentItemState = newState;
+        Debug.Log("Current state : " + CurrentItemState);
         switch (CurrentItemState)
         {
             case ItemState.Held:
                 OnHeld();
                 break;
             case ItemState.Thrown:
-                OnThrown();
+                OnThrowStart();
                 break;
             case ItemState.Bouncing:
-                OnBouncing();
+                OnBounceStart();
                 break;
             case ItemState.Dropped:
                 OnDropped();
@@ -47,36 +58,97 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         }
     }
 
-    private void OnThrown()
+    private void OnThrowStart()
     {
+        _throwTimer = 0;
         
+        Vector3 position = _itemHolder.transform.position;
+        transform.parent = null;
+        _itemHolder = null;
+        transform.position = new Vector3(position.x, 1, position.z);
+        transform.rotation = Quaternion.LookRotation(MovementDirection, Vector3.up);
+        MovementStartPosition = transform.position;
     }
 
-    private void OnBouncing()
+    private void OnBounceStart()
     {
-        
+        _bounceTimer = 0;
     }
 
     private void OnHeld()
     {
         
-        transform.parent = itemHolder.transform;
+        transform.parent = _itemHolder.transform;
     }
     
     private void OnDropped()
     {
-        Vector3 position = itemHolder.transform.parent.position;
-        transform.position = new Vector3(position.x, 1, position.z);
+        Vector3 position = transform.position;
+        if (_itemHolder != null)
+        {
+            position = _itemHolder.transform.position;
+        }
         transform.parent = null;
+        _itemHolder = null;
+        Debug.Log(position);
+        transform.position = new Vector3(position.x, 1, position.z);
+        transform.rotation = quaternion.identity;
     }
 
     public abstract ItemSO GetSO();
     public abstract void Shoot(Vector3 startPosition, Vector2 direction);
 
     public abstract void SetUpgrade(ItemUpgrade newUpgrade);
+
+    protected void Awake()
+    {
+        _collider = GetComponent<SphereCollider>();
+    }
+
     protected virtual void Start()
     {
        ResetUpgrade();
+    }
+
+    protected virtual void Update()
+    {
+        switch (CurrentItemState)
+        {
+            case ItemState.Thrown:
+                ThrowUpdate();
+                break;
+            case ItemState.Bouncing:
+                BounceUpdate();
+                break;
+        }
+    }
+
+    private void ThrowUpdate()
+    {
+        _throwTimer = Mathf.MoveTowards(_throwTimer,_throwLength, Time.deltaTime * throwData.ThrowSpeed);
+        Vector3 NextPos = MovementStartPosition + MovementDirection * _throwTimer;
+
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, _collider.radius, MovementDirection, out hit,throwData.ThrowSpeed * Time.deltaTime,
+                throwData.BlockerMask))
+        {
+            ChangeState(ItemState.Dropped);
+            return;
+        }
+        
+        float heightmask = throwData.ThrowCurve.Evaluate(_throwTimer / _throwLength);
+        NextPos.y = heightmask * throwData.ThrowHeight;
+        transform.position = NextPos;
+        if (_throwTimer == _throwLength)
+        {
+            ChangeState(ItemState.Dropped);
+        }
+
+    }
+
+    private void BounceUpdate()
+    {
+        
     }
 
     public virtual bool CanDrop()
@@ -89,44 +161,58 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         ChangeState(ItemState.Dropped);
     }
 
-    public virtual void Throw()
+    public virtual void Throw(float throwForce, Vector3 direction)
     {
+        if (CurrentItemState == ItemState.Held)
+        {
+            Debug.Log("Thrown");
+            _throwLength = throwForce;
+            MovementDirection = direction;
+            ChangeState(ItemState.Thrown);
+        }
+        //Drop();
     }
 
     public virtual bool CanTake()
     {
-        return CurrentItemState != ItemState.Held;
+        if (CurrentItemState == ItemState.Dropped)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void Take(GameObject holder)
     {
-        itemHolder = holder;
+        _itemHolder = holder;
         ChangeState(ItemState.Held);
     }
 
     public void Upgrade()
     {
-        if (upgradeCount != upgradeMaxCount)
+        if (_upgradeCount != upgradeMaxCount)
         {
-            upgradeCount++;
+            _upgradeCount++;
             UpdateUpgrade();
         }
     }
 
     public void Degrade()
     {
-        if (upgradeCount != 0)
+        if (_upgradeCount != 0)
         {
-            upgradeCount--;
+            _upgradeCount--;
             UpdateUpgrade();
         }
     }
 
-    void UpdateUpgrade() => SetUpgrade(GetSO().GetUpgrades()[upgradeCount]);
+    void UpdateUpgrade() => SetUpgrade(GetSO().GetUpgrades()[_upgradeCount]);
 
     public void ResetUpgrade()
     {
-        upgradeCount = 0;
+        _upgradeCount = 0;
         UpdateUpgrade();
     }
+
 }
