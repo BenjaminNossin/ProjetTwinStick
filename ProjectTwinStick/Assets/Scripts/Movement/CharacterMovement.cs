@@ -24,6 +24,11 @@ public class CharacterMovement : MonoBehaviour
     {
     }
 
+    public void TeleportPlayer(Vector3 newPosition)
+    {
+        _characterController.transform.position = newPosition;
+    }
+
    public void SetVelocity(Vector3 velocity)
    {
         CurrentVelocity = velocity ;
