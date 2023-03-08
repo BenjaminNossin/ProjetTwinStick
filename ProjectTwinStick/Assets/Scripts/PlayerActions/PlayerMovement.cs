@@ -10,45 +10,45 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
 
     public CharacterMovement characterMovement;
     public event Action PerformActionEvent;
-    
+
     //TODO : move movement stats to dedicated stat system
     [SerializeField] float speed;
-   [SerializeField] float accelerationTime;
-     [SerializeField] private float decelerationTime = .1f;
-    [SerializeField, Range(0.0001f,1f)] float InputThreshold = 0.1f;
+    [SerializeField] float accelerationTime;
+    [SerializeField] private float decelerationTime = .1f;
+    [SerializeField, Range(0.0001f, 1f)] float InputThreshold = 0.1f;
     private float CurrentAcceleration;
-    
+
     public Vector2 CurrentMovementInputs;
     private bool _isInMoving;
 
     public void PerformAction(params object[] arguments)
     {
-        CurrentMovementInputs =(Vector2) arguments[0];
+        CurrentMovementInputs = (Vector2)arguments[0];
     }
 
     public void CancelAction(params object[] arguments)
     {
-        
+
     }
 
     public void SetupAction(params object[] arguments)
     {
-        
+
     }
 
     public void DisableAction()
     {
         CurrentMovementInputs = Vector2.zero;
-        characterMovement.SetVelocity( Vector3.zero);
+        characterMovement.SetVelocity(Vector3.zero);
     }
     public void EnableAction()
     {
 
     }
-    
+
     private void Update()
     {
-        if(!_canMoving) return;
+        if (!_canMoving) return;
         UpdateVelocity();
     }
 
@@ -57,13 +57,18 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
         if (CurrentMovementInputs.magnitude > InputThreshold)
         {
             CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, (Time.deltaTime / accelerationTime));
-            _isInMoving = true; 
+            _isInMoving = true;
         }
         else
         {
             CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, (Time.deltaTime / decelerationTime));
             _isInMoving = false;
         }
-        characterMovement.SetVelocity( new Vector3(CurrentMovementInputs.x,0, CurrentMovementInputs.y) * (speed * CurrentAcceleration));
+        characterMovement.SetVelocity(new Vector3(CurrentMovementInputs.x, 0, CurrentMovementInputs.y) * (speed * CurrentAcceleration));
+    }
+
+    public void SetControllerSpawnPosition(Vector3 _pos)
+    {
+        characterMovement.TeleportPlayer(_pos);
     }
 }

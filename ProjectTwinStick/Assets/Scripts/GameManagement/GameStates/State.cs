@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class StateContext
 {
@@ -68,7 +69,8 @@ public abstract class State
         Debug.Log("A player controller was added: " + controller);
         ActivePlayersControllers.Add(controller);
         controller.SetUpController();
-        controller.ActivateController(); 
+        controller.ActivateController();
+        GameManager.Instance.SetPlayerSpawnPosition(controller); 
     }
 
     public void RemovePlayerController(PlayerController controller)
@@ -85,9 +87,9 @@ public abstract class State
             Debug.Log("Activating player controller");
 
             item.ActivateController();
-
         }
 
+        GameManager.Instance.SetAllPlayerSpawnPosition(ActivePlayersControllers); 
     }
 
     protected void DeactivateAllPlayerControllers()
