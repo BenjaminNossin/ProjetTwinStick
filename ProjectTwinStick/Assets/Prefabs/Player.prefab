@@ -88,6 +88,8 @@ MonoBehaviour:
   ThrowChargeTime: 1
   MaxThrowStrength: 5
   MovementBlocker: {fileID: 11400000, guid: 8ee4ca532398c154ab704576aa184630, type: 2}
+  PickupBlocker: {fileID: 11400000, guid: 7b7fff8a624df744988fde0ad15aecda, type: 2}
+  ShootBlocker: {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
   OnAimStart:
     m_PersistentCalls:
       m_Calls: []
@@ -124,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 6055432575011109203}
+  _tagContainer: {fileID: 6717455313009145219}
+  ShootBlocker: {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
   InputThreshold: 0.1
 --- !u!114 &6055432575011109203
 MonoBehaviour:
@@ -154,7 +158,9 @@ MonoBehaviour:
   takeableLayer:
     serializedVersion: 2
     m_Bits: 4096
+  PickupBlocker: {fileID: 11400000, guid: 7b7fff8a624df744988fde0ad15aecda, type: 2}
   _inventory: {fileID: 6055432575011109203}
+  _tagContainer: {fileID: 6717455313009145219}
 --- !u!114 &9038388747997465378
 MonoBehaviour:
   m_ObjectHideFlags: 0

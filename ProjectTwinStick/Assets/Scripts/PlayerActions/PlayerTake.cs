@@ -9,12 +9,20 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
     [SerializeField] private float castRadius = 1f;
     [SerializeField] private LayerMask takeableLayer;
 
+    [SerializeField] private GameplayTag PickupBlocker;
     [SerializeField] private Inventory _inventory;
+    [SerializeField] private GameplayTagContainer _tagContainer;
+    
     
     public bool IsInAction { get; }
 
     public void PerformAction(params object[] arguments)
     {
+        if (_tagContainer.HasTag(PickupBlocker))
+        {
+            return;
+        }
+        
         Debug.Log("trying to find item to take");
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, castRadius, takeableLayer);

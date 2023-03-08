@@ -10,6 +10,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     [SerializeField] float ThrowChargeTime = 1f;
     [SerializeField] float MaxThrowStrength = 5f;
     [SerializeField] GameplayTag MovementBlocker;
+    [SerializeField] GameplayTag PickupBlocker;
+    [SerializeField] GameplayTag ShootBlocker;
 
 
     public UnityEvent OnAimStart;
@@ -45,6 +47,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             Debug.Log("trying to aim");
             IsPreparingThrow = true;
             _tagContainer.AddTag(MovementBlocker);
+            _tagContainer.AddTag(PickupBlocker);
+            _tagContainer.AddTag(ShootBlocker);
             OnAimStart?.Invoke();
         }
     }
@@ -58,6 +62,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _inventory.CurrentItem.Throw(currentChargeTime * MaxThrowStrength, transform.forward);
             _inventory.ClearItem(false);
             _tagContainer.RemoveTag(MovementBlocker);
+            _tagContainer.RemoveTag(PickupBlocker);
+            _tagContainer.RemoveTag(ShootBlocker);
         }
     }
 
@@ -69,6 +75,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             IsPreparingThrow = false;
             currentChargeTime = 0f;
             _tagContainer.RemoveTag(MovementBlocker);
+            _tagContainer.RemoveTag(PickupBlocker);
+            _tagContainer.RemoveTag(ShootBlocker);
         }
     }
 
