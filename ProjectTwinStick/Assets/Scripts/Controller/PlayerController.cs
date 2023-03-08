@@ -156,4 +156,9 @@ public class PlayerController : MonoBehaviour, IController
 
         // currentState.RemovePlayerController(this);
     }
+
+    public void SetControllerSpawnPosition(Vector3 _pos)
+    {
+        _playerMovement.SetControllerSpawnPosition(_pos); 
+    }
 }

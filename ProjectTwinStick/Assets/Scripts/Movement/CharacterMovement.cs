@@ -22,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void UpdateVelocity()
     {
+
     }
 
     public void TeleportPlayer(Vector3 newPosition)
