@@ -12,4 +12,5 @@ public class ItemThrowData : ScriptableObject
     public AnimationCurve ThrowCurve;
     public AnimationCurve BounceCurve;
     public LayerMask BlockerMask;
+    public LayerMask PlayerMask;
 }

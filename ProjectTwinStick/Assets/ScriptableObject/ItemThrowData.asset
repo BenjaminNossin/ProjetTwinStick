@@ -84,3 +84,6 @@ MonoBehaviour:
   BlockerMask:
     serializedVersion: 2
     m_Bits: 32768
+  PlayerMask:
+    serializedVersion: 2
+    m_Bits: 131072

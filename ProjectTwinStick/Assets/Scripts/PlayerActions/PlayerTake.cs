@@ -23,19 +23,15 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
             return;
         }
         
-        Debug.Log("trying to find item to take");
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, castRadius, takeableLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            Debug.Log("Hit something");
             if (colliders[i].TryGetComponent(out ITakeable takeable))
             {
-                Debug.Log("Hit takeable");
                 if (takeable is Item inventoryItem)
                 {
-                    Debug.Log("Hit " + inventoryItem.name);
                     Debug.Log(inventoryItem.CanTake());
                     Debug.Log(_inventory.CurrentItem);
                     if (inventoryItem != _inventory.CurrentItem && inventoryItem.CanTake())

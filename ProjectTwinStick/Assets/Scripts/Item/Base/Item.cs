@@ -141,7 +141,20 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         transform.position = NextPos;
         if (_throwTimer == _throwLength)
         {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
+            Debug.Log(colliders);
+            if (colliders.Length > 0)
+            {
+                Debug.Log("Item catch");
+                Upgrade();
+                Inventory _inventory = colliders[0].GetComponentInParent<Inventory>();
+                _inventory.SetItem(this);
+                Take(_inventory.gameObject);
+                return;
+            }
+            
             ChangeState(ItemState.Dropped);
+            ResetUpgrade();
         }
 
     }
@@ -159,6 +172,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     public virtual void Drop()
     {
         ChangeState(ItemState.Dropped);
+        ResetUpgrade();
     }
 
     public virtual void Throw(float throwForce, Vector3 direction)
@@ -198,7 +212,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         }
     }
 
-    public void Degrade()
+    public void Downgrade()
     {
         if (_upgradeCount != 0)
         {

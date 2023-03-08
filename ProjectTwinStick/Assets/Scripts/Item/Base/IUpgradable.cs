@@ -6,7 +6,7 @@ public interface IUpgradable
 {
  void Upgrade();
 
- void Degrade();
+ void Downgrade();
 
  void ResetUpgrade();
 }
