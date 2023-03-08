@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
-  unitsPerSeconds: 3
-  damage: 20
+  unitsPerSeconds: 2
+  damage: 5
