@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour, IController
         if (playerObject != null && isActive)
         {
             Vector2 inputs = context.ReadValue<Vector2>();
-            _playerShoot.MakeAction(inputs);
+            _playerShoot.PerformAction(inputs);
         }
     }
 
@@ -74,14 +74,14 @@ public class PlayerController : MonoBehaviour, IController
         if (playerObject != null && isActive)
         {
             Vector2 inputs = context.ReadValue<Vector2>();
-            _playerMovement.MakeAction(inputs);
+            _playerMovement.PerformAction(inputs);
         }
     }
 
     private void TryTakeInput(InputAction.CallbackContext context)
     {
         Debug.Log("Take input");
-        _playerTake.MakeAction();
+        _playerTake.PerformAction();
     }
 
     private State currentState;
@@ -105,11 +105,11 @@ public class PlayerController : MonoBehaviour, IController
     public void ActivateController()
     {
         isActive = true;
-        _playerDrop.ActivateAction();
-        _playerThrow.ActivateAction();
-        _playerShoot.ActivateAction();
-        _playerTake.ActivateAction();
-        _playerMovement.ActivateAction();
+        _playerDrop.EnableAction();
+        _playerThrow.EnableAction();
+        _playerShoot.EnableAction();
+        _playerTake.EnableAction();
+        _playerMovement.EnableAction();
 
         currentState.AddPlayerController(this);
     }
@@ -117,11 +117,11 @@ public class PlayerController : MonoBehaviour, IController
     public void DeactivateController()
     {
         isActive = false;
-        _playerDrop.DeactivateAction();
-        _playerThrow.DeactivateAction();
-        _playerShoot.DeactivateAction();
-        _playerTake.DeactivateAction();
-        _playerMovement.DeactivateAction();
+        _playerDrop.DisableAction();
+        _playerThrow.DisableAction();
+        _playerShoot.DisableAction();
+        _playerTake.DisableAction();
+        _playerMovement.DisableAction();
 
         currentState.RemovePlayerController(this);
     }

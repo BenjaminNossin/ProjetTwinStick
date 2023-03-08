@@ -11,9 +11,14 @@ public class PlayerDrop : MonoBehaviour, IPlayerAction
 
     }
 
-    public void MakeAction(params object[] arguments)
+    public void PerformAction(params object[] arguments)
     {
       
+    }
+
+    public void CancelAction(params object[] arguments)
+    {
+        
     }
 
     public void SetupAction(params object[] arguments)
@@ -21,14 +26,14 @@ public class PlayerDrop : MonoBehaviour, IPlayerAction
        
     }
 
-    public void DeactivateAction()
+    public void DisableAction()
     {
        
     }
 
-    public void ActivateAction()
+    public void EnableAction()
     {
     }
 
-    public event Action MakeActionEvent;
+    public event Action PerformActionEvent;
 }

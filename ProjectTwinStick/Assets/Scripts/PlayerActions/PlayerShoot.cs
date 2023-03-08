@@ -12,9 +12,14 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     [SerializeField, Range(0.0001f, 1f)] float InputThreshold = 0.1f;
     private Vector2 inputs;
 
-    public void MakeAction(params object[] arguments)
+    public void PerformAction(params object[] arguments)
     {
         inputs = (Vector2)arguments[0];
+    }
+
+    public void CancelAction(params object[] arguments)
+    {
+        
     }
 
     private void Update()
@@ -35,13 +40,13 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     {
     }
 
-    public void DeactivateAction()
+    public void DisableAction()
     {
     }
 
-    public void ActivateAction()
+    public void EnableAction()
     {
     }
 
-    public event Action MakeActionEvent;
+    public event Action PerformActionEvent;
 }

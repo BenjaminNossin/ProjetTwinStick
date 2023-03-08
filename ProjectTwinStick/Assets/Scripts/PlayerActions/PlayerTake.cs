@@ -13,27 +13,42 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
     
     public bool IsInAction { get; }
 
-    public void MakeAction(params object[] arguments)
+    public void PerformAction(params object[] arguments)
     {
-        if (_inventory.CurrentItem != null && !_inventory.IsDefaultItem()) return;
-
         Debug.Log("trying to find item to take");
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, castRadius, takeableLayer);
 
-        if (colliders.Length != 0)
+        for (int i = 0; i < colliders.Length; i++)
         {
             Debug.Log("Hit something");
-            if (colliders[0].TryGetComponent(out ITakeable takeable))
+            if (colliders[i].TryGetComponent(out ITakeable takeable))
             {
                 Debug.Log("Hit takeable");
                 if (takeable is Item inventoryItem)
                 {
-                    _inventory.SetItem(inventoryItem);
+                    Debug.Log("Hit " + inventoryItem.name);
+                    if (inventoryItem != _inventory.CurrentItem && inventoryItem.CanTake())
+                    {
+                        _inventory.SetItem(inventoryItem);
+                        takeable.Take(gameObject);
+                        break;
+                    }
                 }
-                takeable.Take(gameObject);
+                else
+                {
+                    if( takeable.CanTake())
+                    {
+                        takeable.Take(gameObject);
+                    }
+                }
             }
         }
+    }
+
+    public void CancelAction(params object[] arguments)
+    {
+        
     }
 
     public void SetupAction(params object[] arguments)
@@ -41,12 +56,12 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
       
     }
 
-    public void DeactivateAction()
+    public void DisableAction()
     {
     
     }
 
-    public void ActivateAction()
+    public void EnableAction()
     {
     }
 
@@ -56,5 +71,5 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
         Gizmos.DrawWireSphere(transform.position, castRadius);
     }
 
-    public event Action MakeActionEvent;
+    public event Action PerformActionEvent;
 }

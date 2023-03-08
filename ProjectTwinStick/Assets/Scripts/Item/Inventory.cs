@@ -17,12 +17,20 @@ public class Inventory : MonoBehaviour
 
     public void SetItem(Item item)
     {
+        if (CurrentItem != null && CurrentItem != DefaultItem)
+        {
+            CurrentItem.Drop();
+        }
         CurrentItem = item;
         OnItemChanged?.Invoke(CurrentItem);
     }
     
     public void ClearItem()
     {
+        if (CurrentItem != null && CurrentItem != DefaultItem)
+        {
+            CurrentItem.Drop();
+        }
         CurrentItem = DefaultItem;
         OnItemChanged?.Invoke(CurrentItem);
     }

@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerThrow : MonoBehaviour, IPlayerAction
 {
     public bool IsInAction { get; }
-    public void MakeAction()
+
+    public void PerformAction(params object[] arguments)
     {
- 
+        
     }
 
-    public void MakeAction(params object[] arguments)
+    public void CancelAction(params object[] arguments)
     {
         
     }
@@ -21,15 +22,15 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
   
     }
 
-    public void DeactivateAction()
+    public void DisableAction()
     {
  
     }
 
-    public void ActivateAction()
+    public void EnableAction()
     {
       
     }
 
-    public event Action MakeActionEvent;
+    public event Action PerformActionEvent;
 }

@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
     private bool _canMoving = true;
 
     public CharacterMovement characterMovement;
-    public event Action MakeActionEvent;
+    public event Action PerformActionEvent;
     
     //TODO : move movement stats to dedicated stat system
     [SerializeField] float speed;
@@ -21,9 +21,14 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
     public Vector2 CurrentMovementInputs;
     private bool _isInMoving;
 
-    public void MakeAction(params object[] arguments)
+    public void PerformAction(params object[] arguments)
     {
         CurrentMovementInputs =(Vector2) arguments[0];
+    }
+
+    public void CancelAction(params object[] arguments)
+    {
+        
     }
 
     public void SetupAction(params object[] arguments)
@@ -31,12 +36,12 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
         
     }
 
-    public void DeactivateAction()
+    public void DisableAction()
     {
         CurrentMovementInputs = Vector2.zero;
         characterMovement.SetVelocity( Vector3.zero);
     }
-    public void ActivateAction()
+    public void EnableAction()
     {
 
     }

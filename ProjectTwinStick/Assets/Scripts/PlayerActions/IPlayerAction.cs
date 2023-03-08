@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 public interface IPlayerAction
 {
     public bool IsInAction { get; }
-    public void MakeAction(params object[] arguments);
+    public void PerformAction(params object[] arguments);
+    public void CancelAction(params object[] arguments);
     public void SetupAction(params object[] arguments);
-    public void DeactivateAction();
-    public void ActivateAction();
-    public event System.Action MakeActionEvent;
+    public void DisableAction();
+    public void EnableAction();
+    public event System.Action PerformActionEvent;
 }
