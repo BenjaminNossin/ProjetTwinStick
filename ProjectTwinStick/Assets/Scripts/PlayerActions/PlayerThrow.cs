@@ -8,6 +8,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
 {
     
     [SerializeField] float ThrowChargeTime = 1f;
+    [SerializeField] float MaxThrowStrength = 5f;
 
 
     public UnityEvent OnAimStart;
@@ -51,7 +52,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             Debug.Log("trying to throw");
             IsPreparingThrow = false;
-            _inventory.CurrentItem.Throw(currentChargeTime, transform.forward);
+            _inventory.CurrentItem.Throw(currentChargeTime * MaxThrowStrength, transform.forward);
             _inventory.ClearItem(false);
         }
     }
@@ -71,6 +72,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         if (IsPreparingThrow)
         {
             currentChargeTime = Mathf.MoveTowards(currentChargeTime, 1, Time.deltaTime / ThrowChargeTime);
+            Debug.Log(currentChargeTime);
         }
     }
 
