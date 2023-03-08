@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.Systems.AI;
 using UnityEngine.SceneManagement;
-using DG.Tweening.Core.Easing;
 
 /// <summary>
 /// This Class is in charge of state transitions and activation/deactivation of global entities
@@ -27,6 +26,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverObj; 
     private UIGameOver gameOverUI;
 
+    public static List<Vector3> spawnPoints = new();
+    private int spawnPointIndex; 
+
+
     // TODO: state stack to avoid new memory allocation when TransitionTo()
 
     private void Awake()
@@ -43,13 +46,18 @@ public class GameManager : MonoBehaviour
         gameOverUI = gameOverObj.GetComponent<UIGameOver>();
         shipCore = shipCoreObj.GetComponent<ShipCore>();
 
-        Initialize();
+        for (int i = 0; i < playerInputManager.transform.childCount; i++)
+        {
+            spawnPoints.Add(playerInputManager.transform.GetChild(i).position); 
+        }
 
+        Initialize();
     }
 
     public void Initialize()
     {
         currentPlayerReadyCount = 0;
+        spawnPointIndex = 0;
 
         shipCoreObj.SetActive(false);
         gameOverObj.SetActive(false);
@@ -77,6 +85,21 @@ public class GameManager : MonoBehaviour
     public void AddWaveManager(WaveManager manager)
     {
         waveManager = manager;
+    }
+
+    public void SetPlayerSpawnPosition(PlayerController controller)
+    {
+        controller.SetControllerSpawnPosition(spawnPoints[spawnPointIndex % playersRequiredAmount]);
+        spawnPointIndex++; 
+    }
+
+    public void SetAllPlayerSpawnPosition(List<PlayerController> controllers)
+    {
+        for (int i = 0; i < controllers.Count; i++)
+        {
+            controllers[i].SetControllerSpawnPosition(spawnPoints[i]); 
+
+        }
     }
 
     public void OnLobbyStart()
