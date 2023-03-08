@@ -9,6 +9,7 @@ public class LobbyState : State
         context.PlayerInputManager.onPlayerJoined += BindOnPlayerJoined;
         context.PlayerInputManager.onPlayerLeft += BindOnPlayerLeave;
 
+        ActivateAllPlayerControllers(); 
         GameManager.Instance.OnLobbyStart(); 
     }
 

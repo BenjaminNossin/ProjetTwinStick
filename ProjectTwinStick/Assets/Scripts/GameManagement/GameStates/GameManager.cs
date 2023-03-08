@@ -27,9 +27,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverObj; 
     private UIGameOver gameOverUI;
 
-    [Header("DEBUG")]
-    [SerializeField] private bool startGameImmediately = false; 
-
     // TODO: state stack to avoid new memory allocation when TransitionTo()
 
     private void Awake()
@@ -57,9 +54,7 @@ public class GameManager : MonoBehaviour
         shipCoreObj.SetActive(false);
         gameOverObj.SetActive(false);
 
-        currentContext = new(
-            startGameImmediately ? new GameState() : new LobbyState(),
-            playerInputManager);
+        currentContext = new(new LobbyState(), playerInputManager);
     }
 
     public void UpdatePlayerReadyCount(int value)

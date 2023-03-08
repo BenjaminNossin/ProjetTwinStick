@@ -57,7 +57,18 @@ public class PlayerController : MonoBehaviour, IController
 
     private void Start()
     {
-        SetUpController();
+        Debug.Log("Spawning new player");
+        AddSelfToCurrentState();
+    }
+
+    private void AddSelfToCurrentState()
+    {
+        if (GameManager.Instance != null)
+        {
+            currentState = GameManager.Instance.GetCurrentState();
+        }
+
+        currentState.AddPlayerController(this);
     }
 
     private void UpdateShootInput(InputAction.CallbackContext context)
@@ -86,15 +97,8 @@ public class PlayerController : MonoBehaviour, IController
 
     private State currentState;
 
-    private void SetUpController()
+    public void SetUpController()
     {
-        if (GameManager.Instance != null)
-        {
-            currentState = GameManager.Instance.GetCurrentState();
-        }
-
-        ActivateController();
-
         _playerMovement.SetupAction();
         _playerShoot.SetupAction();
         _playerTake.SetupAction();
@@ -111,7 +115,6 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.ActivateAction();
         _playerMovement.ActivateAction();
 
-        currentState.AddPlayerController(this);
     }
 
     public void DeactivateController()
@@ -123,6 +126,6 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.DeactivateAction();
         _playerMovement.DeactivateAction();
 
-        currentState.RemovePlayerController(this);
+        // currentState.RemovePlayerController(this);
     }
 }

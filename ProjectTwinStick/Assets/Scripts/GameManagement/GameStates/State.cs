@@ -35,8 +35,8 @@ public abstract class State
     // NOTE: Set Context not very useful for now, remove if that amount of flexibility is not needed
     protected StateContext context;
 
-    protected List<PlayerInput> activePlayersInput = new();
-    protected List<PlayerController> activePlayersControllers = new();
+    public static List<PlayerInput> ActivePlayersInput = new();
+    public static List<PlayerController> ActivePlayersControllers = new();
 
     // REFACTOR : State should be the one adding the PlayerController, not the opposite
 
@@ -52,36 +52,51 @@ public abstract class State
     {
         // context.TransitionTo(new GameState());
         Debug.Log("A player joined: " + playerInput);
-        activePlayersInput.Add(playerInput);
+        ActivePlayersInput.Add(playerInput);
         // player is spawned
     }
 
     protected void BindOnPlayerLeave(PlayerInput playerInput)
     {
         Debug.Log("A player left: " + playerInput);
-        activePlayersInput.Remove(playerInput);
+        ActivePlayersInput.Remove(playerInput);
         // player is despawned
     }
 
     public void AddPlayerController(PlayerController controller)
     {
         Debug.Log("A player controller was added: " + controller);
-        activePlayersControllers.Add(controller);
-
+        ActivePlayersControllers.Add(controller);
+        controller.SetUpController();
+        controller.ActivateController(); 
     }
 
     public void RemovePlayerController(PlayerController controller)
     {
         Debug.Log("A player controller was removed: " + controller);
-        activePlayersControllers.Remove(controller);
+        ActivePlayersControllers.Remove(controller);
 
     }
 
-    protected void DeactivateAllActivePlayerInputs()
+    protected void ActivateAllPlayerControllers()
     {
-        foreach (var item in activePlayersInput)
+        foreach (var item in ActivePlayersControllers)
         {
-            item.DeactivateInput(); 
+            Debug.Log("Activating player controller");
+
+            item.ActivateController();
+
+        }
+
+    }
+
+    protected void DeactivateAllPlayerControllers()
+    {
+        foreach (var item in ActivePlayersControllers)
+        {
+            Debug.Log("Deactivating player controller");
+
+            item.DeactivateController();  
 
         }   
     }
