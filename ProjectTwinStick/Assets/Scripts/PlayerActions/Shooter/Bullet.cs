@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
         {
             lifeable.DecreaseCurrentHp(_damage);
         }
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("Wall") || other.CompareTag("Enemy"))
         {
             _pool.AddToPool(this);
         }
