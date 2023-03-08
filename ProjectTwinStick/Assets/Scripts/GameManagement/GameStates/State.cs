@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,7 +22,7 @@ public class StateContext
 
     public void Initialize()
     {
-        currentState.Initialize();
+        currentState.OnStateEnter();
     }
 
     public State GetCurrentState() => currentState;
@@ -36,10 +35,13 @@ public abstract class State
     // NOTE: Set Context not very useful for now, remove if that amount of flexibility is not needed
     protected StateContext context;
 
-    private List<PlayerInput> activePlayersInput = new();
-    private List<PlayerController> activePlayersControllers = new();
+    protected List<PlayerInput> activePlayersInput = new();
+    protected List<PlayerController> activePlayersControllers = new();
 
     // REFACTOR : State should be the one adding the PlayerController, not the opposite
+
+    public abstract void OnStateEnter();
+    public abstract void OnStateExit();
 
     public void SetContext(StateContext stateContext)
     {
@@ -75,7 +77,12 @@ public abstract class State
 
     }
 
-    public abstract void Initialize();
-    public abstract void OnStateEnter();
-    public abstract void OnStateExit(); 
+    protected void DeactivateAllActivePlayerInputs()
+    {
+        foreach (var item in activePlayersInput)
+        {
+            item.DeactivateInput(); 
+
+        }   
+    }
 }

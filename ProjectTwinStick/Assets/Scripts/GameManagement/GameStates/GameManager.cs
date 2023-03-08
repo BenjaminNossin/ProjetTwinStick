@@ -72,4 +72,10 @@ public class GameManager : MonoBehaviour
         shipCore.SetActive(true);
         waveManager.Initialize(); 
     }
+
+    public void OnGameEnd()
+    {
+        // currentContext.TransitionTo(new )
+
+    }
 }
