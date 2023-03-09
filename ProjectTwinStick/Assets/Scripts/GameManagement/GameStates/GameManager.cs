@@ -24,7 +24,7 @@ namespace Game.Systems.GlobalFramework
         private int currentPlayerReadyCount;
         private readonly List<GameObject> waitRooms = new();
 
-        private GameObject shipCoreObj;
+        public GameObject ShipCoreObj { get; private set; }
         private ShipCore shipCore;
         private WaveManager waveManager;
 
@@ -64,10 +64,10 @@ namespace Game.Systems.GlobalFramework
             currentContext = new(new LobbyState(), playerInputManager);
         }
 
-        #region deffered Initializers
+        #region Lazy Initializers
         public void SetShipCoreData(GameObject obj, ShipCore sC)
         {
-            shipCoreObj = obj;
+            ShipCoreObj = obj;
             shipCore = sC;
         }
 
@@ -134,7 +134,7 @@ namespace Game.Systems.GlobalFramework
                 SetObjectActive(item, false);
             }
 
-            SetObjectActive(shipCoreObj, true);
+            SetObjectActive(ShipCoreObj, true);
 
             shipCore.OnGameStart();
             waveManager.OnGameStart();
@@ -142,7 +142,7 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameEnd()
         {
-            SetObjectActive(shipCoreObj, false);
+            SetObjectActive(ShipCoreObj, false);
             SetObjectActive(gameOverObj, true);
 
             waveManager.OnGameOver();
