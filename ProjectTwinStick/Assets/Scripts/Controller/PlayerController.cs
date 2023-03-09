@@ -85,17 +85,26 @@ public class PlayerController : MonoBehaviour, IController
 
     private void StartAiming(InputAction.CallbackContext context)
     {
-        _playerThrow.PerformAction(false);
+        if (playerObject != null && isActive)
+        {
+            _playerThrow.PerformAction(false);
+        }
     }
 
     private void TryThrow(InputAction.CallbackContext context)
     {
-        _playerThrow.PerformAction(true);
+        if (playerObject != null && isActive)
+        {
+            _playerThrow.PerformAction(true);
+        }
     }
 
     private void CancelThrow(InputAction.CallbackContext obj)
     {
-        _playerThrow.CancelAction();
+        if (playerObject != null && isActive)
+        {
+            _playerThrow.CancelAction();
+        }
     }
 
     private void UpdateShootInput(InputAction.CallbackContext context)
