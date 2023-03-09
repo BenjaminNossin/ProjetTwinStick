@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ItemThrowData
   m_EditorClassIdentifier: 
   GroundedHeight: 1
-  ThrowSpeed: 8
-  ThrowHeight: 3
+  ThrowSpeed: 12
+  ThrowHeight: 6
   ThrowCurve:
     serializedVersion: 2
     m_Curve:
