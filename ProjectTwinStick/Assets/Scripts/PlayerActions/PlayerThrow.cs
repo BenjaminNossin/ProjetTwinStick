@@ -26,6 +26,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     [SerializeField] private Inventory _inventory;
     [SerializeField] private GameplayTagContainer _tagContainer;
 
+    private ItemTrajectoryPreview currentPreview;
+    
     //bool start throw false, finish throw true
     public void PerformAction(params object[] arguments)
     {
@@ -61,6 +63,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             IsPreparingThrow = false;
             _inventory.CurrentItem.Throw(currentChargeTime * MaxThrowStrength, transform.forward);
             _inventory.ClearItem(false);
+            currentChargeTime = 0f;
             _tagContainer.RemoveTag(MovementBlocker);
             _tagContainer.RemoveTag(PickupBlocker);
             _tagContainer.RemoveTag(ShootBlocker);
@@ -86,6 +89,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             currentChargeTime = Mathf.MoveTowards(currentChargeTime, 1, Time.deltaTime / ThrowChargeTime);
             Debug.Log(currentChargeTime);
+            currentPreview?.UpdatePreview(transform.position, transform.forward, currentChargeTime * MaxThrowStrength);
         }
     }
 
@@ -101,6 +105,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
 
     private void OnItemChange(Item obj)
     {
+        currentPreview = obj.GetComponent<ItemTrajectoryPreview>();
         CancelThrow();
     }
 

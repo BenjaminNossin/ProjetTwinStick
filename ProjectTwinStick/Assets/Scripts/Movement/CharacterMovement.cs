@@ -30,7 +30,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void UpdateVelocity()
     {
-        
+        //CurrentVelocity.y = -1;
     }
 
     public void TeleportPlayer(Vector3 newPosition)

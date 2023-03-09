@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2878658761908d64caa5eb895e44c18f, type: 3}
   m_Name: ItemThrowData
   m_EditorClassIdentifier: 
+  GroundedHeight: 1
   ThrowSpeed: 8
   ThrowHeight: 3
-  BounceDistance: 2
   ThrowCurve:
     serializedVersion: 2
     m_Curve:
@@ -48,6 +48,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  BounceSpeed: 8
+  BounceDistance: 4
+  BounceHeight: 2
   BounceCurve:
     serializedVersion: 2
     m_Curve:

@@ -21,7 +21,9 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     [SerializeField] ItemThrowData throwData;
 
-
+    public event Action<ItemState> OnItemStateChange;
+    
+    
     private int _upgradeCount;
 
     private GameObject _itemHolder;
@@ -56,6 +58,8 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
                 OnDropped();
                 break;
         }
+        OnItemStateChange?.Invoke(CurrentItemState);
+        Debug.Log("Current state : " + CurrentItemState);
     }
 
     private void OnThrowStart()
@@ -65,7 +69,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         Vector3 position = _itemHolder.transform.position;
         transform.parent = null;
         _itemHolder = null;
-        transform.position = new Vector3(position.x, 1, position.z);
+        transform.position = new Vector3(position.x, throwData.GroundedHeight, position.z);
         transform.rotation = Quaternion.LookRotation(MovementDirection, Vector3.up);
         MovementStartPosition = transform.position;
     }
@@ -90,8 +94,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         }
         transform.parent = null;
         _itemHolder = null;
-        Debug.Log(position);
-        transform.position = new Vector3(position.x, 1, position.z);
+        transform.position = new Vector3(position.x, throwData.GroundedHeight, position.z);
         transform.rotation = quaternion.identity;
     }
 
@@ -132,14 +135,18 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         if (Physics.SphereCast(transform.position, _collider.radius, MovementDirection, out hit,throwData.ThrowSpeed * Time.deltaTime,
                 throwData.BlockerMask))
         {
-            ChangeState(ItemState.Dropped);
+            Vector3 flatnormal = hit.normal;
+            flatnormal.y = 0;
+            flatnormal.Normalize();
+            Vector3 reflect = Vector3.Reflect(MovementDirection, flatnormal);
+            Bounce(reflect);
             return;
         }
         
         float heightmask = throwData.ThrowCurve.Evaluate(_throwTimer / _throwLength);
         NextPos.y = heightmask * throwData.ThrowHeight;
         transform.position = NextPos;
-        if (_throwTimer == _throwLength)
+        if (Math.Abs(_throwTimer - _throwLength) < 0.001f)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
             Debug.Log(colliders);
@@ -161,7 +168,26 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private void BounceUpdate()
     {
-        
+        _bounceTimer = Mathf.MoveTowards(_bounceTimer, throwData.BounceDistance, Time.deltaTime * throwData.BounceSpeed);
+        Vector3 NextPos = MovementStartPosition + MovementDirection * _bounceTimer;
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, _collider.radius, MovementDirection, out hit,throwData.ThrowSpeed * Time.deltaTime,
+                throwData.BlockerMask))
+        {
+            Vector3 flatnormal = hit.normal;
+            flatnormal.y = 0;
+            flatnormal.Normalize();
+            Vector3 reflect = Vector3.Reflect(MovementDirection, flatnormal);
+            Bounce(reflect);
+            return;
+        }
+        float heightmask = throwData.BounceCurve.Evaluate(_bounceTimer / throwData.BounceDistance);
+        NextPos.y = heightmask * throwData.BounceHeight;
+        transform.position = NextPos;
+        if (Math.Abs(_bounceTimer - throwData.BounceDistance) < 0.001f)
+        {
+            ChangeState(ItemState.Dropped);
+        }
     }
 
     public virtual bool CanDrop()
@@ -175,12 +201,26 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         ResetUpgrade();
     }
 
+    private void Bounce(Vector3 direction)
+    {
+        ResetUpgrade();
+        Debug.Log("Bounce " + direction);
+        direction.y = 0;
+        direction.Normalize();
+        transform.position = new Vector3(transform.position.x, throwData.GroundedHeight, transform.position.z);
+        MovementStartPosition = transform.position;
+        MovementDirection = direction;
+        ChangeState(ItemState.Bouncing);
+    }
+
     public virtual void Throw(float throwForce, Vector3 direction)
     {
         if (CurrentItemState == ItemState.Held)
         {
             Debug.Log("Thrown");
             _throwLength = throwForce;
+            direction.y = 0;
+            direction.Normalize();
             MovementDirection = direction;
             ChangeState(ItemState.Thrown);
         }
