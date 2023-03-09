@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67554f619f1c6f747b2f8750cdec0fd3, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  Speed: 5
-  AccelerationTime: 1
-  DecelerationTime: 0.1
+  Speed: 5.7
+  AccelerationTime: 0.2
+  DecelerationTime: 0
   MovementInputThreshold: 0.1
   RestrictedAimSpeed: 0.25
-  AimInputThreshold: 0.1
+  AimInputThreshold: 0.3
