@@ -27,11 +27,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
 
     private ItemTrajectoryPreview currentPreview;
 
-
-    private float GetCurrentThrowStrength()
-    {
-        return Mathf.Lerp(throwData.MinThrowStrength, throwData.MaxThrowStrength, currentChargeTime);
-    }
+    
     //bool start throw false, finish throw true
     public void PerformAction(params object[] arguments)
     {
@@ -66,7 +62,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             Debug.Log("trying to throw");
             IsPreparingThrow = false;
-            _inventory.CurrentItem.Throw(GetCurrentThrowStrength(), transform.forward);
+            _inventory.CurrentItem.Throw(currentChargeTime, transform.forward);
             _inventory.ClearItem(false);
             currentChargeTime = 0f;
             _tagContainer.RemoveTag(MovementBlocker);
@@ -96,7 +92,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             currentChargeTime = Mathf.MoveTowards(currentChargeTime, 1, Time.deltaTime / throwData.ThrowChargeTime);
             Debug.Log(currentChargeTime);
-            currentPreview?.UpdatePreview(transform.position, transform.forward, GetCurrentThrowStrength());
+            currentPreview?.UpdatePreview(transform.position, transform.forward, currentChargeTime);
         }
     }
 
