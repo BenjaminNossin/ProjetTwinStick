@@ -36,4 +36,4 @@ MonoBehaviour:
     MaxDispersionDegres: 15
     Speed: 15
   bulletPrefab: {fileID: 8399040886260937820, guid: 86fb32fd4bbe47843b3208ae72fc95c1, type: 3}
-  StartCount: 10
+  StartCount: 30
