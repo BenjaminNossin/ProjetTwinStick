@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7807522515552021842}
   - component: {fileID: 7807522515552021841}
   - component: {fileID: -8117669543617480959}
+  - component: {fileID: 7508757753621006}
   m_Layer: 14
   m_Name: Enemy
   m_TagString: Enemy
@@ -94,9 +95,9 @@ SphereCollider:
   m_GameObject: {fileID: 7807522515552021840}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-8117669543617480959
 MonoBehaviour:
@@ -113,3 +114,16 @@ MonoBehaviour:
   maxHP: 3
   unitsPerSeconds: 2
   damage: 5
+--- !u!65 &7508757753621006
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807522515552021840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2514184, y: 1.7542546, z: 1}
+  m_Center: {x: -0.032325387, y: -0.03232515, z: 0}
