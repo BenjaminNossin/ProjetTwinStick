@@ -148,8 +148,8 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         transform.position = NextPos;
         if (Math.Abs(_throwTimer - _throwLength) < 0.001f)
         {
+            //checking for player
             Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
-            Debug.Log(colliders);
             if (colliders.Length > 0)
             {
                 Debug.Log("Item catch");
@@ -157,6 +157,14 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
                 Inventory _inventory = colliders[0].GetComponentInParent<Inventory>();
                 _inventory.SetItem(this);
                 Take(_inventory.gameObject);
+                return;
+            }
+            
+            //checking for wall
+            colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.BlockerMask, QueryTriggerInteraction.Collide);
+            if (colliders.Length > 0)
+            {
+                Bounce(MovementDirection);
                 return;
             }
             
