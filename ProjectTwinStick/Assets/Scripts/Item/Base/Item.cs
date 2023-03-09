@@ -26,6 +26,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     
     private int _upgradeCount;
 
+    private GameObject _previousHolder;
     private GameObject _itemHolder;
     private float _throwLength = 1f;
 
@@ -68,6 +69,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         
         Vector3 position = _itemHolder.transform.position;
         transform.parent = null;
+        _previousHolder = _itemHolder;
         _itemHolder = null;
         transform.position = new Vector3(position.x, throwData.GroundedHeight, position.z);
         transform.rotation = Quaternion.LookRotation(MovementDirection, Vector3.up);
@@ -91,6 +93,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         if (_itemHolder != null)
         {
             position = _itemHolder.transform.position;
+            _previousHolder = _itemHolder;
         }
         transform.parent = null;
         _itemHolder = null;
@@ -153,7 +156,10 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             if (colliders.Length > 0)
             {
                 Debug.Log("Item catch");
-                Upgrade();
+                if (colliders[0].gameObject != _previousHolder)
+                {
+                    Upgrade();
+                }
                 Inventory _inventory = colliders[0].GetComponentInParent<Inventory>();
                 _inventory.SetItem(this);
                 Take(_inventory.gameObject);
@@ -194,7 +200,30 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         transform.position = NextPos;
         if (Math.Abs(_bounceTimer - throwData.BounceDistance) < 0.001f)
         {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
+            if (colliders.Length > 0)
+            {
+                Debug.Log("Item catch");
+                if (colliders[0].gameObject != _previousHolder)
+                {
+                    Upgrade();
+                }
+                Inventory _inventory = colliders[0].GetComponentInParent<Inventory>();
+                _inventory.SetItem(this);
+                Take(_inventory.gameObject);
+                return;
+            }
+            
+            //checking for wall
+            colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.BlockerMask, QueryTriggerInteraction.Collide);
+            if (colliders.Length > 0)
+            {
+                Bounce(MovementDirection);
+                return;
+            }
+            
             ChangeState(ItemState.Dropped);
+            ResetUpgrade();
         }
     }
 
@@ -247,6 +276,10 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     public void Take(GameObject holder)
     {
+        if (_itemHolder != null)
+        {
+            _previousHolder = _itemHolder;
+        }
         _itemHolder = holder;
         ChangeState(ItemState.Held);
     }
