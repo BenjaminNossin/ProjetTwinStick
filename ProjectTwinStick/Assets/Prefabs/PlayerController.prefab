@@ -153,6 +153,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2687361521020166328, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
+      propertyPath: ThrowChargeTime
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687361521020166328, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
+      propertyPath: MaxThrowStrength
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3764902317981696625, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_IsActive
       value: 1
