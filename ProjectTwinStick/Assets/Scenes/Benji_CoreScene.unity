@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1966.6152, g: 2093.4766, b: 2397.7383, a: 1}
+  m_IndirectSpecularColor: {r: 2058.6426, g: 2159.748, b: 2439.4023, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7282,9 +7282,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 64672441595494518, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 256778107489124620, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
       propertyPath: maxHP
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 317851813887275942, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 543584818100515326, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724050990013631685, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183790753083633714, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2348740115146246929, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
       propertyPath: maxHP
@@ -7302,9 +7322,45 @@ PrefabInstance:
       propertyPath: maxHP
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4415294525961484847, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4482145476935367509, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
       propertyPath: maxHP
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663070496524026562, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663070496524026622, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.9500003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663070496524026622, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663070496524026622, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9200001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663070496524026622, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.77908325
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663070496524026622, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6269205
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663070496524026622, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -77.647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906774670782613606, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6047942999066824273, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
       propertyPath: m_Enabled
