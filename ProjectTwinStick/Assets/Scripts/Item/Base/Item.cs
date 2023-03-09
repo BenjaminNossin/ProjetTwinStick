@@ -26,8 +26,8 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     
     private int _upgradeCount;
 
-    private GameObject _previousHolder;
-    private GameObject _itemHolder;
+    protected GameObject _previousHolder { get; private set; }
+    protected GameObject _itemHolder { get; private set; }
     private float _chargeTime = 1f;
 
     private float _throwTimer = 0f;

@@ -52,16 +52,21 @@ public class Barricade : MonoBehaviour, ILifeable
     public void SetCurrentHp(float value)
     {
         CurrentHP = value;
+        if (CurrentHP >= MaxHP) CurrentHP = MaxHP;
+        Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
     }
 
     public void IncreaseCurrentHp(float amount)
     {
         CurrentHP += amount;
+        if (CurrentHP >= MaxHP) CurrentHP = MaxHP;
+        Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
     }
 
     public void DecreaseCurrentHp(float amount)
     {
         CurrentHP -= amount;
+        if (CurrentHP >= MaxHP) CurrentHP = MaxHP;
         Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
 
         CheckCurrentHPAmount();
