@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2058.6426, g: 2159.748, b: 2439.4023, a: 1}
+  m_IndirectSpecularColor: {r: 1966.6152, g: 2093.4766, b: 2397.7383, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6701,6 +6701,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6026280855044825154, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: enemyPoolsData.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026280855044825154, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: enemyPoolsData.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: -8117669543617480959, guid: 6fcb39301cac4f34d85a7221d3c1ef9f, type: 3}
+    - target: {fileID: 6026280855044825154, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: enemyPoolsData.Array.data[0].startCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6951029699455461571, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.75
@@ -6733,7 +6745,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6026280855044825154, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
 --- !u!4 &1488873062 stripped
 Transform:
