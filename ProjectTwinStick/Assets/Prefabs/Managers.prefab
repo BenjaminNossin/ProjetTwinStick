@@ -626,6 +626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwarmSpawnerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1611925338094577700, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3637364822958624619, guid: 622d12a00458d024aa306e43a4485225, type: 3}
       propertyPath: _enemyPool
       value: 
@@ -647,6 +651,10 @@ PrefabInstance:
     - target: {fileID: 7049210925114387846, guid: cebdcc8c8d0c26447af1026b06670832, type: 3}
       propertyPath: m_Name
       value: GameEventManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049210925114387846, guid: cebdcc8c8d0c26447af1026b06670832, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7049210925114387850, guid: cebdcc8c8d0c26447af1026b06670832, type: 3}
       propertyPath: m_RootOrder
