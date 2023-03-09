@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Systems.GlobalFramework;
 using UnityEngine;
 
 public class GameEventTimelineReader : MonoBehaviour
@@ -11,9 +12,30 @@ public class GameEventTimelineReader : MonoBehaviour
 
     private static Dictionary<Type, List<Action<GameEvent>>> allGameEventSetters =
         new Dictionary<Type, List<Action<GameEvent>>>();
-    public event Action<GameEvent> gameEventCreatedCallback; 
+    public event Action<GameEvent> gameEventCreatedCallback;
+
+    private bool isActive = false;
+    
+    private void Start()
+    {
+        GameManager.Instance.SetGameEventTimelineReader(this);
+    }
+
+    public void OnGameOver()
+    {
+        isActive = false; 
+    }
+    
+    public void OnGameStart()
+    {
+        isActive = true;
+        timer = 0;
+        timeCodeIndex = 0;
+    }
+
     private void Update()
     {
+        if(!isActive) return;
         if (_gameEventTimeline.GetTimeCode(timeCodeIndex) < timer)
         {
             var gameEventsToCreated = _gameEventTimeline.GetGameEvents(timeCodeIndex);
@@ -23,8 +45,12 @@ public class GameEventTimelineReader : MonoBehaviour
                 SetNewEvent(newEvent, gameEventsToCreated[i]);
                 gameEventCreatedCallback?.Invoke(newEvent);
                 newEvent.Raise();
-                timeCodeIndex++;
             }
+                timeCodeIndex++;
+                if (timeCodeIndex == _gameEventTimeline.GetTimeCodeCount())
+                {
+                    isActive = false; 
+                }
         }
         else
         {

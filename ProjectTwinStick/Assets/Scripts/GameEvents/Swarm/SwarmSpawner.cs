@@ -5,8 +5,6 @@ using UnityEngine;
 [Serializable]
 public class SwarmSpawner : MonoBehaviour
 {
-    [HideInInspector]
-    public bool isAlreadySpawn;
     private void OnDrawGizmos()
     {
        Gizmos.color = Color.red;

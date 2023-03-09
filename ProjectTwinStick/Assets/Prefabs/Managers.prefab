@@ -196,6 +196,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3784829688891582048}
     - target: {fileID: 6340019594683788057, guid: 7d4a6c2cb35e53442946217831a5de93, type: 3}
+      propertyPath: enemyPoolsManager
+      value: 
+      objectReference: {fileID: 3784829688891582048}
+    - target: {fileID: 6340019594683788057, guid: 7d4a6c2cb35e53442946217831a5de93, type: 3}
       propertyPath: spawners.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -461,6 +465,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3637364822958624619, guid: 622d12a00458d024aa306e43a4485225, type: 3}
       propertyPath: _enemyPool
+      value: 
+      objectReference: {fileID: 3784829688891582048}
+    - target: {fileID: 3637364822958624619, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: enemyPoolManager
       value: 
       objectReference: {fileID: 3784829688891582048}
     m_RemovedComponents: []

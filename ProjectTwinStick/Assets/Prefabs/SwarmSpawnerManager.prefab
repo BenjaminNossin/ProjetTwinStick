@@ -138,8 +138,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688339c63dc4f51449add19b0b2a56c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPool: {fileID: 0}
-  allSwarmSpawnersByArea:
+  enemyPoolManager: {fileID: 0}
+  _allSwarmSpawnersByArea:
+  - Area: 3
+    SwarmSpawners:
+    - {fileID: 4529123199946623709}
+    - {fileID: 5315006709343356665}
+    - {fileID: 4821086457232687221}
+  - Area: 2
+    SwarmSpawners:
+    - {fileID: 3368821607910875912}
+    - {fileID: 3327608963091556768}
+    - {fileID: 1854455027989877081}
+  - Area: 0
+    SwarmSpawners:
+    - {fileID: 1541279198968280358}
+    - {fileID: 701697415698971299}
+    - {fileID: 8839136772523670694}
+  - Area: 1
+    SwarmSpawners:
+    - {fileID: 8754782271531949945}
+    - {fileID: 8749143414046001299}
+    - {fileID: 267404963220632381}
+  _swarmSpawnersAvailableByArea:
   - Area: 3
     SwarmSpawners:
     - {fileID: 4529123199946623709}

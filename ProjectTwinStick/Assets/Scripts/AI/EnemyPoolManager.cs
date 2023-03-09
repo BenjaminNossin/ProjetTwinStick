@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using HelperPSR.Pool;
 using UnityEngine;
 
-public class EnemyPool : MonoBehaviour
+public class EnemyPoolManager : MonoBehaviour
 {
     [SerializeField] private PoolData<BasicAI>[] enemyPoolsData;
     public Pool<BasicAI>[] enemyPools;

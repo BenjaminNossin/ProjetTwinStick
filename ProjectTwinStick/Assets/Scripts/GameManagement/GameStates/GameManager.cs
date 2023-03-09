@@ -27,6 +27,7 @@ namespace Game.Systems.GlobalFramework
         public GameObject ShipCoreObj { get; private set; }
         private ShipCore shipCore;
         private WaveManager waveManager;
+        private GameEventTimelineReader _gameEventTimelineReader;
 
         [SerializeField] private GameObject gameOverObj;
 
@@ -69,6 +70,11 @@ namespace Game.Systems.GlobalFramework
         {
             ShipCoreObj = obj;
             shipCore = sC;
+        }
+        
+        public void SetGameEventTimelineReader(GameEventTimelineReader gameEventTimelineReader)
+        {
+            _gameEventTimelineReader = gameEventTimelineReader;
         }
 
         public void SetObjectActive(GameObject obj, bool active)
@@ -137,6 +143,7 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(ShipCoreObj, true);
 
             shipCore.OnGameStart();
+            _gameEventTimelineReader.OnGameStart();
             waveManager.OnGameStart();
         }
 
@@ -145,6 +152,7 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(ShipCoreObj, false);
             SetObjectActive(gameOverObj, true);
 
+            _gameEventTimelineReader.OnGameOver();
             waveManager.OnGameOver();
 
             currentContext.TransitionTo(new GameOverState());
