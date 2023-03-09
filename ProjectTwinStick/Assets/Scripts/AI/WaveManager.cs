@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using HelperPSR.Pool;
 using UnityEngine;
 
 namespace Game.Systems.AI
@@ -7,7 +8,7 @@ namespace Game.Systems.AI
     public class WaveManager : MonoBehaviour
     {
         private readonly List<Spawner> spawners = new();
-
+        [SerializeField] private EnemyPool _enemyPools;
         private void Start()
         {
             GameManager.Instance.AddWaveManager(this); 
@@ -20,6 +21,7 @@ namespace Game.Systems.AI
             for (int i = 0; i < transform.childCount; i++)
             {
                 spawners.Add(transform.GetChild(i).GetComponent<Spawner>());
+                spawners[i].Pool = _enemyPools.enemyPools[0];
             }
 
             foreach (var item in spawners)

@@ -8,8 +8,10 @@ public class BasicAI : MonoBehaviour, ILifeable
     [SerializeField, Range(1, 20)] float unitsPerSeconds = 10;
     [SerializeField, Range(1, 20)] float damage = 20f;
 
+    [SerializeField] 
     private Vector3 direction;
 
+    public Pool<BasicAI> _pool; 
     public float MaxHP { get; private set; }    
     public float CurrentHP { get; private set; }
 
@@ -20,11 +22,17 @@ public class BasicAI : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
-    private void Start()
+    private GameObject shipCore;
+
+
+    public void Init()
     {
-        direction = (GameObject.Find("ShipCoreObj").transform.position - transform.position).normalized;
+        if(shipCore == null)
+            shipCore = GameObject.Find("ShipCoreObj");
+        direction = (shipCore.transform.position - transform.position).normalized;
+        
         SetMaxHp(maxHP);
-        SetCurrentHp(maxHP); 
+        SetCurrentHp(maxHP);  
     }
 
     void FixedUpdate()
@@ -49,7 +57,7 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     private void Die()
     {
-        Destroy(gameObject); 
+       _pool.AddToPool(this); 
     }
 
     public float GetMaxHp() => MaxHP; 
