@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 using Game.Systems.GlobalFramework;
+using System.Collections.Generic;
 
 public class ShipCore : MonoBehaviour, ILifeable
 {
     [SerializeField, Range(0, 200)] private float maxHP = 100f;
+    private List<Barricade> barricades = new(); // temp. 
+
     public float MaxHP { get; private set; }
     public float CurrentHP { get; private set; }
 
@@ -26,7 +29,24 @@ public class ShipCore : MonoBehaviour, ILifeable
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
 
-        Debug.Log($"Starting Ship Core with {CurrentHP} hp");
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform currentTransf = transform.GetChild(i);
+            if (currentTransf.gameObject.activeInHierarchy)
+            {
+                barricades.Add(currentTransf.GetComponent<Barricade>());
+            }
+        }
+
+        InitActiveBarricades(); 
+    }
+
+    private void InitActiveBarricades()
+    {
+        foreach (var item in barricades)
+        {
+            item.OnGameStart(); 
+        }
     }
 
     private void CheckCurrentHPAmount()
@@ -39,8 +59,6 @@ public class ShipCore : MonoBehaviour, ILifeable
         Debug.Log("Lost the game");
 
         GameManager.Instance.OnGameEnd(); 
-
-        // set new state
     }
 
     public float GetMaxHp() => MaxHP;
@@ -75,7 +93,6 @@ public class ShipCore : MonoBehaviour, ILifeable
     public void DecreaseCurrentHp(float amount)
     {
         CurrentHP -= amount;
-        Debug.Log("Current hp: " + CurrentHP);
 
         CheckCurrentHPAmount();
     }
