@@ -1,3 +1,4 @@
+using Game.Systems.GlobalFramework;
 using UnityEngine;
 
 public class UIGameOver : MonoBehaviour
