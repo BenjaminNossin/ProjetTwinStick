@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 CurrentVelocity;
     private void Awake()
     {
+        Debug.Log("Character awake"); 
         _characterController = GetComponent<CharacterController>();
         _tagContainer = GetComponent<GameplayTagContainer>();
     }
@@ -35,6 +36,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void TeleportPlayer(Vector3 newPosition)
     {
+        Debug.Log("Character teleport");
         _characterController.transform.position = newPosition;
     }
 
