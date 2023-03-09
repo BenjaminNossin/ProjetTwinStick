@@ -1,4 +1,5 @@
 using UnityEngine;
+using Game.Systems.GlobalFramework;
 
 public class WaitRoom : MonoBehaviour
 {

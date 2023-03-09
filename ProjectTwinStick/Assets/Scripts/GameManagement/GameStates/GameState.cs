@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class GameState : State
+namespace Game.Systems.GlobalFramework.States
 {
-    public override void OnStateEnter()
+    public class GameState : State
     {
-        Debug.Log("Initializing Game State");
-        GameManager.Instance.OnGameStart(); 
-    }
+        public override void OnStateEnter()
+        {
+            Debug.Log("Initializing Game State");
+            GameManager.Instance.OnGameStart();
+        }
 
-    public override void OnStateExit()
-    {
-        // throw new System.NotImplementedException();
+        public override void OnStateExit()
+        {
+            // throw new System.NotImplementedException();
+        }
     }
 }

@@ -1,23 +1,21 @@
 using UnityEngine;
 
-public class GameOverState : State
+namespace Game.Systems.GlobalFramework.States
 {
-    public override void OnStateEnter()
+    public class GameOverState : State
     {
-        Debug.Log("Initializing Game Over State");
-        ResetAllStaticFields(); 
+        public override void OnStateEnter()
+        {
+            Debug.Log("Initializing Game Over State");
+            ActivePlayersControllers.Clear();
+            ActivePlayersInput.Clear();
 
-        DeactivateAllPlayerControllers();
-    }
+            DeactivateAllPlayerControllers();
+        }
 
-    public override void OnStateExit()
-    {
-        // throw new System.NotImplementedException();
-    }
-
-    private void ResetAllStaticFields()
-    {
-        ActivePlayersControllers.Clear();
-        ActivePlayersInput.Clear();
+        public override void OnStateExit()
+        {
+            // throw new System.NotImplementedException();
+        }
     }
 }

@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Game.Systems.GlobalFramework;
 
 public class ShipCore : MonoBehaviour, ILifeable
 {

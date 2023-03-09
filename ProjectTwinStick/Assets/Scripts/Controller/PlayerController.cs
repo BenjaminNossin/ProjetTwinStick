@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
+using Game.Systems.GlobalFramework; 
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour, IController
@@ -77,10 +74,8 @@ public class PlayerController : MonoBehaviour, IController
     {
         if (GameManager.Instance != null)
         {
-            currentState = GameManager.Instance.GetCurrentState();
+            GameManager.Instance.AddControllerToCurrentState(this); 
         }
-
-        currentState.AddPlayerController(this);
     }
 
     private void StartAiming(InputAction.CallbackContext context)
@@ -134,8 +129,6 @@ public class PlayerController : MonoBehaviour, IController
 
     #endregion
 
-    private State currentState;
-
     public void SetUpController()
     {
         _playerMovement.SetupAction();
@@ -166,9 +159,6 @@ public class PlayerController : MonoBehaviour, IController
         _playerShoot.DisableAction();
         _playerTake.DisableAction();
         _playerMovement.DisableAction();
-        _playerAim.DisableAction();
-
-        // currentState.RemovePlayerController(this);
     }
 
     public void SetControllerSpawnPosition(Vector3 _pos)

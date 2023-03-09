@@ -1,19 +1,23 @@
 using UnityEngine;
 
-public class LobbyState : State
+namespace Game.Systems.GlobalFramework.States
 {
-    public override void OnStateEnter()
+    public class LobbyState : State
     {
-        Debug.Log("Initializing Lobby"); 
-        context.PlayerInputManager.onPlayerJoined += BindOnPlayerJoined;
-        context.PlayerInputManager.onPlayerLeft += BindOnPlayerLeave;
+        public override void OnStateEnter()
+        {
+            Debug.Log("Initializing Lobby");
+            context.PlayerInputManager.onPlayerJoined += BindOnPlayerJoined;
+            context.PlayerInputManager.onPlayerLeft += BindOnPlayerLeave;
 
-        ActivateAllPlayerControllers(); 
-        GameManager.Instance.OnLobbyStart(); 
-    }
+            ActivateAllPlayerControllers();
+          
+            GameManager.Instance.OnLobbyStart();
+        }
 
-    public override void OnStateExit()
-    {
-        throw new System.NotImplementedException();
+        public override void OnStateExit()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
