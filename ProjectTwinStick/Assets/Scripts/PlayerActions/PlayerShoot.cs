@@ -9,9 +9,10 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     public bool IsInAction { get => isInShoot; }
     private bool isInShoot;
     [SerializeField] private Inventory _inventory;
+    [SerializeField] private CharacterMovement _characterMovement;
     [SerializeField] private GameplayTagContainer _tagContainer;
     [SerializeField] private GameplayTag ShootBlocker;
-    [SerializeField, Range(0.0001f, 1f)] float InputThreshold = 0.1f;
+    [SerializeField] PlayerStats _playerStats;
     private Vector2 inputs;
 
     public void PerformAction(params object[] arguments)
@@ -31,10 +32,9 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
             isInShoot = false;
             return;
         }
-        if (inputs.magnitude > InputThreshold)
+        if (inputs.magnitude > _playerStats.AimInputThreshold)
         {
             _inventory.CurrentItem.Shoot(transform.position, inputs);
-            transform.forward = new Vector3(inputs.x, 0, inputs.y);
             isInShoot = true;
         }
         else

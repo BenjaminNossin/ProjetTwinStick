@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GameplayTag : ScriptableObject
 {
-
+    
 }

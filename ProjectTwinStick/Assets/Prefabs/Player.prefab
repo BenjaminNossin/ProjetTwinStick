@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7049771295264138771}
   - component: {fileID: 9038388747997465378}
   - component: {fileID: 6717455313009145219}
+  - component: {fileID: 8610967383766840624}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -73,7 +74,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a7ca45be9bd354c84b18127d504635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
   MovementBlocker: {fileID: 11400000, guid: 8ee4ca532398c154ab704576aa184630, type: 2}
+  AimSlower: {fileID: 11400000, guid: 859eca6f1dd4c104493796d0aef4d77a, type: 2}
 --- !u!114 &2687361521020166328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,11 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad930ffec7cdf8a4280c300b595d2483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowChargeTime: 1
-  MaxThrowStrength: 5
+  throwData: {fileID: 11400000, guid: d8a0d03a487f9f04da277a1111dcf712, type: 2}
   MovementBlocker: {fileID: 11400000, guid: 8ee4ca532398c154ab704576aa184630, type: 2}
   PickupBlocker: {fileID: 11400000, guid: 7b7fff8a624df744988fde0ad15aecda, type: 2}
   ShootBlocker: {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
+  AimSlower: {fileID: 11400000, guid: 859eca6f1dd4c104493796d0aef4d77a, type: 2}
   OnAimStart:
     m_PersistentCalls:
       m_Calls: []
@@ -127,9 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 6055432575011109203}
+  _characterMovement: {fileID: 1047708072171954935}
   _tagContainer: {fileID: 6717455313009145219}
   ShootBlocker: {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
-  InputThreshold: 0.1
+  _playerStats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
 --- !u!114 &6055432575011109203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b18a27b8af6da41bae9e81d4c9327d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castRadius: 1
+  castRadius: 1.04
   takeableLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -175,10 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 1047708072171954935}
-  speed: 5
-  accelerationTime: 1
-  decelerationTime: 0
-  InputThreshold: 0.1
+  stats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
   CurrentMovementInputs: {x: 0, y: 0}
 --- !u!114 &6717455313009145219
 MonoBehaviour:
@@ -192,6 +193,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccb13583fb8bfc45bcebacb76364744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8610967383766840624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047708072171954932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d5f6f05e65d6b4b89dc6a882104f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
+  _characterMovement: {fileID: 1047708072171954935}
 --- !u!1 &1047708072351340205
 GameObject:
   m_ObjectHideFlags: 0

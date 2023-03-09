@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour, IController
     [SerializeField] private PlayerTake _playerTake;
     [SerializeField] private PlayerDrop _playerDrop;
     [SerializeField] private PlayerThrow _playerThrow;
+    [SerializeField] private PlayerAim _playerAim;
     private bool isActive = false;
     [SerializeField] GameObject playerObject;
 
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour, IController
         if (playerObject != null && isActive)
         {
             Vector2 inputs = context.ReadValue<Vector2>();
+            _playerAim.PerformAction(inputs);
             _playerShoot.PerformAction(inputs);
         }
     }
@@ -132,6 +134,7 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.SetupAction();
         _playerDrop.SetupAction();
         _playerThrow.SetupAction();
+        _playerAim.SetupAction();
     }
 
     public void ActivateController()
@@ -142,6 +145,7 @@ public class PlayerController : MonoBehaviour, IController
         _playerShoot.EnableAction();
         _playerTake.EnableAction();
         _playerMovement.EnableAction();
+        _playerAim.EnableAction();
 
     }
 
@@ -153,6 +157,7 @@ public class PlayerController : MonoBehaviour, IController
         _playerShoot.DisableAction();
         _playerTake.DisableAction();
         _playerMovement.DisableAction();
+        _playerAim.DisableAction();
 
         // currentState.RemovePlayerController(this);
     }

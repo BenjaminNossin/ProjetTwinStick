@@ -81,6 +81,7 @@ MonoBehaviour:
   _playerTake: {fileID: 7027181526348299938}
   _playerDrop: {fileID: 3332490101803463013}
   _playerThrow: {fileID: 2673780183964481545}
+  _playerAim: {fileID: 8633414572662730113}
   playerObject: {fileID: 1070296544542325317}
 --- !u!1001 &22590538320156849
 PrefabInstance:
@@ -92,10 +93,6 @@ PrefabInstance:
     - target: {fileID: 1047708072171954932, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047708072171954932, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1047708072171954953, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_RootOrder
@@ -140,50 +137,6 @@ PrefabInstance:
     - target: {fileID: 1047708072171954953, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047708072351340205, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047708072351340207, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2482633936358554419, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687361521020166328, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: ThrowChargeTime
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687361521020166328, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: MaxThrowStrength
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3764902317981696625, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5293756636317163978, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: InputThreshold
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7049771295264138771, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: castRadius
-      value: 1.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 7049771295264138771, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: takeableLayer.m_Bits
-      value: 4096
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038388747997465378, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: speed
-      value: 5.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038388747997465378, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
-      propertyPath: accelerationTime
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
@@ -239,6 +192,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5b18a27b8af6da41bae9e81d4c9327d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8633414572662730113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8610967383766840624, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
+  m_PrefabInstance: {fileID: 22590538320156849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070296544542325317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d5f6f05e65d6b4b89dc6a882104f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &9024808295740560275 stripped

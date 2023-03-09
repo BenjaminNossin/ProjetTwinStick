@@ -7,7 +7,10 @@ public class ItemThrowData : ScriptableObject
 {
     [Header("Grounded")] 
     public float GroundedHeight = 1f;
+
     [Header("Throw")] 
+    public float ThrowChargeTime = 1f;
+    public float MaxThrowStrength = 10f;
     public float ThrowSpeed = 2f;
     public float ThrowHeight = 2f;
     public AnimationCurve ThrowCurve;

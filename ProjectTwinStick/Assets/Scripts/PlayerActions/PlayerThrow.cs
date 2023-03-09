@@ -6,12 +6,11 @@ using UnityEngine.Events;
 
 public class PlayerThrow : MonoBehaviour, IPlayerAction
 {
-    
-    [SerializeField] float ThrowChargeTime = 1f;
-    [SerializeField] float MaxThrowStrength = 5f;
+    [SerializeField] ItemThrowData throwData;
     [SerializeField] GameplayTag MovementBlocker;
     [SerializeField] GameplayTag PickupBlocker;
     [SerializeField] GameplayTag ShootBlocker;
+    [SerializeField]  GameplayTag AimSlower;
 
 
     public UnityEvent OnAimStart;
@@ -51,6 +50,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _tagContainer.AddTag(MovementBlocker);
             _tagContainer.AddTag(PickupBlocker);
             _tagContainer.AddTag(ShootBlocker);
+            _tagContainer.AddTag(AimSlower);
             OnAimStart?.Invoke();
         }
     }
@@ -61,12 +61,13 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             Debug.Log("trying to throw");
             IsPreparingThrow = false;
-            _inventory.CurrentItem.Throw(currentChargeTime * MaxThrowStrength, transform.forward);
+            _inventory.CurrentItem.Throw(currentChargeTime * throwData.MaxThrowStrength, transform.forward);
             _inventory.ClearItem(false);
             currentChargeTime = 0f;
             _tagContainer.RemoveTag(MovementBlocker);
             _tagContainer.RemoveTag(PickupBlocker);
             _tagContainer.RemoveTag(ShootBlocker);
+            _tagContainer.RemoveTag(AimSlower);
         }
     }
 
@@ -80,6 +81,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _tagContainer.RemoveTag(MovementBlocker);
             _tagContainer.RemoveTag(PickupBlocker);
             _tagContainer.RemoveTag(ShootBlocker);
+            _tagContainer.RemoveTag(AimSlower);
         }
     }
 
@@ -87,9 +89,9 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     {
         if (IsPreparingThrow)
         {
-            currentChargeTime = Mathf.MoveTowards(currentChargeTime, 1, Time.deltaTime / ThrowChargeTime);
+            currentChargeTime = Mathf.MoveTowards(currentChargeTime, 1, Time.deltaTime / throwData.ThrowChargeTime);
             Debug.Log(currentChargeTime);
-            currentPreview?.UpdatePreview(transform.position, transform.forward, currentChargeTime * MaxThrowStrength);
+            currentPreview?.UpdatePreview(transform.position, transform.forward, currentChargeTime * throwData.MaxThrowStrength);
         }
     }
 

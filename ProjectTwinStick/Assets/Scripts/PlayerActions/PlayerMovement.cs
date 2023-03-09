@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour, IPlayerAction
 {
@@ -12,10 +13,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
     public event Action PerformActionEvent;
 
     //TODO : move movement stats to dedicated stat system
-    [SerializeField] float speed;
-    [SerializeField] float accelerationTime;
-    [SerializeField] private float decelerationTime = .1f;
-    [SerializeField, Range(0.0001f, 1f)] float InputThreshold = 0.1f;
+    [SerializeField] PlayerStats stats;
     private float CurrentAcceleration;
 
     public Vector2 CurrentMovementInputs;
@@ -54,17 +52,17 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
 
     private void UpdateVelocity()
     {
-        if (CurrentMovementInputs.magnitude > InputThreshold)
+        if (CurrentMovementInputs.magnitude > stats.MovementInputThreshold)
         {
-            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, (Time.deltaTime / accelerationTime));
+            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, (Time.deltaTime / stats.AccelerationTime));
             _isInMoving = true;
         }
         else
         {
-            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, (Time.deltaTime / decelerationTime));
+            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, (Time.deltaTime / stats.DecelerationTime));
             _isInMoving = false;
         }
-        characterMovement.SetVelocity(new Vector3(CurrentMovementInputs.x, 0, CurrentMovementInputs.y) * (speed * CurrentAcceleration));
+        characterMovement.SetVelocity(new Vector3(CurrentMovementInputs.x, 0, CurrentMovementInputs.y) * (stats.Speed * CurrentAcceleration));
     }
 
     public void SetControllerSpawnPosition(Vector3 _pos)
