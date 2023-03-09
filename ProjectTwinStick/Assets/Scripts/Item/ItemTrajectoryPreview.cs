@@ -15,7 +15,7 @@ public class ItemTrajectoryPreview : MonoBehaviour
 
     private Vector3 _startPosition;
     private Vector3 _direction;
-    private float _throwStrength;
+    private float _chargeTime;
     
     private void OnEnable()
     {
@@ -39,14 +39,14 @@ public class ItemTrajectoryPreview : MonoBehaviour
         }
     }
     
-    public void UpdatePreview(Vector3 startPosition, Vector3 Direction, float throwStrength)
+    public void UpdatePreview(Vector3 startPosition, Vector3 Direction, float chargeTime)
     {
         _startPosition = startPosition;
         _direction = Direction;
-        _throwStrength = throwStrength;
+        _chargeTime = chargeTime;
         
         _targetInstance.SetActive(true);
-        Vector3 targetPos = _startPosition + _direction * _throwStrength;
+        Vector3 targetPos = _startPosition + _direction * throwData.GetThrowDistance(_chargeTime);
         _targetInstance.transform.position = targetPos;
     }
 

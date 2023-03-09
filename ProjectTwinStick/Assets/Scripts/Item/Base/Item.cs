@@ -28,7 +28,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private GameObject _previousHolder;
     private GameObject _itemHolder;
-    private float _throwLength = 1f;
+    private float _chargeTime = 1f;
 
     private float _throwTimer = 0f;
     private float _bounceTimer = 0f;
@@ -131,7 +131,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private void ThrowUpdate()
     {
-        _throwTimer = Mathf.MoveTowards(_throwTimer,_throwLength, Time.deltaTime * throwData.ThrowSpeed);
+        _throwTimer = Mathf.MoveTowards(_throwTimer,throwData.GetThrowDistance(_chargeTime), Time.deltaTime * throwData.ThrowSpeed);
         Vector3 NextPos = MovementStartPosition + MovementDirection * _throwTimer;
 
         RaycastHit hit;
@@ -146,10 +146,10 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             return;
         }
         
-        float heightmask = throwData.ThrowCurve.Evaluate(_throwTimer / _throwLength);
+        float heightmask = throwData.ThrowCurve.Evaluate(_throwTimer / throwData.GetThrowDistance(_chargeTime));
         NextPos.y = heightmask * throwData.ThrowHeight;
         transform.position = NextPos;
-        if (Math.Abs(_throwTimer - _throwLength) < 0.001f)
+        if (Math.Abs(_throwTimer - throwData.GetThrowDistance(_chargeTime)) < 0.001f)
         {
             //checking for player
             Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
@@ -182,7 +182,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private void BounceUpdate()
     {
-        _bounceTimer = Mathf.MoveTowards(_bounceTimer, throwData.BounceDistance, Time.deltaTime * throwData.BounceSpeed);
+        _bounceTimer = Mathf.MoveTowards(_bounceTimer, throwData.GetBounceDistance(_chargeTime), Time.deltaTime * throwData.BounceSpeed);
         Vector3 NextPos = MovementStartPosition + MovementDirection * _bounceTimer;
         RaycastHit hit;
         if (Physics.SphereCast(transform.position, _collider.radius, MovementDirection, out hit,throwData.ThrowSpeed * Time.deltaTime,
@@ -195,10 +195,10 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             Bounce(reflect);
             return;
         }
-        float heightmask = throwData.BounceCurve.Evaluate(_bounceTimer / throwData.BounceDistance);
+        float heightmask = throwData.BounceCurve.Evaluate(_bounceTimer / throwData.GetBounceDistance(_chargeTime));
         NextPos.y = heightmask * throwData.BounceHeight;
         transform.position = NextPos;
-        if (Math.Abs(_bounceTimer - throwData.BounceDistance) < 0.001f)
+        if (Math.Abs(_bounceTimer - throwData.GetBounceDistance(_chargeTime)) < 0.001f)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
             if (colliders.Length > 0)
@@ -250,12 +250,12 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         ChangeState(ItemState.Bouncing);
     }
 
-    public virtual void Throw(float throwForce, Vector3 direction)
+    public virtual void Throw(float chargeTime, Vector3 direction)
     {
         if (CurrentItemState == ItemState.Held)
         {
             Debug.Log("Thrown");
-            _throwLength = throwForce;
+            _chargeTime = chargeTime;
             direction.y = 0;
             direction.Normalize();
             MovementDirection = direction;

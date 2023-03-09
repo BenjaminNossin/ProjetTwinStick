@@ -38,29 +38,7 @@ public class PlayerController : MonoBehaviour, IController
         cancelThrow.performed += CancelThrow;
     }
 
-    // NULLREFERENCEEXCEPTION
-    /* private void OnDisable()
-    {
-        InputAction movement = _playerInput.currentActionMap["Movement"];
-        if (movement != null)
-        {
-            movement.performed -= UpdateMovementInput;
-            movement.canceled -= UpdateMovementInput;
-        }
 
-        InputAction take = _playerInput.currentActionMap["Take"];
-        if (take != null)
-        {
-            take.performed -= TryTakeInput;
-        }
-
-        InputAction shoot = _playerInput.currentActionMap["Shoot"];
-        if (shoot != null)
-        {
-            shoot.performed += UpdateShootInput;
-            shoot.canceled += UpdateShootInput;
-        }
-    } */
 
     #region InputCallbacks
 
@@ -159,6 +137,7 @@ public class PlayerController : MonoBehaviour, IController
         _playerShoot.DisableAction();
         _playerTake.DisableAction();
         _playerMovement.DisableAction();
+        _playerAim.DisableAction();
     }
 
     public void SetControllerSpawnPosition(Vector3 _pos)
