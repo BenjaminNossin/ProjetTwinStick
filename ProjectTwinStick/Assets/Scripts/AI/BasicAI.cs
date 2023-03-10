@@ -24,9 +24,12 @@ public class BasicAI : MonoBehaviour, ILifeable
     public event Action<float> OnDecreaseCurrentHp;
 
     private Vector3 targetPos;
+    #region LD Metrics
+    private readonly float floorY = -0.5f;
     private readonly float levelRadius = 10f;
     private readonly float xzBufferZone = 2f;
     private readonly float jumpHeight = 1f;
+    #endregion
 
     private Transform cachedTransf; 
     private Vector3 targetPostFlat, selfPosFlat;
@@ -35,20 +38,21 @@ public class BasicAI : MonoBehaviour, ILifeable
     private bool hasJumped; // change to state machines if needed
 
     private Vector3 moveDir;
+    private Vector3 shipCorePos; 
 
     private void Start()
     {
         GameManager.Instance.OnGameOverCallBack += Die;
+        shipCorePos = GameManager.Instance.ShipCoreObj.transform.position; 
     }
 
     public void Init(Vector3 assignedBarricadePos)
     {
-        cachedTransf = transform; 
+        cachedTransf = transform;
 
-        targetPos = assignedBarricadePos;
-        targetPostFlat = new Vector3(targetPos.x, 0f, targetPos.z); 
-
-        normalizedDirection = new Vector3(targetPos.x - transform.position.x, 0, targetPos.z - transform.position.z).normalized;
+        SetTargetPosition(assignedBarricadePos);
+        SetSelfAndTargetPosFlat(floorY);
+        SetNormalizedDirection(); 
         
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);  
@@ -58,14 +62,13 @@ public class BasicAI : MonoBehaviour, ILifeable
     {
         Move();
 
-        if (!hasJumped)
+        /* if (Vector3.Distance(selfPosFlat, targetPostFlat) <= levelRadius + xzBufferZone)
         {
-            selfPosFlat = new Vector3(cachedTransf.position.x, 0f, cachedTransf.position.z);
-            if (Vector3.Distance(selfPosFlat, targetPostFlat) <= levelRadius + xzBufferZone)
+            if (!hasJumped)
             {
                 JumpToPoint();
             }
-        }
+        } */
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,6 +90,24 @@ public class BasicAI : MonoBehaviour, ILifeable
                 Die();
             }
         }
+    }
+
+    private void SetTargetPosition(Vector3 posToReach)
+    {
+        targetPos = posToReach;
+    }
+
+    private void SetSelfAndTargetPosFlat(float flattenValue)
+    {
+        selfPosFlat = new Vector3(cachedTransf.position.x, flattenValue, cachedTransf.position.z);
+        targetPostFlat = new Vector3(targetPos.x, flattenValue, targetPos.z);
+
+        cachedTransf.position = selfPosFlat;
+    }
+
+    private void SetNormalizedDirection()
+    {
+        normalizedDirection = new Vector3(targetPos.x - cachedTransf.position.x, 0, targetPos.z - cachedTransf.position.z).normalized;
     }
 
     #region Life Management
@@ -148,7 +169,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     private void Move()
     {
         moveDir = normalizedDirection; 
-        Debug.DrawRay(cachedTransf.position, normalizedDirection * 2f, Color.red, Time.deltaTime);
+        Debug.DrawRay(cachedTransf.position, normalizedDirection * 3f, Color.red, Time.deltaTime);
         cachedTransf.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.Self);
     }
 
@@ -161,7 +182,11 @@ public class BasicAI : MonoBehaviour, ILifeable
                                         jumpHeight,
                                         normalizedDirection.z * xzBufferZone);
 
-        hasJumped = true; 
+        hasJumped = true;
+
+        SetTargetPosition(shipCorePos);
+        SetSelfAndTargetPosFlat(cachedTransf.position.y);
+        SetNormalizedDirection(); 
     }
 
     #endregion
