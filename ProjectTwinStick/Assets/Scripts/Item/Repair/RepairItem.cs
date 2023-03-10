@@ -9,6 +9,9 @@ public class RepairItem : Item
     [SerializeField] RepairItemSO ItemSO;
     [SerializeField] private LayerMask RepairableLayer;
     private RepairItemUpgrade currentUpgrade;
+
+    private Vector3 lastStartPos;
+    private Vector3 lastDirection;
     
     public override ItemSO GetSO()
     {
@@ -17,8 +20,10 @@ public class RepairItem : Item
 
     public override void Shoot(Vector3 startPosition, Vector2 direction)
     {
+        lastStartPos = startPosition;
+        lastDirection = direction;
         RaycastHit hit;
-        if (Physics.Raycast(startPosition, direction, out hit, currentUpgrade.Range, RepairableLayer))
+        if (Physics.Raycast(startPosition, new Vector3(direction.x,0,direction.y), out hit, currentUpgrade.Range, RepairableLayer, QueryTriggerInteraction.Collide))
         {
             Barricade barricade = hit.collider.GetComponent<Barricade>();
             if (barricade != null)
@@ -38,7 +43,7 @@ public class RepairItem : Item
         if (currentUpgrade != null && _itemHolder != null && CurrentItemState == ItemState.Held)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(_itemHolder.transform.position, _itemHolder.transform.position + _itemHolder.transform.forward * currentUpgrade.Range);
+            Gizmos.DrawLine(lastStartPos, lastStartPos + new Vector3(lastDirection.x,0,lastDirection.y) * currentUpgrade.Range);
         }
     }
 }
