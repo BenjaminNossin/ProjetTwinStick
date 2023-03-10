@@ -1159,7 +1159,9 @@ GameObject:
   - component: {fileID: 7483651430636186082}
   - component: {fileID: 3626037069254434370}
   - component: {fileID: 181029253890140782}
-  m_Layer: 0
+  - component: {fileID: 3201681918160920470}
+  - component: {fileID: 2558858098889454737}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,6 +1496,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3201681918160920470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639520023761014575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &2558858098889454737
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639520023761014575}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &711773228407991104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1888,9 @@ GameObject:
   - component: {fileID: 3731512756782383310}
   - component: {fileID: 7980417471624223126}
   - component: {fileID: 9169302121727071403}
-  m_Layer: 0
+  - component: {fileID: 785090174707034964}
+  - component: {fileID: 5265635780513558287}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2163,6 +2196,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &785090174707034964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074517410047447324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &5265635780513558287
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074517410047447324}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1120768732886092600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,7 +2240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5802343272641400614
 Transform:
   m_ObjectHideFlags: 0
@@ -3230,7 +3292,9 @@ GameObject:
   - component: {fileID: 7219772110031600434}
   - component: {fileID: 6844817581135949594}
   - component: {fileID: 8209092419041216043}
-  m_Layer: 0
+  - component: {fileID: 4213104140462482767}
+  - component: {fileID: 387036728261089676}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3565,6 +3629,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &4213104140462482767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419379062819909067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &387036728261089676
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419379062819909067}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1462903696780682988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,7 +3672,9 @@ GameObject:
   - component: {fileID: 2501584765721809336}
   - component: {fileID: 5771071326475248739}
   - component: {fileID: 1873992060780965488}
-  m_Layer: 0
+  - component: {fileID: 8619215349512782523}
+  - component: {fileID: 3054776881258597826}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3885,6 +3980,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8619215349512782523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462903696780682988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &3054776881258597826
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462903696780682988}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1752273887562557157
 GameObject:
   m_ObjectHideFlags: 0
@@ -5731,7 +5855,9 @@ GameObject:
   - component: {fileID: 3933256881819397807}
   - component: {fileID: 837156970783269893}
   - component: {fileID: 4840240066338780078}
-  m_Layer: 0
+  - component: {fileID: 2721427023038413266}
+  - component: {fileID: 4414849569870135930}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6066,6 +6192,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2721427023038413266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779566654452875241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &4414849569870135930
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779566654452875241}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3832342343996704331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6547,7 +6702,9 @@ GameObject:
   - component: {fileID: 7797432122207514400}
   - component: {fileID: 6975176610386536355}
   - component: {fileID: 1693356163480035466}
-  m_Layer: 0
+  - component: {fileID: 8381731576836714695}
+  - component: {fileID: 4606556777273818067}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6882,6 +7039,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8381731576836714695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544113358915759905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &4606556777273818067
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544113358915759905}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4606828131688931977
 GameObject:
   m_ObjectHideFlags: 0
@@ -9956,7 +10142,9 @@ GameObject:
   - component: {fileID: 370315640786138247}
   - component: {fileID: 7311981654421283762}
   - component: {fileID: 7192072205199556450}
-  m_Layer: 0
+  - component: {fileID: 6808879091283046298}
+  - component: {fileID: 3061412797121307566}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10291,6 +10479,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6808879091283046298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596495144908886510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &3061412797121307566
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596495144908886510}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5618696437375125294
 GameObject:
   m_ObjectHideFlags: 0
@@ -10305,7 +10522,9 @@ GameObject:
   - component: {fileID: 6882932512153910280}
   - component: {fileID: 3222376042771506852}
   - component: {fileID: 6185971639978103073}
-  m_Layer: 0
+  - component: {fileID: 4058927585060719097}
+  - component: {fileID: 5602844870230487492}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10640,6 +10859,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &4058927585060719097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618696437375125294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &5602844870230487492
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618696437375125294}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5874794862526028898
 GameObject:
   m_ObjectHideFlags: 0
@@ -10654,7 +10902,9 @@ GameObject:
   - component: {fileID: 1852991576710121677}
   - component: {fileID: 4548730194498254026}
   - component: {fileID: 6813631794876008056}
-  m_Layer: 0
+  - component: {fileID: 6966461753521964730}
+  - component: {fileID: 2275932438474142419}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10989,6 +11239,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6966461753521964730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874794862526028898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &2275932438474142419
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874794862526028898}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6063012106327789555
 GameObject:
   m_ObjectHideFlags: 0
@@ -11352,7 +11631,9 @@ GameObject:
   - component: {fileID: 9199016840276290591}
   - component: {fileID: 1857705149573033105}
   - component: {fileID: 388288502324547378}
-  m_Layer: 0
+  - component: {fileID: 67298117674227896}
+  - component: {fileID: 1390327733796534688}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11658,6 +11939,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &67298117674227896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192029597386995475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &1390327733796534688
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192029597386995475}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6217673662581128295
 GameObject:
   m_ObjectHideFlags: 0
@@ -11672,7 +11982,9 @@ GameObject:
   - component: {fileID: 6475472336032599137}
   - component: {fileID: 7887948088203083308}
   - component: {fileID: 5620937834807389195}
-  m_Layer: 0
+  - component: {fileID: 2227563777675853893}
+  - component: {fileID: 1162419272098290262}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11978,6 +12290,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2227563777675853893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217673662581128295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &1162419272098290262
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217673662581128295}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6437590637764815311
 GameObject:
   m_ObjectHideFlags: 0
@@ -17032,7 +17373,9 @@ GameObject:
   - component: {fileID: 6894054967395634609}
   - component: {fileID: 6894054967395634610}
   - component: {fileID: 6894054967395634611}
-  m_Layer: 0
+  - component: {fileID: 5805036560765637438}
+  - component: {fileID: 2313161066574227741}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17367,6 +17710,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &5805036560765637438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894054967395634612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &2313161066574227741
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894054967395634612}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6894054967634819964
 GameObject:
   m_ObjectHideFlags: 0
@@ -18404,7 +18776,9 @@ GameObject:
   - component: {fileID: 3538250438681523182}
   - component: {fileID: 9150703706481081745}
   - component: {fileID: 4575587397853225084}
-  m_Layer: 0
+  - component: {fileID: 1554188840094647054}
+  - component: {fileID: 8958869057922858118}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18739,6 +19113,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1554188840094647054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336149075311887473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &8958869057922858118
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336149075311887473}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7339609177468090941
 GameObject:
   m_ObjectHideFlags: 0
@@ -19800,7 +20203,9 @@ GameObject:
   - component: {fileID: 3554437358803334835}
   - component: {fileID: 5319578359009733890}
   - component: {fileID: 7346336302167565266}
-  m_Layer: 0
+  - component: {fileID: 8808153877830806324}
+  - component: {fileID: 6907263428905924717}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20106,6 +20511,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8808153877830806324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049634855340915455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &6907263428905924717
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049634855340915455}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8547389099553409266
 GameObject:
   m_ObjectHideFlags: 0
@@ -21138,7 +21572,9 @@ GameObject:
   - component: {fileID: 1403690234496562025}
   - component: {fileID: 2150320265374415690}
   - component: {fileID: 3895404257995025755}
-  m_Layer: 0
+  - component: {fileID: 43851308193845908}
+  - component: {fileID: 2224601793478779872}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21473,6 +21909,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &43851308193845908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991723049431825084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &2224601793478779872
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991723049431825084}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &9098927912054011294
 GameObject:
   m_ObjectHideFlags: 0
@@ -23263,7 +23728,9 @@ GameObject:
   - component: {fileID: 1596391976412971262}
   - component: {fileID: 3909587951749846337}
   - component: {fileID: 1193343756758491085}
-  m_Layer: 0
+  - component: {fileID: 3712746049579272209}
+  - component: {fileID: 3187860717862525347}
+  m_Layer: 13
   m_Name: Blindage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23598,3 +24065,32 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3712746049579272209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152009955319548372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+--- !u!54 &3187860717862525347
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152009955319548372}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
