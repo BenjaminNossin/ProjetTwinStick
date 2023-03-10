@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 0}
   _upgrades:
-  - Range: 1
-    HealRate: 0.5
-  - Range: 2
-    HealRate: 1
   - Range: 3
+    HealRate: 0.5
+  - Range: 6
+    HealRate: 1
+  - Range: 9
     HealRate: 1.5
