@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6163727663064726338}
   - component: {fileID: 2618587129890710497}
   - component: {fileID: 8085465302714486837}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,6 +335,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &8085465302714486837
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -367,7 +378,7 @@ GameObject:
   - component: {fileID: 526113648190550613}
   - component: {fileID: 5473259646517945921}
   - component: {fileID: 865062962365889185}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,6 +726,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &865062962365889185
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -747,7 +769,7 @@ GameObject:
   - component: {fileID: 6867487140843287339}
   - component: {fileID: 3200446927112295212}
   - component: {fileID: 3124737042408073763}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,6 +1088,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &3124737042408073763
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1098,7 +1131,7 @@ GameObject:
   - component: {fileID: 7114987975801410000}
   - component: {fileID: 7067317039808648479}
   - component: {fileID: 5112100916045841069}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1446,6 +1479,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &5112100916045841069
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1478,7 +1522,7 @@ GameObject:
   - component: {fileID: 1462247225862868012}
   - component: {fileID: 5370992739593756751}
   - component: {fileID: 6713120615144801796}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1826,6 +1870,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &6713120615144801796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1858,7 +1913,7 @@ GameObject:
   - component: {fileID: 1921374395133780831}
   - component: {fileID: 2693070094621202046}
   - component: {fileID: 4882302456847408907}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2206,6 +2261,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &4882302456847408907
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2238,7 +2304,7 @@ GameObject:
   - component: {fileID: 7490466208513385215}
   - component: {fileID: 6176370987839971465}
   - component: {fileID: 8642129928867709305}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2586,6 +2652,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &8642129928867709305
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2618,7 +2695,7 @@ GameObject:
   - component: {fileID: 60495967083815394}
   - component: {fileID: 4929427144201055093}
   - component: {fileID: 7152558173924708536}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2966,6 +3043,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &7152558173924708536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2998,7 +3086,7 @@ GameObject:
   - component: {fileID: 8316993396829191829}
   - component: {fileID: 7273823147799679905}
   - component: {fileID: 9183354426553150495}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3346,6 +3434,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &9183354426553150495
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3376,7 +3475,7 @@ GameObject:
   - component: {fileID: 6047942999066824278}
   - component: {fileID: 5945636433409282555}
   - component: {fileID: 48473448}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: ShipCoreObj
   m_TagString: ShipCore
   m_Icon: {fileID: 0}
@@ -3522,7 +3621,7 @@ GameObject:
   - component: {fileID: 9155548923108671521}
   - component: {fileID: 8042995087129751151}
   - component: {fileID: 992220089577750587}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3841,6 +3940,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &992220089577750587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3873,7 +3983,7 @@ GameObject:
   - component: {fileID: 6698891184333303999}
   - component: {fileID: 122939381280536171}
   - component: {fileID: 2541041514539806804}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4221,6 +4331,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &2541041514539806804
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4253,7 +4374,7 @@ GameObject:
   - component: {fileID: 6965759721363773268}
   - component: {fileID: 1504781352558451745}
   - component: {fileID: 7331158101347372199}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4601,6 +4722,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &7331158101347372199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4633,7 +4765,7 @@ GameObject:
   - component: {fileID: 6690481303091902311}
   - component: {fileID: 5678291621391998423}
   - component: {fileID: 468534489879435866}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4981,6 +5113,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &468534489879435866
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5013,7 +5156,7 @@ GameObject:
   - component: {fileID: 6687597437167729343}
   - component: {fileID: 8970304914851271876}
   - component: {fileID: 4377162221757541619}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5361,6 +5504,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &4377162221757541619
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5393,7 +5547,7 @@ GameObject:
   - component: {fileID: 6974898133679299294}
   - component: {fileID: 1774302942365255301}
   - component: {fileID: 2733176910007579682}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageDownRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5712,6 +5866,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &2733176910007579682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5744,7 +5909,7 @@ GameObject:
   - component: {fileID: 8407824481087179214}
   - component: {fileID: 3754085139146308505}
   - component: {fileID: 5148595944448232226}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: BlindageUpLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6063,6 +6228,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &5148595944448232226
 Rigidbody:
   m_ObjectHideFlags: 0
