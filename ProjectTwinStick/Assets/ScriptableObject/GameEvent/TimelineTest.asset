@@ -16,7 +16,18 @@ MonoBehaviour:
   - timeCode: 2
     gameEventDatas:
     - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-  - timeCode: 8
+  - timeCode: 20
     gameEventDatas:
     - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
+  - timeCode: 22
+    gameEventDatas:
     - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
+  - timeCode: 25
+    gameEventDatas:
+    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
+  - timeCode: 30
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
+  - timeCode: 50
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
