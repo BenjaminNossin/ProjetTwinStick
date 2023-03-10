@@ -5,7 +5,7 @@ public class UIMainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetSceneByBuildIndex(1).name, LoadSceneMode.Single); 
+        SceneManager.LoadSceneAsync("Arena", LoadSceneMode.Single); 
 
     }
 

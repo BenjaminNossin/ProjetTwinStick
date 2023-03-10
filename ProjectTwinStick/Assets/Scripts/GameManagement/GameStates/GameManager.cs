@@ -160,7 +160,7 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameQuit()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetSceneByBuildIndex(0).name, LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync("Benji_Test_MainMenu", LoadSceneMode.Single);
 
         }
     }
