@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff1ff98daaa229148a022df5c06b759d, type: 3}
-  m_Name: SwarmEventData3
+  m_Name: SwarmEventData1
   m_EditorClassIdentifier: 
   AreaTargetCount: 1
-  TagEvent: {fileID: 0}
+  TagEvent: {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   CurrentEventInAreaBlockerTag:
   - {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   LastEventInAreaBlockerTag:
   - {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   IsRememberEvent: 1
   SwarmWaves:
-  - timeBeforeLaunchWave: 0
-    enemyCount: 0
+  - timeBeforeLaunchWave: 2
+    enemyCount: 2
+  - timeBeforeLaunchWave: 5
+    enemyCount: 3
+  - timeBeforeLaunchWave: 8
+    enemyCount: 4
