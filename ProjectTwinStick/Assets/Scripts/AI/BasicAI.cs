@@ -3,6 +3,11 @@ using HelperPSR.Pool;
 using System;
 using UnityEngine;
 
+// TODO: change to a state machine
+// delay before jump
+// delay before destroying shipcore
+    // states: ShipCoreReaching, Jumping, ShipCoreDestroying
+
 public class BasicAI : MonoBehaviour, ILifeable
 {
     [SerializeField, Range(0, 20)] private float maxHP = 10f;  
@@ -23,57 +28,68 @@ public class BasicAI : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
-    private Vector3 shipCorePos;
-    private readonly float levelRadius = 10f;
-    private readonly float xzBufferZone = 2f;
-    private readonly float jumpHeight = 1f;
+    private Vector3 targetPos;
+
+    #region LD Metrics
+    private const float floorY = -1f;
+    private const float levelRadius = 10f;
+    private const float xzBufferZone = 2f;
+    private const float jumpHeight = 1f;
+    #endregion
 
     private Transform cachedTransf; 
-    private Vector3 shipCorePosFlat, selfPosFlat;
+    private Vector3 targetPostFlat, selfPosFlat;
 
-    private Vector3 jumpPoint; 
-    private bool hasJumped; // change to state machines if needed
+    private bool canJump = true; 
 
-    private Vector3 moveDir;
+    private Vector3 shipCorePosFlat;
+
+
+    // DEBUG
+    public float distFromShipCore, distFromJumpArea; 
 
     private void Start()
     {
         GameManager.Instance.OnGameOverCallBack += Die;
+        var shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
+        shipCorePosFlat = new Vector3(shipCorePos.x, floorY, shipCorePos.z); 
     }
 
-    public void Init()
+    public void Init(Vector3 assignedBarricadePos)
     {
-        cachedTransf = transform; 
+        cachedTransf = transform;
+        distFromJumpArea = levelRadius + xzBufferZone;
 
-        shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
-        shipCorePosFlat = new Vector3(shipCorePos.x, 0f, shipCorePos.z); 
-
-        normalizedDirection = new Vector3(shipCorePos.x - transform.position.x, 0, shipCorePos.z - transform.position.z).normalized;
+        SetTargetPosition(assignedBarricadePos);
+        SetSelfAndTargetPosFlat(floorY);
+        SetNormalizedDirection(); 
         
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);  
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Move();
 
-        if (!hasJumped)
+        // state machine will avoid this kind of shitty checks
+        if (canJump)
         {
-            selfPosFlat = new Vector3(cachedTransf.position.x, 0f, cachedTransf.position.z);
-            if (Vector3.Distance(selfPosFlat, shipCorePosFlat) <= levelRadius + xzBufferZone)
+            // this may be extracted + abstracted has a target check for both jump and final attack on the ship core
+            // JumpToPoint becomes an abstract Act() -> Jump/Explode
+            distFromShipCore = Vector3.Distance(cachedTransf.position, shipCorePosFlat);
+            if (distFromShipCore <= distFromJumpArea)
             {
-                JumpToPoint();
+                Jump();
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {   
-        ILifeable lifeable = other.GetComponent<ILifeable>();
-        if (lifeable != null)
+        if (other.TryGetComponent<ILifeable>(out var lifeable))
         {
-            Debug.Log($"damaging target {other.gameObject.name}"); 
+            //Debug.Log($"damaging target {other.gameObject.name}"); 
             DamageTarget(lifeable); 
             Die();
         }
@@ -82,11 +98,29 @@ public class BasicAI : MonoBehaviour, ILifeable
             lifeable = other.GetComponentInParent<ILifeable>();
             if (lifeable != null)
             {
-                Debug.Log($"damaging target {other.gameObject.name}"); 
+                //Debug.Log($"damaging target {other.gameObject.name}"); 
                 DamageTarget(lifeable); 
                 Die();
             }
         }
+    }
+
+    private void SetTargetPosition(Vector3 posToReach)
+    {
+        targetPos = posToReach;
+    }
+
+    private void SetSelfAndTargetPosFlat(float flattenValue)
+    {
+        selfPosFlat = new Vector3(cachedTransf.position.x, flattenValue, cachedTransf.position.z);
+        targetPostFlat = new Vector3(targetPos.x, flattenValue, targetPos.z);
+
+        cachedTransf.position = selfPosFlat;
+    }
+
+    private void SetNormalizedDirection()
+    {
+        normalizedDirection = new Vector3(targetPos.x - cachedTransf.position.x, 0, targetPos.z - cachedTransf.position.z).normalized;
     }
 
     #region Life Management
@@ -147,12 +181,11 @@ public class BasicAI : MonoBehaviour, ILifeable
     #region Movement Behavior
     private void Move()
     {
-        moveDir = normalizedDirection; 
-        Debug.DrawRay(cachedTransf.position, normalizedDirection * 2f, Color.red, Time.deltaTime);
+        Debug.DrawRay(cachedTransf.position, normalizedDirection * 3f, Color.red, Time.deltaTime);
         cachedTransf.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.Self);
     }
 
-    private void JumpToPoint()
+    private void Jump()
     {
         Debug.Log("Jumping");
         
@@ -161,7 +194,11 @@ public class BasicAI : MonoBehaviour, ILifeable
                                         jumpHeight,
                                         normalizedDirection.z * xzBufferZone);
 
-        hasJumped = true; 
+        canJump = false;
+
+        SetTargetPosition(shipCorePosFlat);
+        SetSelfAndTargetPosFlat(cachedTransf.position.y);
+        SetNormalizedDirection(); 
     }
 
     #endregion

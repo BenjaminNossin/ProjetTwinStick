@@ -118,7 +118,7 @@ public class Barricade : MonoBehaviour, ILifeable
                 DestroySelf();
             }
             else OnBarricadeDamaged?.Invoke();
-            Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
+            //Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
         }
     }
 }

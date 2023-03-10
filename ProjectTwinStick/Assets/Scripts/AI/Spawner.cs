@@ -12,6 +12,7 @@ namespace Game.Systems.AI
     {
         // list of SpawnEventTypes ?
         public Pool<BasicAI> Pool;
+        [SerializeField] Transform assignedBarricade; 
         [SerializeField] private GameObject objToSpawn;
         [SerializeField, Range(0, 10)] private float firstSpawnDelay = 0f;
         [SerializeField, Range(1, 30)] private float randomMin = 5f;
@@ -33,9 +34,9 @@ namespace Game.Systems.AI
             var obj = Pool.GetFromPool();
             obj.transform.position = transform.position;
             obj._pool = Pool;
-            obj.Init();
+            obj.Init(assignedBarricade.position);
             float waitTime = UnityEngine.Random.Range(randomMin, randomMax);
-            Debug.Log(waitTime);
+            //Debug.Log(waitTime);
             Invoke(nameof(Spawn), waitTime);
         }
 
@@ -49,6 +50,11 @@ namespace Game.Systems.AI
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, 2f);
+
+            if (assignedBarricade)
+            {
+                Gizmos.DrawLine(transform.position, assignedBarricade.position);
+            }
         }
     }
 }
