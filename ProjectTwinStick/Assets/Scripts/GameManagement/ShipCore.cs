@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class ShipCore : MonoBehaviour, ILifeable
 {
     [SerializeField, Range(0, 200)] private float maxHP = 100f;
-    List<Barricade> barricades = new(); // temp. 
+   public List<Barricade> barricades = new(); // temp. 
 
     public float MaxHP { get; private set; }
     public float CurrentHP { get; private set; }
@@ -28,24 +28,11 @@ public class ShipCore : MonoBehaviour, ILifeable
     {
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
-
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Transform currentTransf = transform.GetChild(i);
-            if (currentTransf.gameObject.activeInHierarchy)
-            {
-                barricades.Add(currentTransf.GetComponent<Barricade>());
-            }
-        }
-
         InitActiveBarricades(); 
     }
 
     private void InitActiveBarricades()
     {
-        barricades.Clear();
-        GetComponentsInChildren(barricades);
-        
         foreach (var item in barricades)
         {
             item.OnGameStart(); 

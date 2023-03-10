@@ -13,17 +13,20 @@ public class GameEventTimelineReader : MonoBehaviour
     private static Dictionary<Type, List<Action<GameEvent>>> allGameEventSetters =
         new Dictionary<Type, List<Action<GameEvent>>>();
     public event Action<GameEvent> gameEventCreatedCallback;
-
+    public event Action onGameStartCallback;
+    public event Action onGameOverCallback;
     private bool isActive = false;
     
     private void Start()
     {
         GameManager.Instance.SetGameEventTimelineReader(this);
+          
     }
 
     public void OnGameOver()
     {
         isActive = false; 
+        onGameOverCallback?.Invoke();
     }
     
     public void OnGameStart()
@@ -31,6 +34,7 @@ public class GameEventTimelineReader : MonoBehaviour
         isActive = true;
         timer = 0;
         timeCodeIndex = 0;
+        onGameStartCallback?.Invoke();
     }
 
     private void Update()

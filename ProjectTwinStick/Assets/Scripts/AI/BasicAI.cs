@@ -34,7 +34,12 @@ public class BasicAI : MonoBehaviour, ILifeable
     private Vector3 jumpPoint; 
     private bool hasJumped; // change to state machines if needed
 
-    private Vector3 moveDir; 
+    private Vector3 moveDir;
+
+    private void Start()
+    {
+        GameManager.Instance.OnGameOverCallBack += Die;
+    }
 
     public void Init()
     {

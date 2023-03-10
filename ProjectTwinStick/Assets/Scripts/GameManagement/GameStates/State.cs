@@ -40,7 +40,7 @@ namespace Game.Systems.GlobalFramework.States
 
     // Main Menu, Lobby, Game, End Game, Credits
     // besoin d'un state Tutorial ?
-    // -> plutÙt on StateContext tutoriel 
+    // -> plut√¥t on StateContext tutoriel 
     /// <summary>
     /// States are activated via the StateContext.
     /// They should only be known by the StateContext class.

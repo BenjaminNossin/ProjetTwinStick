@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,6 +34,7 @@ namespace Game.Systems.GlobalFramework
 
         public static List<Vector3> spawnPoints = new();
         private int spawnPointIndex;
+        public event Action OnGameOverCallBack;
         #endregion
 
         // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
@@ -151,10 +153,10 @@ namespace Game.Systems.GlobalFramework
         {
             SetObjectActive(ShipCoreObj, false);
             SetObjectActive(gameOverObj, true);
-
+           
             _gameEventTimelineReader.OnGameOver();
             waveManager.OnGameOver();
-
+            OnGameOverCallBack?.Invoke();
             currentContext.TransitionTo(new GameOverState());
         }
 

@@ -9,9 +9,23 @@ public class GameEventUpdatableManager : MonoBehaviour
 
     [SerializeField] private GameEventTimelineReader _timelineReader;
 
+    private bool isActive;
     private void Start()
     {
         _timelineReader.gameEventCreatedCallback += AddGameEventUpdatable;
+        _timelineReader.onGameStartCallback += OnGameStart;
+        _timelineReader.onGameOverCallback += OnGameOver;
+    }
+
+    void OnGameStart()
+    {
+        currentGameEventUpdatables.Clear();
+        isActive = true;
+    }
+
+    void OnGameOver()
+    {
+        isActive = false; 
     }
     
     public void AddGameEventUpdatable(GameEvent gameEvent)
@@ -25,6 +39,7 @@ public class GameEventUpdatableManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isActive) return;
         for (int i = 0; i < currentGameEventUpdatables.Count; i++)
         {
             currentGameEventUpdatables[i].OnUpdate();

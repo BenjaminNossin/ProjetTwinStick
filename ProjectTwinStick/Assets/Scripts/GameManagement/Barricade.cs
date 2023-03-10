@@ -30,14 +30,7 @@ public class Barricade : MonoBehaviour, ILifeable
     {
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
-        for(int i = 0; i < RepairedCollision.Count; i++)
-        {
-            RepairedCollision[i].SetActive(true);
-        }
-        for(int i = 0; i < DestroyedCollision.Count; i++)
-        {
-            DestroyedCollision[i].SetActive(false);
-        }
+        RepairSelf();
     }
 
     private void DestroySelf()

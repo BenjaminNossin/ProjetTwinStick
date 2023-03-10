@@ -15,15 +15,31 @@ public class GameEventTargetAreaPlacer : MonoBehaviour
 
     [SerializeField] private Area[] _suffledAreas;
 
+    private bool isActive;
     private void Start()
     {
         _timelineReader.gameEventCreatedCallback += PlaceEvent;
+        _timelineReader.onGameStartCallback += OnGameStart;
+        _timelineReader.onGameOverCallback += OnGameOver;
+    }
+
+    void OnGameStart()
+    {
+        _currentEventInAreas.Clear();
+        _lastEventInAreas.Clear();
         for (int i = 0; i < 4; i++)
         {
             _currentEventInAreas.Add((Area)i, new List<GameEvent>());
             _lastEventInAreas.Add((Area)i, null);
         }
+        isActive = true;
     }
+
+    void OnGameOver()
+    {
+        isActive = false; 
+    }
+    
 
     private void PlaceEvent(GameEvent gameEvent)
     {
