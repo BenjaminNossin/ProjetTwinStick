@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   IsRememberEvent: 1
   SwarmWaves:
-  - timeBeforeLaunchWave: 0
-    enemyCount: 0
+  - timeBeforeLaunchWave: 2
+    enemyCount: 3
