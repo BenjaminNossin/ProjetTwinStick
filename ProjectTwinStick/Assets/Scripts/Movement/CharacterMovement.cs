@@ -2,50 +2,61 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
-{ 
-    //TODO : move movement stats to dedicated stat system
-    [SerializeField] float speed;
-    [SerializeField] float acceleration;
-    [SerializeField, Range(0.0001f,1f)] float InputThreshold = 0.1f;
+{
+    [SerializeField] private PlayerStats _stats;
+    [SerializeField] GameplayTag MovementBlocker;
+    [SerializeField] GameplayTag AimSlower;
 
     private CharacterController _characterController;
-
-    private Vector2 CurrentMovementInputs = Vector2.zero;
+    private GameplayTagContainer _tagContainer;
     private Vector3 CurrentVelocity;
-    private float CurrentAcceleration = 0f;
 
     private void Awake()
     {
+        Debug.Log("Character awake");
         _characterController = GetComponent<CharacterController>();
+        _tagContainer = GetComponent<GameplayTagContainer>();
     }
 
     private void Update()
     {
+        if (_tagContainer.HasTag(MovementBlocker))
+        {
+            return;
+        }
+
         UpdateVelocity();
-        _characterController.Move(CurrentVelocity);
+        _characterController.Move(CurrentVelocity * Time.deltaTime);
     }
 
     private void UpdateVelocity()
     {
-        if (CurrentMovementInputs.magnitude < InputThreshold)
-        {
-            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, acceleration * Time.deltaTime);
-        }
-        else
-        {
-            CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, acceleration * Time.deltaTime);
-        }
-
-        CurrentVelocity = new Vector3(CurrentMovementInputs.x,0, CurrentMovementInputs.y) * (speed * CurrentAcceleration);
+        //CurrentVelocity.y = -1;
     }
 
-    public void UpdateMovementInputs(Vector2 NewInputs)
+    public void TeleportPlayer(Vector3 newPosition)
     {
-        CurrentMovementInputs = NewInputs;
+        Debug.Log("Character teleport");
+        _characterController.transform.position = newPosition;
     }
     
-    
+    public void UpdateRotation(Vector3 direction)
+    {
+        if (_tagContainer.HasTag(AimSlower))
+        {
+            Vector3 forward = transform.forward;
+            forward = Vector3.RotateTowards(forward, direction, _stats.RestrictedAimSpeed * Time.deltaTime, 1f);
+            transform.forward = forward;
+        }
+        else transform.forward = direction;
+    }
+
+    public void SetVelocity(Vector3 velocity)
+    {
+        CurrentVelocity = velocity;
+    }
 }

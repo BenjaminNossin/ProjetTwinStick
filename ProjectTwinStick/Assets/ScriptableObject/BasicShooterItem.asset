@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28ee015513d6914e93e89edb170afd5, type: 3}
+  m_Name: BasicShooterItem
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 496780730554963546, guid: 34fca8eb2b4c79f4888aaada68492796, type: 3}
+  _shooterUpgrades:
+  - FrequencyBetweenBullet: 0.8
+    DamageBullet: 0.75
+    MinDispersionDegres: 0
+    MinDispersionRadian: 0
+    MaxDispersionRadian: 0
+    MaxDispersionDegres: 0
+    Speed: 12
+  bulletPrefab: {fileID: 8399040886260937820, guid: 86fb32fd4bbe47843b3208ae72fc95c1, type: 3}
+  StartCount: 50
