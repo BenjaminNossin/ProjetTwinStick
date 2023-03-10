@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: ItemThrowData
   m_EditorClassIdentifier: 
   GroundedHeight: 1
+  ThrowChargeTime: 1
+  MinThrowStrength: 2
+  MaxThrowStrength: 10
   ThrowSpeed: 12
   ThrowHeight: 6
   ThrowCurve:
@@ -49,7 +52,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   BounceSpeed: 8
-  BounceDistance: 4
+  BounceMinDistance: 1
+  BounceMaxDistance: 4
   BounceHeight: 2
   BounceCurve:
     serializedVersion: 2

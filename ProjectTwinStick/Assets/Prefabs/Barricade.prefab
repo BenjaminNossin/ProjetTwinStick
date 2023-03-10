@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2065720003328201414}
   - component: {fileID: 8368026913232525160}
   m_Layer: 0
+  - component: {fileID: 6832616631866014234}
   m_Name: Barricade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,4 +128,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e64192d6ffff13478f62b0e8d456b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 1
   maxHP: 1
