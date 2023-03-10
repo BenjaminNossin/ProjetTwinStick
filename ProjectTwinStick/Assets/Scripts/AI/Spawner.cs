@@ -19,7 +19,7 @@ namespace Game.Systems.AI
 
         public void Initialize()
         {
-            Invoke(nameof(Spawn), UnityEngine.Random.Range(randomMin,randomMax));
+            Invoke(nameof(Spawn), firstSpawnDelay);
             
         }
 
