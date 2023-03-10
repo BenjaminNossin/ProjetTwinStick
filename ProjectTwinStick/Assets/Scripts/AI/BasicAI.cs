@@ -64,12 +64,23 @@ public class BasicAI : MonoBehaviour, ILifeable
     }
 
     private void OnTriggerEnter(Collider other)
-    {     
-        if (other.TryGetComponent<ILifeable>(out var lifeable))
+    {   
+        ILifeable lifeable = other.GetComponent<ILifeable>();
+        if (lifeable != null)
         {
             Debug.Log($"damaging target {other.gameObject.name}"); 
             DamageTarget(lifeable); 
             Die();
+        }
+        else
+        {
+            lifeable = other.GetComponentInParent<ILifeable>();
+            if (lifeable != null)
+            {
+                Debug.Log($"damaging target {other.gameObject.name}"); 
+                DamageTarget(lifeable); 
+                Die();
+            }
         }
     }
 

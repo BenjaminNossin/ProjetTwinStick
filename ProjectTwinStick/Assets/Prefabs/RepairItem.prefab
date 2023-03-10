@@ -167,4 +167,4 @@ MonoBehaviour:
   ItemSO: {fileID: 11400000, guid: 3906af91eecd1f649be55e943d6d0203, type: 2}
   RepairableLayer:
     serializedVersion: 2
-    m_Bits: 262144
+    m_Bits: 524288

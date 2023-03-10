@@ -28,6 +28,14 @@ public class Bullet : MonoBehaviour
         {
             lifeable.DecreaseCurrentHp(_damage);
         }
+        else
+        {
+            lifeable = other.GetComponentInParent<ILifeable>();
+            if (lifeable != null)
+            {
+                lifeable.DecreaseCurrentHp(_damage);
+            }
+        }
         if (other.CompareTag("Wall") || other.CompareTag("Enemy"))
         {
             _pool.AddToPool(this);
