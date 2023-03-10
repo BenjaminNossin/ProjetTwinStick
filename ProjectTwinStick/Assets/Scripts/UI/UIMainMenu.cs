@@ -5,7 +5,7 @@ public class UIMainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("Benji_CoreScene", LoadSceneMode.Single); 
+        SceneManager.LoadSceneAsync("Arena", LoadSceneMode.Single); 
 
     }
 
