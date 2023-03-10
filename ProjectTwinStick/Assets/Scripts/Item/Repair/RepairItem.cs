@@ -29,7 +29,6 @@ public class RepairItem : Item
             Barricade barricade = hit.rigidbody.GetComponent<Barricade>();
             if (barricade != null)
             {
-                Debug.Log("Repairing");
                 barricade.IncreaseCurrentHp(currentUpgrade.HealRate * Time.deltaTime);
             }
         }

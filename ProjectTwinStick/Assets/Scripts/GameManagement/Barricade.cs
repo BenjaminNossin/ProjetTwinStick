@@ -26,11 +26,6 @@ public class Barricade : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
-    private void OnEnable()
-    {
-        
-    }
-
     public void OnGameStart()
     {
         SetMaxHp(maxHP);
@@ -80,16 +75,22 @@ public class Barricade : MonoBehaviour, ILifeable
     public void SetMaxHp(float value)
     {
         MaxHP = value;
+        CurrentHP = Mathf.Clamp(CurrentHP, 0, MaxHP);
+        Debug.Log($"Barricade {gameObject.name} max hp: {value}");
     }
 
     public void IncreaseMaxHp(float amount)
     {
         MaxHP += amount;
+        CurrentHP = Mathf.Clamp(CurrentHP, 0, MaxHP);
+        Debug.Log($"Barricade {gameObject.name} max hp: {MaxHP}");
     }
 
     public void DecreaseMaxHp(float amount)
     {
         MaxHP -= amount;
+        CurrentHP = Mathf.Clamp(CurrentHP, 0, MaxHP);
+        Debug.Log($"Barricade {gameObject.name} max hp: {MaxHP}");
     }
 
     public void SetCurrentHp(float value)
@@ -109,7 +110,7 @@ public class Barricade : MonoBehaviour, ILifeable
                 CurrentHP = MaxHP;
                 RepairSelf();
             }
-            Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
+            Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP} max hp: {MaxHP}");
         }
     }
 
