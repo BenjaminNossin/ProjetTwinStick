@@ -23,13 +23,13 @@ public class BasicAI : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
-    private Vector3 shipCorePos;
+    private Vector3 targetPos;
     private readonly float levelRadius = 10f;
     private readonly float xzBufferZone = 2f;
     private readonly float jumpHeight = 1f;
 
     private Transform cachedTransf; 
-    private Vector3 shipCorePosFlat, selfPosFlat;
+    private Vector3 targetPostFlat, selfPosFlat;
 
     private Vector3 jumpPoint; 
     private bool hasJumped; // change to state machines if needed
@@ -41,14 +41,14 @@ public class BasicAI : MonoBehaviour, ILifeable
         GameManager.Instance.OnGameOverCallBack += Die;
     }
 
-    public void Init()
+    public void Init(Vector3 assignedBarricadePos)
     {
         cachedTransf = transform; 
 
-        shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
-        shipCorePosFlat = new Vector3(shipCorePos.x, 0f, shipCorePos.z); 
+        targetPos = assignedBarricadePos;
+        targetPostFlat = new Vector3(targetPos.x, 0f, targetPos.z); 
 
-        normalizedDirection = new Vector3(shipCorePos.x - transform.position.x, 0, shipCorePos.z - transform.position.z).normalized;
+        normalizedDirection = new Vector3(targetPos.x - transform.position.x, 0, targetPos.z - transform.position.z).normalized;
         
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);  
@@ -61,7 +61,7 @@ public class BasicAI : MonoBehaviour, ILifeable
         if (!hasJumped)
         {
             selfPosFlat = new Vector3(cachedTransf.position.x, 0f, cachedTransf.position.z);
-            if (Vector3.Distance(selfPosFlat, shipCorePosFlat) <= levelRadius + xzBufferZone)
+            if (Vector3.Distance(selfPosFlat, targetPostFlat) <= levelRadius + xzBufferZone)
             {
                 JumpToPoint();
             }

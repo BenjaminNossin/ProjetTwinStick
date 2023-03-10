@@ -45,6 +45,8 @@ public class SwarmSpawnerManager : MonoBehaviour
 
     public void GenerateEnemies(Area area, int enemyCount)
     {
+        return; 
+
         for (int i = 0; i < _swarmSpawnersAvailableByArea.Length; i++)
         {
             if (_swarmSpawnersAvailableByArea[i].Area == area)
@@ -58,7 +60,7 @@ public class SwarmSpawnerManager : MonoBehaviour
                         enemy._pool = enemyPoolManager.enemyPools[0];
                         enemy.transform.position =
                             _swarmSpawnersAvailableByArea[i].SwarmSpawners[randIndex].transform.position;
-                        enemy.Init();
+                        enemy.Init(Vector3.zero); // PLACEHOLDER
                         _swarmSpawnersAvailableByArea[i].SwarmSpawners.RemoveAt(randIndex);
                     }
                 }
