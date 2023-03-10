@@ -35,8 +35,13 @@ public class ItemTrajectoryPreview : MonoBehaviour
     {
         if (state != ItemState.Thrown)
         {
-            _targetInstance.SetActive(false);
+            CancelPreview();
         }
+    }
+
+    public void CancelPreview()
+    {
+        _targetInstance.SetActive(false);
     }
     
     public void UpdatePreview(Vector3 startPosition, Vector3 Direction, float chargeTime)

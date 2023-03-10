@@ -79,6 +79,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             Debug.Log("cancel throw");
             IsPreparingThrow = false;
             currentChargeTime = 0f;
+            currentPreview?.CancelPreview();
             _tagContainer.RemoveTag(MovementBlocker);
             _tagContainer.RemoveTag(PickupBlocker);
             _tagContainer.RemoveTag(ShootBlocker);
