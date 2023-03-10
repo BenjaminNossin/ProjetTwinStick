@@ -25,9 +25,11 @@ public class RepairItem : Item
         RaycastHit hit;
         if (Physics.Raycast(startPosition, new Vector3(direction.x,0,direction.y), out hit, currentUpgrade.Range, RepairableLayer, QueryTriggerInteraction.Collide))
         {
-            Barricade barricade = hit.collider.GetComponent<Barricade>();
+            Debug.Log("Hit");
+            Barricade barricade = hit.rigidbody.GetComponent<Barricade>();
             if (barricade != null)
             {
+                Debug.Log("Repairing");
                 barricade.IncreaseCurrentHp(currentUpgrade.HealRate * Time.deltaTime);
             }
         }
