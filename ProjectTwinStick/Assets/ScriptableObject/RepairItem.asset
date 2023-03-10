@@ -15,8 +15,8 @@ MonoBehaviour:
   itemPrefab: {fileID: 0}
   _upgrades:
   - Range: 3
-    HealRate: 0.5
-  - Range: 6
+    HealRate: 0.8
+  - Range: 3
     HealRate: 1
-  - Range: 9
-    HealRate: 1.5
+  - Range: 3
+    HealRate: 2.5
