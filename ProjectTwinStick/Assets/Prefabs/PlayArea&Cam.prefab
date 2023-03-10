@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52005613}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.25, y: 20.5, z: -23}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 21.5, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 827048302}
   m_Father: {fileID: 6894054966329929850}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &52005614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2292
+  m_VersionIndex: 2319
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1509,6 +1509,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &2558858098889454737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1773,7 +1784,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2304
+  m_VersionIndex: 2331
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2209,6 +2220,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &5265635780513558287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2508,7 +2530,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2316
+  m_VersionIndex: 2343
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2828,7 +2850,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2307
+  m_VersionIndex: 2334
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3642,6 +3664,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &387036728261089676
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3993,6 +4026,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &3054776881258597826
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4257,7 +4301,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2298
+  m_VersionIndex: 2325
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4606,7 +4650,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2295
+  m_VersionIndex: 2322
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4926,7 +4970,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2325
+  m_VersionIndex: 2352
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5516,7 +5560,7 @@ MeshCollider:
   m_GameObject: {fileID: 2907567148071711357}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -5740,7 +5784,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2319
+  m_VersionIndex: 2346
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6205,6 +6249,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &4414849569870135930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6664,7 +6719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4280308058173416513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -11.250001, y: 0, z: 9.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7052,6 +7107,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &4606556777273818067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7671,7 +7737,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2301
+  m_VersionIndex: 2328
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8660,7 +8726,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2180
+  m_VersionIndex: 2207
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9329,7 +9395,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2310
+  m_VersionIndex: 2337
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -10492,6 +10558,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &3061412797121307566
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10872,6 +10949,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &5602844870230487492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11252,6 +11340,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &2275932438474142419
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11952,6 +12051,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &1390327733796534688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12303,6 +12413,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &1162419272098290262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13337,7 +13458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054966319244006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 1.25, z: 1.5}
+  m_LocalPosition: {x: 0.25, y: 0.5, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13556,7 +13677,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2972
+  m_VersionIndex: 2999
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -13716,7 +13837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054966453871988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.25, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13818,7 +13939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054966561305542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.25, y: -2, z: -10}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16182,7 +16303,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2326
+  m_VersionIndex: 2353
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -16324,7 +16445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054966864400086}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 1.25, z: -10}
+  m_LocalPosition: {x: 0.25, y: 0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16543,7 +16664,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2990
+  m_VersionIndex: 3017
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -16667,7 +16788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054967005940005}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -10, y: 1.25, z: -0.25}
+  m_LocalPosition: {x: -10, y: 0.5, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16886,7 +17007,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2978
+  m_VersionIndex: 3005
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -17005,7 +17126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054967053722680}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.25, y: -2, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17045,7 +17166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054967162481843}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 1.5, y: 1.25, z: -0.25}
+  m_LocalPosition: {x: 1.5, y: 0.5, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17264,7 +17385,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2981
+  m_VersionIndex: 3008
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -17723,6 +17844,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &2313161066574227741
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17768,7 +17900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054967634819964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21, y: -2, z: 9.5}
+  m_LocalPosition: {x: -28.375, y: -1, z: 17.625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17930,7 +18062,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2298
+  m_VersionIndex: 2325
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -18312,7 +18444,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2313
+  m_VersionIndex: 2340
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -19126,6 +19258,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &8958869057922858118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19390,7 +19533,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2322
+  m_VersionIndex: 2349
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -20088,7 +20231,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2292
+  m_VersionIndex: 2319
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -20524,6 +20667,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &6907263428905924717
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20788,7 +20942,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2331
+  m_VersionIndex: 2358
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -21137,7 +21291,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2328
+  m_VersionIndex: 2355
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -21922,6 +22076,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &2224601793478779872
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24078,6 +24243,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1
+  OnBarricadeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarricadeRepaired:
+    m_PersistentCalls:
+      m_Calls: []
+  RepairedCollision: []
+  DestroyedCollision: []
 --- !u!54 &3187860717862525347
 Rigidbody:
   m_ObjectHideFlags: 0
