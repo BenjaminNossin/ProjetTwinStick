@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: TimelineTest
   m_EditorClassIdentifier: 
   _gameEventTimeCodes:
-  - timeCode: 5
+  - timeCode: 2
     gameEventDatas:
     - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
     - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-  - timeCode: 8
+  - timeCode: 5
     gameEventDatas:
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
