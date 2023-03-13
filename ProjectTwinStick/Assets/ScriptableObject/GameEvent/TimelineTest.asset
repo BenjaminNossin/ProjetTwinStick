@@ -28,31 +28,38 @@ MonoBehaviour:
   - timeCode: 30
     gameEventDatas:
     - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
+  - timeCode: 48
+    gameEventDatas:
+    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
+    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
   - timeCode: 55
     gameEventDatas:
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 65
+  - timeCode: 70
     gameEventDatas:
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 60
-    gameEventDatas:
-    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-  - timeCode: 75
-    gameEventDatas:
-    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
-    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
   - timeCode: 85
     gameEventDatas:
-    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 92
-    gameEventDatas:
-    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 99
+    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
+  - timeCode: 98
     gameEventDatas:
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
   - timeCode: 110
     gameEventDatas:
-    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
+    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
+    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
   - timeCode: 120
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
+  - timeCode: 135
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
+  - timeCode: 150
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
+  - timeCode: 165
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
+  - timeCode: 185
     gameEventDatas:
     - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
