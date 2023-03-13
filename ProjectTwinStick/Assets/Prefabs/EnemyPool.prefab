@@ -47,3 +47,6 @@ MonoBehaviour:
   enemyPoolsData:
   - startCount: 5
     prefab: {fileID: -8117669543617480959, guid: 6fcb39301cac4f34d85a7221d3c1ef9f, type: 3}
+  meteorPoolsData:
+  - startCount: 5
+    prefab: {fileID: 1881391308416789680, guid: 0ce7214586c2c37418069eb6a78dff09, type: 3}
