@@ -6,8 +6,14 @@ using UnityEngine;
 
 public class GameplayTagContainer : MonoBehaviour
 {
+    [SerializeField] private List<GameplayTag> StartingTags;
     private List<GameplayTag> tags = new List<GameplayTag>();
-    
+
+    private void Awake()
+    {
+        tags.AddRange(StartingTags);
+    }
+
     public event Action OnTagListChanged;
     
     public void AddTag(GameplayTag tag)
