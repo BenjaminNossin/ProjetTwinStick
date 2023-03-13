@@ -67,8 +67,8 @@ public class MeteorProjectileBehaviour : MonoBehaviour
 
     private void Move()
     {
-        Debug.DrawRay(cachedTransf.position, normalizedDirection * 3f, Color.blue, Time.deltaTime);
-        cachedTransf.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.Self);
+        Debug.DrawRay(transform.position, normalizedDirection * 3f, Color.blue, Time.deltaTime);
+        transform.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.Self);
     }
 
     private void SetTargetPosition(Vector3 posToReach)

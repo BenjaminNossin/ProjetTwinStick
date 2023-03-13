@@ -86,7 +86,7 @@ public class MeteorSpawnerManager : MonoBehaviour
                         meteor.transform.position =
                             _meteorSpawnersAvailableByArea[i].MeteorSpawners[meteorRandIndex].transform.position;
 
-                        Transform[] allowedTargetsTransf = barricadeAreasData[area];
+                        //Transform[] allowedTargetsTransf = barricadeAreasData[area];
                         //meteor.Init(allowedTargetsTransf[targetRandIndex].position); 
                         meteor.Init(GameManager.Instance.ShipCoreObj.transform.position); 
                         _meteorSpawnersAvailableByArea[i].MeteorSpawners.RemoveAt(meteorRandIndex);
