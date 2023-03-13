@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,10 +6,14 @@ using UnityEngine;
 
 public class ShieldItem : Item
 {
-    private ShieldItemSO _shieldItemSO;
+    
+    [SerializeField] ShieldItemSO _shieldItemSO;
+    [SerializeField] ShieldInstance _shieldInstance;
     private ShieldItemUpgrade _currentUpgrade;
-    [SerializeField]
-    private ShieldInstance _shieldInstance;
+    private ShieldCenter _shieldCenter;
+
+    private Vector3 lastStartPos;
+    private Vector2 lastDirection;
     
     public override ItemSO GetSO()
     {
@@ -18,6 +23,14 @@ public class ShieldItem : Item
     protected override void Start()
     {
         OnItemStateChange += OnItemStateChanged;
+        SetUpgrade(_shieldItemSO.GetUpgrades()[0]);
+        _shieldCenter = FindObjectOfType<ShieldCenter>();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        UpdateShieldPos();
     }
 
     private void OnItemStateChanged(ItemState state)
@@ -39,17 +52,69 @@ public class ShieldItem : Item
         _shieldInstance.startUsing();
     }
 
-    public override void Shoot(Vector3 startPosition, Vector2 direction)
+    //TODO : use center gameobject for center and radius
+    private Vector3 GetIntersectionPoint(Vector3 startPosition, Vector2 direction)
     {
-        //TODO : Raycast to edge of map instead
-        direction.Normalize();
-        _shieldInstance.transform.position = startPosition + new Vector3(direction.x, 0, direction.y) * 5f;
-        _shieldInstance.transform.forward = new Vector3(direction.x, 0, direction.y);
+        Vector2 circleCenter = new Vector2(_shieldCenter.transform.position.x, _shieldCenter.transform.position.z);
+        float circleRadius = _shieldCenter.Radius;
+        Vector2 rayOrigin = new Vector2(startPosition.x, startPosition.z);
+        Vector2 rayDirection = direction.normalized;
+        
+        Vector2 U = circleCenter - rayOrigin;
+        Vector2 U1 = Vector2.Dot(U,rayDirection) * rayDirection;
+        
+        Vector2 U2 = U - U1;
+
+        float d = U2.magnitude;
+        
+        float m = Mathf.Sqrt(circleRadius * circleRadius - U2.magnitude * U2.magnitude);
+        
+        Vector2 P1 = rayOrigin + U1 + m * rayDirection;
+        Vector2 P2 = rayOrigin + U1 - m * rayDirection;
+        
+        return new Vector3(P1.x, 0, P1.y);
     }
 
+    public override void Shoot(Vector3 startPosition, Vector2 direction)
+    {
+        lastDirection = direction;
+    }
+
+    private void UpdateShieldPos()
+    {
+        lastStartPos = transform.position;
+        
+        Vector3 intersectionPoint = GetIntersectionPoint(lastStartPos, lastDirection);
+        intersectionPoint.y = _shieldItemSO.ShieldHeight;
+        
+        //TODO : Raycast to edge of map instead
+        lastDirection.Normalize();
+        Vector3 mapCenter = _shieldCenter.transform.position;
+        mapCenter.y = _shieldItemSO.ShieldHeight;
+        Vector3 directionToCenter = mapCenter - intersectionPoint;
+        directionToCenter.Normalize();
+        
+        _shieldInstance.transform.position = intersectionPoint;
+        _shieldInstance.transform.rotation = Quaternion.LookRotation(directionToCenter, Vector3.up);
+    }
+
+    
     public override void SetUpgrade(ItemUpgrade newUpgrade)
     {
+        Debug.Log("set upgrade");
         _currentUpgrade = (ShieldItemUpgrade) newUpgrade;
         _shieldInstance.ChangeUpgrade(_currentUpgrade);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_shieldCenter == null)
+        {
+            _shieldCenter = FindObjectOfType<ShieldCenter>();
+        };
+        Gizmos.color = Color.green;
+        Vector3 intersectionPoint = GetIntersectionPoint(lastStartPos, lastDirection);
+        intersectionPoint.y = lastStartPos.y;
+        Gizmos.DrawLine(lastStartPos, intersectionPoint);
     }
 }

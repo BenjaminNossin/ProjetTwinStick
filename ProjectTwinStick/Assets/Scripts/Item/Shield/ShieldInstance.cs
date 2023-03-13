@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShieldInstance : MonoBehaviour, ILifeable
 {
@@ -11,6 +12,11 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 
     private bool isDisabled = false;
     private bool isInUse = false;
+
+    private bool instanceActive = true;
+
+    public UnityEvent OnShieldDisabled;
+    public UnityEvent OnShieldEnabled;
     
     // Start is called before the first frame update
     void Start()
@@ -39,7 +45,6 @@ public class ShieldInstance : MonoBehaviour, ILifeable
             if(DisabledCooldown <= 0)
             {
                 isDisabled = false;
-                shieldCollider.SetActive(true);
                 RefreshShieldState();
             }
         }
@@ -47,21 +52,34 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 
     private void RefreshShieldState()
     {
-        if (!isDisabled && isInUse)
+        Debug.Log("instance active : " + instanceActive + " is disabled : " + isDisabled + " is in use : " + isInUse + " ");
+        if (instanceActive)
         {
-            shieldCollider.SetActive(true);
+            if (isDisabled || !isInUse)
+            {
+                shieldCollider.SetActive(false);
+                OnShieldDisabled?.Invoke();
+                instanceActive = false;
+                Debug.Log("Shield disabled");
+            }
         }
         else
         {
-            shieldCollider.SetActive(false);
+            if(!isDisabled && isInUse)
+            {
+                shieldCollider.SetActive(true);
+                OnShieldEnabled?.Invoke();
+                instanceActive = true;
+                Debug.Log("Shield enabled");
+            }
         }
     }
 
     private void DisableShield()
     {
         isDisabled = true;
-        shieldCollider.SetActive(false);
         DisabledCooldown = _upgrade.shieldCooldown;
+        RefreshShieldState();
     }
 
     public void ChangeUpgrade(ShieldItemUpgrade upgrade)
