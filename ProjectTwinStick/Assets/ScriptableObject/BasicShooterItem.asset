@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 496780730554963546, guid: 34fca8eb2b4c79f4888aaada68492796, type: 3}
   _shooterUpgrades:
-  - FrequencyBetweenBullet: 0.8
-    DamageBullet: 0.75
+  - FrequencyBetweenBullet: 0.7
+    DamageBullet: 1
     MinDispersionDegres: 0
     MinDispersionRadian: 0
     MaxDispersionRadian: 0

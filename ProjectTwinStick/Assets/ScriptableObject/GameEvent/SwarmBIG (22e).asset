@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1ff98daaa229148a022df5c06b759d, type: 3}
   m_Name: SwarmBIG (22e)
   m_EditorClassIdentifier: 
+  callbacks: []
   AreaTargetCount: 1
   TagEvent: {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   CurrentEventInAreaBlockerTag:
@@ -22,9 +23,9 @@ MonoBehaviour:
   SwarmWaves:
   - timeBeforeLaunchWave: 2
     enemyCount: 4
-  - timeBeforeLaunchWave: 5
+  - timeBeforeLaunchWave: 4
     enemyCount: 5
-  - timeBeforeLaunchWave: 7
+  - timeBeforeLaunchWave: 6
     enemyCount: 6
-  - timeBeforeLaunchWave: 10
+  - timeBeforeLaunchWave: 8
     enemyCount: 6
