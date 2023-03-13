@@ -7,6 +7,7 @@ using UnityEngine;
 public class MeteorProjectileBehaviour : MonoBehaviour
 {
     [SerializeField, Range(1, 20)] float unitsPerSeconds = 10;
+    [SerializeField, Range(1, 20)] float damage = 20f;
 
     public Pool<MeteorProjectileBehaviour> _pool;
     private Transform cachedTransf;
@@ -31,6 +32,33 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     void Update()
     {
         Move();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // if player -> not lifeable. Use SlowManager
+        // for now, touching an enemy kills it
+        if (other.TryGetComponent<ILifeable>(out var lifeable))
+        {
+            //Debug.Log($"damaging target {other.gameObject.name}"); 
+            DamageTarget(lifeable);
+            Die();
+        }
+        else
+        {
+            lifeable = other.GetComponentInParent<ILifeable>();
+            if (lifeable != null)
+            {
+                //Debug.Log($"damaging target {other.gameObject.name}"); 
+                DamageTarget(lifeable);
+                Die();
+            }
+        }
+    }
+
+    private void DamageTarget(ILifeable lifeable)
+    {
+        lifeable.DecreaseCurrentHp(damage);
     }
 
     private void Move()
