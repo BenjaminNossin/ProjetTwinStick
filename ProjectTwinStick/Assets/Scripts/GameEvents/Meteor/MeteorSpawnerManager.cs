@@ -1,10 +1,17 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-using Game.Systems.GlobalFramework; 
+using Game.Systems.GlobalFramework;
+
+// TODO: extract the BarricadeAreaData-related stuff in the SwarmSpawner system
+
+[Serializable]
+public class BarricadeAreaData
+{
+    public Area Area;
+    public Transform[] barricadeTransforms = new Transform[3];  
+}
 
 public class MeteorSpawnerManager : MonoBehaviour
 {
@@ -12,9 +19,15 @@ public class MeteorSpawnerManager : MonoBehaviour
     [SerializeField] private MeteorSpawnersArea[] _allMeteorSpawnersByArea = new MeteorSpawnersArea[] { };
     [SerializeField] private MeteorSpawnersArea[] _meteorSpawnersAvailableByArea = new MeteorSpawnersArea[4];
 
+    [SerializeField, Range(1, 4)] private int barricadesPerArea = 3; 
+    [SerializeField] private BarricadeAreaData[] barricadeArea = new BarricadeAreaData[4]; 
+    private Dictionary<Area, Transform[]> barricadeAreasData = new();
+
     private void Start()
     {
         GameEventTimelineReader.AddGameEventSetter(typeof(MeteorEvent), SetMeteorEvent);
+
+        Init(); 
     }
 
     private void OnValidate()
@@ -27,6 +40,17 @@ public class MeteorSpawnerManager : MonoBehaviour
             _meteorSpawnersAvailableByArea[i].MeteorSpawners =
                 new List<MeteorSpawner>(_allMeteorSpawnersByArea[i].MeteorSpawners);
         }
+    }
+
+    private void Init()
+    {
+        for (int i = 0; i < barricadeArea.Length; i++)
+        {
+            if (!barricadeAreasData.ContainsKey(barricadeArea[i].Area))
+            {
+                barricadeAreasData.Add(barricadeArea[i].Area, barricadeArea[i].barricadeTransforms);
+            }
+        } 
     }
 
     public void ResetSpawnerArea(Area area)
@@ -54,13 +78,18 @@ public class MeteorSpawnerManager : MonoBehaviour
                 {
                     if (_meteorSpawnersAvailableByArea[i].MeteorSpawners.Count != 0)
                     {
-                        int randIndex = Random.Range(0, _meteorSpawnersAvailableByArea[i].MeteorSpawners.Count);
+                        int meteorRandIndex = Random.Range(0, _meteorSpawnersAvailableByArea[i].MeteorSpawners.Count);
+                        int targetRandIndex = Random.Range(0, barricadesPerArea+1); 
+
                         var meteor = enemyPoolManager.meteorPools[0].GetFromPool();
                         meteor._pool = enemyPoolManager.meteorPools[0];
                         meteor.transform.position =
-                            _meteorSpawnersAvailableByArea[i].MeteorSpawners[randIndex].transform.position;
-                        meteor.Init(GameManager.Instance.ShipCoreObj.transform.position); // PLACEHOLDER
-                        _meteorSpawnersAvailableByArea[i].MeteorSpawners.RemoveAt(randIndex);
+                            _meteorSpawnersAvailableByArea[i].MeteorSpawners[meteorRandIndex].transform.position;
+
+                        Transform[] allowedTargetsTransf = barricadeAreasData[area];
+                        //meteor.Init(allowedTargetsTransf[targetRandIndex].position); 
+                        meteor.Init(GameManager.Instance.ShipCoreObj.transform.position); 
+                        _meteorSpawnersAvailableByArea[i].MeteorSpawners.RemoveAt(meteorRandIndex);
                     }
                 }
 

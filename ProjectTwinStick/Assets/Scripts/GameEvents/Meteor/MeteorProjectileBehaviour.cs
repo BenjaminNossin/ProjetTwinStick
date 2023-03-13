@@ -7,7 +7,7 @@ using UnityEngine;
 public class MeteorProjectileBehaviour : MonoBehaviour
 {
     [SerializeField, Range(1, 20)] float unitsPerSeconds = 10;
-    [SerializeField, Range(1, 20)] float damage = 20f;
+    [SerializeField, Range(1, 20)] float damage = 1f;
 
     public Pool<MeteorProjectileBehaviour> _pool;
     private Transform cachedTransf;
@@ -15,17 +15,22 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private Vector3 targetPos;
     private Vector3 normalizedDirection;
 
+    private List<Transform> possibleTargets = new();
+
+    private Vector3 selfPosFlat, shipCorePos; 
 
     private void Start()
     {
         GameManager.Instance.OnGameOverCallBack += Die;
+        shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
     }
 
-    public void Init(Vector3 assignedBarricadePos)
+    public void Init(Vector3 assignedTargetPos)
     {
         cachedTransf = transform;
 
-        SetTargetPosition(assignedBarricadePos);
+        SetTargetPosition(assignedTargetPos);
+        SetSelfPosFlat(shipCorePos.y*1.1f);
         SetNormalizedDirection();
     }
 
@@ -37,7 +42,6 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // if player -> not lifeable. Use SlowManager
-        // for now, touching an enemy kills it
         if (other.TryGetComponent<ILifeable>(out var lifeable))
         {
             //Debug.Log($"damaging target {other.gameObject.name}"); 
@@ -70,6 +74,12 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private void SetTargetPosition(Vector3 posToReach)
     {
         targetPos = posToReach;
+    }
+
+    private void SetSelfPosFlat(float flattenValue)
+    {
+        selfPosFlat = new Vector3(cachedTransf.position.x, flattenValue, cachedTransf.position.z);
+        cachedTransf.position = selfPosFlat;
     }
 
     private void SetNormalizedDirection()
