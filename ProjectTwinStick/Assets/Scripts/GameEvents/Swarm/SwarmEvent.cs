@@ -12,6 +12,7 @@ public class SwarmEvent : GameEventArea, IGameEventUpdatable
 
     public override void Raise()
     {
+        base.Raise();
         swarmSpawnerManager.ResetSpawnerArea(targetAreas[0]);
     }
 

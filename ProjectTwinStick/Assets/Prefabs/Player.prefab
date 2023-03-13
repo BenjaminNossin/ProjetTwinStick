@@ -98,17 +98,17 @@ MonoBehaviour:
   PickupBlocker: {fileID: 11400000, guid: 7b7fff8a624df744988fde0ad15aecda, type: 2}
   ShootBlocker: {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
   AimSlower: {fileID: 11400000, guid: 859eca6f1dd4c104493796d0aef4d77a, type: 2}
-  OnAimStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnThrow:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCancelThrow:
+  _releaseTrowEvent:
     m_PersistentCalls:
       m_Calls: []
   _inventory: {fileID: 6055432575011109203}
   _tagContainer: {fileID: 6717455313009145219}
+  _performEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _pancelEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3345932556697315796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +138,12 @@ MonoBehaviour:
   _tagContainer: {fileID: 6717455313009145219}
   ShootBlocker: {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
   _playerStats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
+  _performEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _pancelEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6055432575011109203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +191,12 @@ MonoBehaviour:
   characterMovement: {fileID: 1047708072171954935}
   stats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
   CurrentMovementInputs: {x: 0, y: 0}
+  _performEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _cancelEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6717455313009145219
 MonoBehaviour:
   m_ObjectHideFlags: 0

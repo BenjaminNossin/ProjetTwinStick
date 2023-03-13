@@ -6,5 +6,6 @@ using UnityEngine;
 public abstract class GameEventData : ScriptableObject
 {
    public abstract Type GetTypeEvent();
-   
+   public GameEventCallback[] callbacks;
+
 }

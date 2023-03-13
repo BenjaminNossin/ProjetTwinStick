@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class PlayerThrow : MonoBehaviour, IPlayerAction
 {
@@ -12,10 +13,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     [SerializeField] GameplayTag ShootBlocker;
     [SerializeField]  GameplayTag AimSlower;
 
-
-    public UnityEvent OnAimStart;
-    public UnityEvent OnThrow;
-    public UnityEvent OnCancelThrow;
+    [FormerlySerializedAs("ReleaseTrowEvent")] [FormerlySerializedAs("OnThrow")] public UnityEvent _releaseTrowEvent;
     
     public bool IsInAction { get; }
     
@@ -52,7 +50,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _tagContainer.AddTag(PickupBlocker);
             _tagContainer.AddTag(ShootBlocker);
             _tagContainer.AddTag(AimSlower);
-            OnAimStart?.Invoke();
+            _performEvent?.Invoke();
         }
     }
 
@@ -69,6 +67,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _tagContainer.RemoveTag(PickupBlocker);
             _tagContainer.RemoveTag(ShootBlocker);
             _tagContainer.RemoveTag(AimSlower);
+            _releaseTrowEvent?.Invoke();
         }
     }
 
@@ -76,6 +75,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     {
         if (IsPreparingThrow)
         {
+            CancelEvent?.Invoke();
             Debug.Log("cancel throw");
             IsPreparingThrow = false;
             currentChargeTime = 0f;
@@ -121,6 +121,13 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     {
         
     }
+    public UnityEvent PerformEvent { get; }
+    public UnityEvent CancelEvent { get; }
+
+    [SerializeField]
+    private UnityEvent _performEvent;
+    [SerializeField]
+    private UnityEvent _pancelEvent;
 
     public event Action PerformActionEvent;
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using HelperPSR.Pool;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerShoot : MonoBehaviour, IPlayerAction
 {
@@ -29,18 +30,32 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     {
         if(_tagContainer.HasTag(ShootBlocker))
         {
-            isInShoot = false;
+            CancelShoot();
             return;
         }
         if (inputs.magnitude > _playerStats.AimInputThreshold)
         {
             _inventory.CurrentItem.Shoot(transform.position, inputs);
+            if (!isInShoot)
+            {
+                PerformEvent?.Invoke();
+            }
             isInShoot = true;
         }
         else
         {
-            isInShoot = false;
+            CancelShoot();
         }
+    }
+
+    private void CancelShoot()
+    {
+        if (isInShoot)
+        {
+            CancelEvent?.Invoke();
+        }
+
+        isInShoot = false;
     }
 
     public void SetupAction(params object[] arguments)
@@ -55,5 +70,12 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     {
     }
 
-    public event Action PerformActionEvent;
+    public UnityEvent PerformEvent { get; }
+    public UnityEvent CancelEvent { get; }
+
+    [SerializeField]
+    private UnityEvent _performEvent;
+    [SerializeField]
+    private UnityEvent _pancelEvent;
+
 }
