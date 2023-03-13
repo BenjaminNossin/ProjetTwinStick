@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class ShieldInstance : MonoBehaviour, ILifeable
 {
-    [SerializeField] GameObject shieldCollider;
+    [SerializeField] BoxCollider shieldCollider;
     private ShieldItemUpgrade _upgrade;
     private float DisabledCooldown = 0f;
 
@@ -57,7 +57,7 @@ public class ShieldInstance : MonoBehaviour, ILifeable
         {
             if (isDisabled || !isInUse)
             {
-                shieldCollider.SetActive(false);
+                shieldCollider.gameObject.SetActive(false);
                 OnShieldDisabled?.Invoke();
                 instanceActive = false;
                 Debug.Log("Shield disabled");
@@ -67,7 +67,7 @@ public class ShieldInstance : MonoBehaviour, ILifeable
         {
             if(!isDisabled && isInUse)
             {
-                shieldCollider.SetActive(true);
+                shieldCollider.gameObject.SetActive(true);
                 OnShieldEnabled?.Invoke();
                 instanceActive = true;
                 Debug.Log("Shield enabled");
@@ -85,6 +85,7 @@ public class ShieldInstance : MonoBehaviour, ILifeable
     public void ChangeUpgrade(ShieldItemUpgrade upgrade)
     {
         _upgrade = upgrade;
+        shieldCollider.size = new Vector3(_upgrade.shieldWidth, shieldCollider.size.y, shieldCollider.size.z);
     }
 
     public float GetMaxHp()
