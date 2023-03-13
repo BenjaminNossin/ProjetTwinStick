@@ -8,6 +8,8 @@ public class EnemyPoolManager : MonoBehaviour
 {
     [SerializeField] private PoolData<BasicAI>[] enemyPoolsData;
     public Pool<BasicAI>[] enemyPools;
+    
+    
 
     private void Start()
     {

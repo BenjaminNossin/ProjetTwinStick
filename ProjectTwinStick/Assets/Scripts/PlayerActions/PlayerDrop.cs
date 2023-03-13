@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerDrop : MonoBehaviour, IPlayerAction
 {
@@ -34,6 +35,9 @@ public class PlayerDrop : MonoBehaviour, IPlayerAction
     public void EnableAction()
     {
     }
+
+    public UnityEvent PerformEvent { get; }
+    public UnityEvent CancelEvent { get; }
 
     public event Action PerformActionEvent;
 }

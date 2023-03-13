@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class PlayerTake : MonoBehaviour, IPlayerAction
@@ -70,6 +71,9 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
     public void EnableAction()
     {
     }
+
+    public UnityEvent PerformEvent { get; }
+    public UnityEvent CancelEvent { get; }
 
     private void OnDrawGizmos()
     {

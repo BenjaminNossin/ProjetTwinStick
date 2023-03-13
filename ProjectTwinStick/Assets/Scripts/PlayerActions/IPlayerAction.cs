@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public interface IPlayerAction
@@ -11,5 +12,9 @@ public interface IPlayerAction
     public void SetupAction(params object[] arguments);
     public void DisableAction();
     public void EnableAction();
-    public event System.Action PerformActionEvent;
+
+    UnityEvent PerformEvent { get;  }
+    UnityEvent CancelEvent { get;  }
+
+
 }
