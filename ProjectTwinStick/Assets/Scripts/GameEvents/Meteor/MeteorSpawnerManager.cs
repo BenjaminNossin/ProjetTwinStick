@@ -55,11 +55,11 @@ public class MeteorSpawnerManager : MonoBehaviour
                     if (_meteorSpawnersAvailableByArea[i].MeteorSpawners.Count != 0)
                     {
                         int randIndex = Random.Range(0, _meteorSpawnersAvailableByArea[i].MeteorSpawners.Count);
-                        var enemy = enemyPoolManager.enemyPools[1].GetFromPool();
-                        enemy._pool = enemyPoolManager.enemyPools[1];
-                        enemy.transform.position =
+                        var meteor = enemyPoolManager.meteorPools[0].GetFromPool();
+                        meteor._pool = enemyPoolManager.meteorPools[0];
+                        meteor.transform.position =
                             _meteorSpawnersAvailableByArea[i].MeteorSpawners[randIndex].transform.position;
-                        enemy.Init(GameManager.Instance.ShipCoreObj.transform.position); // PLACEHOLDER
+                        meteor.Init(GameManager.Instance.ShipCoreObj.transform.position); // PLACEHOLDER
                         _meteorSpawnersAvailableByArea[i].MeteorSpawners.RemoveAt(randIndex);
                     }
                 }

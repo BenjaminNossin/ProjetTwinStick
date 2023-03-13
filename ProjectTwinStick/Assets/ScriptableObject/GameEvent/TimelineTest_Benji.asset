@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TimelineTest_Benji
   m_EditorClassIdentifier: 
   _gameEventTimeCodes:
-  - timeCode: 2
+  - timeCode: 5
     gameEventDatas:
     - {fileID: 11400000, guid: 27c040e294a0b2441a397507d317f9c4, type: 2}
   - timeCode: 20
     gameEventDatas:
-    - {fileID: 11400000, guid: 27c040e294a0b2441a397507d317f9c4, type: 2}
+    - {fileID: 11400000, guid: 2aba0779c34d1ac4cae0ed9260827fd0, type: 2}

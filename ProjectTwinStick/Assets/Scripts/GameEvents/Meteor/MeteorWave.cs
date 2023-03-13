@@ -7,5 +7,5 @@ using UnityEngine;
 public class MeteorWave
 {
     public float timeBeforeLaunchWave;
-    public int enemyCount;
+    public int meteorCount;
 }

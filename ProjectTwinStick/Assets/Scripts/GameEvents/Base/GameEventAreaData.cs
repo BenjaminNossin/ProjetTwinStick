@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class GameEventAreaData : GameEventData
 {
-   public int AreaTargetCount;
+   [Range(1, 4)] public int AreaTargetCount = 1; 
    public GameplayTag TagEvent ;
    public GameplayTag[] CurrentEventInAreaBlockerTag;
    public GameplayTag[] LastEventInAreaBlockerTag;
-   public bool IsRememberEvent = true;
+   [Tooltip("Should this event be remembered by the next event ?")] public bool IsRememberEvent {get; set;}
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 957bdd83e0b60024c9572ed527a242aa, type: 3}
-  m_Name: MeteorEventData1
+  m_Name: MeteorEventData2
   m_EditorClassIdentifier: 
   AreaTargetCount: 1
   TagEvent: {fileID: 11400000, guid: 4afbf6045aca4b04eb887a5f9c70bcec, type: 2}
@@ -21,9 +21,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4afbf6045aca4b04eb887a5f9c70bcec, type: 2}
   - {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   MeteorWaves:
-  - timeBeforeLaunchWave: 2
-    meteorCount: 3
   - timeBeforeLaunchWave: 5
-    meteorCount: 2
-  - timeBeforeLaunchWave: 7
+    meteorCount: 1
+  - timeBeforeLaunchWave: 8
+    meteorCount: 3
+  - timeBeforeLaunchWave: 10
     meteorCount: 5
+  - timeBeforeLaunchWave: 15
+    meteorCount: 2
+  - timeBeforeLaunchWave: 25
+    meteorCount: 8
