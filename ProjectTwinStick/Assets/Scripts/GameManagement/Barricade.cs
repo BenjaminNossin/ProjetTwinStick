@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Barricade : MonoBehaviour, ILifeable
 {
-    [SerializeField, Range(0, 10)] private float maxHP = 1f;
+    [SerializeField, Range(0, 1000)] private float maxHP = 1f;
 
     public UnityEvent OnBarricadeDestroyed;
     public UnityEvent OnBarricadeDamaged;
@@ -118,7 +118,7 @@ public class Barricade : MonoBehaviour, ILifeable
                 DestroySelf();
             }
             else OnBarricadeDamaged?.Invoke();
-            Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
+            //Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
         }
     }
 }

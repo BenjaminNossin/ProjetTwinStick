@@ -8,8 +8,10 @@ using UnityEngine.Serialization;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private PlayerStats _stats;
+    [SerializeField] private SlowManager _slowManager;
     [SerializeField] GameplayTag MovementBlocker;
     [SerializeField] GameplayTag AimSlower;
+    [SerializeField] GameplayTag BlockAim;
 
     private CharacterController _characterController;
     private GameplayTagContainer _tagContainer;
@@ -30,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         UpdateVelocity();
-        _characterController.Move(CurrentVelocity * Time.deltaTime);
+        _characterController.Move(CurrentVelocity * (Time.deltaTime * _slowManager.GetCurrentSlowMultiplier()));
     }
 
     private void UpdateVelocity()
@@ -52,7 +54,10 @@ public class CharacterMovement : MonoBehaviour
             forward = Vector3.RotateTowards(forward, direction, _stats.RestrictedAimSpeed * Time.deltaTime, 1f);
             transform.forward = forward;
         }
-        else transform.forward = direction;
+        else if (!_tagContainer.HasTag(BlockAim))
+        {
+            transform.forward = direction;
+        }
     }
 
     public void SetVelocity(Vector3 velocity)
