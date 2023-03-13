@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+using Game.Systems.GlobalFramework; 
 
 public class MeteorSpawnerManager : MonoBehaviour
 {
@@ -43,10 +44,8 @@ public class MeteorSpawnerManager : MonoBehaviour
 
     }
 
-    public void GenerateEnemies(Area area, int enemyCount)
+    public void GenerateMeteor(Area area, int enemyCount)
     {
-        return;
-
         for (int i = 0; i < _meteorSpawnersAvailableByArea.Length; i++)
         {
             if (_meteorSpawnersAvailableByArea[i].Area == area)
@@ -56,11 +55,11 @@ public class MeteorSpawnerManager : MonoBehaviour
                     if (_meteorSpawnersAvailableByArea[i].MeteorSpawners.Count != 0)
                     {
                         int randIndex = Random.Range(0, _meteorSpawnersAvailableByArea[i].MeteorSpawners.Count);
-                        var enemy = enemyPoolManager.enemyPools[0].GetFromPool();
-                        enemy._pool = enemyPoolManager.enemyPools[0];
+                        var enemy = enemyPoolManager.enemyPools[1].GetFromPool();
+                        enemy._pool = enemyPoolManager.enemyPools[1];
                         enemy.transform.position =
                             _meteorSpawnersAvailableByArea[i].MeteorSpawners[randIndex].transform.position;
-                        enemy.Init(Vector3.zero); // PLACEHOLDER
+                        enemy.Init(GameManager.Instance.ShipCoreObj.transform.position); // PLACEHOLDER
                         _meteorSpawnersAvailableByArea[i].MeteorSpawners.RemoveAt(randIndex);
                     }
                 }
