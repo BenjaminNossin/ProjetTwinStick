@@ -68,7 +68,8 @@ public class BasicAI : MonoBehaviour, ILifeable
         SetNormalizedDirection(); 
         
         SetMaxHp(maxHP);
-        SetCurrentHp(maxHP);  
+        SetCurrentHp(maxHP);
+        canJump = true;
     }
 
     void Update()
