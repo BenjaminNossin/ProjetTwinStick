@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 9038388747997465378}
   - component: {fileID: 6717455313009145219}
   - component: {fileID: 8610967383766840624}
+  - component: {fileID: 902688374199694648}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -76,8 +77,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
+  _slowManager: {fileID: 902688374199694648}
   MovementBlocker: {fileID: 11400000, guid: 8ee4ca532398c154ab704576aa184630, type: 2}
   AimSlower: {fileID: 11400000, guid: 859eca6f1dd4c104493796d0aef4d77a, type: 2}
+  BlockAim: {fileID: 11400000, guid: e402db0b29f1ef347a8c5159d8472fbb, type: 2}
 --- !u!114 &2687361521020166328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +211,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 11400000, guid: 53adf683da0c2024eb1a5f65ca37e9ae, type: 2}
   _characterMovement: {fileID: 1047708072171954935}
+--- !u!114 &902688374199694648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047708072171954932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be983ded7854bb48916bf5b750c9559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSlowMultiplierChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _tagContainer: {fileID: 6717455313009145219}
 --- !u!1 &1047708072351340205
 GameObject:
   m_ObjectHideFlags: 0
