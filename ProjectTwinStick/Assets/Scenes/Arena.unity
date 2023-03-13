@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2058.2559, g: 2159.461, b: 2439.1992, a: 1}
+  m_IndirectSpecularColor: {r: 2328.6406, g: 2438.0176, b: 2621.9531, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4235,6 +4235,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 578781282197314684, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101245}
     - target: {fileID: 630506994567294932, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4247,6 +4251,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 630506994567294932, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101248}
     - target: {fileID: 1982290908035427282, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4259,6 +4267,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1982290908035427282, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101240}
     - target: {fileID: 2375384877968514104, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4271,6 +4283,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2375384877968514104, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101246}
     - target: {fileID: 2516896142796408093, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4283,6 +4299,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2516896142796408093, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101249}
     - target: {fileID: 2666541288237688783, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4295,6 +4315,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2666541288237688783, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101243}
     - target: {fileID: 2745903730435377582, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4307,6 +4331,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2745903730435377582, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101239}
     - target: {fileID: 3036201129371065398, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4371,6 +4399,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3579663659548689435, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101238}
     - target: {fileID: 3803848870736908233, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4383,6 +4415,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3803848870736908233, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101241}
     - target: {fileID: 6444220167365838430, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4395,6 +4431,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6444220167365838430, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101247}
     - target: {fileID: 7174837611221478625, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4407,6 +4447,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7174837611221478625, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101242}
     - target: {fileID: 7444116512240899806, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: randomMax
       value: 20
@@ -4419,6 +4463,10 @@ PrefabInstance:
       propertyPath: firstSpawnDelay
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7444116512240899806, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: assignedBarricade
+      value: 
+      objectReference: {fileID: 6047942999111101244}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
 --- !u!43 &1504921569
@@ -7508,3 +7556,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+--- !u!4 &6047942999111101238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7056062590321491288, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5196545984781344385, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3058219000195789584, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101241 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5379260458191740934, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101242 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 88429949473467982, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2939678558698081687, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101244 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2980015064817443022, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7117923377440648838, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101246 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5419533604929359199, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101247 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8481945254135756465, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4479179698061949177, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6047942999111101249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1718337339895880480, guid: a25a7fb618ee40b4c8e49a708d4dde1c, type: 3}
+  m_PrefabInstance: {fileID: 6047942999111101237}
+  m_PrefabAsset: {fileID: 0}
