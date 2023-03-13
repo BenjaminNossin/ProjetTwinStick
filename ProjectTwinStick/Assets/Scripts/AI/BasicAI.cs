@@ -187,7 +187,6 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     private void Jump()
     {
-        Debug.Log("Jumping");
         
         cachedTransf.position += new Vector3(
                                         normalizedDirection.x * xzBufferZone,
