@@ -43,6 +43,8 @@ public class BasicAI : MonoBehaviour, ILifeable
     private bool canJump = true; 
 
     private Vector3 shipCorePosFlat;
+    
+    private SlowManager slowManager;
 
 
     // DEBUG
@@ -50,6 +52,7 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     private void Start()
     {
+        slowManager = GetComponent<SlowManager>();
         GameManager.Instance.OnGameOverCallBack += Die;
         var shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
         shipCorePosFlat = new Vector3(shipCorePos.x, floorY, shipCorePos.z); 
@@ -182,7 +185,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     private void Move()
     {
         Debug.DrawRay(cachedTransf.position, normalizedDirection * 3f, Color.red, Time.deltaTime);
-        cachedTransf.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.Self);
+        cachedTransf.Translate(Time.deltaTime * unitsPerSeconds * slowManager.GetCurrentSlowMultiplier() * normalizedDirection, Space.Self);
     }
 
     private void Jump()
