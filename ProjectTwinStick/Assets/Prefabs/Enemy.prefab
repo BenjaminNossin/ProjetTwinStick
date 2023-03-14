@@ -603,6 +603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3104405143076395530}
+  - component: {fileID: 2686991865925114218}
   m_Layer: 0
   m_Name: ennemyant_anim
   m_TagString: Untagged
@@ -635,6 +636,27 @@ Transform:
   m_Father: {fileID: 6448556704799557711}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2686991865925114218
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332513497784942768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7917899d92acd9040a482dc999425041, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2876609290628266857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1470,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7807522515552021844}
+  - component: {fileID: 3363241117341678545}
+  - component: {fileID: 4675017129764982357}
+  - component: {fileID: 5639880875020279504}
+  - component: {fileID: 5330455010832238209}
+  - component: {fileID: 1262588015513803942}
   m_Layer: 14
   m_Name: Enemy
   m_TagString: Enemy
@@ -1471,6 +1498,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3363241117341678545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807522515552021840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aad1f1057c62143bf02e4f3397c825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 3
+  unitsPerSeconds: 2
+  damage: 5
+  collider: {fileID: 1262588015513803942}
+  dieTime: 4
+  normalizedDirection: {x: 0, y: 0, z: 0}
+  _render: {fileID: 5330455010832238209}
+  distFromShipCore: 0
+  distFromJumpArea: 0
+--- !u!114 &4675017129764982357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807522515552021840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be983ded7854bb48916bf5b750c9559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tagContainer: {fileID: 5639880875020279504}
+--- !u!114 &5639880875020279504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807522515552021840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ccb13583fb8bfc45bcebacb76364744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingTags: []
+--- !u!114 &5330455010832238209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807522515552021840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f5ee89a7160424498d69fe3b9aa106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _basicAI: {fileID: 3363241117341678545}
+  _slowManager: {fileID: 4675017129764982357}
+  minSpeedMovementAnimation: 0.5
+  _animator: {fileID: 2686991865925114218}
+  renderer: {fileID: 6448556704799557711}
+  _explosionFXPrefab: {fileID: 1212467452738238391, guid: f812faaa1314e7749b52c64cf4d7f029, type: 3}
+--- !u!65 &1262588015513803942
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807522515552021840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.83, y: 2.75, z: 3}
+  m_Center: {x: 0, y: 0.7, z: 0.253}
 --- !u!1 &8194828769578715623
 GameObject:
   m_ObjectHideFlags: 0
