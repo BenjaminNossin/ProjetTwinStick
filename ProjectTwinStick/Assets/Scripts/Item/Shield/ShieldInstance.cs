@@ -12,10 +12,8 @@ public class ShieldInstance : MonoBehaviour, ILifeable
     
     public float DisabledCooldown { get; private set; } = 0f;
 
-    private bool isInUse = false;
 
-    private bool instanceActive = true;
-
+    //enabled : currently blocking enemies and meteors, broken : hit by enemy, on cooldown, disabled : not blocking anything
     private enum ShieldInstanceState
     {
         Enabled,
@@ -37,14 +35,16 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 
     public void startUsing()
     {
-        isInUse = true;
-        RefreshShieldState();
+        if (DisabledCooldown <= 0.00001f)
+        {
+            SwitchState(ShieldInstanceState.Enabled);
+        }
+        else SwitchState(ShieldInstanceState.Broken);
     }
 
     public void stopUsing()
     {
-        isInUse = false;
-        RefreshShieldState();
+        SwitchState(ShieldInstanceState.Disabled);
     }
 
     private void SwitchState(ShieldInstanceState state)
@@ -52,7 +52,21 @@ public class ShieldInstance : MonoBehaviour, ILifeable
         _shieldInstanceState = state;
         switch (_shieldInstanceState)
         {
-            
+            case ShieldInstanceState.Enabled:
+                shieldCollider.enabled = true;
+                OnShieldEnabled?.Invoke();
+                Debug.Log("Shield enabled");
+                break;
+            case ShieldInstanceState.Broken:
+                shieldCollider.enabled = false;
+                OnShieldBroken?.Invoke();
+                Debug.Log("Shield broken");
+                break;
+            case ShieldInstanceState.Disabled:
+                shieldCollider.enabled = false;
+                OnShieldDisabled?.Invoke();
+                Debug.Log("Shield disabled");
+                break;
         }
     }
 
@@ -64,53 +78,27 @@ public class ShieldInstance : MonoBehaviour, ILifeable
             case ShieldInstanceState.Enabled:
                 break;
             case ShieldInstanceState.Broken:
+                BrokenUpdate();
                 break;
             case ShieldInstanceState.Disabled:
-                DisabledUpdate();
                 break;
         }
     }
 
-    private void DisabledUpdate()
+    private void BrokenUpdate()
     {
         DisabledCooldown -= Time.deltaTime;
         if(DisabledCooldown <= 0)
         {
             SwitchState(ShieldInstanceState.Enabled);
-            RefreshShieldState();
         }
     }
-
-    private void RefreshShieldState()
-    {
-        Debug.Log("instance active : " + instanceActive + " is disabled : " + isDisabled + " is in use : " + isInUse + " ");
-        if (instanceActive)
-        {
-            if (isDisabled || !isInUse)
-            {
-                shieldCollider.gameObject.SetActive(false);
-                OnShieldDisabled?.Invoke();
-                instanceActive = false;
-                Debug.Log("Shield disabled");
-            }
-        }
-        else
-        {
-            if(!isDisabled && isInUse)
-            {
-                shieldCollider.gameObject.SetActive(true);
-                OnShieldEnabled?.Invoke();
-                instanceActive = true;
-                Debug.Log("Shield enabled");
-            }
-        }
-    }
+    
 
     private void DisableShield()
     {
-        isDisabled = true;
         DisabledCooldown = _upgrade.shieldCooldown;
-        RefreshShieldState();
+        SwitchState(ShieldInstanceState.Broken);
     }
 
     public void ChangeUpgrade(ShieldItemUpgrade upgrade)
