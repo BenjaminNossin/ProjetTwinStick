@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3449538585395033062, guid: a5c3b92005348e94f836398012a0e514, type: 3}
       propertyPath: playersRequiredAmount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3449538585395033069, guid: a5c3b92005348e94f836398012a0e514, type: 3}
       propertyPath: m_Name
@@ -694,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 7049210925114387849, guid: cebdcc8c8d0c26447af1026b06670832, type: 3}
       propertyPath: _gameEventTimeline
       value: 
-      objectReference: {fileID: 11400000, guid: a61612506adab3f4daa5d2d17e2f3c84, type: 2}
+      objectReference: {fileID: 11400000, guid: 2b6e1a49e51d9954f8c2c3397c1c42c9, type: 2}
     - target: {fileID: 7049210925114387850, guid: cebdcc8c8d0c26447af1026b06670832, type: 3}
       propertyPath: m_RootOrder
       value: 4

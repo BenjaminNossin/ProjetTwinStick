@@ -55,9 +55,9 @@ public class SwarmSpawnerManager : MonoBehaviour
                         int randIndex = Random.Range(0, _swarmSpawnersAvailableByArea[i].SwarmSpawners.Count);
                         var enemy = enemyPoolManager.enemyPools[0].GetFromPool();
                         enemy._pool = enemyPoolManager.enemyPools[0];
-                        enemy.transform.position =
-                            _swarmSpawnersAvailableByArea[i].SwarmSpawners[randIndex].transform.position;
-                        enemy.Init(Vector3.zero); // PLACEHOLDER
+                        SwarmSpawner spawner = _swarmSpawnersAvailableByArea[i].SwarmSpawners[randIndex];
+                        enemy.transform.position = spawner.transform.position;
+                        enemy.Init(spawner.assignedBarricade.position); // PLACEHOLDER
                         _swarmSpawnersAvailableByArea[i].SwarmSpawners.RemoveAt(randIndex);
                     }
                 }
