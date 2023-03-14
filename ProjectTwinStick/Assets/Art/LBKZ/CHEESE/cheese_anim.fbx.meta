@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad9f244ce6dd9d34091741f1a1f8a6ac
+guid: 668b8cd887b02ad4390e415a687cb43b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material #25
+      name: mat_cheese
     second: {fileID: 2100000, guid: b1e962157178b724e81140914b5f36fe, type: 2}
   materials:
     materialImportMode: 2
@@ -183,9 +183,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: throwing pose
+      name: throw pose
       takeName: Armature|ArmatureAction
-      internalID: 8569247068082238595
+      internalID: -6363362177140661055
       firstFrame: 140
       lastFrame: 140
       wrapMode: 0
