@@ -45,7 +45,6 @@ public class SwarmSpawnerManager : MonoBehaviour
 
     public void GenerateEnemies(Area area, int enemyCount)
     {
-        return; 
         for (int i = 0; i < _swarmSpawnersAvailableByArea.Length; i++)
         {
             if (_swarmSpawnersAvailableByArea[i].Area == area)
