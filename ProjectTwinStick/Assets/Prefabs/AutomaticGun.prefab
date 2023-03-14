@@ -108,15 +108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.25
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -152,7 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138760, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_Name
-      value: AutomaticGun
+      value: GigaGunItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843902203158284233, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8347691849595396050, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_Enabled
