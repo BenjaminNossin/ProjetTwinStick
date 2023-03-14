@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
@@ -274,11 +274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
@@ -352,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
@@ -508,11 +508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
@@ -586,11 +586,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
@@ -664,11 +664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
@@ -742,11 +742,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: randomMin
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
@@ -820,11 +824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
@@ -898,11 +902,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
@@ -976,11 +980,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: randomMax
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286161, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: m_Name
