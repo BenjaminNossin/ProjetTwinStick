@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using Game.Systems.AI;
+using UnityEngine;
+
+public class EnemyStatsChangeEvent : GameEvent
+{
+    private EnemyStatsChangeEventData enemyStatsChangeEventData;
+    
+    public virtual void Raise()
+    {
+        base.Raise();
+        SwarmSpawnerManager swarmSpawnerManager = MonoBehaviour.FindObjectOfType<SwarmSpawnerManager>();
+        swarmSpawnerManager.ChangeEnemyStats(enemyStatsChangeEventData.NewStats);
+        WaveManager waveManager = MonoBehaviour.FindObjectOfType<WaveManager>();
+        waveManager.ChangeEnemyStats(enemyStatsChangeEventData.NewStats);
+        
+    }
+    
+    public override void SetSO(GameEventData data)
+    {
+        enemyStatsChangeEventData = (EnemyStatsChangeEventData)data;
+    }
+
+    public override GameEventData GetSO()
+    {
+        return enemyStatsChangeEventData;
+    }
+}

@@ -32,6 +32,11 @@ public class SwarmSpawnerManager : MonoBehaviour
         }
     }
 
+    public void ChangeEnemyStats(EnemyStats newStats)
+    {
+        currentStats = newStats;
+    }
+
     public void ResetSpawnerArea(Area area)
     {
         for (int i = 0; i < _swarmSpawnersAvailableByArea.Length; i++)
