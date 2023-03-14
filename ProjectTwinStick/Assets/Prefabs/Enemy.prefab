@@ -84,9 +84,50 @@ MonoBehaviour:
   maxHP: 3
   unitsPerSeconds: 2
   damage: 5
+  jumpApexHeight: 3
+  jumpTime: 1
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 5.0943394
+      outSlope: 5.0943394
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.041666668
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.48333335
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.8679295
+      outSlope: -4.8679295
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.041666627
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   collider: {fileID: 7508757753621006}
   dieTime: 4
   normalizedDirection: {x: 0, y: 0, z: 0}
+  OnStartRun:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartJump:
+    m_PersistentCalls:
+      m_Calls: []
   _render: {fileID: 2285706765566196596}
   distFromShipCore: 0
   distFromJumpArea: 0
