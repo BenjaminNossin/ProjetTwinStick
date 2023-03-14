@@ -13,4 +13,5 @@ public class ShooterUpgrade : ItemUpgrade
     [HideInInspector] public float MaxDispersionRadian;
     [SerializeField] public float MaxDispersionDegres;
     public float Speed;
+    public SlowSO slowType;
 }

@@ -32,8 +32,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_tagContainer.HasTag(MovementBlocker))
         {
-           
-            return;
+            CurrentVelocity = Vector3.zero;
         }
 
         UpdateVelocity();
@@ -42,7 +41,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void UpdateVelocity()
     {
-        //CurrentVelocity.y = -1;
+        CurrentVelocity.y = -1;
     }
 
     public void TeleportPlayer(Vector3 newPosition)

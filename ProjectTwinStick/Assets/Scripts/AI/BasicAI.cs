@@ -222,6 +222,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     #region Movement Behavior
     private void Move()
     {
+        Debug.Log(slowManager.GetCurrentSlowMultiplier());
         Debug.DrawRay(cachedTransf.position, normalizedDirection * 3f, Color.red, Time.deltaTime);
         cachedTransf.Translate(Time.deltaTime * unitsPerSeconds * slowManager.GetCurrentSlowMultiplier() * normalizedDirection, Space.Self);
     }

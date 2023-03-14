@@ -41,7 +41,7 @@ public class ShooterItem : Item
         var currentAngle = Mathf.Atan2(direction.y, direction.x);
         currentAngle += Random.Range(currentUpgrade.MinDispersionRadian, currentUpgrade.MaxDispersionRadian);
         bullet.Init(startPosition,currentUpgrade.DamageBullet, currentUpgrade.Speed,
-            new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle)), _bulletPool);
+            new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle)),currentUpgrade.slowType, _bulletPool);
         shooterIsReady = false;
         return true;
     }

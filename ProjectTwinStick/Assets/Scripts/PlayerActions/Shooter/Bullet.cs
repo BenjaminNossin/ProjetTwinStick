@@ -14,12 +14,14 @@ public class Bullet : MonoBehaviour
     private Pool<Bullet> _pool;
     [SerializeField]
     private Rigidbody _rb;
-    public void Init(Vector3 startPos, float damage, float speed, Vector3 direction, Pool<Bullet> pool)
+    private SlowSO _slow;
+    public void Init(Vector3 startPos, float damage, float speed, Vector3 direction,SlowSO slow, Pool<Bullet> pool)
     {
         transform.position = startPos;
         _damage = damage;
         _rb.velocity = direction * speed;
         _pool = pool;
+        _slow = slow;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -36,6 +38,24 @@ public class Bullet : MonoBehaviour
                 lifeable.DecreaseCurrentHp(_damage);
             }
         }
+
+        if (_slow != null)
+        {
+            SlowManager slowManager = other.GetComponent<SlowManager>();
+            if (slowManager != null)
+            {
+                slowManager.AddSlow(_slow);
+            }
+            else
+            {
+                slowManager = other.GetComponentInParent<SlowManager>();
+                if (slowManager != null)
+                {
+                    slowManager.AddSlow(_slow);
+                }
+            }
+        }
+        
         if (other.CompareTag("Wall") || other.CompareTag("Enemy"))
         {
             _pool.AddToPool(this);
