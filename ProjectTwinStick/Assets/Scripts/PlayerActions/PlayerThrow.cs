@@ -11,7 +11,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     [SerializeField] GameplayTag MovementBlocker;
     [SerializeField] GameplayTag PickupBlocker;
     [SerializeField] GameplayTag ShootBlocker;
-    [SerializeField]  GameplayTag AimSlower;
+    [SerializeField] GameplayTag AimSlower;
+    [SerializeField] GameplayTag DropBlocker;
 
     public bool IsInAction { get; }
     
@@ -24,6 +25,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     public event Action OnAim;
     public event Action OnThrow;
     
+    public event Action OnCancelThrow;
+    
     private ItemTrajectoryPreview currentPreview;
 
     
@@ -33,16 +36,19 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         bool ThrowInput = (bool) arguments[0];
         if (ThrowInput == false)
         {
+            Debug.Log("Try aim");
             TryAim();
         }
         else
         {
+            Debug.Log("Try throw");
             TryPerformThrow();
         }
     }
 
     private void TryAim()
     {
+        Debug.Log(_inventory.IsDefaultItem());
         if (!_inventory.IsDefaultItem() && !IsPreparingThrow)
         {
             Debug.Log("trying to aim");
@@ -51,6 +57,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _tagContainer.AddTag(PickupBlocker);
             _tagContainer.AddTag(ShootBlocker);
             _tagContainer.AddTag(AimSlower);
+            _tagContainer.AddTag(DropBlocker);
             OnAim?.Invoke();
         }
     }
@@ -68,6 +75,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _tagContainer.RemoveTag(PickupBlocker);
             _tagContainer.RemoveTag(ShootBlocker);
             _tagContainer.RemoveTag(AimSlower);
+            _tagContainer.RemoveTag(DropBlocker);
             currentPreview.ActivateTargetInstance();
             OnThrow?.Invoke();
         }
@@ -86,6 +94,8 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
             _tagContainer.RemoveTag(PickupBlocker);
             _tagContainer.RemoveTag(ShootBlocker);
             _tagContainer.RemoveTag(AimSlower);
+            _tagContainer.RemoveTag(DropBlocker);
+            OnCancelThrow?.Invoke();
         }
     }
 
@@ -95,6 +105,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             currentChargeTime = Mathf.MoveTowards(currentChargeTime, 1, Time.deltaTime / throwData.ThrowChargeTime);
             currentPreview?.UpdatePreview(transform.position, transform.forward, currentChargeTime);
+            Debug.Log("current charge time: " + currentChargeTime);
         }
     }
 

@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
     {
         if (CurrentItem != null && CurrentItem != DefaultItem)
         {
+            Debug.Log("dropping item");
             OnItemDroped?.Invoke(CurrentItem);
             CurrentItem.Drop();
         }
@@ -32,6 +33,8 @@ public class Inventory : MonoBehaviour
     {
         if (CurrentItem != null && CurrentItem != DefaultItem && DropItem)
         {
+            Debug.Log("dropping item");
+            OnItemDroped?.Invoke(CurrentItem);
             CurrentItem.Drop();
         }
         CurrentItem = DefaultItem;
