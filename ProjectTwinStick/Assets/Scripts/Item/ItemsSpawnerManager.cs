@@ -12,7 +12,7 @@ public class ItemsSpawnerManager : MonoBehaviour
     private  List<Item> itemsToSpawn = new List<Item>();
     public ItemSpawner[] allSpawners;
     public Transform centerArena;
-    private List<ItemSpawner> spawnersAvailable;
+   [SerializeField] private List<ItemSpawner> spawnersAvailable;
 
     [SerializeField] public float maxDistanceToCenterOfArena;
  
@@ -25,7 +25,6 @@ public class ItemsSpawnerManager : MonoBehaviour
         GameManager.Instance.OnGameStartCallback += OnGameStart;
     }
 
-    
     public void OnGameStart()
     {
         itemsToSpawn = new List<Item>(allItems);
@@ -50,12 +49,17 @@ public class ItemsSpawnerManager : MonoBehaviour
     public void Spawn(Item item)
     {
         if(spawnersAvailable.Count == 0) return;
-        int rand = Random.Range(0, spawnersAvailable.Count);  
-        Debug.Log(rand);
+        /*int rand = Random.Range(0, spawnersAvailable.Count);  
+        Debug.Log("selected" + rand);
         item.SetItemSpawner(spawnersAvailable[rand]);
         item.transform.position = spawnersAvailable[rand].transform.position;
-        Debug.Log(spawnersAvailable[rand].gameObject.name);
-        spawnersAvailable.RemoveAt(rand);
+        Debug.Log("removed" + spawnersAvailable[rand].gameObject.name);
+        spawnersAvailable.Remove(spawnersAvailable[rand]);*/
+        ItemSpawner spawner = spawnersAvailable[Random.Range(0, spawnersAvailable.Count)];
+        item.SetItemSpawner(spawner);
+        item.transform.position = spawner.transform.position;
+        Debug.Log(spawner.name + " : " + spawner.transform.position + "\n" + item.name + ":" + item.transform.position);
+        spawnersAvailable.Remove(spawner);
     }
 
     public void AddSpawnerAvailable(ItemSpawner itemSpawner)
