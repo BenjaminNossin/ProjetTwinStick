@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitsPerSeconds: 2
   damage: 1
+  meteorBlocker: {fileID: 11400000, guid: 72a4a4b520a6b3747ac239ee45509bcd, type: 2}
 --- !u!1 &5258298789014037135
 GameObject:
   m_ObjectHideFlags: 0

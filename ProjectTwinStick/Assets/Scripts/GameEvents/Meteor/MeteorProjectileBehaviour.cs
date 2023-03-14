@@ -8,6 +8,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
 {
     [SerializeField, Range(1, 20)] float unitsPerSeconds = 10;
     [SerializeField, Range(1, 20)] float damage = 1f;
+    [SerializeField] private GameplayTag meteorBlocker;
 
     public Pool<MeteorProjectileBehaviour> _pool;
     private Transform cachedTransf;
@@ -41,6 +42,27 @@ public class MeteorProjectileBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.TryGetComponent<GameplayTagContainer>(out var tagContainer))
+        {
+            if (tagContainer.HasTag(meteorBlocker))
+            {
+                Die();
+                return;
+            }
+        }
+        else
+        {
+            tagContainer = other.GetComponentInParent<GameplayTagContainer>();
+            if (tagContainer != null)
+            {
+                if (tagContainer.HasTag(meteorBlocker))
+                {
+                    Die();
+                    return;
+                }
+            }
+        }
+        
         // if player -> not lifeable. Use SlowManager
         if (other.TryGetComponent<ILifeable>(out var lifeable))
         {
