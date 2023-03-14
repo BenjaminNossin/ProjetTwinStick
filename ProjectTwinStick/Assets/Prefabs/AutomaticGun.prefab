@@ -108,15 +108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.25
+      value: -2.46
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.25
+      value: -1.92
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138760, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_Name
-      value: GigaGunItem
+      value: AutomaticGun
       objectReference: {fileID: 0}
     - target: {fileID: 5843902203158284233, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundedHeight: 1
   throwData: {fileID: 11400000, guid: d8a0d03a487f9f04da277a1111dcf712, type: 2}
+  _itemSpawner: {fileID: 0}
   so: {fileID: 11400000, guid: 77f6fd882d8247746aaa545ca687ef83, type: 2}
 --- !u!4 &8334306575405724870 stripped
 Transform:

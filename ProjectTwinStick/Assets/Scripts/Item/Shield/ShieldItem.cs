@@ -97,6 +97,7 @@ public class ShieldItem : Item
 
     private void UpdateShieldPos()
     {
+        if(_itemHolder)  
         lastStartPos = _itemHolder.transform.position;
         
         Vector3 intersectionPoint = GetIntersectionPoint(lastStartPos, lastDirection);

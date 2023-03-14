@@ -24,11 +24,13 @@ public class SlowManager : MonoBehaviour
     //Adds a slow to the list of slows
     public void AddSlow(SlowSO slowSo)
     {
+        Debug.Log(slowSo.TagsToAdd.Count);
         var instance = new SlowInstance();
         instance.slowSO = slowSo;
         instance.timeRemaining = slowSo.SlowDuration;
         for (int i = 0; i < slowSo.TagsToAdd.Count; i++)
         {
+            Debug.Log("test");
             _tagContainer.AddTag(slowSo.TagsToAdd[i]);
         }
         _instances.Add(instance);
@@ -67,13 +69,13 @@ public class SlowManager : MonoBehaviour
             if (instance.timeRemaining <= 0)
             {
                 _instances.RemoveAt(i);
-            }
-            else
-            {
                 for (int tagIndex = 0; tagIndex < instance.slowSO.TagsToAdd.Count; tagIndex++)
                 {
                     _tagContainer.RemoveTag(instance.slowSO.TagsToAdd[tagIndex]);
                 }
+            }
+            else
+            {
                 _instances[i] = instance;
             }
         }

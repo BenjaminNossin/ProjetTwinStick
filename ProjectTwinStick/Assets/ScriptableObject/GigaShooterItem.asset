@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GigaShooterItem
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 496780730554963546, guid: f2d3f6dad88571c40bc58625ccb99bcc, type: 3}
+  RespawnTime: 5
   _shooterUpgrades:
   - FrequencyBetweenBullet: 0.7
     DamageBullet: 3
@@ -21,6 +22,7 @@ MonoBehaviour:
     MaxDispersionRadian: 0.008726646
     MaxDispersionDegres: 0.5
     Speed: 35
+    slowType: {fileID: 0}
   - FrequencyBetweenBullet: 0.5
     DamageBullet: 3
     MinDispersionDegres: -0.5
@@ -28,6 +30,7 @@ MonoBehaviour:
     MaxDispersionRadian: 0.008726646
     MaxDispersionDegres: 0.5
     Speed: 35
+    slowType: {fileID: 0}
   - FrequencyBetweenBullet: 0.4
     DamageBullet: 3
     MinDispersionDegres: -0.5
@@ -35,5 +38,6 @@ MonoBehaviour:
     MaxDispersionRadian: 0.008726646
     MaxDispersionDegres: 0.5
     Speed: 45
+    slowType: {fileID: 0}
   bulletPrefab: {fileID: 8399040886260937820, guid: 86fb32fd4bbe47843b3208ae72fc95c1, type: 3}
   StartCount: 30
