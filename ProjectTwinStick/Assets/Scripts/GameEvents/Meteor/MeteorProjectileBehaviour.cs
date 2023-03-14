@@ -57,21 +57,19 @@ public class MeteorProjectileBehaviour : MonoBehaviour
             }
         }
 
+        // barricade or ship core
         if (other.TryGetComponent<ILifeable>(out var lifeable))
         {
-            //Debug.Log($"damaging target {other.gameObject.name}"); 
-            DamageTarget(lifeable);
+            ApplyEffectOnTarget(lifeable);
         }
         else
         {
             lifeable = other.GetComponentInParent<ILifeable>();
-        }
 
-        // barricade or ship core
-        if (lifeable != null)
-        {
-            Debug.Log("damaging target"); 
-            DamageTarget(lifeable);
+            if (lifeable != null)
+            {
+                ApplyEffectOnTarget(lifeable); 
+            }
         }
 
         // player
@@ -79,8 +77,15 @@ public class MeteorProjectileBehaviour : MonoBehaviour
         {
             Debug.Log("slowing target with " + playerSlowEffect_Stun.name);
             slowManager.AddSlow(playerSlowEffect_Stun);
+            Die();
         }
+    }
 
+    private void ApplyEffectOnTarget(ILifeable lifeable)
+    {
+        Debug.Log("damaging target");
+
+        DamageTarget(lifeable);
         Die();
     }
 
