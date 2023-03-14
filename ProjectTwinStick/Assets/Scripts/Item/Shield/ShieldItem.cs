@@ -97,7 +97,7 @@ public class ShieldItem : Item
 
     private void UpdateShieldPos()
     {
-        lastStartPos = transform.position;
+        lastStartPos = _itemHolder.transform.position;
         
         Vector3 intersectionPoint = GetIntersectionPoint(lastStartPos, lastDirection);
         intersectionPoint.y = _shieldItemSO.ShieldHeight;
