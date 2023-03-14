@@ -11,7 +11,6 @@ public class SwarmSpawnerManager : MonoBehaviour
     [SerializeField] private SwarmSpawnersArea[] _allSwarmSpawnersByArea = new SwarmSpawnersArea[] { };
     [SerializeField] private SwarmSpawnersArea[] _swarmSpawnersAvailableByArea = new SwarmSpawnersArea[4];
 
-
     private void Start()
     {
         GameEventTimelineReader.AddGameEventSetter(typeof(SwarmEvent), SetSwarmEvent);
@@ -45,7 +44,6 @@ public class SwarmSpawnerManager : MonoBehaviour
 
     public void GenerateEnemies(Area area, int enemyCount)
     {
-        return; 
         for (int i = 0; i < _swarmSpawnersAvailableByArea.Length; i++)
         {
             if (_swarmSpawnersAvailableByArea[i].Area == area)
