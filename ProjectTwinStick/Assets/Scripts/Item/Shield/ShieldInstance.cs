@@ -8,15 +8,24 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 {
     [SerializeField] BoxCollider shieldCollider;
     private ShieldItemUpgrade _upgrade;
-    private float DisabledCooldown = 0f;
+    
+    
+    public float DisabledCooldown { get; private set; } = 0f;
 
-    private bool isDisabled = false;
-    private bool isInUse = false;
 
-    private bool instanceActive = true;
+    //enabled : currently blocking enemies and meteors, broken : hit by enemy, on cooldown, disabled : not blocking anything
+    private enum ShieldInstanceState
+    {
+        Enabled,
+        Broken,
+        Disabled
+    }
+    
+    private ShieldInstanceState _shieldInstanceState = ShieldInstanceState.Enabled;
 
-    public UnityEvent OnShieldDisabled;
     public UnityEvent OnShieldEnabled;
+    public UnityEvent OnShieldDisabled;
+    public UnityEvent OnShieldBroken;
     
     // Start is called before the first frame update
     void Start()
@@ -26,60 +35,70 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 
     public void startUsing()
     {
-        isInUse = true;
-        RefreshShieldState();
+        if (DisabledCooldown <= 0.00001f)
+        {
+            SwitchState(ShieldInstanceState.Enabled);
+        }
+        else SwitchState(ShieldInstanceState.Broken);
     }
 
     public void stopUsing()
     {
-        isInUse = false;
-        RefreshShieldState();
+        SwitchState(ShieldInstanceState.Disabled);
     }
-    
+
+    private void SwitchState(ShieldInstanceState state)
+    {
+        _shieldInstanceState = state;
+        switch (_shieldInstanceState)
+        {
+            case ShieldInstanceState.Enabled:
+                shieldCollider.enabled = true;
+                OnShieldEnabled?.Invoke();
+                Debug.Log("Shield enabled");
+                break;
+            case ShieldInstanceState.Broken:
+                shieldCollider.enabled = false;
+                OnShieldBroken?.Invoke();
+                Debug.Log("Shield broken");
+                break;
+            case ShieldInstanceState.Disabled:
+                shieldCollider.enabled = false;
+                OnShieldDisabled?.Invoke();
+                Debug.Log("Shield disabled");
+                break;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (isDisabled)
+        switch(_shieldInstanceState)
         {
-            DisabledCooldown -= Time.deltaTime;
-            if(DisabledCooldown <= 0)
-            {
-                isDisabled = false;
-                RefreshShieldState();
-            }
+            case ShieldInstanceState.Enabled:
+                break;
+            case ShieldInstanceState.Broken:
+                BrokenUpdate();
+                break;
+            case ShieldInstanceState.Disabled:
+                break;
         }
     }
 
-    private void RefreshShieldState()
+    private void BrokenUpdate()
     {
-        Debug.Log("instance active : " + instanceActive + " is disabled : " + isDisabled + " is in use : " + isInUse + " ");
-        if (instanceActive)
+        DisabledCooldown -= Time.deltaTime;
+        if(DisabledCooldown <= 0)
         {
-            if (isDisabled || !isInUse)
-            {
-                shieldCollider.gameObject.SetActive(false);
-                OnShieldDisabled?.Invoke();
-                instanceActive = false;
-                Debug.Log("Shield disabled");
-            }
-        }
-        else
-        {
-            if(!isDisabled && isInUse)
-            {
-                shieldCollider.gameObject.SetActive(true);
-                OnShieldEnabled?.Invoke();
-                instanceActive = true;
-                Debug.Log("Shield enabled");
-            }
+            SwitchState(ShieldInstanceState.Enabled);
         }
     }
+    
 
     private void DisableShield()
     {
-        isDisabled = true;
         DisabledCooldown = _upgrade.shieldCooldown;
-        RefreshShieldState();
+        SwitchState(ShieldInstanceState.Broken);
     }
 
     public void ChangeUpgrade(ShieldItemUpgrade upgrade)
