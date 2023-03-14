@@ -19,7 +19,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 CurrentVelocity;
 
     public event Action<float> OnSetVelocity;
-
+    
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         UpdateVelocity();
-        _characterController.Move(CurrentVelocity * (Time.deltaTime * _slowManager.GetCurrentSlowMultiplier()));
+        _characterController.Move(Vector3.right*0.00001f+CurrentVelocity * (Time.deltaTime * _slowManager.GetCurrentSlowMultiplier()));
     }
 
     private void UpdateVelocity()
