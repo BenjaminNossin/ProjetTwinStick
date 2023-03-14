@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2165.5996, g: 2307.5977, b: 2532.5156, a: 1}
+  m_IndirectSpecularColor: {r: 2257.1406, g: 2373.336, b: 2573.9883, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4486,6 +4486,10 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101238}
+    - target: {fileID: 3784829688891582048, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: enemyPoolsData.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 3363241117341678545, guid: 6fcb39301cac4f34d85a7221d3c1ef9f, type: 3}
     - target: {fileID: 3803848870736908232, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.2
@@ -4722,7 +4726,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -18.36
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
 --- !u!43 &1504921569
 Mesh:
