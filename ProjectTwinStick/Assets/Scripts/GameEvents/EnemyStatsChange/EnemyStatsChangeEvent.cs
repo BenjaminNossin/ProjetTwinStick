@@ -10,6 +10,7 @@ public class EnemyStatsChangeEvent : GameEvent
     public virtual void Raise()
     {
         base.Raise();
+        Debug.Log("EnemyStatsChangeEvent raised");
         SwarmSpawnerManager swarmSpawnerManager = MonoBehaviour.FindObjectOfType<SwarmSpawnerManager>();
         swarmSpawnerManager.ChangeEnemyStats(enemyStatsChangeEventData.NewStats);
         WaveManager waveManager = MonoBehaviour.FindObjectOfType<WaveManager>();

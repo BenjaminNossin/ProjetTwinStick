@@ -1510,9 +1510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aad1f1057c62143bf02e4f3397c825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
-  unitsPerSeconds: 2
-  damage: 5
   collider: {fileID: 1262588015513803942}
   dieTime: 4
   normalizedDirection: {x: 0, y: 0, z: 0}

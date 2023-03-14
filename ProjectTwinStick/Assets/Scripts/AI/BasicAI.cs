@@ -10,8 +10,6 @@ using UnityEngine;
 
 public class BasicAI : MonoBehaviour, ILifeable
 {
-    [SerializeField] private EnemyStats DefaultStats;
-
     [SerializeField] private Collider collider;
     [SerializeField]
     private float dieTime;
