@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Character awake");
+       
         _characterController = GetComponent<CharacterController>();
         _tagContainer = GetComponent<GameplayTagContainer>();
     }

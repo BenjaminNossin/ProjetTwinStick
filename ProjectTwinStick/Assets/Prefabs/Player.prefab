@@ -492,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576583469968533755, guid: 2e8f762a74dbe5946a2d97923766d362, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4318911844214651500, guid: 2e8f762a74dbe5946a2d97923766d362, type: 3}
       propertyPath: m_RootOrder
@@ -607,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3184506294965763856, guid: 52c99db0bd6d2a441926e3085c221b3f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52c99db0bd6d2a441926e3085c221b3f, type: 3}
@@ -631,6 +631,10 @@ PrefabInstance:
     - target: {fileID: 6100188174701490440, guid: 901a25236a434924cb06d37d0ed99f10, type: 3}
       propertyPath: m_Name
       value: VFX_Feedback_PickUp_Item_Caster
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100188174701490440, guid: 901a25236a434924cb06d37d0ed99f10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100188174701490446, guid: 901a25236a434924cb06d37d0ed99f10, type: 3}
       propertyPath: stopAction

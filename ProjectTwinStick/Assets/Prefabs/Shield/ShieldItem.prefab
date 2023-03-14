@@ -505,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -513,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -577,5 +577,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundedHeight: 1
   throwData: {fileID: 11400000, guid: d8a0d03a487f9f04da277a1111dcf712, type: 2}
+  _itemSpawner: {fileID: 0}
   _shieldItemSO: {fileID: 11400000, guid: fc3a798b46a616f4f9bf202376cb3765, type: 2}
   _shieldInstance: {fileID: 1261310918581486011}

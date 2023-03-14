@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.56
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -116,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: 3.53
       objectReference: {fileID: 0}
     - target: {fileID: 3507579751486138758, guid: d46aca8e5945eae4083da9e33338647f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundedHeight: 1
   throwData: {fileID: 11400000, guid: d8a0d03a487f9f04da277a1111dcf712, type: 2}
+  _itemSpawner: {fileID: 0}
   ItemSO: {fileID: 11400000, guid: 3906af91eecd1f649be55e943d6d0203, type: 2}
   RepairableLayer:
     serializedVersion: 2

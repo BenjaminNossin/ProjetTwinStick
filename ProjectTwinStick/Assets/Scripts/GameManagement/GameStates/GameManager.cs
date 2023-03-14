@@ -31,11 +31,13 @@ namespace Game.Systems.GlobalFramework
         private WaveManager waveManager;
         private GameEventTimelineReader _gameEventTimelineReader;
 
+        
         [SerializeField] private GameObject gameOverObj;
 
         public static List<Vector3> spawnPoints = new();
         private int spawnPointIndex;
         public event Action OnGameOverCallBack;
+        public event Action OnGameStartCallback;
         #endregion
 
         // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
@@ -150,10 +152,10 @@ namespace Game.Systems.GlobalFramework
             }
 
             SetObjectActive(ShipCoreObj, true);
-
             shipCore.OnGameStart();
             _gameEventTimelineReader.OnGameStart();
             waveManager.OnGameStart();
+            OnGameStartCallback?.Invoke();
         }
 
         public void OnGameEnd()
