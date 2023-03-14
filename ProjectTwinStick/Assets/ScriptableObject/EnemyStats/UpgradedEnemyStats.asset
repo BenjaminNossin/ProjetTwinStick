@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: UpgradedEnemyStats
   m_EditorClassIdentifier: 
   maxHP: 10
-  unitsPerSeconds: 7
+  unitsPerSeconds: 15
   damage: 20

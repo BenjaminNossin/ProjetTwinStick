@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TimelineStatsUpgrade
   m_EditorClassIdentifier: 
   _gameEventTimeCodes:
-  - timeCode: 0
+  - timeCode: 10
     gameEventDatas:
     - {fileID: 11400000, guid: 6b815b7931166b44c935103a584662ca, type: 2}

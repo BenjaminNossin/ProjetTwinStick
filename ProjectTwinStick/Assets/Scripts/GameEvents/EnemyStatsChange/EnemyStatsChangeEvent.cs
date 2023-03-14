@@ -7,7 +7,7 @@ public class EnemyStatsChangeEvent : GameEvent
 {
     private EnemyStatsChangeEventData enemyStatsChangeEventData;
     
-    public virtual void Raise()
+    public override void Raise()
     {
         base.Raise();
         Debug.Log("EnemyStatsChangeEvent raised");

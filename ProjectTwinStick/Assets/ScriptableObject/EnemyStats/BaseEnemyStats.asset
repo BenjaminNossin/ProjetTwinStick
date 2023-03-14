@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28181739a8dd13a429dca0b84fd97fdc, type: 3}
-  m_Name: BaseEnemyStats 1
+  m_Name: BaseEnemyStats
   m_EditorClassIdentifier: 
   maxHP: 5
-  unitsPerSeconds: 3
+  unitsPerSeconds: 1
   damage: 20
