@@ -17,9 +17,9 @@ MonoBehaviour:
   TagEvent: {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   CurrentEventInAreaBlockerTag:
   - {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
+  - {fileID: 11400000, guid: 4afbf6045aca4b04eb887a5f9c70bcec, type: 2}
   LastEventInAreaBlockerTag:
   - {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
-  IsRememberEvent: 0
   SwarmWaves:
   - timeBeforeLaunchWave: 2
     enemyCount: 4

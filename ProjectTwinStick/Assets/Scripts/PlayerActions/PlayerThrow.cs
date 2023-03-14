@@ -105,7 +105,7 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
         {
             currentChargeTime = Mathf.MoveTowards(currentChargeTime, 1, Time.deltaTime / throwData.ThrowChargeTime);
             currentPreview?.UpdatePreview(transform.position, transform.forward, currentChargeTime);
-            Debug.Log("current charge time: " + currentChargeTime);
+            //Debug.Log("current charge time: " + currentChargeTime);
         }
     }
 

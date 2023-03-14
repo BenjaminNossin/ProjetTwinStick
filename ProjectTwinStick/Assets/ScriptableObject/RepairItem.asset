@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8957197934fb144bb1d6b56fb9c644, type: 3}
   m_Name: RepairItem
   m_EditorClassIdentifier: 
+  UpgradeResetTimer: 10
   itemPrefab: {fileID: 0}
-  RespawnTime: 5
+  RespawnTime: 1
   _upgrades:
   - Range: 3
     HealRate: 0.8
