@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour, IController
         throwAction.canceled += TryThrow;
         
         InputAction cancelThrow = _playerInput.currentActionMap["CancelThrow"];
+        cancelThrow.performed += TryDrop;
         cancelThrow.performed += CancelThrow;
     }
 
@@ -108,10 +109,15 @@ public class PlayerController : MonoBehaviour, IController
 
     private void TryTakeInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Take input");
         _playerTake.PerformAction();
     }
 
+    private void TryDrop(InputAction.CallbackContext context)
+    {
+        Debug.Log("try drop");
+        _playerDrop.PerformAction();
+    }
+    
     #endregion
 
     public void SetUpController()

@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e9b1477ec8fba846b84c18a7ecc9c0f, type: 3}
-  m_Name: BigSlow
+  m_Script: {fileID: 11500000, guid: 1323947aa0ea72849a4cfe87a895cbcb, type: 3}
+  m_Name: DropBlocker
   m_EditorClassIdentifier: 
-  IndefiniteSlow: 0
-  SlowDuration: 2
-  SlowMultiplier: 0.25
-  TagsToAdd: []

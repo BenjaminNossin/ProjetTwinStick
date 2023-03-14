@@ -21,5 +21,6 @@ MonoBehaviour:
     MaxDispersionRadian: 0
     MaxDispersionDegres: 0
     Speed: 12
+    slowType: {fileID: 11400000, guid: 5b745cb2d010a464fbb2513bd604f095, type: 2}
   bulletPrefab: {fileID: 8399040886260937820, guid: 86fb32fd4bbe47843b3208ae72fc95c1, type: 3}
   StartCount: 50

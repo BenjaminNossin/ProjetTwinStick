@@ -99,6 +99,7 @@ MonoBehaviour:
   PickupBlocker: {fileID: 11400000, guid: 7b7fff8a624df744988fde0ad15aecda, type: 2}
   ShootBlocker: {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
   AimSlower: {fileID: 11400000, guid: 859eca6f1dd4c104493796d0aef4d77a, type: 2}
+  DropBlocker: {fileID: 11400000, guid: a41f0c213864e4a4f86f6bc1c9bfb63f, type: 2}
   _inventory: {fileID: 6055432575011109203}
   _tagContainer: {fileID: 6717455313009145219}
 --- !u!114 &3345932556697315796
@@ -113,6 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a110498b998b47498c8642b7a91d5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DropBlocker: {fileID: 11400000, guid: a41f0c213864e4a4f86f6bc1c9bfb63f, type: 2}
+  TagContainer: {fileID: 6717455313009145219}
+  inventory: {fileID: 6055432575011109203}
 --- !u!114 &5293756636317163978
 MonoBehaviour:
   m_ObjectHideFlags: 0

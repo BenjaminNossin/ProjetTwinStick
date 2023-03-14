@@ -84,7 +84,7 @@ MonoBehaviour:
   _playerAim: {fileID: 8633414572662730113}
   playerObject: {fileID: 1070296544542325317}
   _playerRenderer: {fileID: 1169715891230587592}
-  _playerInput: {fileID: 0}
+  _playerInput: {fileID: 3797026994348607769}
 --- !u!1001 &22590538320156849
 PrefabInstance:
   m_ObjectHideFlags: 0
