@@ -6,5 +6,6 @@ public class MeteorSpawner : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 5f);
+        Gizmos.DrawLine(transform.position, Vector3.zero);
     }
 }

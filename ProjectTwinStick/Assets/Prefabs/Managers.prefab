@@ -617,6 +617,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6725779796348409525}
     m_Modifications:
+    - target: {fileID: 425574692619250650, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 477860571020728770, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawnner Barricade 3
+      objectReference: {fileID: 0}
     - target: {fileID: 632323694637330789, guid: 622d12a00458d024aa306e43a4485225, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -661,14 +669,110 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 729059747060658392, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 756435069445045770, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014049546352992484, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1611925338094577700, guid: 622d12a00458d024aa306e43a4485225, type: 3}
       propertyPath: m_Name
       value: SwarmSpawnerManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742865899980775847, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800824479620062744, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803534874289328733, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 43.230762
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803534874289328733, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.302489
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171246367864033440, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180772094990759144, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644286008690235085, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647089716385638738, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133668623049287070, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299688609334666173, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517322041742073643, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579255335646945881, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
       objectReference: {fileID: 0}
     - target: {fileID: 3637364822958624619, guid: 622d12a00458d024aa306e43a4485225, type: 3}
       propertyPath: enemyPoolManager
       value: 
       objectReference: {fileID: 3784829688891582048}
+    - target: {fileID: 4648585513561979366, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899907917136167582, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594519285301351854, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599876906223400498, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawnner Barricade 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901079384393588483, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996130740707054117, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121544370775386265, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440928069923495496, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8449496211813725802, guid: 622d12a00458d024aa306e43a4485225, type: 3}
+      propertyPath: m_Name
+      value: Spawner barricade 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 622d12a00458d024aa306e43a4485225, type: 3}
 --- !u!4 &6355424080413773899 stripped
