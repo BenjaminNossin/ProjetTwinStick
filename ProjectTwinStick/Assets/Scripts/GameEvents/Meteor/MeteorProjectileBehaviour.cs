@@ -2,13 +2,15 @@ using Game.Systems.GlobalFramework;
 using HelperPSR.Pool;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeteorProjectileBehaviour : MonoBehaviour
 {
     [SerializeField, Range(1, 20)] float unitsPerSeconds = 10;
     [SerializeField, Range(1, 20)] float damage = 1f;
-    [SerializeField] private GameplayTag meteorBlocker;
+    [SerializeField] private GameplayTag immuneToMeteorTag;
+    [SerializeField] private SlowSO playerSlowEffect_Stun;
 
     public Pool<MeteorProjectileBehaviour> _pool;
     private Transform cachedTransf;
@@ -40,46 +42,46 @@ public class MeteorProjectileBehaviour : MonoBehaviour
         Move();
     }
 
+    GameplayTagContainer gtc; 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<GameplayTagContainer>(out var tagContainer))
+        // shield
+        if (other.TryGetComponent<GameplayTagContainer>(out var gameplayTagContainer))
         {
-            if (tagContainer.HasTag(meteorBlocker))
+            if (gameplayTagContainer.HasTag(immuneToMeteorTag))
             {
+                Debug.Log("entity with ignore meteorite tag was detected");
+
                 Die();
-                return;
+                return; 
             }
         }
-        else
-        {
-            tagContainer = other.GetComponentInParent<GameplayTagContainer>();
-            if (tagContainer != null)
-            {
-                if (tagContainer.HasTag(meteorBlocker))
-                {
-                    Die();
-                    return;
-                }
-            }
-        }
-        
-        // if player -> not lifeable. Use SlowManager
+
         if (other.TryGetComponent<ILifeable>(out var lifeable))
         {
             //Debug.Log($"damaging target {other.gameObject.name}"); 
             DamageTarget(lifeable);
-            Die();
         }
         else
         {
             lifeable = other.GetComponentInParent<ILifeable>();
-            if (lifeable != null)
-            {
-                //Debug.Log($"damaging target {other.gameObject.name}"); 
-                DamageTarget(lifeable);
-                Die();
-            }
         }
+
+        // barricade or ship core
+        if (lifeable != null)
+        {
+            Debug.Log("damaging target"); 
+            DamageTarget(lifeable);
+        }
+
+        // player
+        if (other.TryGetComponent<SlowManager>(out var slowManager))
+        {
+            Debug.Log("slowing target with " + playerSlowEffect_Stun.name);
+            slowManager.AddSlow(playerSlowEffect_Stun);
+        }
+
+        Die();
     }
 
     private void DamageTarget(ILifeable lifeable)

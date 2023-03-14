@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9b1477ec8fba846b84c18a7ecc9c0f, type: 3}
   m_Name: Stun
   m_EditorClassIdentifier: 
-  SlowDuration: 0.5
+  IndefiniteSlow: 0
+  SlowDuration: 5
   SlowMultiplier: 0
   TagsToAdd:
   - {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}
