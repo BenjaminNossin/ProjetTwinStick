@@ -29,7 +29,6 @@ namespace Game.Systems.AI
 
             foreach (var item in spawners)
             {
-                return; 
                 item.Initialize();
             }
         }
