@@ -30,7 +30,7 @@ public class PoolFeedbackManager : MonoBehaviour
  public GameObject GetFromPool(GameObject prefab, float time)
  {
      var obj = pools[prefab].GetFromPool();
-     pools[prefab].AddToPoolLatter(obj,time);
+     StartCoroutine(pools[prefab].AddToPoolLatter(obj,time));
      return obj;
  }
 

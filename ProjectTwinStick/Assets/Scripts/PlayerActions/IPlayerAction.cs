@@ -12,9 +12,7 @@ public interface IPlayerAction
     public void SetupAction(params object[] arguments);
     public void DisableAction();
     public void EnableAction();
-
-    UnityEvent PerformEvent { get;  }
-    UnityEvent CancelEvent { get;  }
+    
 
 
 }

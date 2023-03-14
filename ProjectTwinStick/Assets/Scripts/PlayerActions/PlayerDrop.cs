@@ -36,8 +36,5 @@ public class PlayerDrop : MonoBehaviour, IPlayerAction
     {
     }
 
-    public UnityEvent PerformEvent { get; }
-    public UnityEvent CancelEvent { get; }
 
-    public event Action PerformActionEvent;
 }

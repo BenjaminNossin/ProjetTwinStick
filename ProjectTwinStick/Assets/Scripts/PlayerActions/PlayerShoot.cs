@@ -15,6 +15,8 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     [SerializeField] private GameplayTag ShootBlocker;
     [SerializeField] PlayerStats _playerStats;
     private Vector2 inputs;
+    public event Action<bool> OnTryShoot;
+    public event Action OnCancelShoot;
 
     public void PerformAction(params object[] arguments)
     {
@@ -35,11 +37,11 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
         }
         if (inputs.magnitude > _playerStats.AimInputThreshold)
         {
-            _inventory.CurrentItem.Shoot(transform.position, inputs);
-            if (!isInShoot)
-            {
-                PerformEvent?.Invoke();
-            }
+
+            
+                OnTryShoot?.Invoke(_inventory.CurrentItem.TryShoot(transform.position, inputs));
+            
+            
             isInShoot = true;
         }
         else
@@ -47,15 +49,14 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
             CancelShoot();
         }
     }
+    
+    
 
     private void CancelShoot()
     {
-        if (isInShoot)
-        {
-            CancelEvent?.Invoke();
-        }
 
-        isInShoot = false;
+        OnCancelShoot?.Invoke();
+            isInShoot = false;
     }
 
     public void SetupAction(params object[] arguments)
@@ -70,12 +71,5 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     {
     }
 
-    public UnityEvent PerformEvent { get; }
-    public UnityEvent CancelEvent { get; }
-
-    [SerializeField]
-    private UnityEvent _performEvent;
-    [SerializeField]
-    private UnityEvent _pancelEvent;
 
 }

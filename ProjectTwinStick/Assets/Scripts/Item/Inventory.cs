@@ -5,20 +5,23 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private Item DefaultItem;
+    public Item DefaultItem;
     public Item CurrentItem { get; private set; }
     
-    public Action<Item> OnItemChanged;
+    public event Action<Item> OnItemChanged;
 
+  public  event Action OnSetDefaultItem;
+    public event Action<Item> OnItemDroped; 
     private void Start()
     {
-        SetItem(DefaultItem);
+       ClearItem(false);
     }
 
     public void SetItem(Item item)
     {
         if (CurrentItem != null && CurrentItem != DefaultItem)
         {
+            OnItemDroped?.Invoke(CurrentItem);
             CurrentItem.Drop();
         }
         CurrentItem = item;
@@ -32,7 +35,8 @@ public class Inventory : MonoBehaviour
             CurrentItem.Drop();
         }
         CurrentItem = DefaultItem;
-        OnItemChanged?.Invoke(CurrentItem);
+        OnSetDefaultItem?.Invoke();
+        
     }
 
     public bool IsDefaultItem()

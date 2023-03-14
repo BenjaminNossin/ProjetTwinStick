@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IShootable
 {
-  void Shoot(Vector3 startPosition, Vector2 direction);
+  bool TryShoot(Vector3 startPosition, Vector2 direction);
 }
