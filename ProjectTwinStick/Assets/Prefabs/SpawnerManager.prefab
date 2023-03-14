@@ -121,6 +121,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 2
       objectReference: {fileID: 0}
@@ -198,6 +202,10 @@ PrefabInstance:
       propertyPath: randomMax
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 2
@@ -277,6 +285,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 5
       objectReference: {fileID: 0}
@@ -354,6 +366,10 @@ PrefabInstance:
       propertyPath: randomMax
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 2
@@ -433,6 +449,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 2
       objectReference: {fileID: 0}
@@ -510,6 +530,10 @@ PrefabInstance:
       propertyPath: randomMax
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 5
@@ -589,6 +613,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 8
       objectReference: {fileID: 0}
@@ -666,6 +694,10 @@ PrefabInstance:
       propertyPath: randomMax
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 5
@@ -749,6 +781,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 8
       objectReference: {fileID: 0}
@@ -826,6 +862,10 @@ PrefabInstance:
       propertyPath: randomMax
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 8
@@ -905,6 +945,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 5
       objectReference: {fileID: 0}
@@ -982,6 +1026,10 @@ PrefabInstance:
       propertyPath: randomMax
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
     - target: {fileID: 590965052432286159, guid: 4eba665562aab444eadd6cde5fecf8cd, type: 3}
       propertyPath: firstSpawnDelay
       value: 8

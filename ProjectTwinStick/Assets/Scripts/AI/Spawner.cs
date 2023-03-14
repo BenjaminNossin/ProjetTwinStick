@@ -17,11 +17,20 @@ namespace Game.Systems.AI
         [SerializeField, Range(0, 10)] private float firstSpawnDelay = 0f;
         [SerializeField, Range(1, 30)] private float randomMin = 5f;
         [SerializeField] private float randomMax = 5f;
+        [SerializeField] private EnemyStats defaultStats;
+
+        private EnemyStats currentStats;
 
         public void Initialize()
         {
             Invoke(nameof(Spawn), firstSpawnDelay);
+            currentStats = defaultStats;
             
+        }
+        
+        public void ChangeStats(EnemyStats newStats)
+        {
+            currentStats = newStats;
         }
 
         public void StopSpawnings()
@@ -34,7 +43,7 @@ namespace Game.Systems.AI
             var obj = Pool.GetFromPool();
             obj.transform.position = transform.position;
             obj._pool = Pool;
-            obj.Init(assignedBarricade.position);
+            obj.Init(assignedBarricade.position, currentStats);
             float waitTime = UnityEngine.Random.Range(randomMin, randomMax);
             //Debug.Log(waitTime);
             Invoke(nameof(Spawn), waitTime);

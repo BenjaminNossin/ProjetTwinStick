@@ -16,6 +16,14 @@ namespace Game.Systems.AI
             GameManager.Instance.AddWaveManager(this); 
         }
 
+        public void UpdateSpawnerStats(EnemyStats stats)
+        {
+            for(int i = 0; i < spawners.Count; i++)
+            {
+                spawners[i].ChangeStats(stats);
+            }
+        }
+
         public void OnGameStart()
         {
             
