@@ -200,7 +200,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
-    - _Global_Opacity: 0.3
+    - _Global_Opacity: 0.2
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -220,7 +220,7 @@ Material:
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
-    - _Motif_Opacity: 0.5
+    - _Motif_Opacity: 1
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OpaqueCullMode: 2
@@ -278,9 +278,9 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0, g: 0.35583115, b: 2, a: 1}
-    - _Color1: {r: 0.22250523, g: 0.71686167, b: 0.98833734, a: 1}
-    - _Color2: {r: 0.3997284, g: 0, b: 0.8235294, a: 0}
-    - _Color3: {r: 2.854902, g: 2.227451, b: 3.2941177, a: 0}
+    - _Color1: {r: 0.22352938, g: 0.6881472, b: 0.9882353, a: 1}
+    - _Color2: {r: 1.031544, g: 0, b: 2.1185474, a: 0}
+    - _Color3: {r: 20.831373, g: 16.313726, b: 23.968628, a: 0}
     - _ColorLineDissolve: {r: 23.968628, g: 23.968628, b: 23.968628, a: 0}
     - _Color_1: {r: 1.8396226, g: 2, b: 1.9874406, a: 1}
     - _Color_2: {r: 1, g: 0.30566037, b: 0.34666285, a: 0}
