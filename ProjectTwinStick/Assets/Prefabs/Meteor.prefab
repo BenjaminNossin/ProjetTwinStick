@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitsPerSeconds: 4
-  damage: 1
+  damage: 5
   immuneToMeteorTag: {fileID: 11400000, guid: 72a4a4b520a6b3747ac239ee45509bcd, type: 2}
   playerSlowEffect_Stun: {fileID: 11400000, guid: 9444ae93d2f731042a5b1f1330532457, type: 2}
 --- !u!1 &5258298789014037135
