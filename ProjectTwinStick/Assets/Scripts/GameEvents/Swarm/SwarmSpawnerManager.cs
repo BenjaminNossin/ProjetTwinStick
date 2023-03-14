@@ -10,9 +10,13 @@ public class SwarmSpawnerManager : MonoBehaviour
     [SerializeField] private EnemyPoolManager enemyPoolManager;
     [SerializeField] private SwarmSpawnersArea[] _allSwarmSpawnersByArea = new SwarmSpawnersArea[] { };
     [SerializeField] private SwarmSpawnersArea[] _swarmSpawnersAvailableByArea = new SwarmSpawnersArea[4];
+    [SerializeField] private EnemyStats defaultStats;
+
+    private EnemyStats currentStats;
 
     private void Start()
     {
+        currentStats = defaultStats;
         GameEventTimelineReader.AddGameEventSetter(typeof(SwarmEvent), SetSwarmEvent);
     }
 
@@ -26,6 +30,11 @@ public class SwarmSpawnerManager : MonoBehaviour
             _swarmSpawnersAvailableByArea[i].SwarmSpawners =
                 new List<SwarmSpawner>(_allSwarmSpawnersByArea[i].SwarmSpawners);
         }
+    }
+
+    public void ChangeEnemyStats(EnemyStats newStats)
+    {
+        currentStats = newStats;
     }
 
     public void ResetSpawnerArea(Area area)
@@ -57,7 +66,7 @@ public class SwarmSpawnerManager : MonoBehaviour
                         enemy._pool = enemyPoolManager.enemyPools[0];
                         SwarmSpawner spawner = _swarmSpawnersAvailableByArea[i].SwarmSpawners[randIndex];
                         enemy.transform.position = spawner.transform.position;
-                        enemy.Init(spawner.assignedBarricade.position); // PLACEHOLDER
+                        enemy.Init(spawner.assignedBarricade.position,currentStats); // PLACEHOLDER
                         _swarmSpawnersAvailableByArea[i].SwarmSpawners.RemoveAt(randIndex);
                     }
                 }

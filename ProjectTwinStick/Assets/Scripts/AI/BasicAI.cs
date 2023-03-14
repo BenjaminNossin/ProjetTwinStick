@@ -10,10 +10,6 @@ using UnityEngine;
 
 public class BasicAI : MonoBehaviour, ILifeable
 {
-    [SerializeField, Range(0, 20)] private float maxHP = 10f;  
-    [SerializeField, Range(1, 20)] float unitsPerSeconds = 10;
-    [SerializeField, Range(1, 20)] float damage = 20f;
-
     [SerializeField] private Collider collider;
     [SerializeField]
     private float dieTime;
@@ -54,6 +50,8 @@ public class BasicAI : MonoBehaviour, ILifeable
     
     private SlowManager slowManager;
 
+    private EnemyStats currentStats;
+
     
 
     [SerializeField]
@@ -75,8 +73,9 @@ public class BasicAI : MonoBehaviour, ILifeable
        
     }
 
-    public void Init(Vector3 assignedBarricadePos)
+    public void Init(Vector3 assignedBarricadePos, EnemyStats stats)
     {
+        currentStats = stats;
         cachedTransf = transform;
         distFromJumpArea = levelRadius + xzBufferZone;
 
@@ -86,8 +85,8 @@ public class BasicAI : MonoBehaviour, ILifeable
         SetSelfAndTargetPosFlat(floorY);
         SetNormalizedDirection(); 
         
-        SetMaxHp(maxHP);
-        SetCurrentHp(maxHP);
+        SetMaxHp(currentStats.maxHP);
+        SetCurrentHp(currentStats.maxHP);
         canJump = true;
     }
 
@@ -223,7 +222,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     #region Attack Behavior
     private void DamageTarget(ILifeable lifeable)
     {
-        lifeable.DecreaseCurrentHp(damage);
+        lifeable.DecreaseCurrentHp(currentStats.damage);
     }
 
     #endregion
@@ -232,7 +231,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     private void Move()
     {
         Debug.DrawRay(cachedTransf.position, normalizedDirection * 3f, Color.red, Time.deltaTime);
-        cachedTransf.Translate(Time.deltaTime * unitsPerSeconds * slowManager.GetCurrentSlowMultiplier() * normalizedDirection, Space.Self);
+        cachedTransf.Translate(Time.deltaTime * currentStats.unitsPerSeconds * slowManager.GetCurrentSlowMultiplier() * normalizedDirection, Space.Self);
     }
 
     private void Jump()

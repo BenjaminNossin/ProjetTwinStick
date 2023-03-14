@@ -65,6 +65,9 @@ public class GameEventTimelineReader : MonoBehaviour
     private static void SetNewEvent(GameEvent newEvent, GameEventData gameEventsToCreated)
     {
         newEvent.SetSO(gameEventsToCreated);
+        if (!allGameEventSetters.ContainsKey(gameEventsToCreated.GetTypeEvent()))
+            return;
+        
         foreach (var setter in allGameEventSetters[gameEventsToCreated.GetTypeEvent()])
         {
             setter.Invoke(newEvent);

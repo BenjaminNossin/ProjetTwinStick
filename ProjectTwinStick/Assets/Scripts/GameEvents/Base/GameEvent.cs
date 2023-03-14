@@ -10,10 +10,12 @@ public abstract class GameEvent
 
     public virtual void Raise()
     {
-        if(GetSO().callbacks.Length == 0) return;
-        foreach (var callback in GetSO().callbacks)
+        if (GetSO().callbacks.Length != 0)
         {
-            callback.Raise(this);
+            foreach (var callback in GetSO().callbacks)
+            {
+                callback.Raise(this);
+            }
         }
     }
     public abstract void SetSO(GameEventData data);
