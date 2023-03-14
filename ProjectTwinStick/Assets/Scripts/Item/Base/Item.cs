@@ -33,6 +33,8 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         get => _upgradeCount;
     }
 
+    private float upgradeResetTimer = 0f;
+
     private ItemsSpawnerManager _itemsSpawnerManager;
     public event Action OnSpawn;
   
@@ -130,6 +132,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private void OnHeld()
     {
+        upgradeResetTimer = GetSO().UpgradeResetTimer;
         if (isInSpawner)
         {
             _itemsSpawnerManager.AddSpawnerAvailable(_itemSpawner);
@@ -177,6 +180,26 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             case ItemState.Bouncing:
                 BounceUpdate();
                 break;
+            case ItemState.Held:
+                HeldUpdate();
+                break;
+        }
+    }
+
+    private void HeldUpdate()
+    {
+        if (upgradeResetTimer >= 0 && _upgradeCount > 0)
+        {
+            upgradeResetTimer -= Time.deltaTime;
+            if (upgradeResetTimer <= 0)
+            {
+                Debug.Log("downgrading");
+                Downgrade();
+            }
+        }
+        else
+        {
+            upgradeResetTimer = GetSO().UpgradeResetTimer;
         }
     }
 
@@ -357,6 +380,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     public void ResetUpgrade()
     {
+        Debug.Log("Resetting upgrades");
         _upgradeCount = 0;
         UpdateUpgrade();
     }
