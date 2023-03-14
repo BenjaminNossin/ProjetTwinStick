@@ -8,15 +8,26 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 {
     [SerializeField] BoxCollider shieldCollider;
     private ShieldItemUpgrade _upgrade;
-    private float DisabledCooldown = 0f;
+    
+    
+    public float DisabledCooldown { get; private set; } = 0f;
 
-    private bool isDisabled = false;
     private bool isInUse = false;
 
     private bool instanceActive = true;
 
-    public UnityEvent OnShieldDisabled;
+    private enum ShieldInstanceState
+    {
+        Enabled,
+        Broken,
+        Disabled
+    }
+    
+    private ShieldInstanceState _shieldInstanceState = ShieldInstanceState.Enabled;
+
     public UnityEvent OnShieldEnabled;
+    public UnityEvent OnShieldDisabled;
+    public UnityEvent OnShieldBroken;
     
     // Start is called before the first frame update
     void Start()
@@ -35,18 +46,38 @@ public class ShieldInstance : MonoBehaviour, ILifeable
         isInUse = false;
         RefreshShieldState();
     }
-    
+
+    private void SwitchState(ShieldInstanceState state)
+    {
+        _shieldInstanceState = state;
+        switch (_shieldInstanceState)
+        {
+            
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (isDisabled)
+        switch(_shieldInstanceState)
         {
-            DisabledCooldown -= Time.deltaTime;
-            if(DisabledCooldown <= 0)
-            {
-                isDisabled = false;
-                RefreshShieldState();
-            }
+            case ShieldInstanceState.Enabled:
+                break;
+            case ShieldInstanceState.Broken:
+                break;
+            case ShieldInstanceState.Disabled:
+                DisabledUpdate();
+                break;
+        }
+    }
+
+    private void DisabledUpdate()
+    {
+        DisabledCooldown -= Time.deltaTime;
+        if(DisabledCooldown <= 0)
+        {
+            SwitchState(ShieldInstanceState.Enabled);
+            RefreshShieldState();
         }
     }
 
