@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(CharacterController))]
@@ -17,6 +18,9 @@ public class CharacterMovement : MonoBehaviour
     private GameplayTagContainer _tagContainer;
     private Vector3 CurrentVelocity;
 
+    public event Action<float> OnSetVelocity;
+
+
     private void Awake()
     {
         Debug.Log("Character awake");
@@ -28,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_tagContainer.HasTag(MovementBlocker))
         {
+           
             return;
         }
 
@@ -63,5 +68,7 @@ public class CharacterMovement : MonoBehaviour
     public void SetVelocity(Vector3 velocity)
     {
         CurrentVelocity = velocity;
+        OnSetVelocity?.Invoke(velocity.magnitude);
+        
     }
 }

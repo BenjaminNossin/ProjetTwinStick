@@ -12,16 +12,20 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
         get => _isInMoving;
     }
 
-    private bool _canMoving = true;
+ 
 
     public CharacterMovement characterMovement;
 
+ 
     //TODO : move movement stats to dedicated stat system
-    [SerializeField] PlayerStats stats;
+    [SerializeField] public PlayerStats stats;
     private float CurrentAcceleration;
 
     public Vector2 CurrentMovementInputs;
     private bool _isInMoving;
+
+    public event Action OnMove;
+    public event Action OnCancelMove;
 
     public void PerformAction(params object[] arguments)
     {
@@ -40,25 +44,17 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
     {
         CurrentMovementInputs = Vector2.zero;
         characterMovement.SetVelocity(Vector3.zero);
+        OnCancelMove?.Invoke();
     }
 
     public void EnableAction()
     {
     }
 
-    public UnityEvent PerformEvent { get; }
-    public UnityEvent CancelEvent { get; }
-
-    [SerializeField] private UnityEvent _performEvent;
-    [SerializeField] private UnityEvent _cancelEvent;
 
     private void Update()
     {
-        if (!_canMoving)
-        {
        
-            return;
-        }
         UpdateVelocity();
     }
 
@@ -67,20 +63,13 @@ public class PlayerMovement : MonoBehaviour, IPlayerAction
         if (CurrentMovementInputs.magnitude > stats.MovementInputThreshold)
         {
             CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 1, (Time.deltaTime / stats.AccelerationTime));
-            if (!_isInMoving)
-            {
-                _performEvent?.Invoke();
-            }
-
+            OnMove?.Invoke();
             _isInMoving = true;
         }
         else
         {
             CurrentAcceleration = Mathf.MoveTowards(CurrentAcceleration, 0, (Time.deltaTime / stats.DecelerationTime));
-            if (_isInMoving)
-            {
-                CancelEvent?.Invoke();
-            }
+            OnCancelMove?.Invoke();
             _isInMoving = false;
         }
 

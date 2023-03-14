@@ -14,7 +14,7 @@ public struct SlowInstance
 
 public class SlowManager : MonoBehaviour
 {
-    public UnityEvent onSlowMultiplierChanged;
+    public event Action<float> OnSlowMultiplierChanged;
     
     private List<SlowInstance> _instances = new List<SlowInstance>();
     private float _slowMultiplier = 1f;
@@ -92,7 +92,7 @@ public class SlowManager : MonoBehaviour
         }
         if (Math.Abs(oldSlowMultiplier - _slowMultiplier) > 0.0001f)
         {
-            onSlowMultiplierChanged?.Invoke();
+            OnSlowMultiplierChanged?.Invoke(_slowMultiplier);
         }
     }
     

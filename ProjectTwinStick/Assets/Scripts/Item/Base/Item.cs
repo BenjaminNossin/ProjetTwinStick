@@ -25,6 +25,10 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     
     
     private int _upgradeCount;
+    public int UpgradeCount
+    {
+        get => _upgradeCount;
+    }
 
     protected GameObject _previousHolder { get; private set; }
     protected GameObject _itemHolder { get; private set; }
@@ -84,7 +88,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     private void OnHeld()
     {
         
-        transform.parent = _itemHolder.transform;
+
     }
     
     private void OnDropped()
@@ -95,14 +99,14 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             position = _itemHolder.transform.position;
             _previousHolder = _itemHolder;
         }
-        transform.parent = null;
+      
         _itemHolder = null;
         transform.position = new Vector3(position.x, throwData.GroundedHeight, position.z);
         transform.rotation = quaternion.identity;
     }
 
     public abstract ItemSO GetSO();
-    public abstract void Shoot(Vector3 startPosition, Vector2 direction);
+    public abstract bool TryShoot(Vector3 startPosition, Vector2 direction);
 
     public abstract void SetUpgrade(ItemUpgrade newUpgrade);
 
@@ -274,13 +278,13 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         return false;
     }
 
-    public void Take(GameObject holder)
+    public void Take( GameObject itemHolder)
     {
         if (_itemHolder != null)
         {
             _previousHolder = _itemHolder;
         }
-        _itemHolder = holder;
+        _itemHolder = itemHolder;
         ChangeState(ItemState.Held);
     }
 

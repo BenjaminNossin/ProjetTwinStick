@@ -37,6 +37,7 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
                     Debug.Log(_inventory.CurrentItem);
                     if (inventoryItem != _inventory.CurrentItem && inventoryItem.CanTake())
                     {
+                        // set item 
                         _inventory.SetItem(inventoryItem);
                         takeable.Take(gameObject);
                         break;
@@ -72,14 +73,12 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
     {
     }
 
-    public UnityEvent PerformEvent { get; }
-    public UnityEvent CancelEvent { get; }
+
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, castRadius);
     }
-
-    public event Action PerformActionEvent;
+    
 }

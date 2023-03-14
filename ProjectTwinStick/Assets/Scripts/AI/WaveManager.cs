@@ -18,7 +18,7 @@ namespace Game.Systems.AI
 
         public void OnGameStart()
         {
-            return; 
+            
             Debug.Log($"Starting Waves");
 
             for (int i = 0; i < transform.childCount; i++)
