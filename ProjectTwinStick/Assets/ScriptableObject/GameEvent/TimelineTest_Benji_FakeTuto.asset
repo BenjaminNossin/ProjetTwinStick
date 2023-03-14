@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9955396c3119d424fbccbe98a3a7c93b, type: 3}
-  m_Name: TimelineTest_Benji
+  m_Name: TimelineTest_Benji_FakeTuto
   m_EditorClassIdentifier: 
   _gameEventTimeCodes:
   - timeCode: 0

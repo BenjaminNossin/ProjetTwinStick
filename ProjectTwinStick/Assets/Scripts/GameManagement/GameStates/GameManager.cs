@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.Systems.AI;
 using UnityEngine.SceneManagement;
-using Game.Systems.GlobalFramework.States; 
+using Game.Systems.GlobalFramework.States;
+using System.Reflection;
 
 namespace Game.Systems.GlobalFramework
 {
@@ -14,11 +15,16 @@ namespace Game.Systems.GlobalFramework
     public class GameManager : MonoBehaviour
     {
         #region Game Flow
-        [SerializeField] private PlayerInputManager playerInputManager;
+        [SerializeField] private GameObject mainMenuSelectionsUI;
+        [SerializeField] private GameEventTimelineSO tutorialTimeLine;
+
+        [Space, SerializeField] private PlayerInputManager playerInputManager;
 
         [SerializeField] private List<PlayerRendererLinker> allPlayerRenderers = new List<PlayerRendererLinker>();
         public static GameManager Instance { get; private set; }
         private StateContext currentContext;
+        private State initialState = null;
+        private Action OnAllPlayersReady; 
         #endregion
 
         #region Gameplay
@@ -65,10 +71,19 @@ namespace Game.Systems.GlobalFramework
             spawnPointIndex = 0;
             SetObjectActive(gameOverObj, false);
 
-            currentContext = new(new LobbyState(), playerInputManager);
+            currentContext = new(new MainMenuState(), playerInputManager);
+
+            //currentContext = new(new LobbyState(), playerInputManager);
         }
 
         #region Lazy Initializers
+        string currentSelected; 
+        public void SetSelection(string mainMenuCurrentSelection)
+        {
+            currentSelected = mainMenuCurrentSelection; 
+        }
+
+
         public void SetShipCoreData(GameObject obj, ShipCore sC)
         {
             ShipCoreObj = obj;
@@ -90,9 +105,19 @@ namespace Game.Systems.GlobalFramework
             controller.SetControllerSpawnPosition(spawnPoints[spawnPointIndex % playersRequiredAmount]);
             spawnPointIndex++;
         }
-        
+
         #endregion
 
+        #region Setters
+        /// <summary>
+        /// Called during the main menu state
+        /// </summary>
+        /// <param name="requiredState"></param>
+        private void SetCurrentSelectedGameState(string requiredState)
+        {
+            Assembly currentAssembly = Assembly.GetAssembly(typeof(State));
+            currentAssembly.CreateInstance(requiredState);
+        }
 
         public void SetPlayerRenderer(PlayerController controller, int index)
         {
@@ -106,6 +131,7 @@ namespace Game.Systems.GlobalFramework
         public void AddWaitRoomObj(GameObject obj)
         {
             waitRooms.Add(obj);
+            SetObjectActive(obj, false);
         }
 
         public void AddWaveManager(WaveManager manager)
@@ -113,6 +139,11 @@ namespace Game.Systems.GlobalFramework
             waveManager = manager;
         }
 
+        /// <summary>
+        /// called from main menu to activate the selected game mode once all players are ready
+        /// the player ready count can be dynamically changed (for ex, only one player required to activate credits/options
+        /// </summary>
+        /// <param name="value">the amount to add to the current players count</param>
         public void UpdatePlayerReadyCount(int value)
         {
             currentPlayerReadyCount += value;
@@ -120,8 +151,8 @@ namespace Game.Systems.GlobalFramework
 
             if (currentPlayerReadyCount == playersRequiredAmount)
             {
-                currentContext.TransitionTo(new GameState());
-
+                //currentContext.TransitionTo(new GameState());
+                SetCurrentSelectedGameState(currentSelected); 
             }
         }
 
@@ -133,13 +164,29 @@ namespace Game.Systems.GlobalFramework
 
             }
         }
+        #endregion
 
-        public void OnLobbyStart()
+        #region Callbacks
+        public void OnMainMenuStart()
         {
+            Debug.Log("starting main menu");
+            SetObjectActive(mainMenuSelectionsUI, true);
+
             foreach (var item in waitRooms)
             {
                 SetObjectActive(item, true);
             }
+        }
+
+        public void OnMainMenuEnd()
+        {
+            Debug.Log("ending main menu");
+            currentContext.TransitionTo(new LobbyState());
+        }
+
+        public void OnLobbyStart()
+        {
+            SetObjectActive(mainMenuSelectionsUI, false);
         }
 
         public void OnGameStart()
@@ -172,5 +219,6 @@ namespace Game.Systems.GlobalFramework
             SceneManager.LoadSceneAsync("Benji_Test_MainMenu", LoadSceneMode.Single);
 
         }
+        #endregion
     }
 }
