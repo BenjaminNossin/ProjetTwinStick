@@ -6,5 +6,6 @@ public abstract class ItemSO : ScriptableObject
 {
     public abstract ItemUpgrade[] GetUpgrades();
     public Item itemPrefab;
-    
+    public float RespawnTime;
+
 }

@@ -21,13 +21,56 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     [SerializeField] ItemThrowData throwData;
 
+    [SerializeField] private ItemSpawner _itemSpawner;
     public event Action<ItemState> OnItemStateChange;
-    
-    
+
+
     private int _upgradeCount;
+    private bool isInRespawn;
+    private bool isInSpawner;
     public int UpgradeCount
     {
         get => _upgradeCount;
+    }
+
+    private ItemsSpawnerManager _itemsSpawnerManager;
+    public event Action OnSpawn;
+  
+    public void Init(ItemsSpawnerManager itemsSpawnerManager)
+    {
+        isInRespawn = false;
+        isInSpawner = false;
+
+        StopAllCoroutines();
+
+        _itemsSpawnerManager = itemsSpawnerManager;
+        ChangeState(ItemState.Dropped);
+    }
+
+    public void CheckMaxDistanceOfArena()
+    {
+        if(isInRespawn || !_itemSpawner) return;
+            if (Vector3.Distance(_itemsSpawnerManager.centerArena.position, new Vector3(transform.position.x, 0, transform.position.z))> _itemsSpawnerManager.maxDistanceToCenterOfArena)
+            {
+                isInRespawn = true;
+                StartCoroutine(WaitForSpawn());
+            }
+    }
+
+    IEnumerator WaitForSpawn()
+    {
+        yield return new WaitForSeconds(GetSO().RespawnTime);
+        OnSpawn?.Invoke();
+        isInRespawn = false;
+        isInSpawner = true;
+        _itemSpawner = null;
+        _itemsSpawnerManager.Spawn(this);
+
+    }
+    public void SetItemSpawner(ItemSpawner spawner)
+    {
+        _itemSpawner = spawner;
+        isInSpawner = true;
     }
 
     protected GameObject _previousHolder { get; private set; }
@@ -87,7 +130,11 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     private void OnHeld()
     {
-        
+        if (isInSpawner)
+        {
+            _itemsSpawnerManager.AddSpawnerAvailable(_itemSpawner);
+            isInSpawner = false; 
+        }
 
     }
     
@@ -99,10 +146,10 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             position = _itemHolder.transform.position;
             _previousHolder = _itemHolder;
         }
-      
         _itemHolder = null;
         transform.position = new Vector3(position.x, throwData.GroundedHeight, position.z);
         transform.rotation = quaternion.identity;
+        CheckMaxDistanceOfArena();
     }
 
     public abstract ItemSO GetSO();

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShieldItem
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 0}
+  RespawnTime: 5
   _upgrades:
   - shieldWidth: 1
     shieldCooldown: 3
@@ -20,3 +21,4 @@ MonoBehaviour:
     shieldCooldown: 2
   - shieldWidth: 3
     shieldCooldown: 1
+  ShieldHeight: 1

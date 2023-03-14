@@ -25,6 +25,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     public float MaxHP { get; private set; }    
     public float CurrentHP { get; private set; }
 
+    public event Action OnDieImmedialty;
     public event Action OnHit;
     public event Action OnDieByPlayer;
     public event Action<Vector3> OnSetMoveDirection;
@@ -53,6 +54,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     
     private SlowManager slowManager;
 
+    
 
     [SerializeField]
     private BasicAIRender _render; 
@@ -67,7 +69,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     private void Start()
     {
         slowManager = GetComponent<SlowManager>();
-        GameManager.Instance.OnGameOverCallBack += DieImmediately;
+        GameManager.Instance.OnGameOverCallBack += ResetEnemyWhenGameOver;
         var shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
         shipCorePosFlat = new Vector3(shipCorePos.x, floorY, shipCorePos.z); 
        
@@ -107,8 +109,15 @@ public class BasicAI : MonoBehaviour, ILifeable
         }
     }
 
+    private void ResetEnemyWhenGameOver()
+    {
+        _pool.AddToPool(this);
+        collider.enabled = false;
+        isDied = true;
+    }
     private void DieImmediately()
     {
+       OnDieImmedialty?.Invoke();
         _pool.AddToPool(this);
         collider.enabled = false;
         isDied = true;
