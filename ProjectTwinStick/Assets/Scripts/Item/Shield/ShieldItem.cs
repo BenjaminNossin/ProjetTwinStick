@@ -14,6 +14,10 @@ public class ShieldItem : Item
 
     private Vector3 lastStartPos;
     private Vector2 lastDirection;
+
+    private bool IsInUse = false;
+    private bool IsInOppositeCorner = false;
+    
     
     public override ItemSO GetSO()
     {
@@ -30,6 +34,7 @@ public class ShieldItem : Item
     protected override void Update()
     {
         base.Update();
+        _shieldInstance.transform.parent = null;
         UpdateShieldPos();
     }
 
@@ -37,9 +42,18 @@ public class ShieldItem : Item
     {
         if(state != ItemState.Held)
         {
-            DisableShield();
+            IsInUse = false;
         }
-        else EnableShield();
+        else IsInUse = true;
+    }
+
+    private void UpdateShieldState()
+    {
+        if (IsInUse && !IsInOppositeCorner)
+        {
+            EnableShield();
+        }
+        else DisableShield();
     }
 
     private void DisableShield()
@@ -85,6 +99,58 @@ public class ShieldItem : Item
         lastStartPos = transform.position;
         
         Vector3 intersectionPoint = GetIntersectionPoint(lastStartPos, lastDirection);
+        intersectionPoint.y = _shieldItemSO.ShieldHeight;
+
+        Vector3 relativeIntersectionPoint = _shieldCenter.transform.InverseTransformPoint(intersectionPoint);
+        Vector3 corner = _shieldCenter.transform.InverseTransformPoint(lastStartPos).normalized;
+        
+        corner.x = Mathf.Sign(corner.x);
+        corner.y = _shieldItemSO.ShieldHeight;
+        corner.z = Mathf.Sign(corner.z);
+        
+        /*
+        //if shield in wrong corner
+        if (Math.Abs(Mathf.Sign(relativeIntersectionPoint.x) - corner.x) > 0.0001 || Math.Abs(Mathf.Sign(relativeIntersectionPoint.z) - corner.z) > 0.0001)
+        {
+            IsInOppositeCorner = false;
+        }
+        else IsInOppositeCorner = true;*/
+        
+        relativeIntersectionPoint.y = 0;
+
+        if (corner.x < 0 && relativeIntersectionPoint.x > 0)
+        {
+            relativeIntersectionPoint.x = 0;
+        }
+        else if (corner.x > 0 && relativeIntersectionPoint.x < 0)
+        {
+            relativeIntersectionPoint.x = 0;
+        }
+        if (corner.z < 0 && relativeIntersectionPoint.z > 0)
+        {
+            relativeIntersectionPoint.z = 0;
+        }
+        else if (corner.z > 0 && relativeIntersectionPoint.z < 0)
+        {
+            relativeIntersectionPoint.z = 0;
+        }
+
+        relativeIntersectionPoint.Normalize();
+        Debug.Log(relativeIntersectionPoint);
+        if (relativeIntersectionPoint.magnitude < 0.99f)
+        {
+            IsInOppositeCorner = true;
+            UpdateShieldState();
+            return;
+        }
+        else
+        {
+            IsInOppositeCorner = false;
+            UpdateShieldState();
+        }
+        
+        relativeIntersectionPoint *= _shieldCenter.Radius;
+        intersectionPoint = _shieldCenter.transform.TransformPoint(relativeIntersectionPoint);
         intersectionPoint.y = _shieldItemSO.ShieldHeight;
         
         //TODO : Raycast to edge of map instead
