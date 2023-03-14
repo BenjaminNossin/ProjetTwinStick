@@ -45,5 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputManager: {fileID: 0}
+  allPlayerRenderers:
+  - {fileID: 7987503585921918554, guid: 066a26762f8823a41b782d7a3dba95cd, type: 3}
+  - {fileID: 7987503585921918554, guid: 066a26762f8823a41b782d7a3dba95cd, type: 3}
+  - {fileID: 7987503585921918554, guid: 066a26762f8823a41b782d7a3dba95cd, type: 3}
+  - {fileID: 7987503585921918554, guid: 066a26762f8823a41b782d7a3dba95cd, type: 3}
   playersRequiredAmount: 4
   gameOverObj: {fileID: 0}

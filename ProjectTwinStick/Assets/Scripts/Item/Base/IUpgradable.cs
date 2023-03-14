@@ -9,4 +9,5 @@ public interface IUpgradable
  void Downgrade();
 
  void ResetUpgrade();
+ 
 }

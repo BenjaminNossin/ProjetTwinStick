@@ -18,7 +18,7 @@ public class RepairItem : Item
         return ItemSO;
     }
 
-    public override void Shoot(Vector3 startPosition, Vector2 direction)
+    public override bool TryShoot(Vector3 startPosition, Vector2 direction)
     {
         lastStartPos = startPosition;
         lastDirection = direction;
@@ -32,6 +32,8 @@ public class RepairItem : Item
                 barricade.IncreaseCurrentHp(currentUpgrade.HealRate * Time.deltaTime);
             }
         }
+
+        return true;
     }
 
     public override void SetUpgrade(ItemUpgrade newUpgrade)

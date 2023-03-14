@@ -34,21 +34,21 @@ public class ShooterItem : Item
         }
     }
 
-    public override void Shoot(Vector3 startPosition, Vector2 direction)
+    public override bool TryShoot(Vector3 startPosition, Vector2 direction)
     {
-        if (!shooterIsReady) return;
+        if (!shooterIsReady) return false;
         Bullet bullet = _bulletPool.GetFromPool();
         var currentAngle = Mathf.Atan2(direction.y, direction.x);
         currentAngle += Random.Range(currentUpgrade.MinDispersionRadian, currentUpgrade.MaxDispersionRadian);
         bullet.Init(startPosition,currentUpgrade.DamageBullet, currentUpgrade.Speed,
             new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle)), _bulletPool);
         shooterIsReady = false;
+        return true;
     }
 
     public override void SetUpgrade(ItemUpgrade newUpgrade)
     {
         currentUpgrade =(ShooterUpgrade) newUpgrade;
-        Debug.Log(currentUpgrade.Speed);
     }
 
     protected override void Start()

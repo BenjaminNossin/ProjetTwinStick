@@ -14,6 +14,10 @@ public class BasicAI : MonoBehaviour, ILifeable
     [SerializeField, Range(1, 20)] float unitsPerSeconds = 10;
     [SerializeField, Range(1, 20)] float damage = 20f;
 
+    [SerializeField] private Collider collider;
+    [SerializeField]
+    private float dieTime;
+    private bool isDied;
     [SerializeField] 
     private Vector3 normalizedDirection;
 
@@ -21,6 +25,9 @@ public class BasicAI : MonoBehaviour, ILifeable
     public float MaxHP { get; private set; }    
     public float CurrentHP { get; private set; }
 
+    public event Action OnHit;
+    public event Action OnDieByPlayer;
+    public event Action<Vector3> OnSetMoveDirection;
     public event Action<float> OnSetMaxHp;
     public event Action<float> OnIncreaseMaxHp;
     public event Action<float> OnDecreaseMaxHp;
@@ -47,15 +54,23 @@ public class BasicAI : MonoBehaviour, ILifeable
     private SlowManager slowManager;
 
 
+    [SerializeField]
+    private BasicAIRender _render; 
     // DEBUG
-    public float distFromShipCore, distFromJumpArea; 
+    public float distFromShipCore, distFromJumpArea;
+
+    private void Awake()
+    {
+        _render.Init();
+    }
 
     private void Start()
     {
         slowManager = GetComponent<SlowManager>();
-        GameManager.Instance.OnGameOverCallBack += Die;
+        GameManager.Instance.OnGameOverCallBack += DieImmediately;
         var shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
         shipCorePosFlat = new Vector3(shipCorePos.x, floorY, shipCorePos.z); 
+       
     }
 
     public void Init(Vector3 assignedBarricadePos)
@@ -63,6 +78,8 @@ public class BasicAI : MonoBehaviour, ILifeable
         cachedTransf = transform;
         distFromJumpArea = levelRadius + xzBufferZone;
 
+        isDied = false;
+        collider.enabled = true;
         SetTargetPosition(assignedBarricadePos);
         SetSelfAndTargetPosFlat(floorY);
         SetNormalizedDirection(); 
@@ -74,6 +91,7 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     void Update()
     {
+        if(isDied) return;
         Move();
 
         // state machine will avoid this kind of shitty checks
@@ -89,13 +107,20 @@ public class BasicAI : MonoBehaviour, ILifeable
         }
     }
 
+    private void DieImmediately()
+    {
+        _pool.AddToPool(this);
+        collider.enabled = false;
+        isDied = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {   
         if (other.TryGetComponent<ILifeable>(out var lifeable))
         {
             //Debug.Log($"damaging target {other.gameObject.name}"); 
             DamageTarget(lifeable); 
-            Die();
+            DieImmediately();
         }
         else
         {
@@ -104,7 +129,7 @@ public class BasicAI : MonoBehaviour, ILifeable
             {
                 //Debug.Log($"damaging target {other.gameObject.name}"); 
                 DamageTarget(lifeable); 
-                Die();
+                DieImmediately();
             }
         }
     }
@@ -125,17 +150,27 @@ public class BasicAI : MonoBehaviour, ILifeable
     private void SetNormalizedDirection()
     {
         normalizedDirection = new Vector3(targetPos.x - cachedTransf.position.x, 0, targetPos.z - cachedTransf.position.z).normalized;
+        OnSetMoveDirection?.Invoke(normalizedDirection);
+
     }
 
     #region Life Management
     private void CheckCurrentHPAmount()
     {
-        if (CurrentHP <= 0) Die();
+        if (CurrentHP <= 0)
+        {
+            OnDieByPlayer?.Invoke();
+            Die();
+        }
+        else OnHit?.Invoke();
     }
 
     private void Die()
     {
-        _pool.AddToPool(this);
+        
+        StartCoroutine(_pool.AddToPoolLatter(this, dieTime));
+        isDied = true;
+        collider.enabled = false;
     }
 
     public float GetMaxHp() => MaxHP; 
@@ -169,8 +204,10 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     public void DecreaseCurrentHp(float amount)
     {
+        if(isDied) return;
         CurrentHP -= amount;
         CheckCurrentHPAmount(); 
+       
     }
     #endregion
 

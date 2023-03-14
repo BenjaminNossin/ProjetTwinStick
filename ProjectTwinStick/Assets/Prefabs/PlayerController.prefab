@@ -83,6 +83,8 @@ MonoBehaviour:
   _playerThrow: {fileID: 2673780183964481545}
   _playerAim: {fileID: 8633414572662730113}
   playerObject: {fileID: 1070296544542325317}
+  _playerRenderer: {fileID: 1169715891230587592}
+  _playerInput: {fileID: 0}
 --- !u!1001 &22590538320156849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,6 +152,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1047708072171954953, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
   m_PrefabInstance: {fileID: 22590538320156849}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1169715891230587592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1183298392214086265, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}
+  m_PrefabInstance: {fileID: 22590538320156849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070296544542325317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413f287be6b39464983cc29c8d3b13f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2673780183964481545 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2687361521020166328, guid: f431c8abd7b17c944975a5c6e7f53ebd, type: 3}

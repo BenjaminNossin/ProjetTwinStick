@@ -75,9 +75,10 @@ public class ShieldItem : Item
         return new Vector3(P1.x, 0, P1.y);
     }
 
-    public override void Shoot(Vector3 startPosition, Vector2 direction)
+    public override bool TryShoot(Vector3 startPosition, Vector2 direction)
     {
         lastDirection = direction;
+        return true;
     }
 
     private void UpdateShieldPos()

@@ -13,9 +13,16 @@ public class PlayerController : MonoBehaviour, IController
     [SerializeField] private PlayerAim _playerAim;
     private bool isActive = false;
     [SerializeField] GameObject playerObject;
-
+    [SerializeField] private PlayerRenderer _playerRenderer;
+    [SerializeField]
     private PlayerInput _playerInput;
-
+    
+    public void InstantiateRenderer(PlayerRendererLinker rendererPrefab)
+    {
+       
+        PlayerRendererLinker renderer =  Instantiate(rendererPrefab, _playerRenderer.pivotRenderer);
+        renderer.Link(_playerRenderer);
+    }
     private void OnEnable()
     {
         _playerInput = GetComponent<PlayerInput>();

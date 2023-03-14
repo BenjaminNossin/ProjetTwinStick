@@ -16,6 +16,7 @@ namespace Game.Systems.GlobalFramework
         #region Game Flow
         [SerializeField] private PlayerInputManager playerInputManager;
 
+        [SerializeField] private List<PlayerRendererLinker> allPlayerRenderers = new List<PlayerRendererLinker>();
         public static GameManager Instance { get; private set; }
         private StateContext currentContext;
         #endregion
@@ -89,8 +90,14 @@ namespace Game.Systems.GlobalFramework
             controller.SetControllerSpawnPosition(spawnPoints[spawnPointIndex % playersRequiredAmount]);
             spawnPointIndex++;
         }
+        
         #endregion
 
+
+        public void SetPlayerRenderer(PlayerController controller, int index)
+        {
+            controller.InstantiateRenderer(allPlayerRenderers[index]);
+        }
         public void AddControllerToCurrentState(PlayerController controller)
         {
             currentContext.AddControllerToCurrentState(controller); 

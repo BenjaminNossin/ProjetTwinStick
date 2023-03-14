@@ -77,6 +77,7 @@ namespace Game.Systems.GlobalFramework.States
         public void AddPlayerController(PlayerController controller)
         {
             Debug.Log("A player controller was added: " + controller);
+            GameManager.Instance.SetPlayerRenderer(controller, ActivePlayersControllers.Count);
             ActivePlayersControllers.Add(controller);
             controller.SetUpController();
             controller.ActivateController();

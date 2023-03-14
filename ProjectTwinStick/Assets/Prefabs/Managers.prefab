@@ -236,6 +236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6340019594683788057, guid: 7d4a6c2cb35e53442946217831a5de93, type: 3}
+      propertyPath: enemyPoolsManager
+      value: 
+      objectReference: {fileID: 3784829688891582048}
     - target: {fileID: 6340019594683788059, guid: 7d4a6c2cb35e53442946217831a5de93, type: 3}
       propertyPath: m_RootOrder
       value: 1
