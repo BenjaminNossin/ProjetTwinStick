@@ -49,6 +49,7 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 
     private void SwitchState(ShieldInstanceState state)
     {
+        if (state == _shieldInstanceState) return;
         _shieldInstanceState = state;
         switch (_shieldInstanceState)
         {

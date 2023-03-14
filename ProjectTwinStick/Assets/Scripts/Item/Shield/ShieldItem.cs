@@ -138,7 +138,6 @@ public class ShieldItem : Item
         }
 
         relativeIntersectionPoint.Normalize();
-        Debug.Log(relativeIntersectionPoint);
         if (relativeIntersectionPoint.magnitude < 0.99f)
         {
             IsInOppositeCorner = true;
