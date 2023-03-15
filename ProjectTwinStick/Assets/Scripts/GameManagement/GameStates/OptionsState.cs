@@ -6,7 +6,7 @@ namespace Game.Systems.GlobalFramework.States
     {
         public override void OnStateEnter()
         {
-            Debug.Log("initializing Options state"); 
+            GameManager.Instance.OnShowOptions(); 
         }
 
         public override void OnStateExit()

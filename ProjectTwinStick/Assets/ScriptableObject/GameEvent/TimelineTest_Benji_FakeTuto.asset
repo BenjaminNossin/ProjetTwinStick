@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: TimelineTest_Benji_FakeTuto
   m_EditorClassIdentifier: 
   _gameEventTimeCodes:
-  - timeCode: 0
-    gameEventDatas: []
+  - timeCode: 10
+    gameEventDatas:
+    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
+  - timeCode: 20
+    gameEventDatas:
+    - {fileID: 11400000, guid: 27c040e294a0b2441a397507d317f9c4, type: 2}
