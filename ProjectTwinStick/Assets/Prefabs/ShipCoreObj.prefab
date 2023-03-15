@@ -152,14 +152,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6047942999066824275}
     m_Modifications:
-    - target: {fileID: 4539674487969053812, guid: 40270bfacd55ea84eb7ab30e7e5f27e0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0014080554
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539674487969053812, guid: 40270bfacd55ea84eb7ab30e7e5f27e0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.32269523
-      objectReference: {fileID: 0}
     - target: {fileID: 5158474014427678713, guid: 40270bfacd55ea84eb7ab30e7e5f27e0, type: 3}
       propertyPath: m_Name
       value: BarricadeCorner

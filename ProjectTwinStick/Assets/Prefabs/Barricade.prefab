@@ -93,7 +93,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777167731857984124}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -176,7 +176,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4668848195796817246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 6479171984114538360}
   - component: {fileID: 8334855991276611967}
   - component: {fileID: 2550456858366266660}
+  - component: {fileID: 2546392259159899212}
   m_Layer: 0
   m_Name: Barricade
   m_TagString: Untagged
@@ -331,6 +332,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2546392259159899212}
+        m_TargetAssemblyTypeName: BarricadeRenderer, Assembly-CSharp
+        m_MethodName: DeactivateBarricadeRenderer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnBarricadeDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -373,6 +386,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2546392259159899212}
+        m_TargetAssemblyTypeName: BarricadeRenderer, Assembly-CSharp
+        m_MethodName: ActivateBarricadeRenderer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _barricadeRenderer: {fileID: 2546392259159899212}
   RepairedCollision:
   - {fileID: 9028032071614066092}
   DestroyedCollision:
@@ -586,6 +612,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2546392259159899212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401839648365849675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f02b2144da87294e8b4ad46c32c4722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 62531224437482876}
+  _barricade: {fileID: 8368026913232525160}
+  activateRendererTime: 2
 --- !u!1 &9028032071614066092
 GameObject:
   m_ObjectHideFlags: 0
