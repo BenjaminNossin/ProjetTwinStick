@@ -11,6 +11,7 @@ namespace Game.Systems.AI
     {
         private readonly List<Spawner> spawners = new();
         [FormerlySerializedAs("_enemyPools")] [SerializeField] private EnemyPoolManager enemyPoolsManager;
+        [SerializeField] private EnemyStats defaultStats;
         private void Start()
         {
             GameManager.Instance.AddWaveManager(this); 
@@ -26,7 +27,7 @@ namespace Game.Systems.AI
 
         public void OnGameStart()
         {
-            
+            ChangeEnemyStats(defaultStats);
             Debug.Log($"Starting Waves");
 
             for (int i = 0; i < transform.childCount; i++)
