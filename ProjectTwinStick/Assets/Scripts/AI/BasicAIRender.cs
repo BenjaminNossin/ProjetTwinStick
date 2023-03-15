@@ -13,35 +13,79 @@ public class BasicAIRender : MonoBehaviour
    [SerializeField] private Animator _animator;
    [SerializeField] private Transform renderer;
    [SerializeField] private ParticleSystem _explosionFXPrefab;
-   [SerializeField] private Renderer[] dissolveRenderers;
-   //[SerializeField] private float dissolveTime;
-   //[SerializeField] private float dissolveTimer;
+   [SerializeField] private Renderer[] allRenderers;
+   
+   private bool isDisolve;
+   private bool isHit;
+   private float _hitTimer;
+   [SerializeField] private float dissolveTime;
+   private float dissolveTimer;
+    [SerializeField] private float _hitTime;
    public void Init()
    {
       _slowManager.OnSlowMultiplierChanged += UpdateSpeedMovementAnimation;
       _basicAI.OnHit += LaunchHitAnimation;
+      _basicAI.OnHit += OnHitMaterial;
       _basicAI.OnDieByPlayer += LaunchDieByPlayerAnimation;
+      _basicAI.OnDieByPlayer += OnHitMaterial;
       _basicAI.OnSetMoveDirection += RotateRenderer;
       _basicAI.OnDieImmedialty += InstantiateExplosionFX;
-    //  _basicAI.OnDieByPlayer += 
    }
 
+   private void OnHitMaterial()
+   {
+      isHit = true;
+      _hitTimer = 0;
+      for (int i = 0; i < allRenderers.Length; i++)
+      {
+         allRenderers[i].material.SetFloat("_HitBlanc", 1);
+      }
+   }
    private void OnEnable()
    {
-    //  for (int i = 0; i < dissolveRenderers.Length; i++)
-      //{
-        // dissolveRenderers[i].material.SetFloat("");
-      //}
+      isDisolve = false;
+      dissolveTimer = 0;
+      for (int i = 0; i < allRenderers.Length; i++)
+      {
+         allRenderers[i].material.SetFloat("_Dissolve", 1);
+      }
    }
 
    private void StartDisolve()
    {
-      
+      isDisolve = true;
+      dissolveTimer = 0;
    }
 
    private void Update()
    {
-      
+      if (isDisolve)
+      {
+         dissolveTimer += Time.deltaTime;
+         for (int i = 0; i < allRenderers.Length; i++)
+         {
+            allRenderers[i].material.SetFloat("_Dissolve", 1-(dissolveTimer/dissolveTime));
+         }
+         if (dissolveTime < dissolveTimer)
+         {
+            isDisolve = false;
+            dissolveTimer = 0;
+         }
+      }
+
+      if (isHit)
+      {
+         _hitTimer += Time.deltaTime;
+         for (int i = 0; i < allRenderers.Length; i++)
+         {
+            allRenderers[i].material.SetFloat("_HitBlanc",1-(_hitTimer/_hitTime));
+         }
+         if (_hitTime < _hitTimer)
+         {
+            isHit = false;
+            _hitTimer = 0; 
+         }
+      }
    }
 
    public void InstantiateExplosionFX()

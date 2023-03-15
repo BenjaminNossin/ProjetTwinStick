@@ -13,7 +13,7 @@ public class ItemRender : MonoBehaviour
     [SerializeField] private string itemThrowAnimationState;
     [SerializeField] private string itemUseAnimationParameter;
     [SerializeField] private string itemHeldAnimationState;
-    [SerializeField] private Renderer[] allUpgradedItemRenderers;
+    [SerializeField] private MeshRenderer[] allUpgradedItemRenderers;
 
     private void OnEnable()
     {

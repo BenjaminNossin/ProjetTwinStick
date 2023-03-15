@@ -30,9 +30,15 @@ public class PlayerRenderer : MonoBehaviour
         _inventory.OnSetDefaultItem += ActivateDefaultItem;
         _slowManager.OnSlowAdded += EnableHitAnimationParameter;
         _slowManager.OnSlowRemove += TryDisableHitAnimationParameter;
+        _playerThrow.OnCancelThrow += CancelThrowAnimation;
     }
-    
 
+
+    private void CancelThrowAnimation()
+    {
+        DisableIsThrow(); 
+        animator.Play("Blend Tree");
+    }
     private void UpdateUpgradeFX(Item currentItem)
     {
         switch (currentItem.UpgradeCount)
