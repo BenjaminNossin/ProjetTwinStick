@@ -161,7 +161,12 @@ namespace Game.Systems.GlobalFramework
             }
         }
 
-        private State GetStateFromFactory(MainMenuSelections mms) =>
+        public void SetNewState(MainMenuSelections mms)
+        {
+            currentContext.TransitionTo(GetStateFromFactory(mms));
+        }
+
+        private static State GetStateFromFactory(MainMenuSelections mms) =>
             mms switch
             {
                 MainMenuSelections.Tutorial => new TutorialState(),
@@ -169,6 +174,7 @@ namespace Game.Systems.GlobalFramework
                 MainMenuSelections.Options => new OptionsState(),
                 MainMenuSelections.Credits => new CreditsState(),
                 MainMenuSelections.Quit => new QuitState(),
+                MainMenuSelections.MainMenu => new MainMenuState(),
                 _ => throw new ArgumentException("Invalid enum value for main menu selections", nameof(mms)),
             }; 
         

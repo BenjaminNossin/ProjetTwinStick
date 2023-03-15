@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
-public enum MainMenuSelections { Tutorial, MainGame, Options, Credits, Quit }
+public enum MainMenuSelections { Tutorial, MainGame, Options, Credits, Quit, MainMenu }
 
 public class UIMainMenu : MonoBehaviour
 {
