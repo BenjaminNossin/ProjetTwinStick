@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private BulletRenderer _bulletRenderer; 
     public void Init(Vector3 startPos, float damage, float speed, Vector3 direction,SlowSO slow, Pool<Bullet> pool)
     {
+        transform.forward = direction;
         transform.position = startPos;
         _damage = damage;
         _rb.velocity = direction * speed;
