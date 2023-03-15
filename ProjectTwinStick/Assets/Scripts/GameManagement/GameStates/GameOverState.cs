@@ -14,7 +14,7 @@ namespace Game.Systems.GlobalFramework.States
 
         public override void OnStateExit()
         {
-            // throw new System.NotImplementedException();
+
         }
     }
 }

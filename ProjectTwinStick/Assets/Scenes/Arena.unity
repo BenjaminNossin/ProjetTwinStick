@@ -4594,6 +4594,38 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101249}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 449.72635
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -872
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288237718694741900, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1125
+      objectReference: {fileID: 0}
     - target: {fileID: 6433842452823972749, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: assignedBarricade
       value: 
@@ -4714,6 +4746,10 @@ PrefabInstance:
       propertyPath: core
       value: 
       objectReference: {fileID: 2063409570}
+    - target: {fileID: 8851480869536777539, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9094178238751392294, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: assignedBarricade
       value: 

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.Systems.AI;
 using UnityEngine.SceneManagement;
-using Game.Systems.GlobalFramework.States; 
+using Game.Systems.GlobalFramework.States;
+using System.Reflection;
 
 namespace Game.Systems.GlobalFramework
 {
@@ -14,11 +15,23 @@ namespace Game.Systems.GlobalFramework
     public class GameManager : MonoBehaviour
     {
         #region Game Flow
-        [SerializeField] private PlayerInputManager playerInputManager;
+        [SerializeField] private GameObject mainMenuSelectionsUI;
+        [SerializeField] private GameEventTimelineSO tutorialTimeLine;
+
+        [Space, SerializeField] private PlayerInputManager playerInputManager;
 
         [SerializeField] private List<PlayerRendererLinker> allPlayerRenderers = new List<PlayerRendererLinker>();
         public static GameManager Instance { get; private set; }
         private StateContext currentContext;
+        private State initialState = null;
+        private Action OnAllPlayersReady;
+        private MainMenuSelections mainMenuSelection;
+        #endregion
+
+        #region UI
+        [SerializeField] private GameObject creditsObj;
+        [SerializeField] private GameObject optionsObj;
+        [SerializeField] private GameObject gameOverObj;
         #endregion
 
         #region Gameplay
@@ -31,14 +44,12 @@ namespace Game.Systems.GlobalFramework
         private WaveManager waveManager;
         private GameEventTimelineReader _gameEventTimelineReader;
 
-        
-        [SerializeField] private GameObject gameOverObj;
-
         public static List<Vector3> spawnPoints = new();
         private int spawnPointIndex;
         public event Action OnGameOverCallBack;
         public event Action OnGameStartCallback;
         #endregion
+
 
         // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
 
@@ -65,9 +76,9 @@ namespace Game.Systems.GlobalFramework
         {
             currentPlayerReadyCount = 0;
             spawnPointIndex = 0;
-            SetObjectActive(gameOverObj, false);
 
-            currentContext = new(new LobbyState(), playerInputManager);
+            SetAllUIIsActive(false);
+            currentContext = new(new MainMenuState(), playerInputManager);
         }
 
         #region Lazy Initializers
@@ -92,9 +103,18 @@ namespace Game.Systems.GlobalFramework
             controller.SetControllerSpawnPosition(spawnPoints[spawnPointIndex % playersRequiredAmount]);
             spawnPointIndex++;
         }
-        
+
         #endregion
 
+        #region Setters
+        /// <summary>
+        /// Called during the main menu state
+        /// </summary>
+        /// <param name="requiredState"></param>
+        public void SetCurrentSelectedGameState(MainMenuSelections requiredState)
+        {
+            mainMenuSelection = requiredState; 
+        }
 
         public void SetPlayerRenderer(PlayerController controller, int index)
         {
@@ -108,6 +128,7 @@ namespace Game.Systems.GlobalFramework
         public void AddWaitRoomObj(GameObject obj)
         {
             waitRooms.Add(obj);
+            SetObjectActive(obj, false);
         }
 
         public void AddWaveManager(WaveManager manager)
@@ -115,15 +136,20 @@ namespace Game.Systems.GlobalFramework
             waveManager = manager;
         }
 
+        /// <summary>
+        /// called from main menu to activate the selected game mode once all players are ready
+        /// the player ready count can be dynamically changed (for ex, only one player required to activate credits/options
+        /// </summary>
+        /// <param name="value">the amount to add to the current players count</param>
         public void UpdatePlayerReadyCount(int value)
         {
             currentPlayerReadyCount += value;
             Debug.Log("Updating Player ready count to: " + currentPlayerReadyCount);
 
+            SetAllUIIsActive(false); 
             if (currentPlayerReadyCount == playersRequiredAmount)
             {
-                currentContext.TransitionTo(new GameState());
-
+                currentContext.TransitionTo(GetStateFromFactory(mainMenuSelection));
             }
         }
 
@@ -136,21 +162,62 @@ namespace Game.Systems.GlobalFramework
             }
         }
 
-        public void OnLobbyStart()
+        private State GetStateFromFactory(MainMenuSelections mms) =>
+            mms switch
+            {
+                MainMenuSelections.Tutorial => new TutorialState(),
+                MainMenuSelections.MainGame => new GameState(),
+                MainMenuSelections.Options => new OptionsState(),
+                MainMenuSelections.Credits => new CreditsState(),
+                MainMenuSelections.Quit => new QuitState(),
+                _ => throw new ArgumentException("Invalid enum value for main menu selections", nameof(mms)),
+            }; 
+        
+
+        #endregion
+
+        #region Callbacks
+        public void OnMainMenuStart()
         {
+            Debug.Log("starting main menu");
+            SetObjectActive(mainMenuSelectionsUI, true);
+
             foreach (var item in waitRooms)
             {
                 SetObjectActive(item, true);
             }
         }
 
+        public void OnMainMenuEnd()
+        {
+            Debug.Log("ending main menu");
+            //currentContext.TransitionTo(new LobbyState());
+        }
+
+        public void OnLobbyStart()
+        {
+            //SetObjectActive(mainMenuSelectionsUI, false);
+        }
+
+        public void OnTutorialStart()
+        {
+            Debug.Log("tutorial");
+            SetAllUIIsActive(false);
+            _gameEventTimelineReader.SetNewTimeline(tutorialTimeLine);
+
+            currentContext.TransitionTo(new GameState());
+        }
+
         public void OnGameStart()
         {
+            SetAllUIIsActive(false);
+
             foreach (var item in waitRooms)
             {
                 SetObjectActive(item, false);
             }
 
+            SetObjectActive(mainMenuSelectionsUI, false);
             SetObjectActive(ShipCoreObj, true);
             shipCore.OnGameStart();
             _gameEventTimelineReader.OnGameStart();
@@ -169,10 +236,36 @@ namespace Game.Systems.GlobalFramework
             currentContext.TransitionTo(new GameOverState());
         }
 
+        public void OnShowOptions()
+        {
+            Debug.Log("options");
+            optionsObj.SetActive(true);
+            creditsObj.SetActive(false);
+        }
+
+        public void OnShowCredits()
+        {
+            Debug.Log("credits");
+            creditsObj.SetActive(true);
+            optionsObj.SetActive(false);
+        }
+
         public void OnGameQuit()
         {
-            SceneManager.LoadSceneAsync("Benji_Test_MainMenu", LoadSceneMode.Single);
+            Debug.Log("Application Quit");
+            SetAllUIIsActive(false);
+            Application.Quit();
 
         }
+        #endregion
+
+        #region UI
+        private void SetAllUIIsActive(bool isActive)
+        {
+            gameOverObj.SetActive(isActive); 
+            optionsObj.SetActive(isActive);
+            creditsObj.SetActive(isActive);
+        }
+        #endregion
     }
 }
