@@ -34,6 +34,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
         SetTargetPosition(assignedTargetPos);
         SetSelfPosFlat(shipCorePos.y*1.1f);
         SetNormalizedDirection();
+        transform.forward = normalizedDirection;
     }
 
     void Update()
@@ -96,7 +97,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private void Move()
     {
         Debug.DrawRay(transform.position, normalizedDirection * 3f, Color.blue, Time.deltaTime);
-        transform.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.Self);
+        transform.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.World);
     }
 
     private void SetTargetPosition(Vector3 posToReach)
