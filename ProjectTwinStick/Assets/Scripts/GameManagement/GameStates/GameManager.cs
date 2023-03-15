@@ -212,7 +212,6 @@ namespace Game.Systems.GlobalFramework
 
             foreach (var item in waitRooms)
             {
-                Debug.Log("wait room activated"); 
                 SetObjectActive(item, true);
             }
         }
@@ -230,7 +229,6 @@ namespace Game.Systems.GlobalFramework
 
         public void OnTutorialStart()
         {
-            Debug.Log("tutorial");
             isTutorial = true;
 
             SetAllUIIsActive(false);
@@ -241,6 +239,8 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameStart()
         {
+            Debug.Log("Starting Game. Is tutorial: " + isTutorial);
+
             Invoke(nameof(OnGameWin), (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame)); // * 60f);
 
             SetAllUIIsActive(false);

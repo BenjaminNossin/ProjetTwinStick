@@ -559,6 +559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPool
       objectReference: {fileID: 0}
+    - target: {fileID: 8966369281507342693, guid: 423d69b1ad9213a4f974e0b3e8b9916c, type: 3}
+      propertyPath: enemyPoolsData.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 3363241117341678545, guid: 6fcb39301cac4f34d85a7221d3c1ef9f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 423d69b1ad9213a4f974e0b3e8b9916c, type: 3}
 --- !u!114 &3784829688891582048 stripped
@@ -926,6 +930,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5445414976777364271, guid: c1af20db73110b9409efa7ef0af80450, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5564045349399772357, guid: c1af20db73110b9409efa7ef0af80450, type: 3}
       propertyPath: tmpText
       value: 
@@ -1096,6 +1104,10 @@ PrefabInstance:
     - target: {fileID: 1111249109689875666, guid: 79a4f4ff74b3e274fade39bfec1d82a3, type: 3}
       propertyPath: m_Name
       value: PoolFeedback
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163592797374919948, guid: 79a4f4ff74b3e274fade39bfec1d82a3, type: 3}
+      propertyPath: poolDataFeedbacks.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8963885198046530480, guid: 79a4f4ff74b3e274fade39bfec1d82a3, type: 3}
       propertyPath: m_RootOrder
