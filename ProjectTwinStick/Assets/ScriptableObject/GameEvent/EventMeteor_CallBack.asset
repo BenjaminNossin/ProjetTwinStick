@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63158f95856e29643afab2a2e8baf679, type: 3}
-  m_Name: Rotation4Inverted
+  m_Script: {fileID: 11500000, guid: 533d6445ac492bf4b98481e8e4820f22, type: 3}
+  m_Name: EventMeteor_CallBack
   m_EditorClassIdentifier: 
-  callbacks:
-  - {fileID: 11400000, guid: 124f395e65599a441bb30635d7a6fbe7, type: 2}
-  rotationTime: 5
-  rotationValue: 4
-  clockwise: 1

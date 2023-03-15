@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63158f95856e29643afab2a2e8baf679, type: 3}
   m_Name: Rotation2
   m_EditorClassIdentifier: 
-  callbacks: []
+  callbacks:
+  - {fileID: 11400000, guid: 124f395e65599a441bb30635d7a6fbe7, type: 2}
   rotationTime: 4
   rotationValue: 2
   clockwise: 1
