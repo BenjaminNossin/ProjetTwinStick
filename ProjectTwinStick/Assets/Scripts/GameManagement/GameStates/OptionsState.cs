@@ -6,14 +6,12 @@ namespace Game.Systems.GlobalFramework.States
     {
         public override void OnStateEnter()
         {
-            GameManager.Instance.OnShowOptions(); 
         }
 
         public override void OnStateExit()
         {
 
         }
-
     }
 }
 

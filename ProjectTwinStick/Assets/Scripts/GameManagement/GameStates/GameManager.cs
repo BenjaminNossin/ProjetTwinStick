@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using Game.Systems.AI;
 using UnityEngine.SceneManagement;
 using Game.Systems.GlobalFramework.States;
-using System.Reflection;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -19,6 +18,7 @@ namespace Game.Systems.GlobalFramework
         #region Game Flow
 
         [SerializeField] private GameObject mainMenuSelectionsUI;
+
         [SerializeField] private GameEventTimelineSO tutorialTimeLine;
         [SerializeField] private PlayerInputManager playerInputManager;
         [SerializeField] private List<PlayerRendererLinker> allPlayerRenderers = new List<PlayerRendererLinker>();
@@ -36,8 +36,6 @@ namespace Game.Systems.GlobalFramework
         [SerializeField] private GameObject optionsObj;
         [SerializeField] private GameObject gameOverObj;
         [SerializeField] private GameObject gameWonObj;
-        [SerializeField] private GameObject gameOverMenuBtn;
-        [SerializeField] private GameObject gameWonMenuBtn;
         [SerializeField] private EventSystem eventSystem;
 
         [SerializeField] private TMP_Text tmpTimer;
@@ -271,7 +269,6 @@ namespace Game.Systems.GlobalFramework
 
         public void OnLobbyStart()
         {
-            //SetObjectActive(mainMenuSelectionsUI, false);
         }
 
         public void OnTutorialStart()
@@ -317,31 +314,41 @@ namespace Game.Systems.GlobalFramework
             CancelInvoke(nameof(OnGameWin));
 
             SetObjectActive(gameOverObj, true);
-            eventSystem.SetSelectedGameObject(gameOverMenuBtn);
 
             DeactivateAllGameplayObjects();
             currentContext.TransitionTo(new GameOverState());
         }
 
+        private bool showOptions, showCredits;
+
         public void OnShowOptions()
         {
             Debug.Log("options");
-            SetObjectActive(optionsObj, true);
-            SetObjectActive(optionsObj, false);
+            showOptions = !showOptions;
+            showCredits = false;
+
+            SetObjectActive(optionsObj, showOptions);
+            SetObjectActive(creditsObj, showCredits);
+
+            SetObjectActive(mainMenuSelectionsUI, !(showOptions || showCredits));
         }
 
         public void OnShowCredits()
         {
             Debug.Log("credits");
-            SetObjectActive(creditsObj, true);
-            SetObjectActive(optionsObj, false);
+            showCredits = !showCredits;
+            showOptions = false;
+
+            SetObjectActive(creditsObj, showCredits);
+            SetObjectActive(optionsObj, showOptions);
+
+            SetObjectActive(mainMenuSelectionsUI, !(showOptions || showCredits));
         }
 
         public void OnGameWin()
         {
             Debug.Log("ON GAME WIN"); 
             SetObjectActive(gameWonObj, true);
-            eventSystem.SetSelectedGameObject(gameWonMenuBtn);
 
             DeactivateAllGameplayObjects();
             currentContext.TransitionTo(new WinState());
@@ -359,13 +366,23 @@ namespace Game.Systems.GlobalFramework
         #region UI
 
         // architecture meh/20
-        private void SetAllUIIsActive(bool isActive)
+        public void SetAllUIIsActive(bool isActive)
         {
-            tmpTimer.text = string.Empty; 
+            HideTimer(); 
             gameWonObj.SetActive(isActive);
             gameOverObj.SetActive(isActive);
             optionsObj.SetActive(isActive);
             creditsObj.SetActive(isActive);
+        }
+
+        private void HideMainMenuSelection()
+        {
+            mainMenuSelectionsUI.SetActive(false);
+        }
+
+        public void HideTimer()
+        {
+            tmpTimer.text = string.Empty;
         }
 
         #endregion

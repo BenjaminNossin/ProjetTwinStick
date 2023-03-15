@@ -5,7 +5,9 @@ public class UIGameEnded : MonoBehaviour
 {
     private void OnEnable()
     {
-        Debug.Log("game ended. Reloading context"); 
+        Debug.Log("game ended. Reloading context");
+        GameManager.Instance.HideTimer();
+
         Invoke(nameof(BackToMainMenu), 5f);
     }
 

@@ -15,7 +15,7 @@ public class UIMainMenu : MonoBehaviour
     private MainMenuSelections currentSelection; 
 
     PlayerInput playerInput_MainMenu;
-    InputAction toLeft, toRight; 
+    InputAction toLeft, toRight, options, select;
 
     private void OnEnable()
     {
@@ -34,7 +34,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        tmpText.text = "Press A to spawn !"; 
+        tmpText.text = "Press a button to spawn !"; 
     }
 
     private void GetPlayerInput(PlayerInput firstPlayerToJoin)
@@ -47,10 +47,13 @@ public class UIMainMenu : MonoBehaviour
 
         toLeft = playerInput_MainMenu.currentActionMap["SelectionLeft"];
         toRight = playerInput_MainMenu.currentActionMap["SelectionRight"];
+        options = playerInput_MainMenu.currentActionMap["Options"];
+        select = playerInput_MainMenu.currentActionMap["Credits"];
 
         toLeft.performed += ToLeft;
         toRight.performed += ToRight;
-
+        options.performed += ShowOptions;
+        select.performed += ShowCredits;
     }
 
     private void ToLeft(InputAction.CallbackContext context)
@@ -61,6 +64,16 @@ public class UIMainMenu : MonoBehaviour
     private void ToRight(InputAction.CallbackContext context)
     {
         UpdateSelection(1);
+    }
+
+    private void ShowOptions(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.OnShowOptions();
+    }
+
+    private void ShowCredits(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.OnShowCredits();
     }
 
     private void UpdateSelection(int updateValue)
@@ -75,6 +88,7 @@ public class UIMainMenu : MonoBehaviour
             tmpText.text = "Main Game"; 
         } // MainMenuSelections.MainGame.ToString().Replace("G"," G"); // bro :DD
 
-        GameManager.Instance.SetCurrentSelectedGameState(currentSelection); 
+        GameManager.Instance.SetCurrentSelectedGameState(currentSelection);
+        GameManager.Instance.SetAllUIIsActive(false);
     }
 }
