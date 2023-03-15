@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -12,6 +13,9 @@ public class BasicAIRender : MonoBehaviour
    [SerializeField] private Animator _animator;
    [SerializeField] private Transform renderer;
    [SerializeField] private ParticleSystem _explosionFXPrefab;
+   [SerializeField] private Renderer[] dissolveRenderers;
+   //[SerializeField] private float dissolveTime;
+   //[SerializeField] private float dissolveTimer;
    public void Init()
    {
       _slowManager.OnSlowMultiplierChanged += UpdateSpeedMovementAnimation;
@@ -19,6 +23,25 @@ public class BasicAIRender : MonoBehaviour
       _basicAI.OnDieByPlayer += LaunchDieByPlayerAnimation;
       _basicAI.OnSetMoveDirection += RotateRenderer;
       _basicAI.OnDieImmedialty += InstantiateExplosionFX;
+    //  _basicAI.OnDieByPlayer += 
+   }
+
+   private void OnEnable()
+   {
+    //  for (int i = 0; i < dissolveRenderers.Length; i++)
+      //{
+        // dissolveRenderers[i].material.SetFloat("");
+      //}
+   }
+
+   private void StartDisolve()
+   {
+      
+   }
+
+   private void Update()
+   {
+      
    }
 
    public void InstantiateExplosionFX()

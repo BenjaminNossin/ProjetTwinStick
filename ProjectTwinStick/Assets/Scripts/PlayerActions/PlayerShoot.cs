@@ -7,7 +7,11 @@ using UnityEngine.Events;
 
 public class PlayerShoot : MonoBehaviour, IPlayerAction
 {
-    public bool IsInAction { get => isInShoot; }
+    public bool IsInAction
+    {
+        get => isInShoot;
+    }
+
     private bool isInShoot;
     [SerializeField] private Inventory _inventory;
     [SerializeField] private CharacterMovement _characterMovement;
@@ -25,23 +29,20 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
 
     public void CancelAction(params object[] arguments)
     {
-        
     }
 
     private void Update()
     {
-        if(_tagContainer.HasTag(ShootBlocker))
+        if (_tagContainer.HasTag(ShootBlocker))
         {
             CancelShoot();
             return;
         }
+
         if (inputs.magnitude > _playerStats.AimInputThreshold)
         {
+            OnTryShoot?.Invoke(_inventory.CurrentItem.TryShoot(transform.position, inputs));
 
-            
-                OnTryShoot?.Invoke(_inventory.CurrentItem.TryShoot(transform.position, inputs));
-            
-            
             isInShoot = true;
         }
         else
@@ -49,14 +50,14 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
             CancelShoot();
         }
     }
-    
-    
+
 
     private void CancelShoot()
     {
-
+        if (isInShoot)
+            _inventory.CurrentItem.CancelShoot();
         OnCancelShoot?.Invoke();
-            isInShoot = false;
+        isInShoot = false;
     }
 
     public void SetupAction(params object[] arguments)
@@ -70,6 +71,4 @@ public class PlayerShoot : MonoBehaviour, IPlayerAction
     public void EnableAction()
     {
     }
-
-
 }

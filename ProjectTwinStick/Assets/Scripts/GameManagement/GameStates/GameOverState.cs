@@ -9,7 +9,6 @@ namespace Game.Systems.GlobalFramework.States
             Debug.Log("Initializing Game Over State");
             ActivePlayersControllers.Clear();
             ActivePlayersInput.Clear();
-
             DeactivateAllPlayerControllers();
         }
 

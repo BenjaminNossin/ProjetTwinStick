@@ -1601,6 +1601,7 @@ MonoBehaviour:
   _animator: {fileID: 2686991865925114218}
   renderer: {fileID: 6448556704799557711}
   _explosionFXPrefab: {fileID: 1212467452738238391, guid: f812faaa1314e7749b52c64cf4d7f029, type: 3}
+  dissolveRenderers: []
 --- !u!65 &1262588015513803942
 BoxCollider:
   m_ObjectHideFlags: 0

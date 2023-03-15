@@ -32,7 +32,7 @@ public class RepairItem : Item
                 barricade.IncreaseCurrentHp(currentUpgrade.HealRate * Time.deltaTime);
             }
         }
-
+        OnShoot?.Invoke();
         return true;
     }
 
