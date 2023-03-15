@@ -26,17 +26,17 @@ public class ItemRender : MonoBehaviour
 
     private void SetUpgradeShaderParameter(int upgradeCount)
     {
-        Debug.Log(_item.gameObject.name);
+    
         for (int i = 0; i < allUpgradedItemRenderers.Length; i++)
         {
-            Debug.Log(   _item.gameObject.name +"test");
+          
             for (int j = 0; j < allUpgradedItemRenderers[i].materials.Length; j++)
             {
-                Debug.Log(allUpgradedItemRenderers[i].materials[j].HasFloat("_Level"));
+        
                 if (allUpgradedItemRenderers[i].materials[j].HasFloat("_Level"))
                 {
                     allUpgradedItemRenderers[i].materials[j].SetFloat("_Level", upgradeCount);
-                    Debug.Log(allUpgradedItemRenderers[i].materials[j].GetFloat("_Level"));
+                  
                     break;
                 }
              

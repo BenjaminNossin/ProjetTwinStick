@@ -193,6 +193,72 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5975096809357693453, guid: 7007f0360a65656498ff7978e36330db, type: 3}
   m_PrefabInstance: {fileID: 3195987715690017691}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3819103225089757305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9129257143468541731}
+    m_Modifications:
+    - target: {fileID: 1144904373147022357, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_Name
+      value: Chalumeau FlameRepair - VFX CASTER
+      objectReference: {fileID: 0}
+    - target: {fileID: 1144904373147022357, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075230955373479244, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+--- !u!198 &661337311730841492 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4336303306300958701, guid: 9196ba7022f381549a79c3b6908e283b, type: 3}
+  m_PrefabInstance: {fileID: 3819103225089757305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4402483645671717280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,4 +396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 3073296155674740476}
-  repairFx: {fileID: 8428828241244624701}
+  _repairItem: {fileID: 3073296155674740476}
+  repairFx: {fileID: 661337311730841492}
+  shootFx: {fileID: 8428828241244624701}
