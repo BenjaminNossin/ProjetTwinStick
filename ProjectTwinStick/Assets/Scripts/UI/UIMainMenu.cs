@@ -1,12 +1,7 @@
 using Game.Systems.GlobalFramework;
-using Game.Systems.GlobalFramework.States;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public enum MainMenuSelections { Tutorial, MainGame, Options, Credits, Quit, MainMenu }
 
