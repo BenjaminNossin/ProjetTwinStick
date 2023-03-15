@@ -98,7 +98,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     private void ChangeState(ItemState newState)
     {
         CurrentItemState = newState;
-        Debug.Log("Current state : " + CurrentItemState);
         switch (CurrentItemState)
         {
             case ItemState.Held:
@@ -115,7 +114,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
                 break;
         }
         OnItemStateChange?.Invoke(CurrentItemState);
-        Debug.Log("Current state : " + CurrentItemState);
     }
 
     private void OnThrowStart()
@@ -205,7 +203,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             upgradeResetTimer -= Time.deltaTime;
             if (upgradeResetTimer <= 0)
             {
-                Debug.Log("downgrading");
                 Downgrade();
             }
         }
@@ -241,7 +238,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
             if (colliders.Length > 0)
             {
-                Debug.Log("Item catch");
                 if (colliders[0].gameObject != _previousHolder)
                 {
                     Upgrade();
@@ -289,7 +285,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
             Collider[] colliders = Physics.OverlapSphere(transform.position, _collider.radius, throwData.PlayerMask, QueryTriggerInteraction.Collide);
             if (colliders.Length > 0)
             {
-                Debug.Log("Item catch");
                 if (colliders[0].gameObject != _previousHolder)
                 {
                     Upgrade();
@@ -327,7 +322,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     private void Bounce(Vector3 direction)
     {
         ResetUpgrade();
-        Debug.Log("Bounce " + direction);
         direction.y = 0;
         direction.Normalize();
         transform.position = new Vector3(transform.position.x, throwData.GroundedHeight, transform.position.z);
@@ -340,7 +334,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     {
         if (CurrentItemState == ItemState.Held)
         {
-            Debug.Log("Thrown");
             _chargeTime = chargeTime;
             direction.y = 0;
             direction.Normalize();
@@ -397,7 +390,6 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     public void ResetUpgrade()
     {
-        Debug.Log("Resetting upgrades");
         _upgradeCount = 0;
         UpdateUpgrade();
     }

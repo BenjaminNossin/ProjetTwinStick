@@ -167,7 +167,6 @@ public class ShieldItem : Item
     
     public override void SetUpgrade(ItemUpgrade newUpgrade)
     {
-        Debug.Log("set upgrade");
         _currentUpgrade = (ShieldItemUpgrade) newUpgrade;
         _shieldInstance.ChangeUpgrade(_currentUpgrade);
     }
