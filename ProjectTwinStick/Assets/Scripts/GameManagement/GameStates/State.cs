@@ -112,6 +112,8 @@ namespace Game.Systems.GlobalFramework.States
 
         protected void ActivateAllPlayerControllers()
         {
+            ClearPlayerListFromContext(); 
+
             foreach (var item in ActivePlayersControllers)
             {
                 Debug.Log("Activating player controller");
