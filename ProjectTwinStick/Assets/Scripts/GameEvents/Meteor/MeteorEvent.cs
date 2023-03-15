@@ -10,6 +10,7 @@ public class MeteorEvent : GameEventArea, IGameEventUpdatable
 
     public override void Raise()
     {
+        base.Raise();
         meteorSpawnerManager.ResetSpawnerArea(targetAreas[0]);
     }
 

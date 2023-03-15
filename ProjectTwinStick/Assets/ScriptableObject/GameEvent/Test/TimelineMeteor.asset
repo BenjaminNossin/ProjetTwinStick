@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: TimelineMeteor
   m_EditorClassIdentifier: 
   _gameEventTimeCodes:
-  - timeCode: 0
-    gameEventDatas:
-    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
   - timeCode: 1
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
@@ -23,5 +20,8 @@ MonoBehaviour:
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
   - timeCode: 3
+    gameEventDatas:
+    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
+  - timeCode: 4
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}

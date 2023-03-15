@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpawnSpeedBoostEventData
   m_EditorClassIdentifier: 
   callbacks: []
-  newParams: {fileID: 0}
+  newParams: {fileID: 11400000, guid: 2f736aa77ca49b14b9dd2c8626a5ebed, type: 2}
