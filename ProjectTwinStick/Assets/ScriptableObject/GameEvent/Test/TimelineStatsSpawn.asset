@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28181739a8dd13a429dca0b84fd97fdc, type: 3}
-  m_Name: BaseEnemyStats
+  m_Script: {fileID: 11500000, guid: 9955396c3119d424fbccbe98a3a7c93b, type: 3}
+  m_Name: TimelineStatsSpawn
   m_EditorClassIdentifier: 
-  maxHP: 5
-  unitsPerSeconds: 3
-  damage: 20
+  _gameEventTimeCodes:
+  - timeCode: 10
+    gameEventDatas:
+    - {fileID: 11400000, guid: 6b815b7931166b44c935103a584662ca, type: 2}

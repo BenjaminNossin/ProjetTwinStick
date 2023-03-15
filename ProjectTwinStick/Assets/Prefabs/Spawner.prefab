@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57c3d1855272b34a8b7d425e299d64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignedBarricade: {fileID: 0}
   objToSpawn: {fileID: 7807522515552021840, guid: 6fcb39301cac4f34d85a7221d3c1ef9f, type: 3}
   firstSpawnDelay: 0
-  secondsBetweenSpawns: 5
+  spawnerParams: {fileID: 11400000, guid: 2f736aa77ca49b14b9dd2c8626a5ebed, type: 2}
+  defaultStats: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}

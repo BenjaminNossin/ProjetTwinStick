@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28181739a8dd13a429dca0b84fd97fdc, type: 3}
-  m_Name: BaseEnemyStats
+  m_Script: {fileID: 11500000, guid: 399472e1989bae44f9aa4e0473c76179, type: 3}
+  m_Name: UpgradedSpawnerParams
   m_EditorClassIdentifier: 
-  maxHP: 5
-  unitsPerSeconds: 3
-  damage: 20
+  spawnDelayMin: 5
+  spawnDelayMax: 20
