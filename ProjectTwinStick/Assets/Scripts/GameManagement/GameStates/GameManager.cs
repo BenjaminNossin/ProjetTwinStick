@@ -6,8 +6,6 @@ using Game.Systems.AI;
 using UnityEngine.SceneManagement;
 using Game.Systems.GlobalFramework.States;
 using System.Reflection;
-using Unity.Tutorials.Core.Editor;
-using UnityEditor.Timeline.Actions;
 
 namespace Game.Systems.GlobalFramework
 {
@@ -75,7 +73,7 @@ namespace Game.Systems.GlobalFramework
             }
 
             currentContext = new(new LobbyState(), playerInputManager);
-            Invoke(nameof(Initialize), 0.2f); 
+            Invoke(nameof(InitializeContext), 0.2f); 
         }
 
         public void InitializeContext()
@@ -246,7 +244,7 @@ namespace Game.Systems.GlobalFramework
         {
             Debug.Log("Starting Game. Is tutorial: " + isTutorial);
 
-            Invoke(nameof(OnGameWin), (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame)); // * 60f);
+            Invoke(nameof(OnGameWin), (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f); // * 60f);
 
             SetAllUIIsActive(false);
 
