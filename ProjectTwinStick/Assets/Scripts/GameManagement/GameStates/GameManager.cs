@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Game.Systems.GlobalFramework.States;
 using System.Reflection;
 using UnityEngine.EventSystems;
+using TMPro;
 
 namespace Game.Systems.GlobalFramework
 {
@@ -39,6 +40,7 @@ namespace Game.Systems.GlobalFramework
         [SerializeField] private GameObject gameWonMenuBtn;
         [SerializeField] private EventSystem eventSystem;
 
+        [SerializeField] private TMP_Text tmpTimer;
         #endregion
 
         #region Gameplay
@@ -47,7 +49,9 @@ namespace Game.Systems.GlobalFramework
         [Space, SerializeField, Range(1, 15)] private float minutesBeforeWin_Tutorial = 5;
         [Space, SerializeField, Range(1, 20)] private float minutesBeforeWin_MainGame = 12;
         private bool isTutorial;
-        private float minutesBeforeWin;
+        private bool playing; 
+        private float timeBeforeWin_AsSeconds;
+        private float currentPlayTime; 
 
         private int currentPlayerReadyCount;
         private readonly List<GameObject> waitRooms = new();
@@ -85,6 +89,25 @@ namespace Game.Systems.GlobalFramework
 
             currentContext = new(new LobbyState(), playerInputManager);
             Invoke(nameof(InitializeContext), 0.2f);
+        }
+
+        float min, sec;
+        private void Update()
+        {
+            if (playing)
+            {
+                min = Mathf.FloorToInt(timeBeforeWin_AsSeconds / 60f); 
+                sec = timeBeforeWin_AsSeconds % 60f;
+
+                var span = new TimeSpan(0, 0, (int)timeBeforeWin_AsSeconds); //Or TimeSpan.FromSeconds(seconds); (see Jakob C�s answer)
+                var timeFormatted = string.Format("{0}:{1:00}",
+                                            (int)span.TotalMinutes,
+                                            span.Seconds);
+
+                tmpTimer.text = $"{timeFormatted}";
+
+                timeBeforeWin_AsSeconds -= Time.deltaTime;
+            }
         }
 
         public void InitializeContext()
@@ -199,6 +222,9 @@ namespace Game.Systems.GlobalFramework
 
         private void DeactivateAllGameplayObjects()
         {
+            Debug.Log("deactivating all gameplay objects"); 
+            playing = false; 
+
             SetObjectActive(ShipCoreObj, false);
             _gameEventTimelineReader.OnGameOver();
             waveManager.OnGameOver();
@@ -256,9 +282,10 @@ namespace Game.Systems.GlobalFramework
         public void OnGameStart()
         {
             Debug.Log("Starting Game. Is tutorial: " + isTutorial);
+            playing = true; 
 
-            Invoke(nameof(OnGameWin),
-                (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f); // * 60f);
+            timeBeforeWin_AsSeconds = (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f; 
+            Invoke(nameof(OnGameWin), timeBeforeWin_AsSeconds); 
 
             SetAllUIIsActive(false);
 
@@ -277,6 +304,8 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameOver()
         {
+            CancelInvoke(nameof(OnGameWin));
+
             SetObjectActive(gameOverObj, true);
             eventSystem.SetSelectedGameObject(gameOverMenuBtn);
 
@@ -300,6 +329,7 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameWin()
         {
+            Debug.Log("ON GAME WIN"); 
             SetObjectActive(gameWonObj, true);
             eventSystem.SetSelectedGameObject(gameWonMenuBtn);
 
