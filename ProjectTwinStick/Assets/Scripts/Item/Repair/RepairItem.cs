@@ -12,7 +12,8 @@ public class RepairItem : Item
 
     private Vector3 lastStartPos;
     private Vector3 lastDirection;
-    
+    public event Action OnRepair;
+    public event Action OnFailToRepair;
     public override ItemSO GetSO()
     {
         return ItemSO;
@@ -23,15 +24,20 @@ public class RepairItem : Item
         lastStartPos = startPosition;
         lastDirection = direction;
         RaycastHit hit;
+        bool isRepair = false;
         if (Physics.Raycast(startPosition, new Vector3(direction.x,0,direction.y), out hit, currentUpgrade.Range, RepairableLayer, QueryTriggerInteraction.Collide))
         {
             Debug.Log("Hit");
             Barricade barricade = hit.rigidbody.GetComponent<Barricade>();
             if (barricade != null)
             {
+                OnRepair?.Invoke();
+                isRepair = true; 
                 barricade.IncreaseCurrentHp(currentUpgrade.HealRate * Time.deltaTime);
             }
         }
+        if(!isRepair)
+        OnFailToRepair?.Invoke();
         OnShoot?.Invoke();
         return true;
     }

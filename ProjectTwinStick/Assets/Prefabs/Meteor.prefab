@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4430382329156027243}
   - component: {fileID: 5852612644465214513}
   - component: {fileID: 1881391308416789680}
+  - component: {fileID: 6013265773452711664}
   m_Layer: 14
   m_Name: Meteor
   m_TagString: Untagged
@@ -64,6 +65,23 @@ MonoBehaviour:
   damage: 5
   immuneToMeteorTag: {fileID: 11400000, guid: 72a4a4b520a6b3747ac239ee45509bcd, type: 2}
   playerSlowEffect_Stun: {fileID: 11400000, guid: 9444ae93d2f731042a5b1f1330532457, type: 2}
+  _collider: {fileID: 5852612644465214513}
+  deathTime: 2
+--- !u!114 &6013265773452711664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4430382329156027247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609d72a3cd4a98b4d85c16e85aa9ff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meteorProjectileBehaviour: {fileID: 1881391308416789680}
+  _explosionFx: {fileID: 1212467452738238391, guid: f812faaa1314e7749b52c64cf4d7f029, type: 3}
+  _explosionFailedFx: {fileID: 995128006678670760, guid: ac310ebe643907d45afe46c2669ed1a8, type: 3}
 --- !u!1 &5258298789014037135
 GameObject:
   m_ObjectHideFlags: 0
