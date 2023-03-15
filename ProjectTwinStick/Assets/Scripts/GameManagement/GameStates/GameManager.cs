@@ -74,12 +74,17 @@ namespace Game.Systems.GlobalFramework
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
             }
 
-            Invoke(nameof(InitializeContext), 0.2f); 
+            currentContext = new(new LobbyState(), playerInputManager);
+            Invoke(nameof(Initialize), 0.2f); 
         }
 
         public void InitializeContext()
         {
-            currentContext = new(new MainMenuState(), playerInputManager);
+            currentPlayerReadyCount = 0;
+            spawnPointIndex = 0;
+
+            SetAllUIIsActive(false);
+            currentContext.TransitionTo(new MainMenuState());
         }
 
         #region Lazy Initializers

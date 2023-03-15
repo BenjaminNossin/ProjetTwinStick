@@ -8,7 +8,7 @@ namespace Game.Systems.GlobalFramework.States
         {
             Debug.Log("Initializing Lobby");
           
-            GameManager.Instance.OnLobbyStart();
+            // GameManager.Instance.OnLobbyStart();
         }
 
         public override void OnStateExit()

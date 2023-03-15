@@ -22,9 +22,9 @@ MonoBehaviour:
   LastEventInAreaBlockerTag:
   - {fileID: 11400000, guid: 4afbf6045aca4b04eb887a5f9c70bcec, type: 2}
   MeteorWaves:
-  - timeBeforeLaunchWave: 0
-    meteorCount: 1
-  - timeBeforeLaunchWave: 1
-    meteorCount: 1
   - timeBeforeLaunchWave: 2
+    meteorCount: 1
+  - timeBeforeLaunchWave: 3
+    meteorCount: 1
+  - timeBeforeLaunchWave: 4
     meteorCount: 1
