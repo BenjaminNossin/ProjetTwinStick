@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.Serialization;
 
 // spawnEvent -> random vs scripté (SO ?)
 
@@ -15,22 +16,28 @@ namespace Game.Systems.AI
         [SerializeField] Transform assignedBarricade; 
         [SerializeField] private GameObject objToSpawn;
         [SerializeField, Range(0, 10)] private float firstSpawnDelay = 0f;
-        [SerializeField, Range(1, 30)] private float randomMin = 5f;
-        [SerializeField] private float randomMax = 5f;
+        [SerializeField] private SpawnerParams spawnerParams;
         [SerializeField] private EnemyStats defaultStats;
 
-        private EnemyStats currentStats;
+        private EnemyStats _currentStats;
+        private SpawnerParams _currentSpawnerParams;
 
         public void Initialize()
         {
             Invoke(nameof(Spawn), firstSpawnDelay);
-            currentStats = defaultStats;
-            
+            _currentStats = defaultStats;
+            _currentSpawnerParams = spawnerParams;
+
         }
         
         public void ChangeStats(EnemyStats newStats)
         {
-            currentStats = newStats;
+            _currentStats = newStats;
+        }
+        
+        public void ChangeParams(SpawnerParams newParams)
+        {
+            _currentSpawnerParams = newParams;
         }
 
         public void StopSpawnings()
@@ -43,8 +50,8 @@ namespace Game.Systems.AI
             var obj = Pool.GetFromPool();
             obj.transform.position = transform.position;
             obj._pool = Pool;
-            obj.Init(assignedBarricade.position, currentStats);
-            float waitTime = UnityEngine.Random.Range(randomMin, randomMax);
+            obj.Init(assignedBarricade.position, _currentStats);
+            float waitTime = UnityEngine.Random.Range(_currentSpawnerParams.spawnDelayMin, _currentSpawnerParams.spawnDelayMax);
             //Debug.Log(waitTime);
             Invoke(nameof(Spawn), waitTime);
         }
