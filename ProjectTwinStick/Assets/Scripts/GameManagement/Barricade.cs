@@ -10,7 +10,7 @@ public class Barricade : MonoBehaviour, ILifeable
     public UnityEvent OnBarricadeDestroyed;
     public UnityEvent OnBarricadeDamaged;
     public UnityEvent OnBarricadeRepaired;
-    
+    [SerializeField] private BarricadeRenderer _barricadeRenderer;
     private bool IsDestroyed = false;
 
     [SerializeField] private List<GameObject> RepairedCollision = new List<GameObject>();
@@ -30,11 +30,11 @@ public class Barricade : MonoBehaviour, ILifeable
 
     public void OnGameStart()
     {
+        _barricadeRenderer.Init();
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
         audioSource.volume = 0;
         RepairSelf();
-
         Invoke("ResetSound", 3f);
     }
 
