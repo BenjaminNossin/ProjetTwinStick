@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour, IController
     private void OnEnable()
     {
         _playerInput = GetComponent<PlayerInput>();
+    }
+
+    private void BindActions()
+    {
         InputAction movement = _playerInput.currentActionMap["Movement"];
         movement.performed += UpdateMovementInput;
         movement.canceled += UpdateMovementInput;
@@ -46,8 +50,29 @@ public class PlayerController : MonoBehaviour, IController
         cancelThrow.performed += CancelThrow;
     }
 
+    private void UnbindActions()
+    {
+        InputAction movement = _playerInput.currentActionMap["Movement"];
+        movement.performed -= UpdateMovementInput;
+        movement.canceled -= UpdateMovementInput;
+        
+        InputAction take = _playerInput.currentActionMap["Take"];
+        take.performed -= TryTakeInput;
+        
+        InputAction shoot = _playerInput.currentActionMap["Shoot"];
+        shoot.performed -= UpdateShootInput;
+        shoot.canceled -= UpdateShootInput;
+        
+        InputAction throwAction = _playerInput.currentActionMap["Throw"];
+        throwAction.performed -= StartAiming;
+        throwAction.canceled -= TryThrow;
+        
+        InputAction cancelThrow = _playerInput.currentActionMap["CancelThrow"];
+        cancelThrow.performed -= TryDrop;
+        cancelThrow.performed -= CancelThrow;
+    }
 
-
+    
     #region InputCallbacks
 
     private void Start()
@@ -139,6 +164,8 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.EnableAction();
         _playerMovement.EnableAction();
         _playerAim.EnableAction();
+        BindActions();
+        Debug.Log("Activating controller");
 
     }
 
@@ -151,6 +178,8 @@ public class PlayerController : MonoBehaviour, IController
         _playerTake.DisableAction();
         _playerMovement.DisableAction();
         _playerAim.DisableAction();
+        UnbindActions();
+        Debug.Log("Deactivating controller");
     }
 
     public void SetControllerSpawnPosition(Vector3 _pos)

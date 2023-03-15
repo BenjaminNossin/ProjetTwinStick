@@ -7,8 +7,8 @@ public class WinState : State
     public override void OnStateEnter()
     {
         Debug.Log("Initializing Game Won State");
-        ClearPlayerListFromContext();
         DeactivateAllPlayerControllers();
+        ClearPlayerListFromContext();
     }
 
     public override void OnStateExit()

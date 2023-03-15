@@ -6,6 +6,7 @@ using Game.Systems.AI;
 using UnityEngine.SceneManagement;
 using Game.Systems.GlobalFramework.States;
 using System.Reflection;
+using UnityEngine.EventSystems;
 
 namespace Game.Systems.GlobalFramework
 {
@@ -15,6 +16,7 @@ namespace Game.Systems.GlobalFramework
     public class GameManager : MonoBehaviour
     {
         #region Game Flow
+
         [SerializeField] private GameObject mainMenuSelectionsUI;
         [SerializeField] private GameEventTimelineSO tutorialTimeLine;
         [SerializeField] private PlayerInputManager playerInputManager;
@@ -24,27 +26,34 @@ namespace Game.Systems.GlobalFramework
         private State initialState = null;
         private Action OnAllPlayersReady;
         private MainMenuSelections mainMenuSelection;
+
         #endregion
 
         #region UI
+
         [Space, SerializeField] private GameObject creditsObj;
         [SerializeField] private GameObject optionsObj;
         [SerializeField] private GameObject gameOverObj;
         [SerializeField] private GameObject gameWonObj;
+        [SerializeField] private GameObject gameOverMenuBtn;
+        [SerializeField] private GameObject gameWonMenuBtn;
+        [SerializeField] private EventSystem eventSystem;
+
         #endregion
 
         #region Gameplay
+
         [Space, SerializeField, Range(1, 4)] private int playersRequiredAmount = 4;
         [Space, SerializeField, Range(1, 15)] private float minutesBeforeWin_Tutorial = 5;
         [Space, SerializeField, Range(1, 20)] private float minutesBeforeWin_MainGame = 12;
-        private bool isTutorial; 
+        private bool isTutorial;
         private float minutesBeforeWin;
 
         private int currentPlayerReadyCount;
         private readonly List<GameObject> waitRooms = new();
 
         public GameObject ShipCoreObj { get; private set; }
-        private ShipCore shipCore; 
+        private ShipCore shipCore;
         private WaveManager waveManager;
         private GameEventTimelineReader _gameEventTimelineReader;
 
@@ -52,6 +61,7 @@ namespace Game.Systems.GlobalFramework
         private int spawnPointIndex;
         public event Action OnGameOverCallBack;
         public event Action OnGameStartCallback;
+
         #endregion
 
         // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
@@ -62,6 +72,7 @@ namespace Game.Systems.GlobalFramework
             {
                 Destroy(Instance);
             }
+
             Instance = this;
         }
 
@@ -73,7 +84,7 @@ namespace Game.Systems.GlobalFramework
             }
 
             currentContext = new(new LobbyState(), playerInputManager);
-            Invoke(nameof(InitializeContext), 0.2f); 
+            Invoke(nameof(InitializeContext), 0.2f);
         }
 
         public void InitializeContext()
@@ -86,12 +97,13 @@ namespace Game.Systems.GlobalFramework
         }
 
         #region Lazy Initializers
+
         public void SetShipCoreData(GameObject obj, ShipCore sC)
         {
             ShipCoreObj = obj;
             shipCore = sC;
         }
-        
+
         public void SetGameEventTimelineReader(GameEventTimelineReader gameEventTimelineReader)
         {
             _gameEventTimelineReader = gameEventTimelineReader;
@@ -111,27 +123,29 @@ namespace Game.Systems.GlobalFramework
         #endregion
 
         #region Setters
+
         /// <summary>
         /// Called during the main menu state
         /// </summary>
         /// <param name="requiredState"></param>
         public void SetCurrentSelectedGameState(MainMenuSelections requiredState)
         {
-            mainMenuSelection = requiredState; 
+            mainMenuSelection = requiredState;
         }
 
         public void SetPlayerRenderer(PlayerController controller, int index)
         {
             controller.InstantiateRenderer(allPlayerRenderers[index]);
         }
+
         public void AddControllerToCurrentState(PlayerController controller)
         {
-            currentContext.AddControllerToCurrentState(controller); 
+            currentContext.AddControllerToCurrentState(controller);
         }
 
         public void AddWaitRoomObj(GameObject obj)
         {
-            Debug.Log("adding wait room"); 
+            Debug.Log("adding wait room");
             waitRooms.Add(obj);
             SetObjectActive(obj, false);
         }
@@ -151,7 +165,7 @@ namespace Game.Systems.GlobalFramework
             currentPlayerReadyCount += value;
             Debug.Log("Updating Player ready count to: " + currentPlayerReadyCount);
 
-            SetAllUIIsActive(false); 
+            SetAllUIIsActive(false);
             if (currentPlayerReadyCount == playersRequiredAmount)
             {
                 currentContext.TransitionTo(GetStateFromFactory(mainMenuSelection));
@@ -163,7 +177,6 @@ namespace Game.Systems.GlobalFramework
             for (int i = 0; i < controllers.Count; i++)
             {
                 controllers[i].SetControllerSpawnPosition(spawnPoints[i]);
-
             }
         }
 
@@ -192,10 +205,10 @@ namespace Game.Systems.GlobalFramework
             OnGameOverCallBack?.Invoke();
         }
 
-
         #endregion
 
         #region ""Callbacks"" ;))
+
         public void ReloadContext()
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
@@ -244,7 +257,8 @@ namespace Game.Systems.GlobalFramework
         {
             Debug.Log("Starting Game. Is tutorial: " + isTutorial);
 
-            Invoke(nameof(OnGameWin), (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f); // * 60f);
+            Invoke(nameof(OnGameWin),
+                (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f); // * 60f);
 
             SetAllUIIsActive(false);
 
@@ -264,6 +278,7 @@ namespace Game.Systems.GlobalFramework
         public void OnGameOver()
         {
             SetObjectActive(gameOverObj, true);
+            eventSystem.SetSelectedGameObject(gameOverMenuBtn);
 
             DeactivateAllGameplayObjects();
             currentContext.TransitionTo(new GameOverState());
@@ -286,6 +301,7 @@ namespace Game.Systems.GlobalFramework
         public void OnGameWin()
         {
             SetObjectActive(gameWonObj, true);
+            eventSystem.SetSelectedGameObject(gameWonMenuBtn);
 
             DeactivateAllGameplayObjects();
             currentContext.TransitionTo(new WinState());
@@ -296,19 +312,21 @@ namespace Game.Systems.GlobalFramework
             Debug.Log("Application Quit");
             SetAllUIIsActive(false);
             Application.Quit();
-
         }
+
         #endregion
 
         #region UI
+
         // architecture meh/20
         private void SetAllUIIsActive(bool isActive)
         {
             gameWonObj.SetActive(isActive);
-            gameOverObj.SetActive(isActive); 
+            gameOverObj.SetActive(isActive);
             optionsObj.SetActive(isActive);
             creditsObj.SetActive(isActive);
         }
+
         #endregion
     }
 }
