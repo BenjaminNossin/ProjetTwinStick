@@ -29,12 +29,12 @@ public class ShieldItem : Item
         OnItemStateChange += OnItemStateChanged;
         SetUpgrade(_shieldItemSO.GetUpgrades()[0]);
         _shieldCenter = FindObjectOfType<ShieldCenter>();
+        _shieldInstance.transform.parent = null;
     }
 
     protected override void Update()
     {
         base.Update();
-        _shieldInstance.transform.parent = null;
         UpdateShieldPos();
     }
 
@@ -92,15 +92,13 @@ public class ShieldItem : Item
     public override bool TryShoot(Vector3 startPosition, Vector2 direction)
     {
         lastDirection = direction;
+        lastStartPos = _itemHolder.transform.position;
         OnShoot?.Invoke();
         return true;
     }
 
     private void UpdateShieldPos()
     {
-        if(_itemHolder)  
-        lastStartPos = _itemHolder.transform.position;
-        
         Vector3 intersectionPoint = GetIntersectionPoint(lastStartPos, lastDirection);
         intersectionPoint.y = _shieldItemSO.ShieldHeight;
 
