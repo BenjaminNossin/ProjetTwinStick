@@ -68,7 +68,7 @@ namespace Game.Systems.GlobalFramework
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
             }
 
-            Initialize();
+            Invoke(nameof(Initialize), 0.2f); 
         }
 
         public void Initialize()
@@ -126,6 +126,7 @@ namespace Game.Systems.GlobalFramework
 
         public void AddWaitRoomObj(GameObject obj)
         {
+            Debug.Log("adding wait room"); 
             waitRooms.Add(obj);
             SetObjectActive(obj, false);
         }
@@ -182,6 +183,11 @@ namespace Game.Systems.GlobalFramework
         #endregion
 
         #region Callbacks
+        public void ReloadContext()
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        }
+
         public void OnMainMenuStart()
         {
             Debug.Log("starting main menu");
@@ -189,6 +195,7 @@ namespace Game.Systems.GlobalFramework
 
             foreach (var item in waitRooms)
             {
+                Debug.Log("wait room activated"); 
                 SetObjectActive(item, true);
             }
         }

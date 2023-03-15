@@ -5,7 +5,7 @@ public class UIGameOver : MonoBehaviour
 {
     public void BackToMainMenu()
     {
-        GameManager.Instance.Initialize(); 
+        GameManager.Instance.ReloadContext(); 
     }
 
     public void Replay()
