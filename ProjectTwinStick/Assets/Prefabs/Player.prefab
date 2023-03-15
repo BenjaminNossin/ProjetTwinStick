@@ -44,6 +44,7 @@ Transform:
   - {fileID: 5082929047364388264}
   - {fileID: 2002369569508855655}
   - {fileID: 6550663399249535993}
+  - {fileID: 5340602838306836047}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -324,6 +325,68 @@ CapsuleCollider:
   m_Height: 3.33
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &793286576081134279
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1047708072171954953}
+    m_Modifications:
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692733272346471567, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+      propertyPath: m_Name
+      value: VFX - Smoke Chara Run
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+--- !u!4 &5340602838306836047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4692733272346471560, guid: f42bff5eaf871fc468455bf44aa080bd, type: 3}
+  m_PrefabInstance: {fileID: 793286576081134279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1799167831884004437
 PrefabInstance:
   m_ObjectHideFlags: 0
