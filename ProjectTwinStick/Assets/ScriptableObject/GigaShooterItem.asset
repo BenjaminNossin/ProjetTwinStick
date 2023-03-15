@@ -17,7 +17,7 @@ MonoBehaviour:
   RespawnTime: 1
   _shooterUpgrades:
   - FrequencyBetweenBullet: 0.7
-    DamageBullet: 3
+    DamageBullet: 100
     MinDispersionDegres: -0.5
     MinDispersionRadian: -0.008726646
     MaxDispersionRadian: 0.008726646
@@ -25,7 +25,7 @@ MonoBehaviour:
     Speed: 35
     slowType: {fileID: 0}
   - FrequencyBetweenBullet: 0.5
-    DamageBullet: 3
+    DamageBullet: 100
     MinDispersionDegres: -0.5
     MinDispersionRadian: -0.008726646
     MaxDispersionRadian: 0.008726646
@@ -33,7 +33,7 @@ MonoBehaviour:
     Speed: 35
     slowType: {fileID: 0}
   - FrequencyBetweenBullet: 0.4
-    DamageBullet: 3
+    DamageBullet: 100
     MinDispersionDegres: -0.5
     MinDispersionRadian: -0.008726646
     MaxDispersionRadian: 0.008726646
