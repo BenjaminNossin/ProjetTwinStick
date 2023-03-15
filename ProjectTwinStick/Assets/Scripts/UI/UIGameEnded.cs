@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class UIGameEnded : MonoBehaviour
 {
-    public void BackToMainMenu()
+    private void OnEnable()
     {
-        GameManager.Instance.ReloadContext(); 
+        Debug.Log("game ended. Reloading context"); 
+        Invoke(nameof(BackToMainMenu), 5f);
     }
 
-    public void Replay()
+    private void BackToMainMenu()
     {
-        GameManager.Instance.SetNewState(MainMenuSelections.MainGame);
+        GameManager.Instance.ReloadContext(); 
     }
 
     public void Quit()

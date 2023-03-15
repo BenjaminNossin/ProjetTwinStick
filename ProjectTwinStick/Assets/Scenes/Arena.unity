@@ -4460,6 +4460,10 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101245}
+    - target: {fileID: 1819480297591246052, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1913623836743710294, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: m_LocalPosition.x
       value: -46.610466
@@ -4711,6 +4715,10 @@ PrefabInstance:
     - target: {fileID: 3360441077374925382, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: m_LocalPosition.z
       value: 32.963593
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362841873199880123, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3579663659548689434, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: m_LocalPosition.x

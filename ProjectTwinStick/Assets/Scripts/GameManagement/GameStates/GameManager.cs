@@ -76,6 +76,7 @@ namespace Game.Systems.GlobalFramework
 
         private void Awake()
         {
+            Debug.Log("AWAKE"); 
             if (Instance)
             {
                 Destroy(Instance);
@@ -86,6 +87,8 @@ namespace Game.Systems.GlobalFramework
 
         void Start()
         {
+            Debug.Log("START");
+
             for (int i = 0; i < playerInputManager.transform.childCount; i++)
             {
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
@@ -114,9 +117,8 @@ namespace Game.Systems.GlobalFramework
             }
         }
 
-        public void InitializeContext()
+        private void InitializeContext()
         {
-            currentPlayerReadyCount = 0;
             spawnPointIndex = 0;
 
             SetAllUIIsActive(false);
@@ -207,11 +209,6 @@ namespace Game.Systems.GlobalFramework
             }
         }
 
-        public void SetNewState(MainMenuSelections mms)
-        {
-            currentContext.TransitionTo(GetStateFromFactory(mms));
-        }
-
         private static State GetStateFromFactory(MainMenuSelections mms) =>
             mms switch
             {
@@ -250,7 +247,7 @@ namespace Game.Systems.GlobalFramework
             CancelInvoke(nameof(OnGameWin));
 
             currentPlayerReadyCount = 0;
-            spawnPointIndex = 0;
+            //spawnPointIndex = 0;
             isTutorial = false;
 
             SetAllUIIsActive(false);
@@ -364,6 +361,7 @@ namespace Game.Systems.GlobalFramework
         // architecture meh/20
         private void SetAllUIIsActive(bool isActive)
         {
+            tmpTimer.text = string.Empty; 
             gameWonObj.SetActive(isActive);
             gameOverObj.SetActive(isActive);
             optionsObj.SetActive(isActive);
