@@ -203,11 +203,6 @@ namespace Game.Systems.GlobalFramework
             }
         }
 
-        public void SetNewState(MainMenuSelections mms)
-        {
-            currentContext.TransitionTo(GetStateFromFactory(mms));
-        }
-
         private static State GetStateFromFactory(MainMenuSelections mms) =>
             mms switch
             {

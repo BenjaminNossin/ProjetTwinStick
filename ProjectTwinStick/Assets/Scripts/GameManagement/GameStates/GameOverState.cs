@@ -8,7 +8,7 @@ namespace Game.Systems.GlobalFramework.States
         {
             Debug.Log("Initializing Game Over State");
             DeactivateAllPlayerControllers();
-            ClearPlayerListFromContext();
+            //ClearPlayerListFromContext();
         }
 
         public override void OnStateExit()

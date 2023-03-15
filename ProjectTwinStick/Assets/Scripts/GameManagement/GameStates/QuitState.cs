@@ -12,6 +12,8 @@ public class QuitState : State
 
     public override void OnStateExit()
     {
-        //
+        Debug.Log("QUIT STATE: unbinding input callbacks");
+        context.PlayerInputManager.onPlayerJoined -= BindOnPlayerJoined;
+        context.PlayerInputManager.onPlayerLeft -= BindOnPlayerLeave;
     }
 }
