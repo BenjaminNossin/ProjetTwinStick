@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28181739a8dd13a429dca0b84fd97fdc, type: 3}
   m_Name: BaseEnemyStats
   m_EditorClassIdentifier: 
-  maxHP: 5
+  maxHP: 4
   unitsPerSeconds: 3
-  damage: 20
+  damage: 5

@@ -68,6 +68,10 @@ namespace Game.Systems.GlobalFramework
 
         #endregion
 
+        [SerializeField] AudioSource audiosource;
+        [SerializeField] AudioClip lobbyMusic;
+        [SerializeField] AudioClip[] playList;
+
         // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
 
         private void Awake()
@@ -256,10 +260,14 @@ namespace Game.Systems.GlobalFramework
             {
                 SetObjectActive(item, true);
             }
+
+            audiosource.clip = lobbyMusic;
+            audiosource.Play();
         }
 
         public void OnMainMenuEnd()
         {
+            audiosource.Stop();
             Debug.Log("ending main menu");
             //currentContext.TransitionTo(new LobbyState());
         }
@@ -277,10 +285,14 @@ namespace Game.Systems.GlobalFramework
             _gameEventTimelineReader.SetNewTimeline(tutorialTimeLine);
 
             currentContext.TransitionTo(new GameState());
+            audiosource.clip = playList[UnityEngine.Random.Range(0, playList.Length)];
+            audiosource.Play();
         }
 
         public void OnGameStart()
         {
+            audiosource.clip = playList[UnityEngine.Random.Range(0, playList.Length)];
+            audiosource.Play();
             Debug.Log("Starting Game. Is tutorial: " + isTutorial);
             playing = true; 
 
@@ -304,6 +316,7 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameOver()
         {
+            audiosource.Stop();
             CancelInvoke(nameof(OnGameWin));
 
             SetObjectActive(gameOverObj, true);
