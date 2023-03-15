@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Game.Systems.GlobalFramework.States
@@ -11,17 +13,24 @@ namespace Game.Systems.GlobalFramework.States
     public class StateContext
     {
         private State currentState = null;
+        private State previousState = null; 
         internal PlayerInputManager PlayerInputManager { get; private set; }
 
         public StateContext(State initialState, PlayerInputManager inputManager)
         {
             PlayerInputManager = inputManager;
+
+            currentState = initialState;
+            previousState = currentState;    
+
             TransitionTo(initialState);
         }
 
-        internal void TransitionTo(State newState)
+        internal void TransitionTo(State newState) // Action OnStateEnterCallback, Action OnStateExitCallback
         {
+            previousState = currentState;
             currentState = newState;
+
             currentState.SetContext(this);
 
             Initialize();
@@ -29,6 +38,11 @@ namespace Game.Systems.GlobalFramework.States
 
         protected void Initialize()
         {
+            if (previousState.GetType() != currentState.GetType())
+            {
+                previousState.OnStateExit();
+            }
+
             currentState.OnStateEnter();
         }
 
@@ -38,9 +52,6 @@ namespace Game.Systems.GlobalFramework.States
         }
     }
 
-    // Main Menu, Lobby, Game, End Game, Credits
-    // besoin d'un state Tutorial ?
-    // -> plutôt on StateContext tutoriel 
     /// <summary>
     /// States are activated via the StateContext.
     /// They should only be known by the StateContext class.
@@ -53,6 +64,8 @@ namespace Game.Systems.GlobalFramework.States
         public static List<PlayerInput> ActivePlayersInput = new();
         public static List<PlayerController> ActivePlayersControllers = new();
 
+        protected Action OnStateEnterCallback = null;
+        protected Action OnStateExitCallback = null;
 
         public abstract void OnStateEnter();
         public abstract void OnStateExit();
@@ -60,6 +73,12 @@ namespace Game.Systems.GlobalFramework.States
         public void SetContext(StateContext stateContext)
         {
             context = stateContext;
+        }
+
+        public void SetCallbacks(Action onStateEnterCallback, Action onStateExitCallback)
+        {
+            OnStateEnterCallback += onStateEnterCallback;
+            OnStateExitCallback += onStateExitCallback; 
         }
 
         protected void BindOnPlayerJoined(PlayerInput playerInput)
@@ -93,6 +112,8 @@ namespace Game.Systems.GlobalFramework.States
 
         protected void ActivateAllPlayerControllers()
         {
+            ClearPlayerListFromContext(); 
+
             foreach (var item in ActivePlayersControllers)
             {
                 Debug.Log("Activating player controller");
@@ -112,6 +133,12 @@ namespace Game.Systems.GlobalFramework.States
                 item.DeactivateController();
 
             }
+        }
+
+        protected void ClearPlayerListFromContext()
+        {
+            ActivePlayersControllers.Clear();
+            ActivePlayersInput.Clear();
         }
     }
 }

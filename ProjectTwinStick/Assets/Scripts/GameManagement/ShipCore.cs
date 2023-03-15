@@ -18,6 +18,7 @@ public class ShipCore : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
+    [SerializeField] private ShipCoreRenderer _shipCoreRenderer;
     private void Start()
     {
         GameManager.Instance.SetShipCoreData(gameObject, this); 
@@ -28,7 +29,8 @@ public class ShipCore : MonoBehaviour, ILifeable
     {
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
-        InitActiveBarricades(); 
+        InitActiveBarricades();
+        _shipCoreRenderer.Init();
     }
 
     private void InitActiveBarricades()
@@ -48,7 +50,7 @@ public class ShipCore : MonoBehaviour, ILifeable
     {
         Debug.Log("Lost the game");
 
-        GameManager.Instance.OnGameEnd(); 
+        GameManager.Instance.OnGameOver(); 
     }
 
     public float GetMaxHp() => MaxHP;
@@ -83,7 +85,7 @@ public class ShipCore : MonoBehaviour, ILifeable
     public void DecreaseCurrentHp(float amount)
     {
         CurrentHP -= amount;
-
+        OnDecreaseCurrentHp?.Invoke(CurrentHP);
         CheckCurrentHPAmount();
     }
 }

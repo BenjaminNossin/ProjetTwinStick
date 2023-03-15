@@ -1,3 +1,4 @@
+using System;
 using Game.Systems.GlobalFramework;
 using HelperPSR.Pool;
 using System.Collections;
@@ -12,6 +13,9 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     [SerializeField] private GameplayTag immuneToMeteorTag;
     [SerializeField] private SlowSO playerSlowEffect_Stun;
 
+    [SerializeField] private Collider _collider;
+    [SerializeField] private float deathTime;
+    private bool isDied;
     public Pool<MeteorProjectileBehaviour> _pool;
     private Transform cachedTransf;
 
@@ -20,25 +24,30 @@ public class MeteorProjectileBehaviour : MonoBehaviour
 
     private List<Transform> possibleTargets = new();
 
-    private Vector3 selfPosFlat, shipCorePos; 
+    private Vector3 selfPosFlat, shipCorePos;
 
+    public event Action deathByShield;
+    public event Action deathByBarricadeOrBase;
     private void Start()
     {
-        GameManager.Instance.OnGameOverCallBack += Die;
+        GameManager.Instance.OnGameOverCallBack += DieImmediatly;
         shipCorePos = GameManager.Instance.ShipCoreObj.transform.position;
     }
 
     public void Init(Vector3 assignedTargetPos)
     {
         cachedTransf = transform;
-
         SetTargetPosition(assignedTargetPos);
         SetSelfPosFlat(shipCorePos.y*1.1f);
         SetNormalizedDirection();
+        transform.forward = normalizedDirection;
+        _collider.enabled = true;
+        isDied = false;
     }
 
     void Update()
     {
+        if(isDied) return;
         Move();
     }
 
@@ -51,7 +60,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
             if (gameplayTagContainer.HasTag(immuneToMeteorTag))
             {
                 Debug.Log("entity with ignore meteorite tag was detected");
-
+                deathByShield?.Invoke();
                 Die();
                 return; 
             }
@@ -84,7 +93,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private void ApplyEffectOnTarget(ILifeable lifeable)
     {
         Debug.Log("damaging target");
-
+        deathByBarricadeOrBase?.Invoke();
         DamageTarget(lifeable);
         Die();
     }
@@ -97,9 +106,9 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private void Move()
     {
         Debug.DrawRay(transform.position, normalizedDirection * 3f, Color.blue, Time.deltaTime);
-        transform.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.Self);
+        transform.Translate(Time.deltaTime * unitsPerSeconds * normalizedDirection, Space.World);
     }
-
+    
     private void SetTargetPosition(Vector3 posToReach)
     {
         targetPos = posToReach;
@@ -115,9 +124,16 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     {
         normalizedDirection = (targetPos - cachedTransf.position).normalized;
     }
-
-    private void Die()
+    private void DieImmediatly()
     {
         _pool.AddToPool(this);
+        _collider.enabled = false;
+        isDied = true;
+    }
+    private void Die()
+    {
+        StartCoroutine(_pool.AddToPoolLatter(this, deathTime));
+        isDied = true;
+        _collider.enabled = false;
     }
 }

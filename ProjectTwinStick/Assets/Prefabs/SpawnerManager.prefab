@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoolsManager: {fileID: 0}
+  defaultStats: {fileID: 11400000, guid: 9a57c002252c7294bac84473afcff444, type: 2}
 --- !u!1001 &71082285803418821
 PrefabInstance:
   m_ObjectHideFlags: 0

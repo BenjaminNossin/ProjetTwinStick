@@ -11,6 +11,8 @@ namespace Game.Systems.AI
     {
         private readonly List<Spawner> spawners = new();
         [FormerlySerializedAs("_enemyPools")] [SerializeField] private EnemyPoolManager enemyPoolsManager;
+        [SerializeField] private EnemyStats defaultStats;
+        [SerializeField] private SpawnerParams defaultParams;
         private void Start()
         {
             GameManager.Instance.AddWaveManager(this); 
@@ -23,10 +25,19 @@ namespace Game.Systems.AI
                 spawners[i].ChangeStats(stats);
             }
         }
+        
+        public void ChangeSpawnerParams(SpawnerParams newParams)
+        {
+            for(int i = 0; i < spawners.Count; i++)
+            {
+                spawners[i].ChangeParams(newParams);
+            }
+        }
 
         public void OnGameStart()
         {
-            
+            ChangeEnemyStats(defaultStats);
+            ChangeSpawnerParams(defaultParams);
             Debug.Log($"Starting Waves");
 
             for (int i = 0; i < transform.childCount; i++)
@@ -43,8 +54,6 @@ namespace Game.Systems.AI
 
         public void OnGameOver()
         {
-            return;
-
             Debug.Log($"Stopping Waves");
 
             foreach (var item in spawners)

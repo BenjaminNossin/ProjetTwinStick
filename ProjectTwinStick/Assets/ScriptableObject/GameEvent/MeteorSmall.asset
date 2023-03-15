@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957bdd83e0b60024c9572ed527a242aa, type: 3}
   m_Name: MeteorSmall
   m_EditorClassIdentifier: 
-  callbacks: []
+  callbacks:
+  - {fileID: 11400000, guid: 21927c43e273e9c48ad61782941bd694, type: 2}
   AreaTargetCount: 1
   TagEvent: {fileID: 11400000, guid: 4afbf6045aca4b04eb887a5f9c70bcec, type: 2}
   CurrentEventInAreaBlockerTag:
@@ -21,9 +22,9 @@ MonoBehaviour:
   LastEventInAreaBlockerTag:
   - {fileID: 11400000, guid: 4afbf6045aca4b04eb887a5f9c70bcec, type: 2}
   MeteorWaves:
-  - timeBeforeLaunchWave: 0
-    meteorCount: 1
-  - timeBeforeLaunchWave: 1
-    meteorCount: 1
   - timeBeforeLaunchWave: 2
+    meteorCount: 1
+  - timeBeforeLaunchWave: 3
+    meteorCount: 1
+  - timeBeforeLaunchWave: 4
     meteorCount: 1

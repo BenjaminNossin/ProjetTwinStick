@@ -2,6 +2,8 @@ using Game.Systems.GlobalFramework;
 using HelperPSR.Pool;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 // TODO: change to a state machine
 // delay before jump
@@ -10,10 +12,12 @@ using UnityEngine;
 
 public class BasicAI : MonoBehaviour, ILifeable
 {
+    [FormerlySerializedAs("JumpTime")] [SerializeField] private float jumpTime = 0.75f;
+    [FormerlySerializedAs("JumpApexHeight")] [SerializeField] private float jumpApexHeight = 3f;
+    [FormerlySerializedAs("JumpCurve")] [SerializeField] private AnimationCurve jumpCurve;
     [SerializeField] private Collider collider;
     [SerializeField]
     private float dieTime;
-    private bool isDied;
     [SerializeField] 
     private Vector3 normalizedDirection;
 
@@ -32,13 +36,16 @@ public class BasicAI : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
+    public UnityEvent OnStartRun;
+    public UnityEvent OnStartJump;
+
     private Vector3 targetPos;
 
     #region LD Metrics
     private const float floorY = -1f;
     private const float levelRadius = 10f;
     private const float xzBufferZone = 2f;
-    private const float jumpHeight = 1f;
+    private const float jumpHeightTarget = 1f;
     #endregion
 
     private Transform cachedTransf; 
@@ -53,6 +60,20 @@ public class BasicAI : MonoBehaviour, ILifeable
     private EnemyStats currentStats;
 
     
+    private enum BasicAIState
+    {
+        Run,
+        Jump,
+        Dead
+    }
+    
+    private BasicAIState currentState = BasicAIState.Run;
+
+    private float currentJumpTime = 0f;
+
+    private Vector3 jumpStartPos;
+    private Vector3 jumpEndPos;
+
 
     [SerializeField]
     private BasicAIRender _render; 
@@ -79,7 +100,7 @@ public class BasicAI : MonoBehaviour, ILifeable
         cachedTransf = transform;
         distFromJumpArea = levelRadius + xzBufferZone;
 
-        isDied = false;
+        SwitchState(BasicAIState.Run);
         collider.enabled = true;
         SetTargetPosition(assignedBarricadePos);
         SetSelfAndTargetPosFlat(floorY);
@@ -89,10 +110,38 @@ public class BasicAI : MonoBehaviour, ILifeable
         SetCurrentHp(currentStats.maxHP);
         canJump = true;
     }
+    
+    private void SwitchState(BasicAIState newState)
+    {
+        currentState = newState;
+        switch (currentState)
+        {
+            case BasicAIState.Run:
+                OnStartRun?.Invoke();
+                break;
+            case BasicAIState.Jump:
+                OnStartJump?.Invoke();
+                break;
+            case BasicAIState.Dead:
+                break;
+        }
+    }
 
     void Update()
     {
-        if(isDied) return;
+        switch (currentState)
+        {
+            case BasicAIState.Jump:
+                JumpUpdate();
+                break;
+            case BasicAIState.Run:
+                RunUpdate();
+                break;
+        }
+    }
+
+    private void RunUpdate()
+    {
         Move();
 
         // state machine will avoid this kind of shitty checks
@@ -103,7 +152,13 @@ public class BasicAI : MonoBehaviour, ILifeable
             distFromShipCore = Vector3.Distance(cachedTransf.position, shipCorePosFlat);
             if (distFromShipCore <= distFromJumpArea)
             {
-                Jump();
+                currentJumpTime = 0;
+                jumpStartPos = cachedTransf.position;
+                jumpEndPos = cachedTransf.position + new Vector3(
+                    normalizedDirection.x * xzBufferZone,
+                    jumpHeightTarget,
+                    normalizedDirection.z * xzBufferZone);
+                SwitchState(BasicAIState.Jump);
             }
         }
     }
@@ -112,14 +167,50 @@ public class BasicAI : MonoBehaviour, ILifeable
     {
         _pool.AddToPool(this);
         collider.enabled = false;
-        isDied = true;
+        SwitchState(BasicAIState.Dead);
     }
+    private void JumpUpdate()
+    {
+        canJump = false;
+        currentJumpTime += Time.deltaTime;
+        
+        
+        float horizontalPosLerpValue = currentJumpTime / jumpTime;
+        float verticalPosLerpValue = jumpCurve.Evaluate(horizontalPosLerpValue);
+        
+        Vector3 currentHorizontalPos = Vector3.Lerp(jumpStartPos, jumpEndPos, horizontalPosLerpValue);
+        float height = Mathf.Lerp(currentHorizontalPos.y, jumpApexHeight, verticalPosLerpValue);
+        currentHorizontalPos.y = height;
+
+        cachedTransf.position = currentHorizontalPos;
+        
+        if (currentJumpTime >= jumpTime)
+        {
+            SetTargetPosition(shipCorePosFlat);
+            SetSelfAndTargetPosFlat(cachedTransf.position.y);
+            SetNormalizedDirection(); 
+            SwitchState(BasicAIState.Run);
+            currentJumpTime = 0f;
+        }
+        
+        /*
+        cachedTransf.position += new Vector3(
+            normalizedDirection.x * xzBufferZone,
+            jumpHeight,
+            normalizedDirection.z * xzBufferZone);
+        SetTargetPosition(shipCorePosFlat);
+        SetSelfAndTargetPosFlat(cachedTransf.position.y);
+        SetNormalizedDirection(); 
+        SwitchState(BasicAIState.Run);
+        */
+    }
+
     private void DieImmediately()
     {
        OnDieImmedialty?.Invoke();
         _pool.AddToPool(this);
         collider.enabled = false;
-        isDied = true;
+        SwitchState(BasicAIState.Dead);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -177,7 +268,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     {
         
         StartCoroutine(_pool.AddToPoolLatter(this, dieTime));
-        isDied = true;
+        SwitchState(BasicAIState.Dead);
         collider.enabled = false;
     }
 
@@ -212,7 +303,7 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     public void DecreaseCurrentHp(float amount)
     {
-        if(isDied) return;
+        if(currentState == BasicAIState.Dead) return;
         CurrentHP -= amount;
         CheckCurrentHPAmount(); 
        
@@ -234,20 +325,6 @@ public class BasicAI : MonoBehaviour, ILifeable
         cachedTransf.Translate(Time.deltaTime * currentStats.unitsPerSeconds * slowManager.GetCurrentSlowMultiplier() * normalizedDirection, Space.Self);
     }
 
-    private void Jump()
-    {
-        
-        cachedTransf.position += new Vector3(
-                                        normalizedDirection.x * xzBufferZone,
-                                        jumpHeight,
-                                        normalizedDirection.z * xzBufferZone);
-
-        canJump = false;
-
-        SetTargetPosition(shipCorePosFlat);
-        SetSelfAndTargetPosFlat(cachedTransf.position.y);
-        SetNormalizedDirection(); 
-    }
 
     #endregion
 }

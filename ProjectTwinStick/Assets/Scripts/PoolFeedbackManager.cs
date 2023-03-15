@@ -15,7 +15,6 @@ public class PoolFeedbackManager : MonoBehaviour
  private void Awake()
  {
      instance = this;
-     
      for (int i = 0; i < poolDataFeedbacks.Length; i++)
      {
          pools.Add(poolDataFeedbacks[i].prefab,new Pool<GameObject>(poolDataFeedbacks[i].prefab, poolDataFeedbacks[i].startCount));
@@ -38,6 +37,4 @@ public class PoolFeedbackManager : MonoBehaviour
  {
      pools[prefab].AddToPool(obj);
  }
- 
- 
 }

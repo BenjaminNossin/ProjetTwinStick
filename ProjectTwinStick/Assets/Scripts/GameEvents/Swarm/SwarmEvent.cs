@@ -5,7 +5,6 @@ using UnityEngine;
 public class SwarmEvent : GameEventArea, IGameEventUpdatable
 {
     private SwarmEventData swarmEventData;
-
     public SwarmSpawnerManager swarmSpawnerManager;
     public int currentSwarmWaveIndex = 0;
     public float _timer;

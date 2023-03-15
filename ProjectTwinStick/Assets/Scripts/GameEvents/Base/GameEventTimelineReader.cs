@@ -93,4 +93,9 @@ public class GameEventTimelineReader : MonoBehaviour
         if (allGameEventSetters[eventType].Count == 0)
             allGameEventSetters.Remove(eventType);
     }
+
+    public void SetNewTimeline(GameEventTimelineSO newTimeline)
+    {
+        _gameEventTimeline = newTimeline; 
+    }
 }

@@ -8,6 +8,7 @@ public class RotationEvent : GameEvent, IGameEventUpdatable
 
     public RotationEventManager rotationEventManager;
     float timer;
+    float pretimer = 2f;
 
     public override void Raise()
     {
@@ -27,8 +28,15 @@ public class RotationEvent : GameEvent, IGameEventUpdatable
 
     public void OnUpdate()
     {
-        if (timer >= 0)
+
+        if (pretimer >= 0)
         {
+            pretimer -= Time.deltaTime;
+        }
+
+        else if (timer >= 0)
+        {
+            timer -= Time.deltaTime;
             rotationEventManager.RotateCore(((rotationEventData.rotationValue * 90) / rotationEventData.rotationTime) * Time.deltaTime, rotationEventData.clockwise);
             
         }
@@ -37,7 +45,6 @@ public class RotationEvent : GameEvent, IGameEventUpdatable
             EndConditionCallback?.Invoke(this);
         }
 
-        timer -= Time.deltaTime;
     }
 
 }

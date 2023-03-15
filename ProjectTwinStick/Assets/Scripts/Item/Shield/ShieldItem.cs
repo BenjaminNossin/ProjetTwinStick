@@ -17,6 +17,9 @@ public class ShieldItem : Item
 
     private bool IsInUse = false;
     private bool IsInOppositeCorner = false;
+
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] SoundPitch pitcher;
     
     
     public override ItemSO GetSO()
@@ -29,12 +32,12 @@ public class ShieldItem : Item
         OnItemStateChange += OnItemStateChanged;
         SetUpgrade(_shieldItemSO.GetUpgrades()[0]);
         _shieldCenter = FindObjectOfType<ShieldCenter>();
+        _shieldInstance.transform.parent = null;
     }
 
     protected override void Update()
     {
         base.Update();
-        _shieldInstance.transform.parent = null;
         UpdateShieldPos();
     }
 
@@ -58,11 +61,14 @@ public class ShieldItem : Item
 
     private void DisableShield()
     {
+        pitcher.Pitcher();
+        audioSource.Play();
         _shieldInstance.stopUsing();
     }
 
     private void EnableShield()
     {
+        
         _shieldInstance.startUsing();
     }
 
@@ -92,14 +98,13 @@ public class ShieldItem : Item
     public override bool TryShoot(Vector3 startPosition, Vector2 direction)
     {
         lastDirection = direction;
+        lastStartPos = _itemHolder.transform.position;
+        OnShoot?.Invoke();
         return true;
     }
 
     private void UpdateShieldPos()
     {
-        if(_itemHolder)  
-        lastStartPos = _itemHolder.transform.position;
-        
         Vector3 intersectionPoint = GetIntersectionPoint(lastStartPos, lastDirection);
         intersectionPoint.y = _shieldItemSO.ShieldHeight;
 
@@ -168,7 +173,6 @@ public class ShieldItem : Item
     
     public override void SetUpgrade(ItemUpgrade newUpgrade)
     {
-        Debug.Log("set upgrade");
         _currentUpgrade = (ShieldItemUpgrade) newUpgrade;
         _shieldInstance.ChangeUpgrade(_currentUpgrade);
     }

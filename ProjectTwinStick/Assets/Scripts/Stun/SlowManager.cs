@@ -15,7 +15,8 @@ public struct SlowInstance
 public class SlowManager : MonoBehaviour
 {
     public event Action<float> OnSlowMultiplierChanged;
-    
+    public event Action OnSlowAdded;
+    public event Action<int> OnSlowRemove;
     private List<SlowInstance> _instances = new List<SlowInstance>();
     private float _slowMultiplier = 1f;
 
@@ -30,10 +31,10 @@ public class SlowManager : MonoBehaviour
         instance.timeRemaining = slowSo.SlowDuration;
         for (int i = 0; i < slowSo.TagsToAdd.Count; i++)
         {
-            Debug.Log("test");
             _tagContainer.AddTag(slowSo.TagsToAdd[i]);
         }
         _instances.Add(instance);
+        OnSlowAdded?.Invoke();
     }
 
     //removes one instance matching the provided SO
@@ -48,6 +49,7 @@ public class SlowManager : MonoBehaviour
                     _tagContainer.RemoveTag(slowSo.TagsToAdd[tagIndex]);
                 }
                 _instances.RemoveAt(i);
+                OnSlowRemove?.Invoke(_instances.Count);
                 UpdateSlowMultiplier();
                 return;
             }
@@ -73,12 +75,14 @@ public class SlowManager : MonoBehaviour
                 {
                     _tagContainer.RemoveTag(instance.slowSO.TagsToAdd[tagIndex]);
                 }
+                OnSlowRemove?.Invoke(_instances.Count);
             }
             else
             {
                 _instances[i] = instance;
             }
         }
+        
         UpdateSlowMultiplier();
     }
     
