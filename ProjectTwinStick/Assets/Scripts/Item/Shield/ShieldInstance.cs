@@ -106,6 +106,7 @@ public class ShieldInstance : MonoBehaviour, ILifeable
     {
         _upgrade = upgrade;
         shieldCollider.size = new Vector3(_upgrade.shieldWidth, shieldCollider.size.y, shieldCollider.size.z);
+        this.transform.localScale = new Vector3(_upgrade.shieldWidth,1,1);
     }
 
     public float GetMaxHp()
