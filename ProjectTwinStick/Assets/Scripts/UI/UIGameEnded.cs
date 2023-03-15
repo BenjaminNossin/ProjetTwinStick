@@ -11,7 +11,7 @@ public class UIGameEnded : MonoBehaviour
 
     private void BackToMainMenu()
     {
-        GameManager.Instance.ReloadContext(); 
+        GameManager.Instance.InitializeContext(); 
     }
 
     public void Quit()
