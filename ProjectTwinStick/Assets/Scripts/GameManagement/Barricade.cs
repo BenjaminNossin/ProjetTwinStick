@@ -26,11 +26,16 @@ public class Barricade : MonoBehaviour, ILifeable
     public event Action<float> OnIncreaseCurrentHp;
     public event Action<float> OnDecreaseCurrentHp;
 
+    [SerializeField] AudioSource audioSource;
+
     public void OnGameStart()
     {
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
+        audioSource.volume = 0;
         RepairSelf();
+
+        Invoke("ResetSound", 3f);
     }
 
     private void DestroySelf()
@@ -120,5 +125,10 @@ public class Barricade : MonoBehaviour, ILifeable
             else OnBarricadeDamaged?.Invoke();
             //Debug.Log($"Barricade {gameObject.name} current hp: {CurrentHP}");
         }
+    }
+
+    public void ResetSound()
+    {
+        audioSource.volume = 0.4f;
     }
 }

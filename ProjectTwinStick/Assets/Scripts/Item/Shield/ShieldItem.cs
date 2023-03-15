@@ -17,6 +17,9 @@ public class ShieldItem : Item
 
     private bool IsInUse = false;
     private bool IsInOppositeCorner = false;
+
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] SoundPitch pitcher;
     
     
     public override ItemSO GetSO()
@@ -58,11 +61,14 @@ public class ShieldItem : Item
 
     private void DisableShield()
     {
+        pitcher.Pitcher();
+        audioSource.Play();
         _shieldInstance.stopUsing();
     }
 
     private void EnableShield()
     {
+        
         _shieldInstance.startUsing();
     }
 

@@ -8,10 +8,17 @@ public class SoundPitch : MonoBehaviour
     float basePitch;
 
     [SerializeField] float randomMin, randomMax;
+    [SerializeField] bool playOnStart;
 
     private void Start()
     {
         basePitch = audioSource.pitch;
+        Pitcher();
+        if (playOnStart)
+        {
+            audioSource.Play();
+            Debug.Log("Play BOOM");
+        }
     }
 
     public void Pitcher()

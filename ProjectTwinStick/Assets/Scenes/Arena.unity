@@ -4627,7 +4627,7 @@ PrefabInstance:
     - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: tutorialTimeLine
       value: 
-      objectReference: {fileID: 11400000, guid: d0defc1a0d346f747a59acdcbddf0c0f, type: 2}
+      objectReference: {fileID: 11400000, guid: 2b6e1a49e51d9954f8c2c3397c1c42c9, type: 2}
     - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: playersRequiredAmount
       value: 1
@@ -4755,7 +4755,7 @@ PrefabInstance:
     - target: {fileID: 4173915731596863525, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: _gameEventTimeline
       value: 
-      objectReference: {fileID: 11400000, guid: 94dcb697b8287b44b9982b16a2f09807, type: 2}
+      objectReference: {fileID: 11400000, guid: bc76b407206620b43856b3511b747601, type: 2}
     - target: {fileID: 4183399939102381754, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.60737324
