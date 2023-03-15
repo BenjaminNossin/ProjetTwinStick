@@ -6,7 +6,7 @@ public class CreditsState : State
 {
     public override void OnStateEnter()
     {
-        GameManager.Instance.OnShowCredits(); 
+        // 
     }
 
     public override void OnStateExit()
