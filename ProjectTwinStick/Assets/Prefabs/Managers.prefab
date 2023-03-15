@@ -1105,10 +1105,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoolFeedback
       objectReference: {fileID: 0}
-    - target: {fileID: 7163592797374919948, guid: 79a4f4ff74b3e274fade39bfec1d82a3, type: 3}
-      propertyPath: poolDataFeedbacks.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8963885198046530480, guid: 79a4f4ff74b3e274fade39bfec1d82a3, type: 3}
       propertyPath: m_RootOrder
       value: 2
