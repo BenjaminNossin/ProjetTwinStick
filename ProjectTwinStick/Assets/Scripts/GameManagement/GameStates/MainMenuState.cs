@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace Game.Systems.GlobalFramework.States
 {
+    // ROOT STATE
+
     public class MainMenuState : State
     {
         public override void OnStateEnter()

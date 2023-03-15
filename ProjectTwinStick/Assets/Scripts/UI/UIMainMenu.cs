@@ -2,58 +2,90 @@ using Game.Systems.GlobalFramework;
 using Game.Systems.GlobalFramework.States;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
+
+public enum MainMenuSelections { Tutorial, MainGame, Options, Credits, Quit }
 
 public class UIMainMenu : MonoBehaviour
 {
-    [SerializeField] PlayerInput playerInput_MainMenu;
+    [SerializeField] private PlayerInputManager inputManager; 
 
-    [SerializeField] private string[] selections;
+    [SerializeField] private MainMenuSelections[] selections = new MainMenuSelections[5];
     [SerializeField] private TMP_Text tmpText; 
     private int currentIndex;
+    private MainMenuSelections currentSelection; 
 
     private static List<Action> actionsCallbacks = new List<Action>();
-    private static Action OnAllPlayerReady; 
+    PlayerInput playerInput_MainMenu;
+    InputAction toLeft, toRight; 
 
     private void OnEnable()
     {
         currentIndex = 0;
-        UpdateSelection(currentIndex); 
+
+        inputManager.onPlayerJoined += GetPlayerInput;
+
 
         actionsCallbacks.Add(StartTutorial);
         actionsCallbacks.Add(StartGame);
         actionsCallbacks.Add(ShowOptions);
         actionsCallbacks.Add(ShowCredits);
         actionsCallbacks.Add(QuitGame);
+    }
 
-        InputAction toLeft = playerInput_MainMenu.currentActionMap["SelectionLeft"];
-        InputAction toRight = playerInput_MainMenu.currentActionMap["SelectionRight"];
+    private void OnDisable()
+    {
+        inputManager.onPlayerJoined -= GetPlayerInput;
+        toLeft.performed -= ToLeft;
+        toRight.performed -= ToRight;
+    }
+
+    private void GetPlayerInput(PlayerInput firstPlayerToJoin)
+    {
+        if (playerInput_MainMenu) return;
+
+        Debug.Log("binding a player input to input actions"); 
+        playerInput_MainMenu = firstPlayerToJoin;
+
+        toLeft = playerInput_MainMenu.currentActionMap["SelectionLeft"];
+        toRight = playerInput_MainMenu.currentActionMap["SelectionRight"];
 
         toLeft.performed += ToLeft;
         toRight.performed += ToRight;
     }
 
+    private void Start()
+    {
+        UpdateSelection(currentIndex);
+    }
+
     private void ToLeft(InputAction.CallbackContext context)
     {
-        Debug.Log("main menu going to left"); 
         UpdateSelection(-1); 
     }
 
     private void ToRight(InputAction.CallbackContext context)
     {
-        Debug.Log("main menu going to right");
         UpdateSelection(1);
     }
 
     private void UpdateSelection(int updateValue)
     {
         currentIndex += updateValue;
-        tmpText.text = selections[Mathf.Abs(currentIndex % selections.Length)];
+        currentSelection = selections[Mathf.Abs(currentIndex % selections.Length)]; 
+        tmpText.text = $"{currentSelection}";
 
-        GameManager.Instance.SetSelection(tmpText.text); 
+        GameManager.Instance.SetCurrentSelectedGameState(currentSelection); 
+    }
+
+
+    private void StartTutorial()
+    {
+        Debug.Log("tutorial");
+
     }
 
     private void StartGame()
@@ -61,24 +93,19 @@ public class UIMainMenu : MonoBehaviour
         GameManager.Instance.OnMainMenuEnd(); // very BAD from design pattern perspective
     }
 
-    private void QuitGame()
+    private void ShowOptions()
     {
-        Debug.Log("Application Quit"); 
-        Application.Quit();
+        Debug.Log("options");
     }
 
     private void ShowCredits()
     {
-
+        Debug.Log("credits"); 
     }
 
-    private void ShowOptions()
+    private void QuitGame()
     {
-
-    }
-
-    private void StartTutorial()
-    {
-
+        Debug.Log("Application Quit");
+        Application.Quit();
     }
 }

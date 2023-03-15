@@ -24,7 +24,8 @@ namespace Game.Systems.GlobalFramework
         public static GameManager Instance { get; private set; }
         private StateContext currentContext;
         private State initialState = null;
-        private Action OnAllPlayersReady; 
+        private Action OnAllPlayersReady;
+        private MainMenuSelections mainMenuSelection; 
         #endregion
 
         #region Gameplay
@@ -72,18 +73,9 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(gameOverObj, false);
 
             currentContext = new(new MainMenuState(), playerInputManager);
-
-            //currentContext = new(new LobbyState(), playerInputManager);
         }
 
         #region Lazy Initializers
-        string currentSelected; 
-        public void SetSelection(string mainMenuCurrentSelection)
-        {
-            currentSelected = mainMenuCurrentSelection; 
-        }
-
-
         public void SetShipCoreData(GameObject obj, ShipCore sC)
         {
             ShipCoreObj = obj;
@@ -113,10 +105,9 @@ namespace Game.Systems.GlobalFramework
         /// Called during the main menu state
         /// </summary>
         /// <param name="requiredState"></param>
-        private void SetCurrentSelectedGameState(string requiredState)
+        public void SetCurrentSelectedGameState(MainMenuSelections requiredState)
         {
-            Assembly currentAssembly = Assembly.GetAssembly(typeof(State));
-            currentAssembly.CreateInstance(requiredState);
+            mainMenuSelection = requiredState; 
         }
 
         public void SetPlayerRenderer(PlayerController controller, int index)
@@ -151,8 +142,7 @@ namespace Game.Systems.GlobalFramework
 
             if (currentPlayerReadyCount == playersRequiredAmount)
             {
-                //currentContext.TransitionTo(new GameState());
-                SetCurrentSelectedGameState(currentSelected); 
+                currentContext.TransitionTo(GetStateFromFactory(mainMenuSelection));
             }
         }
 
@@ -164,6 +154,19 @@ namespace Game.Systems.GlobalFramework
 
             }
         }
+
+        private State GetStateFromFactory(MainMenuSelections mms) =>
+            mms switch
+            {
+                MainMenuSelections.Tutorial => new TutorialState(),
+                MainMenuSelections.MainGame => new GameState(),
+                MainMenuSelections.Options => new OptionsState(),
+                MainMenuSelections.Credits => new CreditsState(),
+                MainMenuSelections.Quit => new QuitState(),
+                _ => throw new ArgumentException("Invalid enum value for main menu selections", nameof(mms)),
+            }; 
+        
+
         #endregion
 
         #region Callbacks

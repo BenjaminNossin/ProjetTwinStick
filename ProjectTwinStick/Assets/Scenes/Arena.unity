@@ -2069,6 +2069,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3737852296162943700, guid: c6aba9556e9df7747838fbacb21fec2d, type: 3}
   m_PrefabInstance: {fileID: 725418457}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &757818411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+  m_PrefabInstance: {fileID: 1488873061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &838276064
 Mesh:
   m_ObjectHideFlags: 0
@@ -4325,6 +4336,38 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101249}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: tmpText
+      value: 
+      objectReference: {fileID: 1488873062}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 757818411}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: playerInput_MainMenu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: selections.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: selections.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: selections.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: selections.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581529468745807091, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: selections.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2666541288237688783, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: assignedBarricade
       value: 
@@ -4389,6 +4432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: mainMenuSelectionsUI
+      value: 
+      objectReference: {fileID: 1488873063}
     - target: {fileID: 3053330164830231944, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: assignedBarricade
       value: 
@@ -4421,6 +4468,10 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101241}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5999767695012942355, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: assignedBarricade
       value: 
@@ -4483,6 +4534,22 @@ PrefabInstance:
       objectReference: {fileID: 6047942999111101248}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+--- !u!114 &1488873062 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6955922999478873324, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+  m_PrefabInstance: {fileID: 1488873061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1488873063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2699374205950028569, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+  m_PrefabInstance: {fileID: 1488873061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1504921569
 Mesh:
   m_ObjectHideFlags: 0
