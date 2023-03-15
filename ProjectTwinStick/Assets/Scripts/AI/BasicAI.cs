@@ -117,15 +117,12 @@ public class BasicAI : MonoBehaviour, ILifeable
         switch (currentState)
         {
             case BasicAIState.Run:
-                Debug.Log("switch to run");
                 OnStartRun?.Invoke();
                 break;
             case BasicAIState.Jump:
-                Debug.Log("switch to jump");
                 OnStartJump?.Invoke();
                 break;
             case BasicAIState.Dead:
-                Debug.Log("switch to dead");
                 break;
         }
     }

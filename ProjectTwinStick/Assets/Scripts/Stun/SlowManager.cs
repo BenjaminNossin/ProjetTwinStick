@@ -31,7 +31,6 @@ public class SlowManager : MonoBehaviour
         instance.timeRemaining = slowSo.SlowDuration;
         for (int i = 0; i < slowSo.TagsToAdd.Count; i++)
         {
-            Debug.Log("test");
             _tagContainer.AddTag(slowSo.TagsToAdd[i]);
         }
         _instances.Add(instance);

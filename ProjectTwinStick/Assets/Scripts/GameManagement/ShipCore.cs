@@ -48,7 +48,7 @@ public class ShipCore : MonoBehaviour, ILifeable
     {
         Debug.Log("Lost the game");
 
-        GameManager.Instance.OnGameEnd(); 
+        GameManager.Instance.OnGameOver(); 
     }
 
     public float GetMaxHp() => MaxHP;
