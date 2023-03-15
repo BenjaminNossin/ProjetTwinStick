@@ -271,7 +271,7 @@ namespace Game.Systems.GlobalFramework
             playing = true; 
 
             timeBeforeWin_AsSeconds = (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f; 
-            Invoke(nameof(OnGameWin), 30f); 
+            Invoke(nameof(OnGameWin), timeBeforeWin_AsSeconds); 
 
             SetAllUIIsActive(false);
 
