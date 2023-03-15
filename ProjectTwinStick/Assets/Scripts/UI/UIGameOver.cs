@@ -1,12 +1,16 @@
 using Game.Systems.GlobalFramework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UIGameOver : MonoBehaviour
 {
+    public void BackToMainMenu()
+    {
+        GameManager.Instance.ReloadContext(); 
+    }
+
     public void Replay()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single); 
+        GameManager.Instance.SetNewState(MainMenuSelections.MainGame);
     }
 
     public void Quit()

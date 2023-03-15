@@ -69,7 +69,7 @@ namespace Game.Systems.GlobalFramework
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
             }
 
-            Initialize();
+            Invoke(nameof(Initialize), 0.2f); 
         }
 
         public void Initialize()
@@ -127,6 +127,7 @@ namespace Game.Systems.GlobalFramework
 
         public void AddWaitRoomObj(GameObject obj)
         {
+            Debug.Log("adding wait room"); 
             waitRooms.Add(obj);
             SetObjectActive(obj, false);
         }
@@ -162,7 +163,12 @@ namespace Game.Systems.GlobalFramework
             }
         }
 
-        private State GetStateFromFactory(MainMenuSelections mms) =>
+        public void SetNewState(MainMenuSelections mms)
+        {
+            currentContext.TransitionTo(GetStateFromFactory(mms));
+        }
+
+        private static State GetStateFromFactory(MainMenuSelections mms) =>
             mms switch
             {
                 MainMenuSelections.Tutorial => new TutorialState(),
@@ -170,6 +176,7 @@ namespace Game.Systems.GlobalFramework
                 MainMenuSelections.Options => new OptionsState(),
                 MainMenuSelections.Credits => new CreditsState(),
                 MainMenuSelections.Quit => new QuitState(),
+                MainMenuSelections.MainMenu => new MainMenuState(),
                 _ => throw new ArgumentException("Invalid enum value for main menu selections", nameof(mms)),
             }; 
         
@@ -177,6 +184,11 @@ namespace Game.Systems.GlobalFramework
         #endregion
 
         #region Callbacks
+        public void ReloadContext()
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        }
+
         public void OnMainMenuStart()
         {
             Debug.Log("starting main menu");
@@ -184,6 +196,7 @@ namespace Game.Systems.GlobalFramework
 
             foreach (var item in waitRooms)
             {
+                Debug.Log("wait room activated"); 
                 SetObjectActive(item, true);
             }
         }

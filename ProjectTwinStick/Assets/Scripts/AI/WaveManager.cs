@@ -54,8 +54,6 @@ namespace Game.Systems.AI
 
         public void OnGameOver()
         {
-            return;
-
             Debug.Log($"Stopping Waves");
 
             foreach (var item in spawners)

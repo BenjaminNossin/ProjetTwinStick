@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
-public enum MainMenuSelections { Tutorial, MainGame, Options, Credits, Quit }
+public enum MainMenuSelections { Tutorial, MainGame, Options, Credits, Quit, MainMenu }
 
 public class UIMainMenu : MonoBehaviour
 {
@@ -31,6 +31,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void OnDisable()
     {
+        Debug.Log("main menu disable"); 
         inputManager.onPlayerJoined -= GetPlayerInput;
         toLeft.performed -= ToLeft;
         toRight.performed -= ToRight;
@@ -43,7 +44,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void GetPlayerInput(PlayerInput firstPlayerToJoin)
     {
-        if (playerInput_MainMenu) return;
+        //if (playerInput_MainMenu) return;
 
         UpdateSelection(currentIndex);
 
