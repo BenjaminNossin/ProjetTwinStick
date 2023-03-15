@@ -238,6 +238,7 @@ MonoBehaviour:
   pivotRenderer: {fileID: 6550663399249535993}
   _playerMovement: {fileID: 9038388747997465378}
   _playerShoot: {fileID: 5293756636317163978}
+  _slowManager: {fileID: 902688374199694648}
   _playerThrow: {fileID: 2687361521020166328}
   _inventory: {fileID: 6055432575011109203}
   _firstUpgradeFX: {fileID: 6616282503749409644}
@@ -377,6 +378,10 @@ PrefabInstance:
     - target: {fileID: 2589152001436378842, guid: 9d5a4d3fc72fb194eab90ef5aa00b882, type: 3}
       propertyPath: m_Name
       value: LineAiming
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589152001436378842, guid: 9d5a4d3fc72fb194eab90ef5aa00b882, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5378579875542314347, guid: 9d5a4d3fc72fb194eab90ef5aa00b882, type: 3}
       propertyPath: m_Loop

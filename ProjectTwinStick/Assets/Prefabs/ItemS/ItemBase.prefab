@@ -108,6 +108,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropStateFx: {fileID: 5843902202478181002}
+  _animator: {fileID: 0}
+  itemDropAnimationState: OnGroundIdle
+  itemThrowAnimationState: Flying Anim
+  itemUseAnimationParameter: IsUse
+  itemHeldAnimationState: Held
+  allUpgradedItemRenderers: []
 --- !u!1001 &7445189869185091796
 PrefabInstance:
   m_ObjectHideFlags: 0

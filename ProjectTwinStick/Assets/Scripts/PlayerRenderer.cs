@@ -11,6 +11,7 @@ public class PlayerRenderer : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerShoot _playerShoot;
 
+    [SerializeField] private SlowManager _slowManager;
     [SerializeField] private PlayerThrow _playerThrow;
     [SerializeField] private Inventory _inventory;
 
@@ -27,7 +28,10 @@ public class PlayerRenderer : MonoBehaviour
         _inventory.OnItemChanged += SnapItemTakedToHand;
         _inventory.OnItemDroped += UnSnapItem;
         _inventory.OnSetDefaultItem += ActivateDefaultItem;
+        _slowManager.OnSlowAdded += EnableHitAnimationParameter;
+        _slowManager.OnSlowRemove += TryDisableHitAnimationParameter;
     }
+    
 
     private void UpdateUpgradeFX(Item currentItem)
     {
@@ -71,12 +75,24 @@ public class PlayerRenderer : MonoBehaviour
         itemTransform.parent = handTransform;
         itemTransform.localPosition = Vector3.zero;
         itemTransform.localRotation = Quaternion.identity;
+        if(item.handPivotPoint)
+        itemTransform.position += itemTransform.transform.position - item.handPivotPoint.position;
         UpdateUpgradeFX(item);
     }
 
 
     private void UnSnapItem(Item item) => item.transform.parent = null;
 
+    void EnableHitAnimationParameter()
+    {
+        animator.SetBool("IsHit", true);
+    }
+    
+    void TryDisableHitAnimationParameter(int countSlow)
+    {
+        if(countSlow == 0)
+        animator.SetBool("IsHit", false);
+    }
     void EnableIsBeginThrow()
     {
         animator.SetBool("isBeginThrow", true);

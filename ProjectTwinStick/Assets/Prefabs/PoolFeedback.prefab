@@ -47,3 +47,11 @@ MonoBehaviour:
   poolDataFeedbacks:
   - startCount: 10
     prefab: {fileID: 3087996109232604015, guid: f812faaa1314e7749b52c64cf4d7f029, type: 3}
+  - startCount: 10
+    prefab: {fileID: 3318357775043894198, guid: 5ddc564839678784a85cae87a49d2258, type: 3}
+  - startCount: 10
+    prefab: {fileID: 8251416909189209825, guid: a35f48151feac994db7808296279cc75, type: 3}
+  - startCount: 10
+    prefab: {fileID: 3166486986071938111, guid: bb1938211ff7c0d47bf54d6e34e915cb, type: 3}
+  - startCount: 10
+    prefab: {fileID: 8836159014818479971, guid: 19af0bb78a8f6fc47bd26fdb67bef25a, type: 3}

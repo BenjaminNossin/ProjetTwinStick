@@ -92,6 +92,7 @@ public class ShieldItem : Item
     public override bool TryShoot(Vector3 startPosition, Vector2 direction)
     {
         lastDirection = direction;
+        OnShoot?.Invoke();
         return true;
     }
 

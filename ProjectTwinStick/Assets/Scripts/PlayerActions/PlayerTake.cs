@@ -33,8 +33,6 @@ public class PlayerTake : MonoBehaviour, IPlayerAction
             {
                 if (takeable is Item inventoryItem)
                 {
-                    Debug.Log(inventoryItem.CanTake());
-                    Debug.Log(_inventory.CurrentItem);
                     if (inventoryItem != _inventory.CurrentItem && inventoryItem.CanTake())
                     {
                         // set item 

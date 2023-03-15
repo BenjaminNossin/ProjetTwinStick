@@ -31,7 +31,6 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     public void Init(Vector3 assignedTargetPos)
     {
         cachedTransf = transform;
-
         SetTargetPosition(assignedTargetPos);
         SetSelfPosFlat(shipCorePos.y*1.1f);
         SetNormalizedDirection();

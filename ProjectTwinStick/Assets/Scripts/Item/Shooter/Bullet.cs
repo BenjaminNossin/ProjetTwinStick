@@ -11,10 +11,12 @@ public class Bullet : MonoBehaviour
     private float _damage;
     private bool _isActivate;
 
+    public event Action OnDieBullet;
     private Pool<Bullet> _pool;
     [SerializeField]
     private Rigidbody _rb;
     private SlowSO _slow;
+    [SerializeField] private BulletRenderer _bulletRenderer; 
     public void Init(Vector3 startPos, float damage, float speed, Vector3 direction,SlowSO slow, Pool<Bullet> pool)
     {
         transform.position = startPos;
@@ -22,6 +24,7 @@ public class Bullet : MonoBehaviour
         _rb.velocity = direction * speed;
         _pool = pool;
         _slow = slow;
+        _bulletRenderer.Init();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -59,6 +62,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Wall") || other.CompareTag("Enemy"))
         {
             _pool.AddToPool(this);
+            OnDieBullet?.Invoke();
         }
         
     }

@@ -36,13 +36,18 @@ public class ShooterItem : Item
 
     public override bool TryShoot(Vector3 startPosition, Vector2 direction)
     {
-        if (!shooterIsReady) return false;
+        if (!shooterIsReady)
+        {
+            CancelShoot();
+            return false;
+        }
         Bullet bullet = _bulletPool.GetFromPool();
         var currentAngle = Mathf.Atan2(direction.y, direction.x);
         currentAngle += Random.Range(currentUpgrade.MinDispersionRadian, currentUpgrade.MaxDispersionRadian);
-        bullet.Init(startPosition,currentUpgrade.DamageBullet, currentUpgrade.Speed,
+        bullet.Init(shootPivotPoint.transform.position,currentUpgrade.DamageBullet, currentUpgrade.Speed,
             new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle)),currentUpgrade.slowType, _bulletPool);
         shooterIsReady = false;
+        OnShoot?.Invoke();
         return true;
     }
 

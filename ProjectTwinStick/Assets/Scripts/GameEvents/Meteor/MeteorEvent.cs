@@ -41,8 +41,6 @@ public class MeteorEvent : GameEventArea, IGameEventUpdatable
 
     private void GenerateWave()
     {
-        Debug.Log(meteorEventData.name + "  area" + targetAreas[0]);
-
         meteorSpawnerManager.GenerateMeteor(targetAreas[0], meteorEventData.MeteorWaves[currentMeteorWaveIndex].meteorCount);
         meteorSpawnerManager.ResetSpawnerArea(targetAreas[0]);
     }

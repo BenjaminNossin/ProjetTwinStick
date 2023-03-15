@@ -22,7 +22,13 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
     [SerializeField] ItemThrowData throwData;
 
     [SerializeField] private ItemSpawner _itemSpawner;
+
+     public Transform handPivotPoint;
+     public Transform shootPivotPoint;
     public event Action<ItemState> OnItemStateChange;
+
+    public event Action<int>  OnItemUpgradeChanged;
+  
 
 
     private int _upgradeCount;
@@ -157,7 +163,13 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
 
     public abstract ItemSO GetSO();
     public abstract bool TryShoot(Vector3 startPosition, Vector2 direction);
+    public Action OnShoot;
 
+    public Action OnUnShoot;
+    public void CancelShoot()
+    {
+        OnUnShoot?.Invoke();
+    }
     public abstract void SetUpgrade(ItemUpgrade newUpgrade);
 
     protected void Awake()
@@ -363,6 +375,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         if (_upgradeCount != upgradeMaxCount)
         {
             _upgradeCount++;
+            
             UpdateUpgrade();
         }
     }
@@ -376,7 +389,11 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         }
     }
 
-    void UpdateUpgrade() => SetUpgrade(GetSO().GetUpgrades()[_upgradeCount]);
+    void UpdateUpgrade()
+    {
+        OnItemUpgradeChanged?.Invoke(_upgradeCount);
+        SetUpgrade(GetSO().GetUpgrades()[_upgradeCount]);
+    }
 
     public void ResetUpgrade()
     {
