@@ -6,6 +6,8 @@ using Game.Systems.AI;
 using UnityEngine.SceneManagement;
 using Game.Systems.GlobalFramework.States;
 using System.Reflection;
+using Unity.Tutorials.Core.Editor;
+using UnityEditor.Timeline.Actions;
 
 namespace Game.Systems.GlobalFramework
 {
@@ -17,9 +19,7 @@ namespace Game.Systems.GlobalFramework
         #region Game Flow
         [SerializeField] private GameObject mainMenuSelectionsUI;
         [SerializeField] private GameEventTimelineSO tutorialTimeLine;
-
-        [Space, SerializeField] private PlayerInputManager playerInputManager;
-
+        [SerializeField] private PlayerInputManager playerInputManager;
         [SerializeField] private List<PlayerRendererLinker> allPlayerRenderers = new List<PlayerRendererLinker>();
         public static GameManager Instance { get; private set; }
         private StateContext currentContext;
@@ -29,18 +29,24 @@ namespace Game.Systems.GlobalFramework
         #endregion
 
         #region UI
-        [SerializeField] private GameObject creditsObj;
+        [Space, SerializeField] private GameObject creditsObj;
         [SerializeField] private GameObject optionsObj;
         [SerializeField] private GameObject gameOverObj;
+        [SerializeField] private GameObject gameWonObj;
         #endregion
 
         #region Gameplay
-        [SerializeField, Range(1, 4)] private int playersRequiredAmount = 4;
+        [Space, SerializeField, Range(1, 4)] private int playersRequiredAmount = 4;
+        [Space, SerializeField, Range(1, 15)] private float minutesBeforeWin_Tutorial = 5;
+        [Space, SerializeField, Range(1, 20)] private float minutesBeforeWin_MainGame = 12;
+        private bool isTutorial; 
+        private float minutesBeforeWin;
+
         private int currentPlayerReadyCount;
         private readonly List<GameObject> waitRooms = new();
 
         public GameObject ShipCoreObj { get; private set; }
-        private ShipCore shipCore;
+        private ShipCore shipCore; 
         private WaveManager waveManager;
         private GameEventTimelineReader _gameEventTimelineReader;
 
@@ -49,7 +55,6 @@ namespace Game.Systems.GlobalFramework
         public event Action OnGameOverCallBack;
         public event Action OnGameStartCallback;
         #endregion
-
 
         // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
 
@@ -69,15 +74,11 @@ namespace Game.Systems.GlobalFramework
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
             }
 
-            Invoke(nameof(Initialize), 0.2f); 
+            Invoke(nameof(InitializeContext), 0.2f); 
         }
 
-        public void Initialize()
+        public void InitializeContext()
         {
-            currentPlayerReadyCount = 0;
-            spawnPointIndex = 0;
-
-            SetAllUIIsActive(false);
             currentContext = new(new MainMenuState(), playerInputManager);
         }
 
@@ -178,12 +179,20 @@ namespace Game.Systems.GlobalFramework
                 MainMenuSelections.Quit => new QuitState(),
                 MainMenuSelections.MainMenu => new MainMenuState(),
                 _ => throw new ArgumentException("Invalid enum value for main menu selections", nameof(mms)),
-            }; 
-        
+            };
+
+        private void DeactivateAllGameplayObjects()
+        {
+            SetObjectActive(ShipCoreObj, false);
+            _gameEventTimelineReader.OnGameOver();
+            waveManager.OnGameOver();
+            OnGameOverCallBack?.Invoke();
+        }
+
 
         #endregion
 
-        #region Callbacks
+        #region ""Callbacks"" ;))
         public void ReloadContext()
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
@@ -192,6 +201,13 @@ namespace Game.Systems.GlobalFramework
         public void OnMainMenuStart()
         {
             Debug.Log("starting main menu");
+            CancelInvoke(nameof(OnGameWin));
+
+            currentPlayerReadyCount = 0;
+            spawnPointIndex = 0;
+            isTutorial = false;
+
+            SetAllUIIsActive(false);
             SetObjectActive(mainMenuSelectionsUI, true);
 
             foreach (var item in waitRooms)
@@ -215,6 +231,8 @@ namespace Game.Systems.GlobalFramework
         public void OnTutorialStart()
         {
             Debug.Log("tutorial");
+            isTutorial = true;
+
             SetAllUIIsActive(false);
             _gameEventTimelineReader.SetNewTimeline(tutorialTimeLine);
 
@@ -223,6 +241,8 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameStart()
         {
+            Invoke(nameof(OnGameWin), (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame)); // * 60f);
+
             SetAllUIIsActive(false);
 
             foreach (var item in waitRooms)
@@ -238,29 +258,34 @@ namespace Game.Systems.GlobalFramework
             OnGameStartCallback?.Invoke();
         }
 
-        public void OnGameEnd()
+        public void OnGameOver()
         {
-            SetObjectActive(ShipCoreObj, false);
             SetObjectActive(gameOverObj, true);
-           
-            _gameEventTimelineReader.OnGameOver();
-            waveManager.OnGameOver();
-            OnGameOverCallBack?.Invoke();
+
+            DeactivateAllGameplayObjects();
             currentContext.TransitionTo(new GameOverState());
         }
 
         public void OnShowOptions()
         {
             Debug.Log("options");
-            optionsObj.SetActive(true);
-            creditsObj.SetActive(false);
+            SetObjectActive(optionsObj, true);
+            SetObjectActive(optionsObj, false);
         }
 
         public void OnShowCredits()
         {
             Debug.Log("credits");
-            creditsObj.SetActive(true);
-            optionsObj.SetActive(false);
+            SetObjectActive(creditsObj, true);
+            SetObjectActive(optionsObj, false);
+        }
+
+        public void OnGameWin()
+        {
+            SetObjectActive(gameWonObj, true);
+
+            DeactivateAllGameplayObjects();
+            currentContext.TransitionTo(new WinState());
         }
 
         public void OnGameQuit()
@@ -273,8 +298,10 @@ namespace Game.Systems.GlobalFramework
         #endregion
 
         #region UI
+        // architecture meh/20
         private void SetAllUIIsActive(bool isActive)
         {
+            gameWonObj.SetActive(isActive);
             gameOverObj.SetActive(isActive); 
             optionsObj.SetActive(isActive);
             creditsObj.SetActive(isActive);

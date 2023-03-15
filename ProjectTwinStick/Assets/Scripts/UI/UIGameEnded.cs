@@ -1,7 +1,7 @@
 using Game.Systems.GlobalFramework;
 using UnityEngine;
 
-public class UIGameOver : MonoBehaviour
+public class UIGameEnded : MonoBehaviour
 {
     public void BackToMainMenu()
     {

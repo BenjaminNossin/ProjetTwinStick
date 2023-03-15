@@ -132,5 +132,11 @@ namespace Game.Systems.GlobalFramework.States
 
             }
         }
+
+        protected void ClearPlayerListFromContext()
+        {
+            ActivePlayersControllers.Clear();
+            ActivePlayersInput.Clear();
+        }
     }
 }
