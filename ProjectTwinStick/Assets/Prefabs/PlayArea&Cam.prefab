@@ -1686,6 +1686,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &2558858098889454737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2397,6 +2398,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &5265635780513558287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3841,6 +3843,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &387036728261089676
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4203,6 +4206,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &3054776881258597826
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6585,6 +6589,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &4414849569870135930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7672,6 +7677,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &4606556777273818067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11269,6 +11275,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &3061412797121307566
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11660,6 +11667,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &5602844870230487492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12051,6 +12059,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &2275932438474142419
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12762,6 +12771,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &1390327733796534688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13124,6 +13134,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &1162419272098290262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17081,7 +17092,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894054966561305542}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -18563,6 +18574,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &2313161066574227741
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19977,6 +19989,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &8958869057922858118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21532,6 +21545,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &6907263428905924717
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23056,6 +23070,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &2224601793478779872
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23086,7 +23101,6 @@ GameObject:
   - component: {fileID: 9005655711886078796}
   - component: {fileID: 4117213534841598582}
   - component: {fileID: 7081438789212291216}
-  - component: {fileID: 5979495610989976695}
   m_Layer: 0
   m_Name: ColliderUpEnnemis
   m_TagString: Untagged
@@ -24806,48 +24820,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manageVisibility: 1
---- !u!23 &5979495610989976695
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9098927912054011294}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &9152009955319548372
 GameObject:
   m_ObjectHideFlags: 0
@@ -25223,6 +25195,7 @@ MonoBehaviour:
       m_Calls: []
   RepairedCollision: []
   DestroyedCollision: []
+  audioSource: {fileID: 0}
 --- !u!54 &3187860717862525347
 Rigidbody:
   m_ObjectHideFlags: 0
