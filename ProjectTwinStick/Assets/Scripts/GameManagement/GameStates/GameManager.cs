@@ -16,7 +16,6 @@ namespace Game.Systems.GlobalFramework
     public class GameManager : MonoBehaviour
     {
         #region Game Flow
-
         [SerializeField] private GameObject mainMenuSelectionsUI;
 
         [SerializeField] private GameEventTimelineSO tutorialTimeLine;
@@ -24,14 +23,12 @@ namespace Game.Systems.GlobalFramework
         [SerializeField] private List<PlayerRendererLinker> allPlayerRenderers = new List<PlayerRendererLinker>();
         public static GameManager Instance { get; private set; }
         private StateContext currentContext;
-        private State initialState = null;
+        private State currentState = null;
         private Action OnAllPlayersReady;
         private MainMenuSelections mainMenuSelection;
-
         #endregion
 
         #region UI
-
         [Space, SerializeField] private GameObject creditsObj;
         [SerializeField] private GameObject optionsObj;
         [SerializeField] private GameObject SoundSlider;
@@ -40,6 +37,8 @@ namespace Game.Systems.GlobalFramework
         [SerializeField] private EventSystem eventSystem;
 
         [SerializeField] private TMP_Text tmpTimer;
+
+        private bool showOptions, showCredits;
         #endregion
 
         #region Gameplay
@@ -67,16 +66,15 @@ namespace Game.Systems.GlobalFramework
 
         #endregion
 
+        #region Audio
         [SerializeField] AudioSource audiosource;
         [SerializeField] AudioClip lobbyMusic;
         [SerializeField] AudioClip[] playList;
         AudioClip lastsong;
-
-        // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
+        #endregion
 
         private void Awake()
         {
-            Debug.Log("AWAKE"); 
             if (Instance)
             {
                 Destroy(Instance);
@@ -87,8 +85,6 @@ namespace Game.Systems.GlobalFramework
 
         void Start()
         {
-            Debug.Log("START");
-
             for (int i = 0; i < playerInputManager.transform.childCount; i++)
             {
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
@@ -128,8 +124,7 @@ namespace Game.Systems.GlobalFramework
         {
             spawnPointIndex = 0;
 
-            SetAllUIIsActive(false);
-            currentContext.TransitionTo(new MainMenuState());
+            currentContext.TransitionTo(currentState = new MainMenuState());
         }
 
         #region Lazy Initializers
@@ -201,13 +196,12 @@ namespace Game.Systems.GlobalFramework
             currentPlayerReadyCount += value;
             Debug.Log("Updating Player ready count to: " + currentPlayerReadyCount);
 
-            SetAllUIIsActive(false);
             if (currentPlayerReadyCount == playersRequiredAmount)
             {
-                currentContext.TransitionTo(GetStateFromFactory(mainMenuSelection));
+                currentContext.TransitionTo(currentState = GetStateFromFactory(mainMenuSelection));
             }
         }
-
+             
         public void SetAllPlayerSpawnPosition(List<PlayerController> controllers)
         {
             for (int i = 0; i < controllers.Count; i++)
@@ -257,7 +251,6 @@ namespace Game.Systems.GlobalFramework
             //spawnPointIndex = 0;
             isTutorial = false;
 
-            SetAllUIIsActive(false);
             SetObjectActive(mainMenuSelectionsUI, true);
 
             foreach (var item in waitRooms)
@@ -274,7 +267,6 @@ namespace Game.Systems.GlobalFramework
         {
             
             Debug.Log("ending main menu");
-            //currentContext.TransitionTo(new LobbyState());
         }
 
         public void OnLobbyStart()
@@ -297,10 +289,11 @@ namespace Game.Systems.GlobalFramework
             audiosource.loop = false;
             isTutorial = true;
 
-            SetAllUIIsActive(false);
             _gameEventTimelineReader.SetNewTimeline(tutorialTimeLine);
 
-            currentContext.TransitionTo(new GameState());
+            currentContext.TransitionTo(currentState = new GameState());
+            audiosource.clip = playList[UnityEngine.Random.Range(0, playList.Length)];
+            audiosource.Play();
         }
 
         public void OnGameStart()
@@ -313,7 +306,6 @@ namespace Game.Systems.GlobalFramework
             timeBeforeWin_AsSeconds = (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f; 
             Invoke(nameof(OnGameWin), timeBeforeWin_AsSeconds); 
 
-            SetAllUIIsActive(false);
 
             foreach (var item in waitRooms)
             {
@@ -336,16 +328,18 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(gameOverObj, true);
 
             DeactivateAllGameplayObjects();
-            currentContext.TransitionTo(new GameOverState());
+            currentContext.TransitionTo(currentState = new GameOverState());
         }
-
-        private bool showOptions, showCredits;
 
         public void OnShowOptions()
         {
+            if (playing) return;
+
             Debug.Log("options");
             showOptions = !showOptions;
             showCredits = false;
+
+            currentState.DeactivateAllPlayerControllers();
 
             SetObjectActive(optionsObj, showOptions);
             SetObjectActive(creditsObj, showCredits);
@@ -353,33 +347,45 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(mainMenuSelectionsUI, !(showOptions || showCredits));
             eventSystem.SetSelectedGameObject(SoundSlider);
             
+
+            if (!(showOptions || showCredits))
+            {
+                currentState.ActivateAllPlayerControllers();
+            }
         }
 
         public void OnShowCredits()
         {
+            if (playing) return; 
+
             Debug.Log("credits");
             showCredits = !showCredits;
             showOptions = false;
+
+            currentState.DeactivateAllPlayerControllers();
 
             SetObjectActive(creditsObj, showCredits);
             SetObjectActive(optionsObj, showOptions);
 
             SetObjectActive(mainMenuSelectionsUI, !(showOptions || showCredits));
+
+            if (!(showOptions || showCredits))
+            {
+                currentState.ActivateAllPlayerControllers();
+            }
         }
 
         public void OnGameWin()
         {
-            Debug.Log("ON GAME WIN"); 
             SetObjectActive(gameWonObj, true);
 
             DeactivateAllGameplayObjects();
-            currentContext.TransitionTo(new WinState());
+            currentContext.TransitionTo(currentState = new WinState());
         }
 
         public void OnGameQuit()
         {
             Debug.Log("Application Quit");
-            SetAllUIIsActive(false);
             Application.Quit();
         }
 
@@ -387,15 +393,6 @@ namespace Game.Systems.GlobalFramework
 
         #region UI
 
-        // architecture meh/20
-        public void SetAllUIIsActive(bool isActive)
-        {
-            HideTimer(); 
-            gameWonObj.SetActive(isActive);
-            gameOverObj.SetActive(isActive);
-            optionsObj.SetActive(isActive);
-            creditsObj.SetActive(isActive);
-        }
 
         private void HideMainMenuSelection()
         {

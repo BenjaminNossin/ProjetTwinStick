@@ -14,7 +14,7 @@ public class BasicAIRender : MonoBehaviour
    [SerializeField] private Transform renderer;
    [SerializeField] private ParticleSystem _explosionFXPrefab;
    [SerializeField] private Renderer[] allRenderers;
-   
+   [SerializeField] private GameObject _tailFx;
    private bool isDisolve;
    private bool isHit;
    private float _hitTimer;
@@ -44,6 +44,7 @@ public class BasicAIRender : MonoBehaviour
    private void OnEnable()
    {
       isDisolve = false;
+      _tailFx.gameObject.SetActive(true);
       dissolveTimer = 0;
       for (int i = 0; i < allRenderers.Length; i++)
       {
@@ -93,6 +94,7 @@ public class BasicAIRender : MonoBehaviour
      var fx = PoolFeedbackManager.instance.GetFromPool(_explosionFXPrefab.gameObject, _explosionFXPrefab.main.duration);
         fx.GetComponent<AudioSource>().Play();
         fx.transform.position = _basicAI.transform.position;
+        _tailFx.gameObject.SetActive(false );
    }
    public void UpdateSpeedMovementAnimation(float value) =>
       _animator.SetFloat("speed", math.remap(0, 1, minSpeedMovementAnimation, 1, value));
@@ -104,6 +106,7 @@ public class BasicAIRender : MonoBehaviour
    public void LaunchDieByPlayerAnimation()
    {
       _animator.Play("Die");
+      _tailFx.gameObject.SetActive(false );
    }
 
    void RotateRenderer(Vector3 dir)

@@ -18,8 +18,8 @@ MonoBehaviour:
   _upgrades:
   - shieldWidth: 1
     shieldCooldown: 3
-  - shieldWidth: 2
+  - shieldWidth: 1
     shieldCooldown: 2
-  - shieldWidth: 3
+  - shieldWidth: 1
     shieldCooldown: 1
   ShieldHeight: 1

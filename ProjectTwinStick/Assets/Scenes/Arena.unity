@@ -2393,6 +2393,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3737852296162943700, guid: c6aba9556e9df7747838fbacb21fec2d, type: 3}
   m_PrefabInstance: {fileID: 725418457}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &765797877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014764370547700804, guid: 03d4e53469830aa4087254b1a53a1008, type: 3}
+  m_PrefabInstance: {fileID: 124801959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &838276064
 Mesh:
   m_ObjectHideFlags: 0
@@ -4701,9 +4706,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 124801960}
     - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: SoundSlider
+      value: 
+      objectReference: {fileID: 765797877}
+    - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: tutorialTimeLine
       value: 
-      objectReference: {fileID: 11400000, guid: bdc56f94743ff5a46b7e76c1b2a08117, type: 2}
+      objectReference: {fileID: 11400000, guid: a741e97aa7756814f83c81db1a006053, type: 2}
     - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: playersRequiredAmount
       value: 4
