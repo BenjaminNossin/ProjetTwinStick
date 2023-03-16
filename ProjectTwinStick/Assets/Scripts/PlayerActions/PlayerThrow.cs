@@ -66,7 +66,6 @@ public class PlayerThrow : MonoBehaviour, IPlayerAction
     {
         if (!_inventory.IsDefaultItem() && IsPreparingThrow)
         {
-            Debug.Log("trying to throw");
             IsPreparingThrow = false;
             _inventory.CurrentItem.Throw(currentChargeTime, transform.forward);
             _inventory.ClearItem(false);

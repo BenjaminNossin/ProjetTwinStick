@@ -73,22 +73,20 @@ public class ItemRender : MonoBehaviour
             }
             case ItemState.Dropped:
             {
-                if (_animator)
-                    _animator.Play(itemDropAnimationState);
+                _animator.Play(itemDropAnimationState);
                 dropStateFx.SetActive(true);
                 break;
             }
             case ItemState.Thrown:
             {
-                if (_animator)
+           
                     _animator.Play(itemThrowAnimationState);
                 dropStateFx.SetActive(false);
                 break;
             }
             case ItemState.Held:
             {
-                if (_animator)
-                    _animator.Play(itemHeldAnimationState);
+                _animator.Play(itemHeldAnimationState);
                 dropStateFx.SetActive(false);
                 break;
             }
