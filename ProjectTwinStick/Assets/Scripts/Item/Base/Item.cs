@@ -31,7 +31,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
   
 
 
-    private int _upgradeCount;
+    protected int _upgradeCount;
     private bool isInRespawn;
     private bool isInSpawner;
     public int UpgradeCount
@@ -382,7 +382,7 @@ public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IT
         }
     }
 
-    void UpdateUpgrade()
+    protected virtual void UpdateUpgrade()
     {
         OnItemUpgradeChanged?.Invoke(_upgradeCount);
         SetUpgrade(GetSO().GetUpgrades()[_upgradeCount]);

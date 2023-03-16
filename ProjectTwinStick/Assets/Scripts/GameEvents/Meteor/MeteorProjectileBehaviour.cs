@@ -55,16 +55,13 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // shield
-        if (other.TryGetComponent<GameplayTagContainer>(out var gameplayTagContainer))
-        {
-            if (gameplayTagContainer.HasTag(immuneToMeteorTag))
+        if (other.CompareTag("ShieldInstance"))
             {
                 Debug.Log("entity with ignore meteorite tag was detected");
                 deathByShield?.Invoke();
                 DieImmediatly();
                 return; 
             }
-        }
 
         // barricade or ship core
         if (other.TryGetComponent<ILifeable>(out var lifeable))

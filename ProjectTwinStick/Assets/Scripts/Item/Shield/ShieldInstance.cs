@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class ShieldInstance : MonoBehaviour, ILifeable
 {
-    [SerializeField] BoxCollider shieldCollider;
+
     private ShieldItemUpgrade _upgrade;
     
     
@@ -14,14 +14,14 @@ public class ShieldInstance : MonoBehaviour, ILifeable
 
 
     //enabled : currently blocking enemies and meteors, broken : hit by enemy, on cooldown, disabled : not blocking anything
-    private enum ShieldInstanceState
+    public enum ShieldInstanceState
     {
         Enabled,
         Broken,
         Disabled
     }
     
-    private ShieldInstanceState _shieldInstanceState = ShieldInstanceState.Enabled;
+    public ShieldInstanceState _shieldInstanceState = ShieldInstanceState.Enabled;
 
     public UnityEvent OnShieldEnabled;
     public UnityEvent OnShieldDisabled;
@@ -54,17 +54,17 @@ public class ShieldInstance : MonoBehaviour, ILifeable
         switch (_shieldInstanceState)
         {
             case ShieldInstanceState.Enabled:
-                shieldCollider.enabled = true;
+      
                 OnShieldEnabled?.Invoke();
                 Debug.Log("Shield enabled");
                 break;
             case ShieldInstanceState.Broken:
-                shieldCollider.enabled = false;
+              
                 OnShieldBroken?.Invoke();
                 Debug.Log("Shield broken");
                 break;
             case ShieldInstanceState.Disabled:
-                shieldCollider.enabled = false;
+             
                 OnShieldDisabled?.Invoke();
                 Debug.Log("Shield disabled");
                 break;
@@ -105,8 +105,6 @@ public class ShieldInstance : MonoBehaviour, ILifeable
     public void ChangeUpgrade(ShieldItemUpgrade upgrade)
     {
         _upgrade = upgrade;
-        shieldCollider.size = new Vector3(_upgrade.shieldWidth, shieldCollider.size.y, shieldCollider.size.z);
-        this.transform.localScale = new Vector3(_upgrade.shieldWidth,1,1);
     }
 
     public float GetMaxHp()
