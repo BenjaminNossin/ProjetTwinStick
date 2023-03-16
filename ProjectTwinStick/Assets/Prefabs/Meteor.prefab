@@ -66,7 +66,7 @@ MonoBehaviour:
   immuneToMeteorTag: {fileID: 11400000, guid: 72a4a4b520a6b3747ac239ee45509bcd, type: 2}
   playerSlowEffect_Stun: {fileID: 11400000, guid: 9444ae93d2f731042a5b1f1330532457, type: 2}
   _collider: {fileID: 5852612644465214513}
-  deathTime: 2
+  deathTime: 0.1
 --- !u!114 &6013265773452711664
 MonoBehaviour:
   m_ObjectHideFlags: 0

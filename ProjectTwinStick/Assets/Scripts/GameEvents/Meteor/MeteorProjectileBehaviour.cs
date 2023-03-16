@@ -61,7 +61,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
             {
                 Debug.Log("entity with ignore meteorite tag was detected");
                 deathByShield?.Invoke();
-                Die();
+                DieImmediatly();
                 return; 
             }
         }
@@ -86,7 +86,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
         {
             Debug.Log("slowing target with " + playerSlowEffect_Stun.name);
             slowManager.AddSlow(playerSlowEffect_Stun);
-            Die();
+            DieImmediatly();
         }
     }
 
@@ -95,7 +95,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
         Debug.Log("damaging target");
         deathByBarricadeOrBase?.Invoke();
         DamageTarget(lifeable);
-        Die();
+        DieImmediatly();
     }
 
     private void DamageTarget(ILifeable lifeable)
