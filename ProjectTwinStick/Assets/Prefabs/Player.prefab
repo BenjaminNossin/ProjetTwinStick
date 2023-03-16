@@ -245,6 +245,7 @@ MonoBehaviour:
   _firstUpgradeFX: {fileID: 6616282503749409644}
   _secondUpgradeFX: {fileID: 6992870684056212431}
   _takedItemFX: {fileID: 3430537386221510323}
+  AllRenderers: []
 --- !u!1 &6740445525329688943
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4384894296449840046, guid: 34fca8eb2b4c79f4888aaada68492796, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5619038763544786527, guid: 34fca8eb2b4c79f4888aaada68492796, type: 3}
       propertyPath: m_Layer
