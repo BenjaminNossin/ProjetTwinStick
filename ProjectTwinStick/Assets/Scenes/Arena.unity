@@ -4773,6 +4773,10 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101241}
+    - target: {fileID: 5694696898667306782, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: Radius
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5999767695012942355, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: assignedBarricade
       value: 
