@@ -24,7 +24,7 @@ namespace Game.Systems.GlobalFramework
         [SerializeField] private List<PlayerRendererLinker> allPlayerRenderers = new List<PlayerRendererLinker>();
         public static GameManager Instance { get; private set; }
         private StateContext currentContext;
-        private State initialState = null;
+        private State currentState = null;
         private Action OnAllPlayersReady;
         private MainMenuSelections mainMenuSelection;
 
@@ -74,7 +74,6 @@ namespace Game.Systems.GlobalFramework
 
         private void Awake()
         {
-            Debug.Log("AWAKE"); 
             if (Instance)
             {
                 Destroy(Instance);
@@ -85,8 +84,6 @@ namespace Game.Systems.GlobalFramework
 
         void Start()
         {
-            Debug.Log("START");
-
             for (int i = 0; i < playerInputManager.transform.childCount; i++)
             {
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
@@ -120,7 +117,7 @@ namespace Game.Systems.GlobalFramework
             spawnPointIndex = 0;
 
             SetAllUIIsActive(false);
-            currentContext.TransitionTo(new MainMenuState());
+            currentContext.TransitionTo(currentState = new MainMenuState());
         }
 
         #region Lazy Initializers
@@ -195,10 +192,10 @@ namespace Game.Systems.GlobalFramework
             SetAllUIIsActive(false);
             if (currentPlayerReadyCount == playersRequiredAmount)
             {
-                currentContext.TransitionTo(GetStateFromFactory(mainMenuSelection));
+                currentContext.TransitionTo(currentState = GetStateFromFactory(mainMenuSelection));
             }
         }
-
+             
         public void SetAllPlayerSpawnPosition(List<PlayerController> controllers)
         {
             for (int i = 0; i < controllers.Count; i++)
@@ -264,7 +261,6 @@ namespace Game.Systems.GlobalFramework
         {
             audiosource.Stop();
             Debug.Log("ending main menu");
-            //currentContext.TransitionTo(new LobbyState());
         }
 
         public void OnLobbyStart()
@@ -278,7 +274,7 @@ namespace Game.Systems.GlobalFramework
             SetAllUIIsActive(false);
             _gameEventTimelineReader.SetNewTimeline(tutorialTimeLine);
 
-            currentContext.TransitionTo(new GameState());
+            currentContext.TransitionTo(currentState = new GameState());
             audiosource.clip = playList[UnityEngine.Random.Range(0, playList.Length)];
             audiosource.Play();
         }
@@ -316,7 +312,7 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(gameOverObj, true);
 
             DeactivateAllGameplayObjects();
-            currentContext.TransitionTo(new GameOverState());
+            currentContext.TransitionTo(currentState = new GameOverState());
         }
 
         private bool showOptions, showCredits;
@@ -327,10 +323,17 @@ namespace Game.Systems.GlobalFramework
             showOptions = !showOptions;
             showCredits = false;
 
+            currentState.DeactivateAllPlayerControllers();
+
             SetObjectActive(optionsObj, showOptions);
             SetObjectActive(creditsObj, showCredits);
 
             SetObjectActive(mainMenuSelectionsUI, !(showOptions || showCredits));
+
+            if (!(showOptions || showCredits))
+            {
+                currentState.ActivateAllPlayerControllers();
+            }
         }
 
         public void OnShowCredits()
@@ -339,10 +342,17 @@ namespace Game.Systems.GlobalFramework
             showCredits = !showCredits;
             showOptions = false;
 
+            currentState.DeactivateAllPlayerControllers();
+
             SetObjectActive(creditsObj, showCredits);
             SetObjectActive(optionsObj, showOptions);
 
             SetObjectActive(mainMenuSelectionsUI, !(showOptions || showCredits));
+
+            if (!(showOptions || showCredits))
+            {
+                currentState.ActivateAllPlayerControllers();
+            }
         }
 
         public void OnGameWin()
@@ -351,7 +361,7 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(gameWonObj, true);
 
             DeactivateAllGameplayObjects();
-            currentContext.TransitionTo(new WinState());
+            currentContext.TransitionTo(currentState = new WinState());
         }
 
         public void OnGameQuit()
@@ -386,5 +396,10 @@ namespace Game.Systems.GlobalFramework
         }
 
         #endregion
+
+        public void SetCurrentState(State current)
+        {
+            currentState = current; 
+        }
     }
 }

@@ -32,6 +32,7 @@ namespace Game.Systems.GlobalFramework.States
             currentState = newState;
 
             currentState.SetContext(this);
+            GameManager.Instance.SetCurrentState(currentState); 
 
             Initialize();
         }
@@ -69,6 +70,7 @@ namespace Game.Systems.GlobalFramework.States
 
         public abstract void OnStateEnter();
         public abstract void OnStateExit();
+
 
         public void SetContext(StateContext stateContext)
         {
@@ -110,9 +112,15 @@ namespace Game.Systems.GlobalFramework.States
 
         }
 
-        protected void ActivateAllPlayerControllers()
+        public void ActivateAllPlayerControllers(bool setPosition = false)
         {
-            ClearPlayerListFromContext(); 
+            for (int i = 0; i < ActivePlayersControllers.Count; i++)
+            {
+                if (ActivePlayersControllers[i] == null)
+                {
+                    ClearPlayerListFromContext();
+                }
+            }
 
             foreach (var item in ActivePlayersControllers)
             {
@@ -120,18 +128,15 @@ namespace Game.Systems.GlobalFramework.States
 
                 item.ActivateController();
             }
-
-            GameManager.Instance.SetAllPlayerSpawnPosition(ActivePlayersControllers);
         }
 
-        protected void DeactivateAllPlayerControllers()
+        public void DeactivateAllPlayerControllers()
         {
             foreach (var item in ActivePlayersControllers)
             {
                 Debug.Log("Deactivating player controller");
 
                 item.DeactivateController();
-
             }
         }
 
