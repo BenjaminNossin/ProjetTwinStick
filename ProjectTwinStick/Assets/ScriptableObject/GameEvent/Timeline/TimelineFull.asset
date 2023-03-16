@@ -16,90 +16,69 @@ MonoBehaviour:
   - timeCode: 10
     gameEventDatas:
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 15
+  - timeCode: 20
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 28
+  - timeCode: 35
     gameEventDatas:
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 30
-    gameEventDatas:
-    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 45
-    gameEventDatas:
-    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
   - timeCode: 45
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 48
+  - timeCode: 50
     gameEventDatas:
     - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
   - timeCode: 52
     gameEventDatas:
     - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
-  - timeCode: 60
+  - timeCode: 54
+    gameEventDatas:
+    - {fileID: 11400000, guid: 0f17dd394a425e545948f2cce4b0f0be, type: 2}
+  - timeCode: 64
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 65
+  - timeCode: 70
     gameEventDatas:
     - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-  - timeCode: 75
+  - timeCode: 78
     gameEventDatas:
-    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 85
-    gameEventDatas:
-    - {fileID: 11400000, guid: f4fbb5dc90d27f84db7323c41850ab80, type: 2}
+    - {fileID: 11400000, guid: 306cc3ceaedeece4ab57eddab0963805, type: 2}
   - timeCode: 90
     gameEventDatas:
     - {fileID: 11400000, guid: f4fbb5dc90d27f84db7323c41850ab80, type: 2}
-  - timeCode: 90
+  - timeCode: 95
+    gameEventDatas:
+    - {fileID: 11400000, guid: f4fbb5dc90d27f84db7323c41850ab80, type: 2}
+  - timeCode: 100
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 105
+  - timeCode: 110
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 115
-    gameEventDatas:
-    - {fileID: 11400000, guid: ceba03cf0fd276744a35a17dda8980cc, type: 2}
-  - timeCode: 119
-    gameEventDatas:
-    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
   - timeCode: 120
     gameEventDatas:
-    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 135
-    gameEventDatas:
-    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 145
-    gameEventDatas:
-    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 150
-    gameEventDatas:
-    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 162
-    gameEventDatas:
-    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
-  - timeCode: 165
-    gameEventDatas:
-    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
-  - timeCode: 180
+    - {fileID: 11400000, guid: ceba03cf0fd276744a35a17dda8980cc, type: 2}
+  - timeCode: 125
     gameEventDatas:
     - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-  - timeCode: 180
+  - timeCode: 140
+    gameEventDatas:
+    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
+  - timeCode: 150
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
+  - timeCode: 160
+    gameEventDatas:
+    - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
+  - timeCode: 170
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
+  - timeCode: 185
+    gameEventDatas:
+    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
+  - timeCode: 195
     gameEventDatas:
     - {fileID: 11400000, guid: 3d940ebd42592eb4185117281c345627, type: 2}
   - timeCode: 192
     gameEventDatas:
-    - {fileID: 11400000, guid: 35294078084a6fe47b9df7d041d6bcdb, type: 2}
-  - timeCode: 200
-    gameEventDatas:
-    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-    - {fileID: 11400000, guid: 4e3ef88f98635884c8bda96e78dacb37, type: 2}
-  - timeCode: 200
-    gameEventDatas:
-    - {fileID: 11400000, guid: 10ba7de76f3b16d40870ff990f0c219c, type: 2}
-    - {fileID: 11400000, guid: 10ba7de76f3b16d40870ff990f0c219c, type: 2}
-    - {fileID: 11400000, guid: 10ba7de76f3b16d40870ff990f0c219c, type: 2}
-    - {fileID: 11400000, guid: 10ba7de76f3b16d40870ff990f0c219c, type: 2}
+    - {fileID: 11400000, guid: 0d705441237fbf441bfb03f58b7ba9b0, type: 2}

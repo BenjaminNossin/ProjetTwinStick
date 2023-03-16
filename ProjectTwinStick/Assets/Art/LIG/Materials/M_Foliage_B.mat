@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Foliage_Var
+  m_Name: M_Foliage_B
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: 8264c7e1135987549b988d030d992303, type: 3}
+        m_Texture: {fileID: 2800000, guid: e5adc4d58dfefca4796b30dbfc4fb710, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -76,15 +76,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8264c7e1135987549b988d030d992303, type: 3}
+        m_Texture: {fileID: 2800000, guid: e5adc4d58dfefca4796b30dbfc4fb710, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: a0c09da56a9650240ab2c411d50a0735, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4f290318f5626054398b702f759c9f01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: eeecc0362c910cf45840f6fd401baddd, type: 3}
+        m_Texture: {fileID: 2800000, guid: cf26107d08383554996924a502524359, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -108,7 +108,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ThicknessMap:
-        m_Texture: {fileID: 2800000, guid: 22bef7786dd1b8c4ca344032fc2fc780, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9c0612c02e2bfcd4586d5ffaa75e47ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransmittanceColorMap:
