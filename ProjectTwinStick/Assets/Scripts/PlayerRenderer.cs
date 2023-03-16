@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,6 +19,8 @@ public class PlayerRenderer : MonoBehaviour
     [SerializeField] private GameObject _firstUpgradeFX;
     [SerializeField] private GameObject _secondUpgradeFX;
     [SerializeField] private GameObject _takedItemFX;
+    [FormerlySerializedAs("_allRenderers")] [SerializeField] public Renderer[] AllRenderers;
+   
     public void Init()
     {
         _playerMovement.characterMovement.OnSetVelocity += SetBlendTreeMovement;
@@ -39,6 +42,21 @@ public class PlayerRenderer : MonoBehaviour
         DisableIsThrow(); 
         animator.Play("Blend Tree");
     }
+
+    private void UpdateUpgradeParameterMaterial(int level)
+    {
+        for (int i = 0; i < AllRenderers.Length; i++)
+        {
+            for (int j = 0; j < AllRenderers[i].materials.Length; j++)
+            {
+                if (AllRenderers[i].materials[j].HasFloat("_Level"))
+                {
+                    AllRenderers[i].materials[j].SetFloat("_Level", level);
+                    break;
+                }
+            }
+        }
+    }
     private void UpdateUpgradeFX(Item currentItem)
     {
         switch (currentItem.UpgradeCount)
@@ -52,6 +70,7 @@ public class PlayerRenderer : MonoBehaviour
             case 1:
             {
                 _firstUpgradeFX.SetActive(true);
+       
                 break;
             }
             case 2:
@@ -60,6 +79,7 @@ public class PlayerRenderer : MonoBehaviour
                 break;
             }
         }
+        UpdateUpgradeParameterMaterial(currentItem.UpgradeCount);
     }
 
     private void ActivateDefaultItem()

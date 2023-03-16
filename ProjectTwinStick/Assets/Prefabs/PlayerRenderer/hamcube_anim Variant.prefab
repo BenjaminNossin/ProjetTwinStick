@@ -172,9 +172,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
+--- !u!137 &643968142622121179 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6463577638982864415, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
+  m_PrefabInstance: {fileID: 5862815905353011908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1093229276083720610 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6806916220270707558, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
+  m_PrefabInstance: {fileID: 5862815905353011908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1960771815736411858 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3861019111089597418, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
+  m_PrefabInstance: {fileID: 5862815905353011908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4606802138008312985 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7976523798573567581, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
+  m_PrefabInstance: {fileID: 5862815905353011908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4695434643347955211 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1185960655971339471, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
+  m_PrefabInstance: {fileID: 5862815905353011908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5094932793848394978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1722695444301211174, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
+  m_PrefabInstance: {fileID: 5862815905353011908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6121554840112080128 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 407797529596901316, guid: b0a66a010bd7ba349bc1a18b0e24a424, type: 3}
   m_PrefabInstance: {fileID: 5862815905353011908}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6745690552494108565 stripped
@@ -217,3 +247,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7589003863241700498}
   hand: {fileID: 4623303123108296995}
+  allRenderers:
+  - {fileID: 1960771815736411858}
+  - {fileID: 643968142622121179}
+  - {fileID: 4606802138008312985}
+  - {fileID: 4695434643347955211}
+  - {fileID: 1093229276083720610}
+  - {fileID: 6121554840112080128}
