@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565f14cdba80e0145b3b81718f40cab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitsPerSeconds: 6
+  unitsPerSeconds: 5
   damage: 5
   immuneToMeteorTag: {fileID: 11400000, guid: 72a4a4b520a6b3747ac239ee45509bcd, type: 2}
   playerSlowEffect_Stun: {fileID: 11400000, guid: 9444ae93d2f731042a5b1f1330532457, type: 2}
