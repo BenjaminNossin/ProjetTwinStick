@@ -403,7 +403,8 @@ MonoBehaviour:
   - {fileID: 9028032071614066092}
   DestroyedCollision:
   - {fileID: 2992093742637061644}
-  audioSource: {fileID: 2550456858366266660}
+  audioSourceRepair: {fileID: 2550456858366266660}
+  audioSourceDestroy: {fileID: 6479171984114538360}
 --- !u!82 &6479171984114538360
 AudioSource:
   m_ObjectHideFlags: 0

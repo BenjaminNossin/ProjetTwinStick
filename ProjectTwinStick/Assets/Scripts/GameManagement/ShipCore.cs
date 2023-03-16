@@ -22,7 +22,8 @@ public class ShipCore : MonoBehaviour, ILifeable
     private void Start()
     {
         GameManager.Instance.SetShipCoreData(gameObject, this); 
-        GameManager.Instance.SetObjectActive(gameObject, false);
+        //GameManager.Instance.SetObjectActive(gameObject, false);
+        _shipCoreRenderer.Init();
     }
 
     public void OnGameStart()
@@ -30,7 +31,7 @@ public class ShipCore : MonoBehaviour, ILifeable
         SetMaxHp(maxHP);
         SetCurrentHp(maxHP);
         InitActiveBarricades();
-        _shipCoreRenderer.Init();
+        
     }
 
     private void InitActiveBarricades()
