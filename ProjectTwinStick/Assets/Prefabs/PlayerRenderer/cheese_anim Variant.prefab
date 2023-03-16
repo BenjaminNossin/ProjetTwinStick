@@ -212,6 +212,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
+--- !u!137 &44151129803058649 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4389247238952271575, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
+  m_PrefabInstance: {fileID: 4866871482245262576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3885876919298814627 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -691318298670473645, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
+  m_PrefabInstance: {fileID: 4866871482245262576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5713924444414022049 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
@@ -252,8 +262,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2300162412820285330}
   hand: {fileID: 3556955983373670178}
+  allRenderers:
+  - {fileID: 44151129803058649}
+  - {fileID: 9153005813678182765}
+  - {fileID: 3885876919298814627}
+  - {fileID: 7717897847969670393}
+  - {fileID: 8018205231357657951}
 --- !u!4 &6080606833464363734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1722695444301211174, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
+  m_PrefabInstance: {fileID: 4866871482245262576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7717897847969670393 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6300004950633166839, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
+  m_PrefabInstance: {fileID: 4866871482245262576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8018205231357657951 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3228231007080918959, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
+  m_PrefabInstance: {fileID: 4866871482245262576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9153005813678182765 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4363033221486263709, guid: 668b8cd887b02ad4390e415a687cb43b, type: 3}
   m_PrefabInstance: {fileID: 4866871482245262576}
   m_PrefabAsset: {fileID: 0}
