@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class ShieldItemUpgrade : ItemUpgrade
 {
-    public float shieldWidth;
     public float shieldCooldown;
 }
 

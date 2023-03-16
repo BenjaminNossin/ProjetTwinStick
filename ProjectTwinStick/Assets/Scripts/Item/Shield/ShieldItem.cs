@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ShieldItem : Item
 {
@@ -11,7 +12,8 @@ public class ShieldItem : Item
     [SerializeField] ShieldInstance _shieldInstance;
     private ShieldItemUpgrade _currentUpgrade;
     private ShieldCenter _shieldCenter;
-
+    [FormerlySerializedAs("_allRenderers")] [SerializeField] private ShieldWall[] _allShieldWall;
+    [SerializeField]
     private Vector3 lastStartPos;
     private Vector2 lastDirection;
 
@@ -27,6 +29,49 @@ public class ShieldItem : Item
         return _shieldItemSO;
     }
 
+    protected override void UpdateUpgrade()
+    {
+        base.UpdateUpgrade();
+        for (int i = 0; i < _allShieldWall.Length; i++)
+        {
+            if (i == _upgradeCount)
+            {
+                SetIsDestroyedRenderer();
+            }
+            else
+            {
+            _allShieldWall[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void SetIsDestroyedRenderer()
+    {
+        switch (_shieldInstance._shieldInstanceState)
+        {
+            case ShieldInstance.ShieldInstanceState.Broken :
+            {
+                _allShieldWall[_upgradeCount].gameObject.SetActive(true);
+                _allShieldWall[_upgradeCount].renderer.material.SetFloat("_IsDestroyed", 1);
+                _allShieldWall[_upgradeCount].collider.enabled = false;
+                break;
+            }
+            case ShieldInstance.ShieldInstanceState.Disabled :
+            {
+                _allShieldWall[_upgradeCount].gameObject.SetActive(false);
+                _allShieldWall[_upgradeCount].collider.enabled = false;
+                break;
+            }
+            case ShieldInstance.ShieldInstanceState.Enabled :
+            {
+                _allShieldWall[_upgradeCount].gameObject.SetActive(true);
+                _allShieldWall[_upgradeCount].renderer.material.SetFloat("_IsDestroyed", 0);
+                _allShieldWall[_upgradeCount].collider.enabled = true;
+                break;
+            }
+        }
+    }
+
     protected override void Start()
     {
         OnItemStateChange += OnItemStateChanged;
@@ -40,6 +85,7 @@ public class ShieldItem : Item
         base.Update();
         UpdateShieldPos();
     }
+    
 
     private void OnItemStateChanged(ItemState state)
     {
