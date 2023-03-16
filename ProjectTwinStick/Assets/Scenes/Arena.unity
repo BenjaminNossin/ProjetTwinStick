@@ -4638,7 +4638,7 @@ PrefabInstance:
       objectReference: {fileID: 1488873062}
     - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: playersRequiredAmount
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3036201129895432025, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: minutesBeforeWin_Tutorial

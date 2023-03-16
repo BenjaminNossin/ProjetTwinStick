@@ -89,7 +89,6 @@ public class UIMainMenu : MonoBehaviour
         } // MainMenuSelections.MainGame.ToString().Replace("G"," G"); // bro :DD
 
         GameManager.Instance.SetCurrentSelectedGameState(currentSelection);
-        GameManager.Instance.SetAllUIIsActive(false);
     }
 
 }

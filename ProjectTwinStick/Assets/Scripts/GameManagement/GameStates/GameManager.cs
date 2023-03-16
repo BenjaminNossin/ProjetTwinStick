@@ -16,7 +16,6 @@ namespace Game.Systems.GlobalFramework
     public class GameManager : MonoBehaviour
     {
         #region Game Flow
-
         [SerializeField] private GameObject mainMenuSelectionsUI;
 
         [SerializeField] private GameEventTimelineSO tutorialTimeLine;
@@ -27,11 +26,9 @@ namespace Game.Systems.GlobalFramework
         private State currentState = null;
         private Action OnAllPlayersReady;
         private MainMenuSelections mainMenuSelection;
-
         #endregion
 
         #region UI
-
         [Space, SerializeField] private GameObject creditsObj;
         [SerializeField] private GameObject optionsObj;
         [SerializeField] private GameObject gameOverObj;
@@ -39,6 +36,8 @@ namespace Game.Systems.GlobalFramework
         [SerializeField] private EventSystem eventSystem;
 
         [SerializeField] private TMP_Text tmpTimer;
+
+        private bool showOptions, showCredits;
         #endregion
 
         #region Gameplay
@@ -66,11 +65,11 @@ namespace Game.Systems.GlobalFramework
 
         #endregion
 
+        #region Audio
         [SerializeField] AudioSource audiosource;
         [SerializeField] AudioClip lobbyMusic;
         [SerializeField] AudioClip[] playList;
-
-        // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
+        #endregion
 
         private void Awake()
         {
@@ -116,7 +115,6 @@ namespace Game.Systems.GlobalFramework
         {
             spawnPointIndex = 0;
 
-            SetAllUIIsActive(false);
             currentContext.TransitionTo(currentState = new MainMenuState());
         }
 
@@ -135,7 +133,6 @@ namespace Game.Systems.GlobalFramework
 
         public void SetObjectActive(GameObject obj, bool active)
         {
-            Debug.Log($"setting {obj} to {active}"); 
             obj.SetActive(active);
         }
 
@@ -190,7 +187,6 @@ namespace Game.Systems.GlobalFramework
             currentPlayerReadyCount += value;
             Debug.Log("Updating Player ready count to: " + currentPlayerReadyCount);
 
-            SetAllUIIsActive(false);
             if (currentPlayerReadyCount == playersRequiredAmount)
             {
                 currentContext.TransitionTo(currentState = GetStateFromFactory(mainMenuSelection));
@@ -246,7 +242,6 @@ namespace Game.Systems.GlobalFramework
             //spawnPointIndex = 0;
             isTutorial = false;
 
-            SetAllUIIsActive(false);
             SetObjectActive(mainMenuSelectionsUI, true);
 
             foreach (var item in waitRooms)
@@ -272,7 +267,6 @@ namespace Game.Systems.GlobalFramework
         {
             isTutorial = true;
 
-            SetAllUIIsActive(false);
             _gameEventTimelineReader.SetNewTimeline(tutorialTimeLine);
 
             currentContext.TransitionTo(currentState = new GameState());
@@ -290,7 +284,6 @@ namespace Game.Systems.GlobalFramework
             timeBeforeWin_AsSeconds = (isTutorial ? minutesBeforeWin_Tutorial : minutesBeforeWin_MainGame) * 60f; 
             Invoke(nameof(OnGameWin), timeBeforeWin_AsSeconds); 
 
-            SetAllUIIsActive(false);
 
             foreach (var item in waitRooms)
             {
@@ -316,10 +309,10 @@ namespace Game.Systems.GlobalFramework
             currentContext.TransitionTo(currentState = new GameOverState());
         }
 
-        private bool showOptions, showCredits;
-
         public void OnShowOptions()
         {
+            if (playing) return;
+
             Debug.Log("options");
             showOptions = !showOptions;
             showCredits = false;
@@ -339,6 +332,8 @@ namespace Game.Systems.GlobalFramework
 
         public void OnShowCredits()
         {
+            if (playing) return; 
+
             Debug.Log("credits");
             showCredits = !showCredits;
             showOptions = false;
@@ -358,7 +353,6 @@ namespace Game.Systems.GlobalFramework
 
         public void OnGameWin()
         {
-            Debug.Log("ON GAME WIN"); 
             SetObjectActive(gameWonObj, true);
 
             DeactivateAllGameplayObjects();
@@ -368,7 +362,6 @@ namespace Game.Systems.GlobalFramework
         public void OnGameQuit()
         {
             Debug.Log("Application Quit");
-            SetAllUIIsActive(false);
             Application.Quit();
         }
 
@@ -376,16 +369,6 @@ namespace Game.Systems.GlobalFramework
 
         #region UI
 
-        // architecture meh/20
-        public void SetAllUIIsActive(bool isActive)
-        {
-            Debug.Log("DEACTIVATING ALL UI"); 
-            HideTimer(); 
-            gameWonObj.SetActive(isActive);
-            gameOverObj.SetActive(isActive);
-            optionsObj.SetActive(isActive);
-            creditsObj.SetActive(isActive);
-        }
 
         private void HideMainMenuSelection()
         {
