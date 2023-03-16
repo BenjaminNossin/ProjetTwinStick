@@ -36,7 +36,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        tmpText.text = "Press a button to spawn !"; 
+        tmpText.text = "Press A !"; 
     }
 
     private void GetPlayerInput(PlayerInput firstPlayerToJoin)
