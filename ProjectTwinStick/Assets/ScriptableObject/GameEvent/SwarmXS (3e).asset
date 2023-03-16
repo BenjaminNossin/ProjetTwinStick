@@ -22,5 +22,5 @@ MonoBehaviour:
   LastEventInAreaBlockerTag:
   - {fileID: 11400000, guid: abdc24879f7dbb4458821b620aab886e, type: 2}
   SwarmWaves:
-  - timeBeforeLaunchWave: 2
+  - timeBeforeLaunchWave: 0
     enemyCount: 3
