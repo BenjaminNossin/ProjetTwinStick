@@ -12,14 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9174d71ceec4daa47ab0f2f29c80765d, type: 3}
   m_Name: ShieldItem
   m_EditorClassIdentifier: 
-  UpgradeResetTimer: 10
+  UpgradeResetTimer: 15
   itemPrefab: {fileID: 0}
   RespawnTime: 1
   _upgrades:
-  - shieldWidth: 1
-    shieldCooldown: 3
-  - shieldWidth: 1
-    shieldCooldown: 2
-  - shieldWidth: 1
-    shieldCooldown: 1
+  - shieldCooldown: 3
+  - shieldCooldown: 2
+  - shieldCooldown: 1
   ShieldHeight: 1

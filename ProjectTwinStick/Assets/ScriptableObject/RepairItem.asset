@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8957197934fb144bb1d6b56fb9c644, type: 3}
   m_Name: RepairItem
   m_EditorClassIdentifier: 
-  UpgradeResetTimer: 10
+  UpgradeResetTimer: 15
   itemPrefab: {fileID: 0}
   RespawnTime: 1
   _upgrades:
