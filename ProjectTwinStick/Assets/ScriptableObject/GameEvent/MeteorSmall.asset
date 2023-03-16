@@ -28,3 +28,5 @@ MonoBehaviour:
     meteorCount: 1
   - timeBeforeLaunchWave: 2
     meteorCount: 2
+  - timeBeforeLaunchWave: 8
+    meteorCount: 0

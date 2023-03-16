@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stun
   m_EditorClassIdentifier: 
   IndefiniteSlow: 0
-  SlowDuration: 3
+  SlowDuration: 2
   SlowMultiplier: 0
   TagsToAdd:
   - {fileID: 11400000, guid: 0c7b744cbbcb25946beab2b436117cad, type: 2}

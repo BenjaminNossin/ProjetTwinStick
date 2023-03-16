@@ -30,3 +30,5 @@ MonoBehaviour:
     enemyCount: 6
   - timeBeforeLaunchWave: 8
     enemyCount: 6
+  - timeBeforeLaunchWave: 15
+    enemyCount: 0
