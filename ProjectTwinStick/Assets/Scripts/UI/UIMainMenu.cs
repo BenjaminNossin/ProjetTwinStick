@@ -47,8 +47,13 @@ public class UIMainMenu : MonoBehaviour
 
         toLeft = playerInput_MainMenu.currentActionMap["SelectionLeft"];
         toRight = playerInput_MainMenu.currentActionMap["SelectionRight"];
+        options = playerInput_MainMenu.currentActionMap["Options"];
+        select = playerInput_MainMenu.currentActionMap["Credits"];
+
         toLeft.performed += ToLeft;
         toRight.performed += ToRight;
+        options.performed += ShowOptions;
+        select.performed += ShowCredits;
     }
 
     private void ToLeft(InputAction.CallbackContext context)
