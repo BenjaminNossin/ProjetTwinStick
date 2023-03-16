@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial_2
   m_EditorClassIdentifier: 
   callbacks: []
-  Text: Grab your tools with <color="green">  A </color> and aim with the <color="blue">
-    right stick.
+  Text: Grab your tools with <color=#009127>  A </color> and aim with the <color=#4775B6>
+    right stick</color>.
   Duration: 9
