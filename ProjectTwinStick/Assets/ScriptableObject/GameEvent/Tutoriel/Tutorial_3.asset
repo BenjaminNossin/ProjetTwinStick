@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial_3
   m_EditorClassIdentifier: 
   callbacks: []
-  Text: If you have no tools, fear not! You can still defend yourself with the Right
-    Stick!
+  Text: If you have no tools, fear not! You can still defend yourself with the <color="blue">
+    Right Stick!
   Duration: 9
