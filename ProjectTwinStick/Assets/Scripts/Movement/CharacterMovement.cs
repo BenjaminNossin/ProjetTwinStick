@@ -35,8 +35,10 @@ public class CharacterMovement : MonoBehaviour
             CurrentVelocity = Vector3.zero;
         }
 
+        CurrentVelocity *= _slowManager.GetCurrentSlowMultiplier();
+
         UpdateVelocity();
-        _characterController.Move(CurrentVelocity * (Time.deltaTime * _slowManager.GetCurrentSlowMultiplier()));
+        _characterController.Move(CurrentVelocity * (Time.deltaTime));
     }
 
     private void UpdateVelocity()
