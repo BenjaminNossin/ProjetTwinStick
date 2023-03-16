@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: TimelineFull
   m_EditorClassIdentifier: 
   _gameEventTimeCodes:
+  - timeCode: 0
+    gameEventDatas:
+    - {fileID: 11400000, guid: 15b87260be434004db722f35d002b246, type: 2}
   - timeCode: 10
     gameEventDatas:
     - {fileID: 11400000, guid: 4f25f86a80c90a34fbeb08cd4f2c7d5c, type: 2}
