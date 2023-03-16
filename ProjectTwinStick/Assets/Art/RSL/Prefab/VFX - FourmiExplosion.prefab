@@ -4838,7 +4838,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -4931,7 +4931,7 @@ MonoBehaviour:
   audioSource: {fileID: 5650743617572409701}
   randomMin: -0.2
   randomMax: 0
-  playOnStart: 1
+  playOnStart: 0
 --- !u!1 &3109539574843804825
 GameObject:
   m_ObjectHideFlags: 0
