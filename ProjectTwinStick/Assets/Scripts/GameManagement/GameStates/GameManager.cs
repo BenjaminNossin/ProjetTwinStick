@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Game.Systems.GlobalFramework.States;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.Rendering;
 
 namespace Game.Systems.GlobalFramework
 {
@@ -81,20 +82,25 @@ namespace Game.Systems.GlobalFramework
             }
 
             Instance = this;
+            playerInputManager.DisableJoining();
         }
 
         void Start()
         {
+
             for (int i = 0; i < playerInputManager.transform.childCount; i++)
             {
                 spawnPoints.Add(playerInputManager.transform.GetChild(i).position);
             }
 
             currentContext = new(new LobbyState(), playerInputManager);
-            Invoke(nameof(InitializeContext), 0.2f);
+            Invoke(nameof(InitializeContext), Time.deltaTime * 1.1f);
         }
 
         float min, sec;
+        private bool finished; 
+
+
         private void Update()
         {
             if (playing)
@@ -120,8 +126,16 @@ namespace Game.Systems.GlobalFramework
 
         }
 
+        private void InitPlayerInput()
+        {
+            finished = true;
+            playerInputManager.enabled = true;
+        }
+
         private void InitializeContext()
         {
+            playerInputManager.EnableJoining();
+
             spawnPointIndex = 0;
 
             currentContext.TransitionTo(currentState = new MainMenuState());

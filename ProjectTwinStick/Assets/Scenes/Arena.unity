@@ -4769,6 +4769,42 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101241}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_AllowJoining
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Id
+      value: f00a53e3-457e-4f16-89d9-f80c14f1c6ce
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Name
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 50323926-18a2-415f-be6b-97f7fb31a3dc
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444159063612384449, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Join
+      objectReference: {fileID: 0}
     - target: {fileID: 5694696898667306782, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: Radius
       value: 13

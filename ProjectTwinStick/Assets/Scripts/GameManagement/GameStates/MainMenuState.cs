@@ -9,8 +9,11 @@ namespace Game.Systems.GlobalFramework.States
         public override void OnStateEnter()
         {
             Debug.Log("Initializing Main Menu");
+            ClearPlayerListFromContext(); 
+
             context.PlayerInputManager.onPlayerJoined += BindOnPlayerJoined;
             context.PlayerInputManager.onPlayerLeft += BindOnPlayerLeave;
+
 
             ActivateAllPlayerControllers();
 
