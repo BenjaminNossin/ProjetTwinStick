@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 5014764370107954311}
   - component: {fileID: 5014764370107954424}
   - component: {fileID: 5014764370107954425}
+  - component: {fileID: 1596315818367041363}
   m_Layer: 5
   m_Name: Quit_BTN
   m_TagString: Untagged
@@ -233,7 +234,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5014764370107954424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1596315818367041363}
+        m_TargetAssemblyTypeName: ApplicationQuit, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1596315818367041363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014764370107954427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a9eb123e5c4ca48a4c1031910db201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5014764370187244638
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +527,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMixer: {fileID: 24100000, guid: b9a4b09d54b25424aba8c7c3865b2252, type: 2}
-  mainMixerGroup: {fileID: 24300002, guid: b9a4b09d54b25424aba8c7c3865b2252, type: 2}
   soundSlider: {fileID: 5014764370547700802}
 --- !u!1 &5014764370980311498
 GameObject:
@@ -607,7 +631,7 @@ RectTransform:
   m_GameObject: {fileID: 5014764371129407148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5014764370070874438}
@@ -615,7 +639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2.5833335}
   m_SizeDelta: {x: 99, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5014764371129407145
