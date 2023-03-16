@@ -944,10 +944,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 963309266793169467, guid: 82b80de04759a2343a88790bd805ce6a, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 4656991086968946096, guid: 82b80de04759a2343a88790bd805ce6a, type: 3}
       propertyPath: m_Name
       value: EventCanvasRotation
@@ -1587,12 +1583,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501085251}
   m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -69.126, y: 0, z: -49.5}
+  m_LocalPosition: {x: -69.1, y: 0, z: -40.3}
   m_LocalScale: {x: 1, y: 1, z: 1.4249}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1962166881}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &507464108
 PrefabInstance:
@@ -2408,7 +2404,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119142
+  m_Name: pb_Mesh626656
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3080,7 +3076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140495985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -71.25, y: 0, z: 0}
+  m_LocalPosition: {x: -70.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3322,7 +3318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119026
+  m_Name: pb_Mesh626540
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3650,7 +3646,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119068
+  m_Name: pb_Mesh626582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4158,12 +4154,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316925109}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.5, y: 0, z: 0}
+  m_LocalPosition: {x: 4.950001, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1962166881}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1333438861
 Mesh:
@@ -4588,10 +4584,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8678738902087674144, guid: 00c6066e96d52064c9b3d67ee7f02241, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c6066e96d52064c9b3d67ee7f02241, type: 3}
 --- !u!1001 &1488873061
@@ -4625,6 +4617,10 @@ PrefabInstance:
       propertyPath: assignedBarricade
       value: 
       objectReference: {fileID: 6047942999111101245}
+    - target: {fileID: 1819480296777583803, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1982290908035427282, guid: 211aa8fc01ff4654e9d2925d031aaa35, type: 3}
       propertyPath: assignedBarricade
       value: 
@@ -4885,7 +4881,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh119094
+  m_Name: pb_Mesh626608
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5759,10 +5755,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2956451577695354744, guid: 613c91f45f95a9c4bb06a1b7d31ba8e0, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 5488287773635445498, guid: 613c91f45f95a9c4bb06a1b7d31ba8e0, type: 3}
       propertyPath: m_Name
       value: EventCanvasSwarm
@@ -6695,7 +6687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924718105}
   m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: -72.046, y: 0, z: 0.000043869}
+  m_LocalPosition: {x: -72, y: 0, z: -0.7}
   m_LocalScale: {x: 1, y: 1, z: 1.5252}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6732,8 +6724,8 @@ Transform:
   m_Children:
   - {fileID: 1140495992}
   - {fileID: 1924718112}
-  - {fileID: 501085258}
   - {fileID: 1316925116}
+  - {fileID: 501085258}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7870,6 +7862,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 338006764, guid: 5b6fa615fa721f44fab6a79f8a1f5a86, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 412751361, guid: 5b6fa615fa721f44fab6a79f8a1f5a86, type: 3}
       propertyPath: m_IsActive
       value: 0

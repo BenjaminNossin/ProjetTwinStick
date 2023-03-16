@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial_4
   m_EditorClassIdentifier: 
   callbacks: []
-  Text: A big Swarm is coming! Pass the riffle to the right place with <color="red">RT!
-    </color>Cancel your throw with <color="red"> B.
+  Text: A big Swarm is coming! Pass the riffle to the right place with <color=#CE4D31>RT!
+    </color>Cancel your throw with <color=#CE4D31> B</color>.
   Duration: 19
