@@ -69,6 +69,7 @@ namespace Game.Systems.GlobalFramework
         [SerializeField] AudioSource audiosource;
         [SerializeField] AudioClip lobbyMusic;
         [SerializeField] AudioClip[] playList;
+        AudioClip lastsong;
 
         // NOTE: state stack to avoid new memory allocation when TransitionTo() ?
 
@@ -112,7 +113,14 @@ namespace Game.Systems.GlobalFramework
                 tmpTimer.text = $"{timeFormatted}";
 
                 timeBeforeWin_AsSeconds -= Time.deltaTime;
+
             }
+
+            if (playing || isTutorial) 
+            {
+                if (!audiosource.isPlaying) PlayGameMusic();
+            } 
+
         }
 
         private void InitializeContext()
@@ -256,13 +264,14 @@ namespace Game.Systems.GlobalFramework
                 SetObjectActive(item, true);
             }
 
+            audiosource.loop = true;
             audiosource.clip = lobbyMusic;
             audiosource.Play();
         }
 
         public void OnMainMenuEnd()
         {
-            audiosource.Stop();
+            
             Debug.Log("ending main menu");
             //currentContext.TransitionTo(new LobbyState());
         }
@@ -271,22 +280,32 @@ namespace Game.Systems.GlobalFramework
         {
         }
 
+        void PlayGameMusic()
+        {
+            int rand = UnityEngine.Random.Range(0, playList.Length - 1);
+            lastsong = playList[rand];
+            AudioClip permute = playList[playList.Length - 1];
+            audiosource.clip = lastsong;
+            audiosource.Play();
+            playList[rand] = permute;
+            playList[playList.Length - 1] = lastsong;
+        }
         public void OnTutorialStart()
         {
+            audiosource.Stop();
+            audiosource.loop = false;
             isTutorial = true;
 
             SetAllUIIsActive(false);
             _gameEventTimelineReader.SetNewTimeline(tutorialTimeLine);
 
             currentContext.TransitionTo(new GameState());
-            audiosource.clip = playList[UnityEngine.Random.Range(0, playList.Length)];
-            audiosource.Play();
         }
 
         public void OnGameStart()
         {
-            audiosource.clip = playList[UnityEngine.Random.Range(0, playList.Length)];
-            audiosource.Play();
+            audiosource.Stop();
+            audiosource.loop = false;
             Debug.Log("Starting Game. Is tutorial: " + isTutorial);
             playing = true; 
 

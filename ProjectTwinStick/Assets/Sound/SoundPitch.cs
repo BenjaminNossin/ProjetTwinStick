@@ -12,13 +12,14 @@ public class SoundPitch : MonoBehaviour
 
     private void Start()
     {
-        basePitch = audioSource.pitch;
+        basePitch = audioSource.pitch;        
+    }
+
+    public void PlayPliz()
+    {
+        Debug.Log("BOOM");
         Pitcher();
-        if (playOnStart)
-        {
-            audioSource.Play();
-            Debug.Log("Play BOOM");
-        }
+        audioSource.Play();
     }
 
     public void Pitcher()

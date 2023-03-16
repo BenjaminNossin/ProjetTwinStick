@@ -91,7 +91,8 @@ public class BasicAIRender : MonoBehaviour
    public void InstantiateExplosionFX()
    {
      var fx = PoolFeedbackManager.instance.GetFromPool(_explosionFXPrefab.gameObject, _explosionFXPrefab.main.duration);
-     fx.transform.position = _basicAI.transform.position;
+        fx.GetComponent<AudioSource>().Play();
+        fx.transform.position = _basicAI.transform.position;
    }
    public void UpdateSpeedMovementAnimation(float value) =>
       _animator.SetFloat("speed", math.remap(0, 1, minSpeedMovementAnimation, 1, value));
