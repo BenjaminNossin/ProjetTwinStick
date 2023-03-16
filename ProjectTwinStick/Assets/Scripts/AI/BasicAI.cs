@@ -15,6 +15,7 @@ public class BasicAI : MonoBehaviour, ILifeable
     [FormerlySerializedAs("JumpTime")] [SerializeField] private float jumpTime = 0.75f;
     [FormerlySerializedAs("JumpApexHeight")] [SerializeField] private float jumpApexHeight = 3f;
     [FormerlySerializedAs("JumpCurve")] [SerializeField] private AnimationCurve jumpCurve;
+    [SerializeField] private LayerMask BarricadeMask;
     [SerializeField] private Collider collider;
     [SerializeField]
     private float dieTime;
@@ -59,7 +60,6 @@ public class BasicAI : MonoBehaviour, ILifeable
 
     private EnemyStats currentStats;
 
-    
     private enum BasicAIState
     {
         Run,
@@ -152,6 +152,10 @@ public class BasicAI : MonoBehaviour, ILifeable
             distFromShipCore = Vector3.Distance(cachedTransf.position, shipCorePosFlat);
             if (distFromShipCore <= distFromJumpArea)
             {
+                if (TryDamageBarricade())
+                {
+                    return;
+                }
                 currentJumpTime = 0;
                 jumpStartPos = cachedTransf.position;
                 jumpEndPos = cachedTransf.position + new Vector3(
@@ -203,6 +207,36 @@ public class BasicAI : MonoBehaviour, ILifeable
         SetNormalizedDirection(); 
         SwitchState(BasicAIState.Run);
         */
+    }
+
+    private bool TryDamageBarricade()
+    {
+        Collider[] colliders = Physics.OverlapSphere(targetPos, 0.5f, BarricadeMask, QueryTriggerInteraction.Collide);
+        if (colliders.Length > 0)
+        {
+            foreach (var collider in colliders)
+            {
+                if (collider.TryGetComponent<ILifeable>(out var lifeable))
+                {
+                    //Debug.Log($"damaging target {other.gameObject.name}"); 
+                    DamageTarget(lifeable); 
+                    DieImmediately();
+                }
+                else
+                {
+                    lifeable = collider.GetComponentInParent<ILifeable>();
+                    if (lifeable != null)
+                    {
+                        //Debug.Log($"damaging target {other.gameObject.name}"); 
+                        DamageTarget(lifeable); 
+                        DieImmediately();
+                    }
+                }
+            }
+        }
+
+        return false;
+
     }
 
     private void DieImmediately()
