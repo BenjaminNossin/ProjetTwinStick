@@ -24,10 +24,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.267
+    m_Value: 0.254
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.082
+    m_Value: 0.167
   roundness:
     m_OverrideState: 1
     m_Value: 1
@@ -212,13 +212,13 @@ MonoBehaviour:
     m_Value: 1
   length:
     m_OverrideState: 1
-    m_Value: 0.042
+    m_Value: 0.423
   opacity:
     m_OverrideState: 1
     m_Value: 1
   distanceScaleFactor:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0
   maxDistance:
     m_OverrideState: 1
     m_Value: 50
@@ -226,10 +226,10 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0
   fadeDistance:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 5
   fadeInDistance:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 19.92
   rayBias:
     m_OverrideState: 1
@@ -338,7 +338,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.1
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
