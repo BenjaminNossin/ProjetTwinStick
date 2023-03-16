@@ -106,6 +106,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -80.03197
       objectReference: {fileID: 0}
+    - target: {fileID: -6311529220877363975, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6311529220877363975, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f87bd09f66ea744fa142d414941f08b, type: 2}
     - target: {fileID: -4288481875069229586, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -0.09237666
@@ -118,6 +126,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.2297616
       objectReference: {fileID: 0}
+    - target: {fileID: -4250162510185331994, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4250162510185331994, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f87bd09f66ea744fa142d414941f08b, type: 2}
+    - target: {fileID: -1573893948119843186, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1573893948119843186, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f87bd09f66ea744fa142d414941f08b, type: 2}
     - target: {fileID: 919132149155446097, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
       propertyPath: m_Name
       value: pickle_anim Variant
@@ -134,6 +158,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -36.293285
       objectReference: {fileID: 0}
+    - target: {fileID: 4791285582549030644, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4791285582549030644, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f87bd09f66ea744fa142d414941f08b, type: 2}
     - target: {fileID: 5349195820017186156, guid: 0029fe687fe73ac42aa2714dc0f9b390, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 61.84869
