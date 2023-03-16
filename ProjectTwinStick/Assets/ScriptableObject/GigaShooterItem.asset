@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28ee015513d6914e93e89edb170afd5, type: 3}
   m_Name: GigaShooterItem
   m_EditorClassIdentifier: 
-  UpgradeResetTimer: 10
+  UpgradeResetTimer: 15
   itemPrefab: {fileID: 496780730554963546, guid: f2d3f6dad88571c40bc58625ccb99bcc, type: 3}
   RespawnTime: 1
   _shooterUpgrades:

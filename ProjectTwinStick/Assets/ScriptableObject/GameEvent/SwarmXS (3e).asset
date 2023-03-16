@@ -24,3 +24,5 @@ MonoBehaviour:
   SwarmWaves:
   - timeBeforeLaunchWave: 0
     enemyCount: 3
+  - timeBeforeLaunchWave: 4
+    enemyCount: 0

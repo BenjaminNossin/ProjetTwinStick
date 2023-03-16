@@ -27,7 +27,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private Vector3 selfPosFlat, shipCorePos;
 
     public event Action deathByShield;
-    public event Action deathByBarricadeOrBase;
+    public event Action deathByBarricadeOrBaseOrPlayer;
     private void Start()
     {
         GameManager.Instance.OnGameOverCallBack += DieImmediatly;
@@ -83,6 +83,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
         {
             Debug.Log("slowing target with " + playerSlowEffect_Stun.name);
             slowManager.AddSlow(playerSlowEffect_Stun);
+            deathByBarricadeOrBaseOrPlayer?.Invoke();
             DieImmediatly();
         }
     }
@@ -90,7 +91,7 @@ public class MeteorProjectileBehaviour : MonoBehaviour
     private void ApplyEffectOnTarget(ILifeable lifeable)
     {
         Debug.Log("damaging target");
-        deathByBarricadeOrBase?.Invoke();
+        deathByBarricadeOrBaseOrPlayer?.Invoke();
         DamageTarget(lifeable);
         DieImmediatly();
     }
