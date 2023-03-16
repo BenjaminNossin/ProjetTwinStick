@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   callbacks: []
   AreaTargetCount: 1
-  TagEvent: {fileID: 0}
+  TagEvent: {fileID: 11400000, guid: f07c4aabebab1e64388f8fc5f3860bbd, type: 2}
   CurrentEventInAreaBlockerTag: []
   LastEventInAreaBlockerTag: []
-  SwarmWaves: []
+  SwarmWaves:
+  - timeBeforeLaunchWave: 0
+    enemyCount: 0
