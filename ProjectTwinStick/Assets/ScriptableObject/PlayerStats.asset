@@ -16,5 +16,5 @@ MonoBehaviour:
   AccelerationTime: 0.2
   DecelerationTime: 0
   MovementInputThreshold: 0.1
-  RestrictedAimSpeed: 1
+  RestrictedAimSpeed: 3
   AimInputThreshold: 0.3
