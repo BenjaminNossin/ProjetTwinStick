@@ -32,7 +32,6 @@ namespace Game.Systems.GlobalFramework.States
             currentState = newState;
 
             currentState.SetContext(this);
-            GameManager.Instance.SetCurrentState(currentState); 
 
             Initialize();
         }
@@ -118,9 +117,10 @@ namespace Game.Systems.GlobalFramework.States
             {
                 if (ActivePlayersControllers[i] == null)
                 {
+                    Debug.Log("CLEARING ALL PLAYERS"); 
                     ClearPlayerListFromContext();
                 }
-            }
+            } 
 
             foreach (var item in ActivePlayersControllers)
             {

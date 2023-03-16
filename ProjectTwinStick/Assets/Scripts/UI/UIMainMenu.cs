@@ -30,6 +30,8 @@ public class UIMainMenu : MonoBehaviour
         inputManager.onPlayerJoined -= GetPlayerInput;
         toLeft.performed -= ToLeft;
         toRight.performed -= ToRight;
+        options.performed -= ShowOptions;
+        select.performed -= ShowCredits;
     }
 
     private void Start()
@@ -39,8 +41,6 @@ public class UIMainMenu : MonoBehaviour
 
     private void GetPlayerInput(PlayerInput firstPlayerToJoin)
     {
-        //if (playerInput_MainMenu) return;
-
         UpdateSelection(currentIndex);
 
         playerInput_MainMenu = firstPlayerToJoin;
@@ -91,4 +91,5 @@ public class UIMainMenu : MonoBehaviour
         GameManager.Instance.SetCurrentSelectedGameState(currentSelection);
         GameManager.Instance.SetAllUIIsActive(false);
     }
+
 }

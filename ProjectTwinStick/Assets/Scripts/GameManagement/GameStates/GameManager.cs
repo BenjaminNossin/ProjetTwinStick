@@ -135,6 +135,7 @@ namespace Game.Systems.GlobalFramework
 
         public void SetObjectActive(GameObject obj, bool active)
         {
+            Debug.Log($"setting {obj} to {active}"); 
             obj.SetActive(active);
         }
 
@@ -378,6 +379,7 @@ namespace Game.Systems.GlobalFramework
         // architecture meh/20
         public void SetAllUIIsActive(bool isActive)
         {
+            Debug.Log("DEACTIVATING ALL UI"); 
             HideTimer(); 
             gameWonObj.SetActive(isActive);
             gameOverObj.SetActive(isActive);
@@ -396,10 +398,5 @@ namespace Game.Systems.GlobalFramework
         }
 
         #endregion
-
-        public void SetCurrentState(State current)
-        {
-            currentState = current; 
-        }
     }
 }
