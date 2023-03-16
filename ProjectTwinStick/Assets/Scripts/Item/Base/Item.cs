@@ -15,7 +15,7 @@ public enum ItemState
 
 public abstract class Item : MonoBehaviour, IShootable, IDropable, ITakeable, IThrowable, IUpgradable
 {
-    private const int upgradeMaxCount = 3;
+    private const int upgradeMaxCount = 2;
 
     [SerializeField] private float GroundedHeight = 1f;
 
