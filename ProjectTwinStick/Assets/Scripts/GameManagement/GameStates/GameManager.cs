@@ -34,6 +34,7 @@ namespace Game.Systems.GlobalFramework
 
         [Space, SerializeField] private GameObject creditsObj;
         [SerializeField] private GameObject optionsObj;
+        [SerializeField] private GameObject SoundSlider;
         [SerializeField] private GameObject gameOverObj;
         [SerializeField] private GameObject gameWonObj;
         [SerializeField] private EventSystem eventSystem;
@@ -350,6 +351,8 @@ namespace Game.Systems.GlobalFramework
             SetObjectActive(creditsObj, showCredits);
 
             SetObjectActive(mainMenuSelectionsUI, !(showOptions || showCredits));
+            eventSystem.SetSelectedGameObject(SoundSlider);
+            
         }
 
         public void OnShowCredits()
