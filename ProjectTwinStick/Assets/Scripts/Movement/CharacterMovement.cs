@@ -36,12 +36,12 @@ public class CharacterMovement : MonoBehaviour
         }
 
         UpdateVelocity();
-        _characterController.Move(Vector3.right*0.00001f+CurrentVelocity * (Time.deltaTime * _slowManager.GetCurrentSlowMultiplier()));
+        _characterController.Move(CurrentVelocity * (Time.deltaTime * _slowManager.GetCurrentSlowMultiplier()));
     }
 
     private void UpdateVelocity()
     {
-        //CurrentVelocity.y = -1;
+        CurrentVelocity.y = -1;
     }
 
     public void TeleportPlayer(Vector3 newPosition)

@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using UnityEngine.Serialization;
+using Game.Systems.GlobalFramework;
 
 // spawnEvent -> random vs scripté (SO ?)
 
@@ -24,6 +25,10 @@ namespace Game.Systems.AI
 
         public void Initialize()
         {
+            if (GameManager.Instance.isTutorial)
+            {
+                firstSpawnDelay += 40;
+            }
             Invoke(nameof(Spawn), firstSpawnDelay);
             _currentStats = defaultStats;
             _currentSpawnerParams = spawnerParams;

@@ -46,7 +46,7 @@ namespace Game.Systems.GlobalFramework
         [Space, SerializeField, Range(1, 4)] private int playersRequiredAmount = 4;
         [Space, SerializeField, Range(1, 15)] private float minutesBeforeWin_Tutorial = 5;
         [Space, SerializeField, Range(1, 20)] private float minutesBeforeWin_MainGame = 12;
-        private bool isTutorial;
+        public bool isTutorial { get; private set; }
         private bool playing; 
         private float timeBeforeWin_AsSeconds;
         private float currentPlayTime; 

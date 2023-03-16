@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9955396c3119d424fbccbe98a3a7c93b, type: 3}
+  m_Name: TimelineTuto
+  m_EditorClassIdentifier: 
+  _gameEventTimeCodes:
+  - timeCode: 0
+    gameEventDatas:
+    - {fileID: 11400000, guid: 89e3aeceac7f8694282ef9f7f1137d2e, type: 2}
+  - timeCode: 10
+    gameEventDatas:
+    - {fileID: 11400000, guid: 2cb73964b0c93f742b029c54ef698545, type: 2}
+  - timeCode: 20
+    gameEventDatas:
+    - {fileID: 11400000, guid: ebf5dedaa199fa64aa2c9a75f084f83b, type: 2}
+  - timeCode: 30
+    gameEventDatas:
+    - {fileID: 11400000, guid: d5bea7d3c8b030b4bbbd87eed649a50d, type: 2}
+    - {fileID: 11400000, guid: 7a83a7fe0e8955f4fbf645725bd3966c, type: 2}
+    - {fileID: 11400000, guid: 5ec13505d02fa6749ac13a2db072ac16, type: 2}
+  - timeCode: 50
+    gameEventDatas:
+    - {fileID: 11400000, guid: eabba2c7c0e2da749958babff1bd61c4, type: 2}
+    - {fileID: 11400000, guid: bf107eab1e029614ba208fe5db0f39a2, type: 2}
+  - timeCode: 70
+    gameEventDatas:
+    - {fileID: 11400000, guid: cbe12185f8d5b9d4c88a1fcb6eda006e, type: 2}
+  - timeCode: 90
+    gameEventDatas:
+    - {fileID: 11400000, guid: e2417b23ae598d64190b1e7b480d3c1b, type: 2}
+    - {fileID: 11400000, guid: 7a83a7fe0e8955f4fbf645725bd3966c, type: 2}
+  - timeCode: 105
+    gameEventDatas:
+    - {fileID: 11400000, guid: 7a83a7fe0e8955f4fbf645725bd3966c, type: 2}
+    - {fileID: 11400000, guid: bf107eab1e029614ba208fe5db0f39a2, type: 2}
+  - timeCode: 120
+    gameEventDatas:
+    - {fileID: 11400000, guid: d8c379bb12e4ce84f95340e27dc2d8b8, type: 2}
+  - timeCode: 130
+    gameEventDatas:
+    - {fileID: 11400000, guid: 9a2a9ebd2aea0d74c983301b6f57f004, type: 2}
