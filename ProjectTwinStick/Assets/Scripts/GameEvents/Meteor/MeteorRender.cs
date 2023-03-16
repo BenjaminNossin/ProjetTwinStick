@@ -12,7 +12,7 @@ public class MeteorRender : MonoBehaviour
     public void Start()
     {
         _meteorProjectileBehaviour.deathByShield += InitiateDeathByShieldFx;
-        _meteorProjectileBehaviour.deathByBarricadeOrBase += InitiateDeathByOther;
+        _meteorProjectileBehaviour.deathByBarricadeOrBaseOrPlayer += InitiateDeathByOther;
     }
 
     private void InitiateDeathByShieldFx()
